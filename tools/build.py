@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Builds the Capital website: writes complete pages into site/ (for hosting)
 and an artifact/ copy whose index.html has no outer document tags (for the Claude artifact viewer)."""
-import os, re, html, datetime
+import os, re, html, datetime, json
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 # When this script lives in tools/, the finished pages go into the folder above it (the repository root).
@@ -57,7 +57,11 @@ p{margin:0}
 .menu .cta a{border:1.5px solid var(--brass);color:var(--navy);padding:9px 16px;border-radius:2px}
 .menu .cta a:hover,.menu .cta a[aria-current="page"]{background:var(--brass);border-color:var(--brass);color:var(--navy)}
 .navtoggle{display:none;background:none;border:1.5px solid var(--rule);border-radius:2px;padding:8px 10px;font:inherit;font-size:14px;color:var(--ink);cursor:pointer}
-@media (max-width:1000px){
+@media (min-width:1101px) and (max-width:1240px){
+  .brand .desc{display:none}
+  .menu{gap:20px}
+}
+@media (max-width:1100px){
   .brand .desc{display:none}
   .navtoggle{display:inline-block}
   .menu{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:0;background:var(--paper);border-bottom:1px solid var(--rule);padding:8px var(--gutter) 16px;box-shadow:0 20px 30px -20px rgba(0,0,0,.3)}
@@ -136,7 +140,7 @@ p{margin:0}
 .two{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:clamp(28px,5vw,80px);align-items:start}
 .two h2,.h2{font-size:clamp(28px,3vw,38px);line-height:1.15;color:var(--navy)}
 .h3{font-family:var(--display);font-size:24px;line-height:1.25;color:var(--navy)}
-.prose{display:grid;gap:18px;max-width:64ch;font-size:17.5px}
+.prose{display:grid;gap:18px;max-width:64ch;font-size:17.5px;overflow-wrap:anywhere}
 .prose ul,.prose ol{margin:0;padding-left:22px;display:grid;gap:10px}
 .prose li::marker{color:var(--brass)}
 .prose strong{font-weight:600;color:var(--navy)}
@@ -181,6 +185,30 @@ p{margin:0}
 .countries{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
 .countries span{font-size:13.5px;color:var(--navy);border:1px solid var(--rule);background:var(--paper);padding:5px 10px;border-radius:2px}
 .section.stone .countries span{background:var(--paper)}
+/* Offset alerts: a calm dated list; each headline opens the original source in a new tab */
+.vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.sechead{display:flex;justify-content:space-between;align-items:flex-end;gap:16px 32px;flex-wrap:wrap}
+.sechead .more{font-size:15px;font-weight:600;color:var(--navy);text-decoration:none;border-bottom:1.5px solid var(--brass);padding-bottom:2px;white-space:nowrap}
+.sechead .more:hover{color:var(--brass)}
+.updated{margin-top:10px;font-size:13.5px;color:var(--ink-soft)}
+.alerts{list-style:none;margin:clamp(28px,4vw,40px) 0 0;padding:0;border-top:1px solid var(--rule)}
+.alerts li{display:grid;grid-template-columns:minmax(140px,180px) minmax(0,1fr);gap:6px 36px;padding:22px 0;border-bottom:1px solid var(--rule)}
+.a-meta{display:flex;flex-direction:column;gap:3px;padding-top:4px}
+.a-meta b{font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--brass)}
+.a-meta time{font-size:13.5px;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+.a-title{font-family:var(--display);font-size:clamp(19px,1.6vw,21px);line-height:1.32;color:var(--navy)}
+.a-title a{text-decoration:none;background-image:linear-gradient(var(--brass),var(--brass));background-repeat:no-repeat;background-position:0 100%;background-size:0 1px;transition:background-size .2s}
+.a-title a:hover,.a-title a:focus-visible{background-size:100% 1px}
+.a-sum{margin-top:8px;color:var(--ink-soft);font-size:15.5px;max-width:72ch}
+.a-src{margin-top:10px;font-size:13.5px;color:var(--ink-soft)}
+.a-src a{color:var(--navy);font-weight:500;text-decoration:none;border-bottom:1px solid var(--brass)}
+.a-src a:hover{color:var(--brass)}
+.arrow{display:inline-block;margin-left:3px;font-family:var(--body);font-size:.85em;color:var(--brass)}
+@media (max-width:700px){
+  .alerts li{grid-template-columns:1fr}
+  .a-meta{flex-direction:row;gap:10px;align-items:baseline;padding-top:0}
+  .a-meta time::before{content:"·";margin-right:10px;color:var(--rule)}
+}
 @media (max-width:900px){
   .two{grid-template-columns:1fr}
   .cols,.cols.two-up,.cols.four-up,.steps,.steps.two-up{grid-template-columns:1fr}
@@ -286,6 +314,7 @@ NAV = [
     ("industrial-participation.html", "Industrial participation"),
     ("uk-companies.html", "UK companies"),
     ("advisory.html", "Advisory"),
+    ("offset-alerts.html", "Offset alerts"),
     ("about.html", "About"),
     ("contact.html", "Contact"),
 ]
@@ -314,7 +343,7 @@ FOOTER = f"""
       <p class="contact">Based in London, United Kingdom. Meetings by appointment.<br><span>{EMAIL}</span><span>{PHONE}</span></p>
     </div>
     <div><h4>Platform</h4><ul><li><a href="platform.html">How it works</a></li><li><a href="security.html">Security and privacy</a></li><li><a href="request-access.html">Request access</a></li></ul></div>
-    <div><h4>Services</h4><ul><li><a href="advisory.html">Advisory</a></li><li><a href="industrial-participation.html">Industrial participation</a></li><li><a href="uk-companies.html">For UK companies</a></li></ul></div>
+    <div><h4>Services</h4><ul><li><a href="advisory.html">Advisory</a></li><li><a href="industrial-participation.html">Industrial participation</a></li><li><a href="offset-alerts.html">Offset alerts</a></li><li><a href="uk-companies.html">For UK companies</a></li></ul></div>
     <div><h4>Company</h4><ul><li><a href="about.html">About Capital</a></li><li><a href="compliance.html">Compliance and ethics</a></li><li><a href="contact.html">Contact</a></li></ul></div>
   </div>
   <div class="legal"><div class="wrap">
@@ -378,6 +407,44 @@ def page(path, title, desc, body, current=None):
 </html>
 """
     return doc
+
+# ---------------------------------------------------------------- offset alerts (data in tools/alerts.json)
+_alerts_file = os.path.join(ROOT, "alerts.json")
+with open(_alerts_file) as f:
+    _AL = json.load(f)
+# newest month first; items within a month keep the order they have in the file
+ALERTS = sorted(_AL["items"], key=lambda a: a["date"], reverse=True)
+_upd = datetime.date.fromisoformat(_AL["updated"])
+ALERTS_UPDATED = f"{_upd.day} {_upd.strftime('%B %Y')}"
+
+def _month(ym):
+    d = datetime.date.fromisoformat(ym + "-01")
+    return d.strftime("%B %Y")
+
+def alert_list(items):
+    rows = []
+    for a in items:
+        e = {k: html.escape(v) for k, v in a.items()}
+        rows.append(f"""<li>
+      <div class="a-meta"><b>{e['country']}</b><time datetime="{e['date']}">{_month(a['date'])}</time></div>
+      <div>
+        <h3 class="a-title"><a href="{e['url']}" target="_blank" rel="noopener">{e['title']}<span class="vh"> (opens the source in a new tab)</span></a></h3>
+        <p class="a-sum">{e['summary']}</p>
+        <p class="a-src">Source: <a href="{e['url']}" target="_blank" rel="noopener">{e['source']}<span class="arrow" aria-hidden="true">↗</span><span class="vh"> (opens in a new tab)</span></a></p>
+      </div>
+    </li>""")
+    return '<ul class="alerts">' + "\n    ".join(rows) + "</ul>"
+
+HOME_ALERTS = f"""
+<section class="section" aria-labelledby="alerts-title"><div class="wrap">
+  <div class="sechead">
+    <div><span class="kicker" aria-hidden="true"></span><h2 class="h2" id="alerts-title">Latest offset alerts</h2>
+      <p class="sub">Defence programmes around the world that carry offset or industrial participation requirements. Each item links to its original source.</p>
+      <p class="updated">Updated weekly. Last updated {ALERTS_UPDATED}.</p></div>
+    <a class="more" href="offset-alerts.html">See all offset alerts</a>
+  </div>
+  {alert_list(ALERTS[:5])}
+</div></section>"""
 
 # ---------------------------------------------------------------- pages
 PAGES = {}
@@ -449,6 +516,7 @@ PAGES["index.html"] = dict(title="Home", desc="Capital helps overseas defence co
     <li><span class="mark none" aria-hidden="true"></span><div><b>No confirmed UK maker found</b><span>Stated plainly, with any support options still shown. The platform gives you a well-evidenced starting point; your engineers confirm capability directly with each company.</span></div></li>
   </ul>
 </div></section>
+{HOME_ALERTS}
 {band()}""")
 
 PAGES["platform.html"] = dict(title="The Capital Localisation Platform", desc="A secure, self-service platform that turns a bill of materials into a shortlist of credible UK industrial partners, with the evidence behind every match.", body=pagehead(
@@ -612,6 +680,47 @@ PAGES["advisory.html"] = dict(title="Advisory services", desc="Direct advisory s
   </div>
 </div></section>
 {band("Discuss a project", "Tell us about your programme and target market, and we will come back to you within two working days.", "Contact Capital", "contact.html")}""")
+
+ALERT_SUBJECT = "Offset alerts"
+PAGES["offset-alerts.html"] = dict(title="Offset alerts", desc="Weekly alerts on defence programmes around the world that carry offset and industrial participation requirements, each linked to its original source.", body=pagehead(
+    "Offset alerts",
+    "Defence programmes around the world that carry, or are likely to carry, offset and industrial participation requirements. Each summary is written by Capital and links to the original source.",
+    ["Offset alerts"]) + f"""
+<section class="section" aria-labelledby="all-title"><div class="wrap">
+  <div class="sechead">
+    <div><span class="kicker" aria-hidden="true"></span><h2 class="h2" id="all-title">Recent alerts</h2>
+      <p class="updated">Newest first. Updated weekly. Last updated {ALERTS_UPDATED}.</p></div>
+  </div>
+  {alert_list(ALERTS)}
+</div></section>
+
+<section class="section stone" aria-labelledby="sub-title"><div class="wrap two">
+  <div>
+    <span class="kicker" aria-hidden="true"></span><h2 id="sub-title">Receive the alerts by email</h2>
+    <div class="prose" style="margin-top:18px">
+      <p>A short weekly email of new alerts, free of charge.</p>
+      <p>To join, send us an email with the subject line shown. You can leave at any time by replying "unsubscribe".</p>
+      <p>We use your email address only to send the alerts.</p>
+    </div>
+  </div>
+  <div class="panel">
+    <h3>Join the weekly email</h3>
+    <div class="big">{EMAIL}</div>
+    <div class="copyrow"><button class="copybtn" type="button" data-copy="{EMAIL}">Copy email address</button></div>
+    <p style="margin-top:20px"><strong>Subject line</strong></p>
+    <div class="copyrow" style="margin-top:8px"><code>{ALERT_SUBJECT}</code><button class="copybtn" type="button" data-copy="{ALERT_SUBJECT}">Copy subject</button></div>
+    <a class="btn btn-brass" href="mailto:{EMAIL}?subject={ALERT_SUBJECT.replace(' ', '%20')}">Open in your email app</a>
+  </div>
+</div></section>
+
+<section class="section tight" aria-labelledby="about-alerts-title"><div class="wrap two">
+  <div><span class="kicker" aria-hidden="true"></span><h2 id="about-alerts-title">About these alerts</h2></div>
+  <div class="prose">
+    <p>Alerts are drawn from public sources, mainly government announcements and official notices. Programme details can change, so please check the original source before acting on an alert.</p>
+    <p>Capital is independent of the governments and companies named. An alert does not mean that Capital is involved in the programme.</p>
+  </div>
+</div></section>
+{band("Bidding into one of these programmes?", "Capital supports offset strategy, proposal writing and the delivery of offset obligations. We reply within two working days.", "Discuss a project", "contact.html")}""")
 
 COUNTRIES = ["Belgium","Brazil","Bulgaria","Canada","Denmark","Egypt","Estonia","Finland","India","Italy","Kuwait","Lithuania","Malaysia","Netherlands","Norway","Oman","Poland","Portugal","Romania","Saudi Arabia","Slovenia","South Africa","South Korea","Spain","Switzerland","Taiwan","Thailand","Turkey","United Arab Emirates"]
 
