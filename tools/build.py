@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Builds the Capital website: writes complete pages into site/ (for hosting)
 and an artifact/ copy whose index.html has no outer document tags (for the Claude artifact viewer)."""
-import os, re, html, datetime
+import os, re, html, datetime, json
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 # When this script lives in tools/, the finished pages go into the folder above it (the repository root).
@@ -12,6 +12,7 @@ DOMAIN = "https://www.capitaloffsetservices.com"
 YEAR = datetime.date.today().year
 EMAIL = "stephen.lewis@capitaloffsetservices.com"
 PHONE = "+44 (0)7776 226656"
+EMAIL_WBR = EMAIL.replace("@", "@<wbr>")  # lets the long address break after @ on small phones
 
 FAVICON = ("data:image/svg+xml," + "%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E"
            "%3Crect width='32' height='32' rx='4' fill='%230B1F3A'/%3E"
@@ -19,7 +20,7 @@ FAVICON = ("data:image/svg+xml," + "%3Csvg xmlns='http://www.w3.org/2000/svg' vi
 
 CSS = r"""
 /* Capital Industrial Participation — site styles.
-   Layout: left-aligned editorial grid (max 1180px). Navy page heads carrying a generated engineering-drawing
+   Layout: left-aligned editorial grid (max 1240px). Navy page heads carrying a generated engineering-drawing
    texture; alternating white / stone sections; navy call-to-action band; deep-navy footer. One committed light look. */
 :root{
   --navy:#0B1F3A; --navy-deep:#071527; --navy-mid:#13305A;
@@ -28,7 +29,7 @@ CSS = r"""
   --on-navy:#F3F5F8; --on-navy-soft:#B9C3D1;
   --display:"Libre Caslon Text","Iowan Old Style","Palatino Linotype",Georgia,serif;
   --body:"IBM Plex Sans","Segoe UI",Helvetica,Arial,sans-serif;
-  --max:1180px; --gutter:clamp(16px,4vw,40px);
+  --max:1240px; --gutter:clamp(16px,4vw,40px);
   color-scheme:light;
 }
 *,*::before,*::after{box-sizing:border-box}
@@ -41,6 +42,8 @@ h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;text-wrap:balance;l
 p{margin:0}
 .wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--gutter)}
 :focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+[id]{scroll-margin-top:96px}
+.nowrap{white-space:nowrap}
 .skip{position:absolute;left:-999px;top:8px;background:var(--brass);color:var(--navy);padding:8px 12px;border-radius:2px;z-index:50}
 .skip:focus{left:8px}
 
@@ -51,13 +54,15 @@ p{margin:0}
 .brand .mark{width:10px;height:10px;background:var(--brass);transform:rotate(45deg);flex:none}
 .brand .word{font-family:var(--display);font-size:25px;line-height:1;letter-spacing:.01em}
 .brand .desc{font-size:12.5px;line-height:1.2;color:var(--ink-soft);padding-left:14px;border-left:1px solid var(--rule);max-width:110px}
-.menu{display:flex;align-items:center;gap:26px;list-style:none;margin:0;padding:0}
+.menu{display:flex;align-items:center;gap:22px;list-style:none;margin:0;padding:0}
 .menu a{text-decoration:none;font-size:15px;font-weight:500;color:var(--ink);padding-block:6px;border-bottom:2px solid transparent;white-space:nowrap}
 .menu a:hover,.menu a[aria-current="page"]{border-bottom-color:var(--brass)}
 .menu .cta a{border:1.5px solid var(--brass);color:var(--navy);padding:9px 16px;border-radius:2px}
 .menu .cta a:hover,.menu .cta a[aria-current="page"]{background:var(--brass);border-color:var(--brass);color:var(--navy)}
 .navtoggle{display:none;background:none;border:1.5px solid var(--rule);border-radius:2px;padding:8px 10px;font:inherit;font-size:14px;color:var(--ink);cursor:pointer}
-@media (max-width:1000px){
+/* the header descriptor needs 1240px or more alongside the eight menu items */
+@media (max-width:1239px){.nav .brand .desc{display:none}}
+@media (max-width:1130px){
   .brand .desc{display:none}
   .navtoggle{display:inline-block}
   .menu{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:0;background:var(--paper);border-bottom:1px solid var(--rule);padding:8px var(--gutter) 16px;box-shadow:0 20px 30px -20px rgba(0,0,0,.3)}
@@ -136,7 +141,7 @@ p{margin:0}
 .two{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:clamp(28px,5vw,80px);align-items:start}
 .two h2,.h2{font-size:clamp(28px,3vw,38px);line-height:1.15;color:var(--navy)}
 .h3{font-family:var(--display);font-size:24px;line-height:1.25;color:var(--navy)}
-.prose{display:grid;gap:18px;max-width:64ch;font-size:17.5px}
+.prose{display:grid;gap:18px;max-width:64ch;font-size:17.5px;overflow-wrap:anywhere}
 .prose ul,.prose ol{margin:0;padding-left:22px;display:grid;gap:10px}
 .prose li::marker{color:var(--brass)}
 .prose strong{font-weight:600;color:var(--navy)}
@@ -181,6 +186,30 @@ p{margin:0}
 .countries{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
 .countries span{font-size:13.5px;color:var(--navy);border:1px solid var(--rule);background:var(--paper);padding:5px 10px;border-radius:2px}
 .section.stone .countries span{background:var(--paper)}
+/* Offset alerts: a calm dated list; each headline opens the original source in a new tab */
+.vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.sechead{display:flex;justify-content:space-between;align-items:flex-end;gap:16px 32px;flex-wrap:wrap}
+.sechead .more{font-size:15px;font-weight:600;color:var(--navy);text-decoration:none;border-bottom:1.5px solid var(--brass);padding-bottom:2px;white-space:nowrap}
+.sechead .more:hover{color:var(--brass)}
+.updated{margin-top:10px;font-size:13.5px;color:var(--ink-soft)}
+.alerts{list-style:none;margin:clamp(28px,4vw,40px) 0 0;padding:0;border-top:1px solid var(--rule)}
+.alerts li{display:grid;grid-template-columns:minmax(140px,180px) minmax(0,1fr);gap:6px 36px;padding:22px 0;border-bottom:1px solid var(--rule)}
+.a-meta{display:flex;flex-direction:column;gap:3px;padding-top:4px}
+.a-meta b{font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--brass)}
+.a-meta time{font-size:13.5px;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+.a-title{font-family:var(--display);font-size:clamp(19px,1.6vw,21px);line-height:1.32;color:var(--navy)}
+.a-title a{text-decoration:none;background-image:linear-gradient(var(--brass),var(--brass));background-repeat:no-repeat;background-position:0 100%;background-size:0 1px;transition:background-size .2s}
+.a-title a:hover,.a-title a:focus-visible{background-size:100% 1px}
+.a-sum{margin-top:8px;color:var(--ink-soft);font-size:15.5px;max-width:72ch}
+.a-src{margin-top:10px;font-size:13.5px;color:var(--ink-soft)}
+.a-src a{color:var(--navy);font-weight:500;text-decoration:none;border-bottom:1px solid var(--brass)}
+.a-src a:hover{color:var(--brass)}
+.arrow{display:inline-block;margin-left:3px;font-family:var(--body);font-size:.85em;color:var(--brass)}
+@media (max-width:700px){
+  .alerts li{grid-template-columns:1fr}
+  .a-meta{flex-direction:row;gap:10px;align-items:baseline;padding-top:0}
+  .a-meta time::before{content:"·";margin-right:10px;color:var(--rule)}
+}
 @media (max-width:900px){
   .two{grid-template-columns:1fr}
   .cols,.cols.two-up,.cols.four-up,.steps,.steps.two-up{grid-template-columns:1fr}
@@ -189,6 +218,22 @@ p{margin:0}
 @media (min-width:901px) and (max-width:1100px){
   .cols,.cols.four-up,.steps{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
+.col .meta{display:block;font:600 12.5px/1.3 var(--body);letter-spacing:.09em;text-transform:uppercase;color:var(--brass);margin-bottom:10px}
+.panel .actions{margin-top:22px;gap:12px}
+.panel .actions .btn{margin-top:0}
+.pagehead .actions{margin-top:30px}
+
+/* ---------- Course modules (training page) ---------- */
+.modules{list-style:none;margin:clamp(32px,4vw,48px) 0 0;padding:0;border-top:1px solid var(--rule)}
+.modules>li{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:16px clamp(24px,5vw,80px);padding:clamp(26px,3vw,36px) 0;border-bottom:1px solid var(--rule)}
+.modules .num{display:block;font:600 12.5px/1.3 var(--body);letter-spacing:.09em;text-transform:uppercase;color:var(--brass);margin-bottom:12px}
+.modules h3{font-size:clamp(22px,2.1vw,26px);line-height:1.25;color:var(--navy)}
+.modules .focus{margin-top:10px;color:var(--ink-soft);font-size:16px;max-width:44ch}
+.modules ul{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.modules ul li{position:relative;padding-left:22px;font-size:16px;color:var(--ink-soft)}
+.modules ul li::before{content:"";position:absolute;left:2px;top:.62em;width:7px;height:7px;background:var(--brass);transform:rotate(45deg)}
+.modules ul b{font-weight:600;color:var(--navy)}
+@media (max-width:900px){.modules>li{grid-template-columns:1fr}}
 
 /* ---------- Call to action band ---------- */
 .band{background:var(--navy);color:var(--on-navy);border-top:4px solid var(--brass)}
@@ -284,8 +329,10 @@ JS = r"""
 NAV = [
     ("platform.html", "Platform"),
     ("industrial-participation.html", "Industrial participation"),
-    ("uk-companies.html", "UK companies"),
     ("advisory.html", "Advisory"),
+    ("training.html", "Training"),
+    ("uk-icr.html", "Roundtable"),
+    ("offset-alerts.html", "Offset alerts"),
     ("about.html", "About"),
     ("contact.html", "Contact"),
 ]
@@ -314,7 +361,7 @@ FOOTER = f"""
       <p class="contact">Based in London, United Kingdom. Meetings by appointment.<br><span>{EMAIL}</span><span>{PHONE}</span></p>
     </div>
     <div><h4>Platform</h4><ul><li><a href="platform.html">How it works</a></li><li><a href="security.html">Security and privacy</a></li><li><a href="request-access.html">Request access</a></li></ul></div>
-    <div><h4>Services</h4><ul><li><a href="advisory.html">Advisory</a></li><li><a href="industrial-participation.html">Industrial participation</a></li><li><a href="uk-companies.html">For UK companies</a></li></ul></div>
+    <div><h4>Services</h4><ul><li><a href="advisory.html">Advisory</a></li><li><a href="training.html">Offset practitioner course</a></li><li><a href="uk-icr.html">UK-ICR Roundtable</a></li><li><a href="offset-alerts.html">Offset alerts</a></li><li><a href="industrial-participation.html">Industrial participation</a></li><li><a href="uk-companies.html">For UK companies</a></li></ul></div>
     <div><h4>Company</h4><ul><li><a href="about.html">About Capital</a></li><li><a href="compliance.html">Compliance and ethics</a></li><li><a href="contact.html">Contact</a></li></ul></div>
   </div>
   <div class="legal"><div class="wrap">
@@ -332,14 +379,14 @@ def band(title="Preparing a UK bid or an industrial participation plan?",
   <div class="actions"><a class="btn btn-brass" href="{href}">{label}</a></div>
 </div></section>"""
 
-def pagehead(title, lede, crumb=None):
+def pagehead(title, lede, crumb=None, extra=""):
     crumb_html = ""
     if crumb:
         crumb_html = '<div class="crumb"><a href="index.html">Home</a>' + "".join(
             f'<span>{html.escape(c) if isinstance(c,str) else f"<a href=\"{c[0]}\">{c[1]}</a>"}</span>' for c in crumb) + "</div>"
     return f"""
 <section class="pagehead"><canvas id="drawing" aria-hidden="true"></canvas><div class="wrap">
-  {crumb_html}<h1>{title}</h1><p class="lede">{lede}</p>
+  {crumb_html}<h1>{title}</h1><p class="lede">{lede}</p>{extra}
 </div></section>"""
 
 def head(title, desc, path, extra_css=""):
@@ -378,6 +425,44 @@ def page(path, title, desc, body, current=None):
 </html>
 """
     return doc
+
+# ---------------------------------------------------------------- offset alerts (data in tools/alerts.json)
+_alerts_file = os.path.join(ROOT, "alerts.json")
+with open(_alerts_file) as f:
+    _AL = json.load(f)
+# newest month first; items within a month keep the order they have in the file
+ALERTS = sorted(_AL["items"], key=lambda a: a["date"], reverse=True)
+_upd = datetime.date.fromisoformat(_AL["updated"])
+ALERTS_UPDATED = f"{_upd.day} {_upd.strftime('%B %Y')}"
+
+def _month(ym):
+    d = datetime.date.fromisoformat(ym + "-01")
+    return d.strftime("%B %Y")
+
+def alert_list(items):
+    rows = []
+    for a in items:
+        e = {k: html.escape(v) for k, v in a.items()}
+        rows.append(f"""<li>
+      <div class="a-meta"><b>{e['country']}</b><time datetime="{e['date']}">{_month(a['date'])}</time></div>
+      <div>
+        <h3 class="a-title"><a href="{e['url']}" target="_blank" rel="noopener">{e['title']}<span class="vh"> (opens the source in a new tab)</span></a></h3>
+        <p class="a-sum">{e['summary']}</p>
+        <p class="a-src">Source: <a href="{e['url']}" target="_blank" rel="noopener">{e['source']}<span class="arrow" aria-hidden="true">↗</span><span class="vh"> (opens in a new tab)</span></a></p>
+      </div>
+    </li>""")
+    return '<ul class="alerts">' + "\n    ".join(rows) + "</ul>"
+
+HOME_ALERTS = f"""
+<section class="section" aria-labelledby="alerts-title"><div class="wrap">
+  <div class="sechead">
+    <div><span class="kicker" aria-hidden="true"></span><h2 class="h2" id="alerts-title">Latest offset alerts</h2>
+      <p class="sub">Defence programmes around the world that carry offset or industrial participation requirements. Each item links to its original source.</p>
+      <p class="updated">Updated weekly. Last updated {ALERTS_UPDATED}.</p></div>
+    <a class="more" href="offset-alerts.html">See all offset alerts</a>
+  </div>
+  {alert_list(ALERTS[:5])}
+</div></section>"""
 
 # ---------------------------------------------------------------- pages
 PAGES = {}
@@ -420,7 +505,7 @@ PAGES["index.html"] = dict(title="Home", desc="Capital helps overseas defence co
 <section class="section stone" aria-labelledby="offers-title"><div class="wrap">
   <span class="kicker" aria-hidden="true"></span><h2 class="h2" id="offers-title">What Capital offers</h2>
   <div class="cols">
-    <div class="col"><h3>The Capital Localisation Platform</h3><p>Upload a parts list and receive a reasoned shortlist of UK manufacturers, SMEs, universities and research centres for each line, with the evidence behind every match.</p><p><a href="platform.html">How the platform works</a></p></div>
+    <div class="col"><h3>The UK Defence Localisation Platform</h3><p>Upload a parts list and receive a reasoned shortlist of UK manufacturers, SMEs, universities and research centres for each line, with the evidence behind every match.</p><p><a href="platform.html">How the platform works</a></p></div>
     <div class="col"><h3>Your data stays yours</h3><p>The platform is designed so that your parts lists and shortlists are visible only to your organisation, not to Capital. You contact UK companies directly, in your own name.</p><p><a href="security.html">Security and privacy</a></p></div>
     <div class="col"><h3>Experience you can call on</h3><p>Separately from the platform, Capital offers advisory support drawn from offset and industrial participation programmes in nearly 30 countries.</p><p><a href="advisory.html">Advisory services</a></p></div>
   </div>
@@ -449,10 +534,20 @@ PAGES["index.html"] = dict(title="Home", desc="Capital helps overseas defence co
     <li><span class="mark none" aria-hidden="true"></span><div><b>No confirmed UK maker found</b><span>Stated plainly, with any support options still shown. The platform gives you a well-evidenced starting point; your engineers confirm capability directly with each company.</span></div></li>
   </ul>
 </div></section>
+{HOME_ALERTS}
+
+<section class="section stone" aria-labelledby="more-title"><div class="wrap">
+  <span class="kicker" aria-hidden="true"></span><h2 class="h2" id="more-title">The roundtable and training</h2>
+  <p class="sub">Two ways Capital brings people together around industrial participation, alongside the platform.</p>
+  <div class="cols two-up">
+    <div class="col"><h3>UK Industrial <span class="nowrap">Co-operation</span> Roundtable</h3><p>An informal quarterly meeting in London for UK and international defence companies with UK industrial participation commitments, with government officials invited to take part. The first meeting takes place in Q4 2026.</p><p><a href="uk-icr.html">About UK-ICR</a></p></div>
+    <div class="col"><h3>Offset practitioner course</h3><p>A practitioner's masterclass for people new to offset and industrial participation, online over six weeks or in-house over three to four days.</p><p><a href="training.html">See the course outline</a></p></div>
+  </div>
+</div></section>
 {band()}""")
 
-PAGES["platform.html"] = dict(title="The Capital Localisation Platform", desc="A secure, self-service platform that turns a bill of materials into a shortlist of credible UK industrial partners, with the evidence behind every match.", body=pagehead(
-    "The Capital Localisation Platform",
+PAGES["platform.html"] = dict(title="The UK Defence Localisation Platform", desc="A secure, self-service platform that turns a bill of materials into a shortlist of credible UK industrial partners, with the evidence behind every match.", body=pagehead(
+    "The UK Defence Localisation Platform",
     "A secure, self-service tool that turns your bill of materials into a shortlist of credible UK industrial partners: companies that can make your parts now, and companies that could make them with your support.",
     ["Platform"]) + f"""
 <section class="section" aria-labelledby="how-title"><div class="wrap">
@@ -484,6 +579,7 @@ PAGES["platform.html"] = dict(title="The Capital Localisation Platform", desc="A
     <p>For each organisation, the platform draws together, where available: capabilities and products, facilities, certifications, size, financial health, ownership, location, contacts, public funding and research activity, and past public contract awards.</p>
     <p>Anything not on record is marked <strong>“not recorded, confirm with the supplier”</strong>. It is never treated as a fail. Verdicts come only from adverse evidence.</p>
     <p>Smaller companies are marked <span class="sme">SME</span> throughout, because they are where most new UK capability is created.</p>
+    <p>UK companies can read <a href="uk-companies.html">how they are included, and how to correct or remove a listing</a>.</p>
   </div>
 </div></section>
 
@@ -526,11 +622,12 @@ PAGES["industrial-participation.html"] = dict(title="UK industrial participation
   <div class="prose">
     <p>The platform finds candidates for both routes and highlights the opportunities, such as a smaller company that could gain a certification or a commercial manufacturer ready to enter defence. Your team then decides where to engage.</p>
     <p>Capital's founder has worked on offset and industrial participation programmes for more than 20 years, across Europe, the Middle East, Asia, Africa and the Americas. <a href="about.html">About Capital</a></p>
+    <p>Capital also convenes the <a href="uk-icr.html">UK Industrial Co-operation Roundtable</a>, an informal quarterly meeting in London for companies working through UK commitments, and runs a <a href="training.html">practitioner course</a> for people new to offset.</p>
   </div>
 </div></section>
 {band()}""")
 
-PAGES["uk-companies.html"] = dict(title="For UK companies", desc="How UK manufacturers, SMEs and research centres are included on the Capital Localisation Platform, how they may be contacted, and how to correct or remove a listing.", body=pagehead(
+PAGES["uk-companies.html"] = dict(title="For UK companies", desc="How UK manufacturers, SMEs and research centres are included on Capital's UK Defence Localisation Platform, how they may be contacted, and how to correct or remove a listing.", body=pagehead(
     "For UK manufacturers, SMEs and research centres",
     "Overseas defence companies need UK partners. The platform helps them find you based on what you actually make.",
     ["UK companies"]) + f"""
@@ -558,7 +655,7 @@ PAGES["uk-companies.html"] = dict(title="For UK companies", desc="How UK manufac
 </div></section>
 {band("Are you a UK maker with capability to offer?", "Tell us about your company and we will make sure your listing is accurate.", "Email Capital", "contact.html")}""")
 
-PAGES["security.html"] = dict(title="Security and privacy", desc="How the Capital Localisation Platform keeps programme information private to the client organisation.", body=pagehead(
+PAGES["security.html"] = dict(title="Security and privacy", desc="How Capital's UK Defence Localisation Platform keeps programme information private to the client organisation.", body=pagehead(
     "Your programme information stays with you",
     "Defence companies cannot share their parts lists lightly. The platform is designed so that your information is visible only to your organisation.",
     [("platform.html", "Platform"), "Security and privacy"]) + f"""
@@ -584,7 +681,7 @@ PAGES["security.html"] = dict(title="Security and privacy", desc="How the Capita
 </div></section>
 {band()}""")
 
-PAGES["advisory.html"] = dict(title="Advisory services", desc="Direct advisory support on offset and industrial participation for companies and governments, contracted separately from the Capital Localisation Platform.", body=pagehead(
+PAGES["advisory.html"] = dict(title="Advisory services", desc="Direct advisory support on offset and industrial participation for companies and governments, contracted separately from Capital's UK Defence Localisation Platform.", body=pagehead(
     "Advisory services",
     "Alongside the platform, Capital offers direct advisory support to companies and governments working on offset and industrial participation. Advisory work is contracted separately from any platform subscription.",
     ["Advisory"]) + f"""
@@ -611,13 +708,208 @@ PAGES["advisory.html"] = dict(title="Advisory services", desc="Direct advisory s
     <p>Engagements usually begin with a short discussion of your goals and target market, followed by a written proposal. Work is carried out under a services agreement, with fees agreed case by case.</p>
   </div>
 </div></section>
+
+<section class="section stone" aria-labelledby="also-title"><div class="wrap">
+  <span class="kicker" aria-hidden="true"></span><h2 class="h2" id="also-title">Training and the roundtable</h2>
+  <div class="cols two-up">
+    <div class="col"><h3>Offset practitioner course</h3><p>A practitioner's masterclass for people new to offset and industrial participation, online over six weeks or in-house over three to four days.</p><p><a href="training.html">See the course outline</a></p></div>
+    <div class="col"><h3>UK Industrial <span class="nowrap">Co-operation</span> Roundtable</h3><p>An informal quarterly meeting in London for UK and international defence companies with UK industrial participation commitments, with government officials invited to take part. The first meeting takes place in Q4 2026.</p><p><a href="uk-icr.html">About UK-ICR</a></p></div>
+  </div>
+</div></section>
 {band("Discuss a project", "Tell us about your programme and target market, and we will come back to you within two working days.", "Contact Capital", "contact.html")}""")
+
+PAGES["training.html"] = dict(title='Offset practitioner course', desc="Strategic Industrial Participation and Offsets: A Practitioner's Masterclass. A six-week online course, or a three to four-day in-house intensive, for people new to offset and industrial participation.", body=pagehead(
+    'Strategic Industrial Participation &amp; Offsets',
+    "A practitioner's masterclass for people new to offset and industrial participation. It sets academic theory aside and concentrates on the commercial realities: winning bids, protecting margins and delivering what was promised.",
+    ['Training'],
+    '<div class="actions"><a class="btn btn-brass" href="#register">Register your interest</a><a class="btn btn-ghost" href="#modules">See the six modules</a></div><p class="audience">Six weeks online, or three to four days in-house for your team</p>') + f"""
+<section class="section" aria-labelledby="for-title"><div class="wrap two">
+  <div><span class="kicker" aria-hidden="true"></span><h2 id="for-title">Who the course is for</h2></div>
+  <div class="prose">
+    <p>Corporate executives, bid managers and procurement professionals, and in particular people taking on offset or industrial participation responsibilities for the first time.</p>
+    <p>It suits defence and aerospace companies bidding into markets with offset or industrial participation requirements, and suppliers that want to understand the commitments their customers have made.</p>
+    <div class="note"><b>Course aim.</b> To turn offset obligations from a compliance cost into a competitive advantage that wins bids and protects margins.</div>
+  </div>
+</div></section>
+
+<section class="section stone" id="modules" aria-labelledby="mod-title"><div class="wrap">
+  <span class="kicker" aria-hidden="true"></span><h2 class="h2" id="mod-title">Six modules</h2>
+  <p class="sub">Each module is built around a case study from real programmes, worked through in a live session.</p>
+  <ol class="modules">
+    <li><div><span class="num">Module 1</span><h3>The commercial reality of global offsets</h3><p class="focus">How offset markets really operate, beyond the legal texts.</p></div><ul><li><b>The myth of the open market.</b> How governments use structural barriers, not only the WTO Government Procurement Agreement, to secure local economic benefit.</li><li><b>Regulated and transactional markets.</b> Working in tightly regulated markets such as the EU, and in transactional markets outside the agreement, such as Saudi Arabia and Malaysia.</li><li><b>The capability override.</b> Recognising when a government&#x27;s urgent need for your capability outweighs its own preference for local industry.</li></ul></li>
+    <li><div><span class="num">Module 2</span><h3>Localisation as a competitive advantage</h3><p class="focus">Direct offsets: turning local content requirements, civil and defence, into a reason to choose you.</p></div><ul><li><b>From burden to asset.</b> How local assembly or a regional headquarters can outweigh a lower price from competitors that have not localised.</li><li><b>Supply chain reality checks.</b> The practicalities of vetting local suppliers and raising them to aerospace and defence standards.</li><li><b>Structuring the deal.</b> Direct offset packages that meet local political goals while you keep control of quality.</li></ul></li>
+    <li><div><span class="num">Module 3</span><h3>Technology transfer and indirect offsets</h3><p class="focus">Meeting socio-economic obligations without giving away your core technology.</p></div><ul><li><b>Defining technology transfer.</b> What governments ask for, compared with what is commercially viable to provide.</li><li><b>Protecting intellectual property.</b> Transfer agreements, training programmes and university partnerships that earn credit while safeguarding core IP.</li><li><b>Foreign direct investment.</b> Joint ventures and equity investment as ways to satisfy industrial participation authorities.</li></ul></li>
+    <li><div><span class="num">Module 4</span><h3>The mathematics of offsets</h3><p class="focus">Valuation and multipliers: the quantitative skills that protect the bottom line.</p></div><ul><li><b>Credit valuation.</b> How national authorities calculate the credit value of a project, compared with the cash actually spent.</li><li><b>Multipliers.</b> Securing higher multipliers, for example £4 of credit for every £1 spent, by aligning projects with a country&#x27;s most urgent economic goals.</li><li><b>Offset banking.</b> Managing surplus credits and applying them to future campaigns to lower the cost of later bids.</li></ul></li>
+    <li><div><span class="num">Module 5</span><h3>Cultural execution and negotiation</h3><p class="focus">The human side of closing an offset agreement in different parts of the world.</p></div><ul><li><b>The practitioner&#x27;s edge.</b> Why standard corporate negotiating tactics fail with sovereign industrial participation authorities.</li><li><b>Regional approaches.</b> How pitching an offset package differs in the Middle East, North America and Southeast Asia.</li><li><b>Redirecting the request.</b> Steering a government agency from an unworkable demand towards a viable alternative, without losing the bid.</li></ul></li>
+    <li><div><span class="num">Module 6</span><h3>Crisis management, audits and penalty avoidance</h3><p class="focus">Managing risk, and what to do when delivery falls short.</p></div><ul><li><b>The audit trail.</b> Internal reporting that proves causality and additionality to sceptical government auditors.</li><li><b>Managing underperformance.</b> Renegotiating milestones and substituting projects when a local partner fails to deliver.</li><li><b>Avoiding penalties.</b> Legitimate commercial and contractual routes to avoid liquidated damages or exclusion from future procurement.</li></ul></li>
+  </ol>
+</div></section>
+
+<section class="section" aria-labelledby="formats-title"><div class="wrap">
+  <span class="kicker" aria-hidden="true"></span><h2 class="h2" id="formats-title">Two ways to take the course</h2>
+  <div class="cols two-up">
+    <div class="col"><span class="meta">Six weeks</span><h3>Online cohort</h3><p>One module a week. Each week brings a recorded lecture of 60 to 90 minutes, required reading drawn from actual government offset guidelines, and a live 60-minute online session working through that week's case study.</p></div>
+    <div class="col"><span class="meta">Three or four days</span><h3>In-house intensive</h3><p>Delivered to your team, two modules a day over three days. An optional fourth day is a live negotiation exercise: your team negotiates a mock £500m offset package with a demanding procurement agency, played by the course leader.</p></div>
+  </div>
+</div></section>
+
+<section class="section stone" aria-labelledby="out-title"><div class="wrap two">
+  <div><span class="kicker" aria-hidden="true"></span><h2 id="out-title">What participants will be able to do</h2></div>
+  <div class="prose">
+    <ul>
+      <li>Read an offset or industrial participation requirement and judge what it will really take to meet it.</li>
+      <li>Choose between direct and indirect offsets, and structure a package that earns credit and protects margin.</li>
+      <li>Transfer technology and know-how without giving away core intellectual property.</li>
+      <li>Value credits, make good use of multipliers and bank surplus credit for future bids.</li>
+      <li>Negotiate with industrial participation authorities in different regions.</li>
+      <li>Keep the records auditors expect, and recover a programme that is falling behind.</li>
+    </ul>
+  </div>
+</div></section>
+
+<section class="section" aria-labelledby="lead-title"><div class="wrap two">
+  <div><span class="kicker" aria-hidden="true"></span><h2 id="lead-title">Course leader</h2></div>
+  <div class="prose">
+    <p>The course is led by Stephen Lewis, who founded Capital in 2013. He has more than 20 years' experience in offset, industrial participation and cross-border trade finance, on programmes in nearly 30 countries across Europe, the Middle East, Asia, Africa and the Americas.</p>
+    <p>The teaching draws on that front-line experience rather than academic theory. <a href="about.html">About Capital</a></p>
+  </div>
+</div></section>
+
+<section class="section stone" id="register" aria-labelledby="reg-title"><div class="wrap two">
+  <div>
+    <span class="kicker" aria-hidden="true"></span><h2 id="reg-title">Register your interest</h2>
+    <div class="prose" style="margin-top:18px">
+      <p>Email Capital with your name, job title and organisation, and say which format interests you: the online cohort, or an in-house course for your team.</p>
+      <p>Dates and fees for the first online cohort will be sent to everyone who registers interest. For an in-house course, let us know your preferred dates and roughly how many people will take part.</p>
+      <p>Your details are used only to respond to your enquiry.</p>
+    </div>
+  </div>
+  <div class="panel">
+    <h3>Email Capital</h3>
+    <div class="big">{EMAIL_WBR}</div>
+    <div class="copyrow"><button class="copybtn" type="button" data-copy="{EMAIL}">Copy email address</button></div>
+    <p style="margin-top:20px"><strong>Subject line</strong>, so your enquiry is picked up straight away:</p>
+    <div class="copyrow" style="margin-top:8px"><code>Offset course: register interest</code><button class="copybtn" type="button" data-copy="Offset course: register interest">Copy subject</button></div>
+    <div class="actions"><a class="btn btn-brass" href="mailto:{EMAIL}?subject=Offset%20course%3A%20register%20interest">Open in your email app</a></div>
+    <p>Prefer to talk first? {PHONE}, UK office hours.</p>
+  </div>
+</div></section>
+{band('Working on a UK commitment?', 'Meet others doing the same at the UK Industrial Co-operation Roundtable, an informal quarterly meeting in London. The first takes place in Q4 2026.', 'About the roundtable', 'uk-icr.html')}""")
+
+PAGES["uk-icr.html"] = dict(title='UK Industrial Co-operation Roundtable (UK-ICR)', desc='UK-ICR is an informal, quarterly one-day roundtable in London for UK and international defence companies with UK industrial participation (offset) commitments, with government officials invited to take part.', body=pagehead(
+    'UK Industrial <span class="nowrap">Co-operation</span> Roundtable',
+    'UK-ICR is an informal forum for companies with UK industrial participation (offset) commitments. It meets for one day each quarter in London, with the aim of bringing industry and government together on how those commitments work in practice.',
+    ['Roundtable'],
+    '<div class="actions"><a class="btn btn-brass" href="#join">Join the mailing list</a><a class="btn btn-ghost" href="#host">Offer to host a meeting</a></div><p class="audience">Inaugural meeting: Q4 2026, central London</p>') + f"""
+<section class="section" aria-labelledby="why-title"><div class="wrap two">
+  <div><span class="kicker" aria-hidden="true"></span><h2 id="why-title">Why a roundtable, and why now</h2></div>
+  <div class="prose">
+    <p>The UK Government has consulted industry on a possible offsets regime for defence equipment bought from abroad. Whatever form the final rules take, overseas suppliers, their UK partners and government will all gain from a shared, practical understanding of how commitments are set, met and credited.</p>
+    <p>Many overseas companies already manage offset obligations in other countries, and many UK companies already supply them. The roundtable gives both a regular place to compare experience, raise practical problems early and understand the thinking behind the rules.</p>
+    <p>It is deliberately informal: a day of open discussion, not a conference or a sales event.</p>
+  </div>
+</div></section>
+
+<section class="section stone" aria-labelledby="who-title"><div class="wrap">
+  <span class="kicker" aria-hidden="true"></span><h2 class="h2" id="who-title">Who it is for</h2>
+  <div class="cols">
+    <div class="col"><h3>International defence companies</h3><p>Overseas suppliers with UK industrial participation commitments, or expecting them on future UK contracts, and their UK subsidiaries.</p></div>
+    <div class="col"><h3>UK defence companies</h3><p>UK companies of every size, from primes to SMEs, that partner with overseas suppliers or want to.</p></div>
+    <div class="col"><h3>Government</h3><p>Officials responsible for UK industrial participation policy and defence procurement, invited to set out policy and hear industry's experience.</p></div>
+  </div>
+</div></section>
+
+<section class="section" aria-labelledby="topics-title"><div class="wrap">
+  <span class="kicker" aria-hidden="true"></span><h2 class="h2" id="topics-title">What the roundtable discusses</h2>
+  <p class="sub">Three themes run through every meeting.</p>
+  <div class="cols">
+    <div class="col"><h3>Macroeconomic rules</h3><p>How commitments are set and valued, what counts towards them, how they are reported, and the economic goals behind them.</p></div>
+    <div class="col"><h3>National security requirements</h3><p>Sovereign capability, security of supply, ownership, protection of intellectual property and export control.</p></div>
+    <div class="col"><h3>Supply contract obligations</h3><p>How commitments are written into contracts, flow down to UK suppliers, and are delivered and evidenced over the life of a programme.</p></div>
+  </div>
+</div></section>
+
+<section class="section stone" aria-labelledby="format-title"><div class="wrap two">
+  <div><span class="kicker" aria-hidden="true"></span><h2 id="format-title">How it works</h2></div>
+  <div>
+    <ul class="facts">
+      <li><b>When</b><span>Quarterly, for one day.</span></li>
+      <li><b>Where</b><span>Central London, at the offices of a participating organisation that offers to host.</span></li>
+      <li><b>Format</b><span>Informal and discussion-led.</span></li>
+      <li><b>Ground rules</b><span>Policy and general practice only. Live competitions, individual bids and prices are not discussed.</span></li>
+      <li><b>Convened by</b><span>Capital, as an independent forum. UK-ICR is not a government body and does not speak for the Ministry of Defence.</span></li>
+    </ul>
+    <div class="note" style="margin-top:28px;max-width:none"><b>Inaugural meeting: Q4 2026.</b> The first meeting will take place in central London in the final quarter of 2026. The date and venue will be sent to everyone on the mailing list.</div>
+  </div>
+</div></section>
+
+<section class="section" id="join" aria-labelledby="join-title"><div class="wrap two">
+  <div>
+    <span class="kicker" aria-hidden="true"></span><h2 id="join-title">Join the mailing list</h2>
+    <div class="prose" style="margin-top:18px">
+      <p>To receive invitations and meeting dates, email Capital with your name, job title and organisation.</p>
+      <p id="host"><strong>Hosting a meeting.</strong> Each meeting is hosted by a participating organisation at its central London offices. If your organisation could provide a meeting room for the day, please let us know.</p>
+      <p>Your details are used only to send UK-ICR invitations and updates, and are not shared with anyone else. You can ask to be removed at any time.</p>
+    </div>
+  </div>
+  <div class="panel">
+    <h3>Email Capital</h3>
+    <div class="big">{EMAIL_WBR}</div>
+    <div class="copyrow"><button class="copybtn" type="button" data-copy="{EMAIL}">Copy email address</button></div>
+    <p style="margin-top:20px">Please use one of these <strong>subject lines</strong>, so your email reaches the right list:</p>
+    <div class="copyrow" style="margin-top:8px"><code>UK-ICR mailing list</code><button class="copybtn" type="button" data-copy="UK-ICR mailing list">Copy subject</button></div>
+    <div class="copyrow" style="margin-top:8px"><code>UK-ICR hosting offer</code><button class="copybtn" type="button" data-copy="UK-ICR hosting offer">Copy subject</button></div>
+    <div class="actions"><a class="btn btn-brass" href="mailto:{EMAIL}?subject=UK-ICR%20mailing%20list">Join the mailing list</a><a class="btn btn-outline" href="mailto:{EMAIL}?subject=UK-ICR%20hosting%20offer">Offer to host</a></div>
+  </div>
+</div></section>
+{band()}""")
+
+ALERT_SUBJECT = "Offset alerts"
+PAGES["offset-alerts.html"] = dict(title="Offset alerts", desc="Weekly alerts on defence programmes around the world that carry offset and industrial participation requirements, each linked to its original source.", body=pagehead(
+    "Offset alerts",
+    "Defence programmes around the world that carry, or are likely to carry, offset and industrial participation requirements. Each summary is written by Capital and links to the original source.",
+    ["Offset alerts"]) + f"""
+<section class="section" aria-labelledby="all-title"><div class="wrap">
+  <div class="sechead">
+    <div><span class="kicker" aria-hidden="true"></span><h2 class="h2" id="all-title">Recent alerts</h2>
+      <p class="updated">Newest first. Updated weekly. Last updated {ALERTS_UPDATED}.</p></div>
+  </div>
+  {alert_list(ALERTS)}
+</div></section>
+
+<section class="section stone" aria-labelledby="sub-title"><div class="wrap two">
+  <div>
+    <span class="kicker" aria-hidden="true"></span><h2 id="sub-title">Receive the alerts by email</h2>
+    <div class="prose" style="margin-top:18px">
+      <p>A short weekly email of new alerts, free of charge.</p>
+      <p>To join, send us an email with the subject line shown. You can leave at any time by replying "unsubscribe".</p>
+      <p>We use your email address only to send the alerts.</p>
+    </div>
+  </div>
+  <div class="panel">
+    <h3>Join the weekly email</h3>
+    <div class="big">{EMAIL_WBR}</div>
+    <div class="copyrow"><button class="copybtn" type="button" data-copy="{EMAIL}">Copy email address</button></div>
+    <p style="margin-top:20px"><strong>Subject line</strong></p>
+    <div class="copyrow" style="margin-top:8px"><code>{ALERT_SUBJECT}</code><button class="copybtn" type="button" data-copy="{ALERT_SUBJECT}">Copy subject</button></div>
+    <a class="btn btn-brass" href="mailto:{EMAIL}?subject={ALERT_SUBJECT.replace(' ', '%20')}">Open in your email app</a>
+  </div>
+</div></section>
+
+<section class="section tight" aria-labelledby="about-alerts-title"><div class="wrap two">
+  <div><span class="kicker" aria-hidden="true"></span><h2 id="about-alerts-title">About these alerts</h2></div>
+  <div class="prose">
+    <p>Alerts are drawn from public sources, mainly government announcements and official notices. Programme details can change, so please check the original source before acting on an alert.</p>
+    <p>Capital is independent of the governments and companies named. An alert does not mean that Capital is involved in the programme.</p>
+  </div>
+</div></section>
+{band("Bidding into one of these programmes?", "Capital supports offset strategy, proposal writing and the delivery of offset obligations. We reply within two working days.", "Discuss a project", "contact.html")}""")
 
 COUNTRIES = ["Belgium","Brazil","Bulgaria","Canada","Denmark","Egypt","Estonia","Finland","India","Italy","Kuwait","Lithuania","Malaysia","Netherlands","Norway","Oman","Poland","Portugal","Romania","Saudi Arabia","Slovenia","South Africa","South Korea","Spain","Switzerland","Taiwan","Thailand","Turkey","United Arab Emirates"]
 
 PAGES["about.html"] = dict(title="About Capital", desc="Capital was founded in 2013 by Stephen Lewis. More than 20 years of offset and industrial participation experience across Europe, the Middle East, Asia, Africa and the Americas.", body=pagehead(
     "About Capital",
-    "Capital was founded in 2013 by Stephen Lewis to help companies create lasting value through offset and industrial participation. It now combines that experience with the Capital Localisation Platform.",
+    "Capital was founded in 2013 by Stephen Lewis to help companies create lasting value through offset and industrial participation. It now combines that experience with Capital's UK Defence Localisation Platform.",
     ["About"]) + f"""
 <section class="section" aria-labelledby="founder-title"><div class="wrap two">
   <div><span class="kicker" aria-hidden="true"></span><h2 id="founder-title">Founder</h2></div>
@@ -695,7 +987,7 @@ PAGES["compliance.html"] = dict(title="Compliance and ethics", desc="Capital's a
 {band()}""")
 
 SUBJECT = "Platform access request"
-PAGES["request-access.html"] = dict(title="Request platform access", desc="Request a demonstration of the Capital Localisation Platform and discuss subscription options.", body=pagehead(
+PAGES["request-access.html"] = dict(title="Request platform access", desc="Request a demonstration of Capital's UK Defence Localisation Platform and discuss subscription options.", body=pagehead(
     "Request platform access",
     "Tell us about your organisation and we will arrange a short demonstration and discuss subscription options.",
     ["Request access"]) + f"""
@@ -715,7 +1007,7 @@ PAGES["request-access.html"] = dict(title="Request platform access", desc="Reque
   </div>
   <div class="panel">
     <h3>Email Capital</h3>
-    <div class="big">{EMAIL}</div>
+    <div class="big">{EMAIL_WBR}</div>
     <div class="copyrow"><button class="copybtn" type="button" data-copy="{EMAIL}">Copy email address</button></div>
     <p style="margin-top:20px"><strong>Subject line</strong>, so your request is picked up straight away:</p>
     <div class="copyrow" style="margin-top:8px"><code>{SUBJECT}</code><button class="copybtn" type="button" data-copy="{SUBJECT}">Copy subject</button></div>
@@ -739,7 +1031,7 @@ PAGES["contact.html"] = dict(title="Contact", desc="Contact Capital Industrial P
   </div>
   <div class="panel">
     <h3>Capital Industrial Participation</h3>
-    <div class="big">{EMAIL}</div>
+    <div class="big">{EMAIL_WBR}</div>
     <div class="copyrow"><button class="copybtn" type="button" data-copy="{EMAIL}">Copy email address</button></div>
     <p style="margin-top:18px"><strong>Telephone</strong><br>{PHONE}</p>
     <p style="margin-top:14px"><strong>Company details</strong><br>Capital Offset Services Limited, trading as Capital Industrial Participation.<br>Registered in England and Wales, company number 08803140.</p>

@@ -1,0 +1,78 @@
+{
+  "updated": "2026-10-13",
+  "note": "Public offset alerts shown on the website. Newest first within each month. Summaries are Capital's own words; every item must link to its original source. Internal scores, suggested services and verdicts from the Offset Opportunity Monitor never go here.",
+  "items": [
+    {
+      "date": "2026-09",
+      "country": "Canada",
+      "title": "Canada takes next step with Saab on GlobalEye early-warning aircraft",
+      "summary": "Canada is moving ahead with Saab, its preferred supplier, towards a contract for six GlobalEye airborne early warning and control aircraft. Defence purchases of this size normally carry obligations under Canada's Industrial and Technological Benefits (ITB) policy.",
+      "source": "Government of Canada",
+      "url": "https://www.canada.ca/en/defence-investment-agency/news/2026/09/government-of-canada-takes-next-step-to-defend-canadians-by-delivering-mission-critical-capability-to-the-royal-canadian-air-force.html"
+    },
+    {
+      "date": "2026-09",
+      "country": "Norway",
+      "title": "US approves possible sale of 21 Black Hawk helicopters to Norway",
+      "summary": "The US has notified a possible sale of 21 UH-60M Black Hawk helicopters to Norway, valued at about US$2.3 billion. Norway's industrial cooperation rules normally apply to foreign defence purchases of this size.",
+      "source": "US Federal Register",
+      "url": "https://www.federalregister.gov/documents/2026/09/22/2026-19324/arms-sales-notification"
+    },
+    {
+      "date": "2026-08",
+      "country": "Poland",
+      "title": "Boeing signs Apache offset agreements with Polish industry",
+      "summary": "Boeing has signed offset agreements with the Polish companies WZL-1 and WCBKT covering training and sustainment for Poland's AH-64E Apache fleet.",
+      "source": "Boeing",
+      "url": "https://www.boeing.com/features/2026/08/boeing-ah-64-offset-agreements-with-polish-industry-strengthen-training-sustainment"
+    },
+    {
+      "date": "2026-08",
+      "country": "Saudi Arabia",
+      "title": "US approves possible APKWS II laser-guided rocket sale to Saudi Arabia",
+      "summary": "A possible sale of APKWS II laser guidance kits to Saudi Arabia, valued at about US$1.96 billion, has been notified. Saudi Arabia's industrial participation programme, run by GAMI, aims to localise a growing share of defence spending.",
+      "source": "US Federal Register",
+      "url": "https://www.federalregister.gov/documents/2026/08/28/2026-17566/arms-sales-notification"
+    },
+    {
+      "date": "2026-08",
+      "country": "Norway",
+      "title": "US approves possible sale of 155mm artillery shells to Norway",
+      "summary": "A possible sale of 155mm M795 high-explosive shells to Norway, valued at about US$270 million, has been notified.",
+      "source": "US Federal Register",
+      "url": "https://www.federalregister.gov/documents/2026/08/28/2026-17565/arms-sales-notification"
+    },
+    {
+      "date": "2026-07",
+      "country": "Canada",
+      "title": "TKMS chosen as preferred bidder for Canada's new submarines",
+      "summary": "Canada has selected Germany's TKMS as preferred bidder for up to 12 Type 212CD submarines under the Canadian Patrol Submarine Project. Contract negotiations, including industrial benefits for Canada, now follow.",
+      "source": "Naval News",
+      "url": "https://www.navalnews.com/naval-news/2026/07/canada-selects-tkms-cpsp-submarine-project/"
+    },
+    {
+      "date": "2026-07",
+      "country": "Switzerland",
+      "title": "Swiss F-35A offset programme expected to exceed its targets",
+      "summary": "The Swiss government reports further offset projects placed with Swiss industry under the F-35A purchase, and expects the agreed offset targets to be clearly exceeded.",
+      "source": "Swiss Federal Administration",
+      "url": "https://www.admin.ch/en/newnsb/gZUMF2YH2Hq4MCiG-TSec"
+    },
+    {
+      "date": "2026-06",
+      "country": "Canada",
+      "title": "Canada and Australia partner on Arctic over-the-horizon radar",
+      "summary": "Canada has agreed a partnership with Australia to deliver the Arctic Over-the-Horizon Radar, part of Canada's plan to modernise NORAD.",
+      "source": "Department of National Defence, Canada",
+      "url": "https://www.canada.ca/en/department-national-defence/news/2026/06/canadaaustralia-partnership-on-arctic-over-the-horizon-radar.html"
+    },
+    {
+      "date": "2026-03",
+      "country": "Switzerland",
+      "title": "Swiss Armaments Programme 2026 includes more IRIS-T SLM air defence",
+      "summary": "The Federal Council's Armaments Programme 2026 asks Parliament to fund additional IRIS-T SLM ground-based air defence systems. Swiss offset rules apply to defence purchases from foreign suppliers.",
+      "source": "Swiss Armed Forces (in German)",
+      "url": "https://www.vtg.admin.ch/de/ruestungsprogramm-2026"
+    }
+  ]
+}
