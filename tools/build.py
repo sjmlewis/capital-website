@@ -108,7 +108,7 @@ p{margin:0}
 .part-name{font-family:var(--display);font-size:19px;line-height:1.3;color:var(--navy)}
 .part-meta{margin-top:6px;font-size:13px;color:var(--ink-soft)}
 .cands{list-style:none;margin:0;padding:0}
-.cands li{display:grid;grid-template-columns:16px 1fr auto;grid-template-areas:"mark name status" "mark why why";column-gap:12px;row-gap:3px;padding:13px 18px;border-bottom:1px solid var(--rule);align-items:start}
+.cands li{display:grid;grid-template-columns:16px 1fr auto;grid-template-areas:"mark name status" "mark why why" "mark checks checks";column-gap:12px;row-gap:3px;padding:13px 18px;border-bottom:1px solid var(--rule);align-items:start}
 .cands li:last-child{border-bottom:0}
 .mark{display:block;width:12px;height:12px;margin-top:5px;border:1.5px solid var(--brass);background:var(--brass);border-radius:1px;flex:none}
 .cands .mark{grid-area:mark}
@@ -120,6 +120,10 @@ p{margin:0}
 .c-name em,.sme{font-style:normal;font-size:11px;font-weight:600;color:var(--navy);background:var(--brass-pale);padding:1px 6px;border-radius:2px;margin-left:6px;vertical-align:1px}
 .c-status{grid-area:status;font-size:12.5px;font-weight:500;color:var(--navy);white-space:nowrap}
 .c-why{grid-area:why;font-size:13px;color:var(--ink-soft)}
+.c-checks{grid-area:checks;display:flex;flex-wrap:wrap;gap:5px;margin-top:5px}
+.c-checks span{font-size:11.5px;line-height:1.5;font-weight:500;color:var(--navy);background:var(--stone);border:1px solid var(--rule);padding:1px 7px;border-radius:2px;white-space:nowrap}
+.c-checks .ok::before{content:"\2713";color:var(--brass);font-weight:700;margin-right:4px}
+.c-checks .gap{background:transparent;border-style:dashed;border-color:var(--ink-soft);color:var(--ink-soft)}
 .card-foot{padding:11px 18px;background:var(--stone);border-top:1px solid var(--rule);font-size:12px;color:var(--ink-soft);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .card-foot a{color:var(--navy);text-decoration:none;font-weight:500;border-bottom:1px solid var(--brass)}
 @media (prefers-reduced-motion:no-preference){
@@ -130,7 +134,7 @@ p{margin:0}
 @media (max-width:900px){
   .hero .wrap{grid-template-columns:1fr}
   .hero h1{max-width:none}
-  .cands li{grid-template-columns:16px 1fr;grid-template-areas:"mark name" "mark status" "mark why"}
+  .cands li{grid-template-columns:16px 1fr;grid-template-areas:"mark name" "mark status" "mark why" "mark checks"}
   .c-status{white-space:normal}
 }
 
@@ -511,9 +515,9 @@ PAGES["index.html"] = dict(title="Home", desc="Capital helps overseas defence co
       <div class="card-top"><b>Shortlist</b><span>Line 14 of 38</span></div>
       <div class="part"><div class="part-name">Stabilised EO/IR camera gimbal, two-axis</div><div class="part-meta">Airborne surveillance pod · AS9100 required · 60 units a year · unclassified description</div></div>
       <ol class="cands">
-        <li><span class="mark" aria-hidden="true"></span><div class="c-name">Calder Vale Optronics Ltd <em>SME</em><br><span>Edinburgh</span></div><div class="c-status">Can make this now</div><div class="c-why">AS9100D · stabilised airborne camera gimbals shown on its own website</div></li>
-        <li><span class="mark" aria-hidden="true"></span><div class="c-name">Severnbank Motion Systems Ltd<br><span>Gloucester</span></div><div class="c-status">Can make this now</div><div class="c-why">AS9100D · precision pointing and stabilisation assemblies for aircraft</div></li>
-        <li><span class="mark support" aria-hidden="true"></span><div class="c-name">Fenwick Gear &amp; Motion Ltd <em>SME</em><br><span>Coventry</span></div><div class="c-status">Could make this with support</div><div class="c-why">Precision gearboxes and motor housings · airborne qualification not recorded, confirm with the supplier</div></li>
+        <li><span class="mark" aria-hidden="true"></span><div class="c-name">Calder Vale Optronics Ltd <em>SME</em><br><span>Edinburgh</span></div><div class="c-status">Can make this now</div><div class="c-why">Stabilised airborne camera gimbals shown on its own website</div><div class="c-checks"><span class="ok">AS9100D</span><span class="ok">Cyber Essentials Plus</span><span class="ok">Finances: strong</span><span class="ok">UK-owned</span><span class="info">3 MOD contracts since 2023</span></div></li>
+        <li><span class="mark" aria-hidden="true"></span><div class="c-name">Severnbank Motion Systems Ltd<br><span>Gloucester</span></div><div class="c-status">Can make this now</div><div class="c-why">Precision pointing and stabilisation assemblies for aircraft</div><div class="c-checks"><span class="ok">AS9100D</span><span class="ok">Cyber Essentials Plus</span><span class="ok">Finances: strong</span><span class="info">Owned by a US group</span><span class="info">Tier 2 to UK primes</span></div></li>
+        <li><span class="mark support" aria-hidden="true"></span><div class="c-name">Fenwick Gear &amp; Motion Ltd <em>SME</em><br><span>Coventry</span></div><div class="c-status">Could make this with support</div><div class="c-why">Precision gearboxes and motor housings for industrial robots</div><div class="c-checks"><span class="ok">ISO 9001</span><span class="gap">AS9100 not recorded</span><span class="ok">Finances: adequate</span><span class="ok">UK-owned</span><span class="info">Growth candidate for defence</span></div></li>
       </ol>
       <div class="card-foot"><span>Illustrative example</span><a href="platform.html#labels">What each label means</a></div>
     </aside>
