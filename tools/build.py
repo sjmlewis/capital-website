@@ -20,16 +20,16 @@ FAVICON = ("data:image/svg+xml," + "%3Csvg xmlns='http://www.w3.org/2000/svg' vi
 
 CSS = r"""
 /* Capital Industrial Participation — site styles.
-   Layout: left-aligned editorial grid (max 1240px). Navy page heads carrying a generated engineering-drawing
+   Layout: left-aligned editorial grid (max 1280px). Navy page heads carrying a generated engineering-drawing
    texture; alternating white / stone sections; navy call-to-action band; deep-navy footer. One committed light look. */
 :root{
   --navy:#0B1F3A; --navy-deep:#071527; --navy-mid:#13305A;
   --brass:#A4834B; --brass-light:#C9A96A; --brass-pale:#EADFC8;
-  --paper:#FFFFFF; --stone:#EEF1F5; --ink:#15202E; --ink-soft:#4A5566; --rule:#D5DBE3;
+  --paper:#FFFFFF; --stone:#EEF1F5; --ink:#15202E; --ink-soft:#364152; --rule:#D5DBE3;
   --on-navy:#F3F5F8; --on-navy-soft:#B9C3D1;
   --display:"Libre Caslon Text","Iowan Old Style","Palatino Linotype",Georgia,serif;
   --body:"IBM Plex Sans","Segoe UI",Helvetica,Arial,sans-serif;
-  --max:1240px; --gutter:clamp(16px,4vw,40px);
+  --max:1280px; --gutter:clamp(16px,4vw,40px);
   color-scheme:light;
 }
 *,*::before,*::after{box-sizing:border-box}
@@ -51,18 +51,18 @@ p{margin:0}
 .nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--paper);border-bottom:1px solid var(--rule)}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:76px;position:relative}
 .brand{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--navy)}
-.brand .mark{width:10px;height:10px;background:var(--brass);transform:rotate(45deg);flex:none}
-.brand .word{font-family:var(--display);font-size:25px;line-height:1;letter-spacing:.01em}
-.brand .desc{font-size:12.5px;line-height:1.2;color:var(--ink-soft);padding-left:14px;border-left:1px solid var(--rule);max-width:110px}
+.brand .mark{width:13px;height:13px;background:var(--brass);transform:rotate(45deg);flex:none}
+.brand .word{font-family:var(--display);font-size:33px;line-height:1;letter-spacing:.005em;font-weight:700}
+.brand .desc{font-size:13.5px;line-height:1.2;color:var(--ink-soft);padding-left:14px;border-left:1px solid var(--rule);max-width:120px}
 .menu{display:flex;align-items:center;gap:22px;list-style:none;margin:0;padding:0}
 .menu a{text-decoration:none;font-size:15px;font-weight:500;color:var(--ink);padding-block:6px;border-bottom:2px solid transparent;white-space:nowrap}
 .menu a:hover,.menu a[aria-current="page"]{border-bottom-color:var(--brass)}
 .menu .cta a{border:1.5px solid var(--brass);color:var(--navy);padding:9px 16px;border-radius:2px}
 .menu .cta a:hover,.menu .cta a[aria-current="page"]{background:var(--brass);border-color:var(--brass);color:var(--navy)}
 .navtoggle{display:none;background:none;border:1.5px solid var(--rule);border-radius:2px;padding:8px 10px;font:inherit;font-size:14px;color:var(--ink);cursor:pointer}
-/* the header descriptor needs 1240px or more alongside the eight menu items */
-@media (max-width:1239px){.nav .brand .desc{display:none}}
-@media (max-width:1130px){
+/* the header descriptor needs 1280px or more alongside the eight menu items */
+@media (max-width:1279px){.nav .brand .desc{display:none}}
+@media (max-width:1160px){
   .brand .desc{display:none}
   .navtoggle{display:inline-block}
   .menu{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:0;background:var(--paper);border-bottom:1px solid var(--rule);padding:8px var(--gutter) 16px;box-shadow:0 20px 30px -20px rgba(0,0,0,.3)}
@@ -147,32 +147,38 @@ p{margin:0}
 .prose strong{font-weight:600;color:var(--navy)}
 .prose .h3{margin-top:10px}
 .kicker{display:block;width:44px;height:3px;background:var(--brass);margin-bottom:20px}
-.sub{margin-top:14px;max-width:62ch;color:var(--ink-soft);font-size:17.5px}
+.sub{margin-top:14px;max-width:62ch;color:var(--ink-soft);font-size:18px}
 .cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(24px,4vw,56px);margin-top:clamp(32px,4vw,48px)}
 .cols.two-up{grid-template-columns:repeat(2,minmax(0,1fr))}
 .cols.four-up{grid-template-columns:repeat(4,minmax(0,1fr))}
 .col{border-top:1px solid var(--rule);padding-top:22px;min-width:0}
 .col h3{font-size:23px;line-height:1.25;color:var(--navy)}
-.col p{margin-top:12px;color:var(--ink-soft);font-size:16px}
+.col p{margin-top:12px;color:var(--ink-soft);font-size:17px}
 .col p+p{margin-top:10px}
 .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(22px,3vw,40px) clamp(24px,4vw,56px);margin-top:clamp(32px,4vw,48px);counter-reset:step;list-style:none;padding:0;margin-inline:0}
 .steps.two-up{grid-template-columns:repeat(2,minmax(0,1fr))}
 .steps li{counter-increment:step;display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;min-width:0}
 .steps li::before{content:counter(step,decimal-leading-zero);font-family:var(--display);font-size:30px;line-height:1;color:var(--brass);padding-top:2px;min-width:2ch;font-variant-numeric:tabular-nums}
-.steps b{display:block;font-weight:600;color:var(--navy);font-size:17px}
-.steps p{margin-top:6px;color:var(--ink-soft);font-size:15.5px}
+.steps b{display:block;font-weight:600;color:var(--navy);font-size:18px}
+.steps p{margin-top:6px;color:var(--ink-soft);font-size:17px}
 .scale{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
 .scale li{display:grid;grid-template-columns:16px 1fr;gap:14px;padding:16px 0;border-bottom:1px solid var(--rule);align-items:start}
 .scale .mark{margin-top:6px}
 .scale b{display:block;font-weight:600;color:var(--navy)}
-.scale span{display:block;color:var(--ink-soft);font-size:15.5px;margin-top:2px}
+.scale span{display:block;color:var(--ink-soft);font-size:16.5px;margin-top:2px}
 .note{border-left:3px solid var(--brass);background:var(--stone);padding:18px 22px;max-width:64ch;font-size:16px;color:var(--ink)}
 .note b{color:var(--navy);font-weight:600}
 .section.stone .note{background:var(--paper)}
 .facts{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
 .facts li{display:grid;grid-template-columns:minmax(120px,180px) 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--rule)}
-.facts b{font-family:var(--display);font-weight:400;color:var(--brass);font-size:19px;line-height:1.3}
-.facts span{color:var(--ink);font-size:16px}
+.facts b{font:600 13px/1.4 var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--brass);padding-top:3px}
+.exp{list-style:none;margin:clamp(28px,4vw,40px) 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px clamp(24px,3vw,44px)}
+.exp li{border-top:1px solid var(--rule);padding-top:18px;min-width:0}
+.exp b{display:block;font:600 13px/1.4 var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--brass);margin-bottom:8px}
+.exp span{display:block;color:var(--ink);font-size:16.5px;line-height:1.6}
+@media (max-width:1100px){.exp{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:700px){.exp{grid-template-columns:1fr}}
+.facts span{color:var(--ink);font-size:16.5px}
 .panel{background:var(--paper);border:1px solid var(--rule);border-top:3px solid var(--brass);padding:28px;border-radius:2px}
 .section.stone .panel{border-color:var(--rule);border-top-color:var(--brass)}
 .panel h3{font-size:22px;color:var(--navy)}
@@ -200,7 +206,7 @@ p{margin:0}
 .a-title{font-family:var(--display);font-size:clamp(19px,1.6vw,21px);line-height:1.32;color:var(--navy)}
 .a-title a{text-decoration:none;background-image:linear-gradient(var(--brass),var(--brass));background-repeat:no-repeat;background-position:0 100%;background-size:0 1px;transition:background-size .2s}
 .a-title a:hover,.a-title a:focus-visible{background-size:100% 1px}
-.a-sum{margin-top:8px;color:var(--ink-soft);font-size:15.5px;max-width:72ch}
+.a-sum{margin-top:8px;color:var(--ink-soft);font-size:16.5px;max-width:72ch}
 .a-src{margin-top:10px;font-size:13.5px;color:var(--ink-soft)}
 .a-src a{color:var(--navy);font-weight:500;text-decoration:none;border-bottom:1px solid var(--brass)}
 .a-src a:hover{color:var(--brass)}
@@ -317,7 +323,7 @@ JS = r"""
     g.strokeStyle='rgba('+brass+',0.22)';g.lineWidth=1;g.strokeRect(tbx+0.5,tby+0.5,176,40);
     g.beginPath();g.moveTo(tbx+0.5,tby+20.5);g.lineTo(tbx+176.5,tby+20.5);g.moveTo(tbx+88.5,tby+0.5);g.lineTo(tbx+88.5,tby+40.5);g.stroke();
     g.fillStyle='rgba('+brass+',0.4)';g.font='500 9.5px "IBM Plex Sans", Helvetica, Arial, sans-serif';g.textAlign='left';
-    g.fillText('SHEET 1 OF 1',tbx+8,tby+14);g.fillText('SCALE 1:2',tbx+96,tby+14);g.fillText('TITANIUM BRACKET',tbx+8,tby+34);g.fillText('REV B',tbx+96,tby+34);
+    g.fillText('SHEET 1 OF 1',tbx+8,tby+14);g.fillText('SCALE 1:2',tbx+96,tby+14);g.fillText('GIMBAL ASSY',tbx+8,tby+34);g.fillText('REV B',tbx+96,tby+34);
   }
   var tm;function onresize(){clearTimeout(tm);tm=setTimeout(draw,120);}
   draw();window.addEventListener('resize',onresize);
@@ -408,6 +414,27 @@ def head(title, desc, path, extra_css=""):
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="styles.css">{extra_css}"""
 
+_TAG = re.compile(r"(<script\b.*?</script>|<style\b.*?</style>|<[^>]+>)", re.S)
+def _cap_text(t):
+    t = re.sub(r"\bindustrial participation\b", "Industrial Participation", t, flags=re.I)
+    t = re.sub(r"\boffset(s?)\b", lambda m: "Offset" + m.group(1), t)
+    return t
+def cap_terms(doc):
+    """Capitalise the key terms Industrial Participation and Offset in visible text and page descriptions."""
+    out = []
+    for part in _TAG.split(doc):
+        if not part:
+            continue
+        if part.startswith("<script") or part.startswith("<style"):
+            out.append(part)
+        elif part.startswith("<"):
+            if part.startswith("<meta") and ('name="description"' in part or 'property="og:' in part):
+                part = re.sub(r'content="([^"]*)"', lambda m: 'content="' + _cap_text(m.group(1)) + '"', part)
+            out.append(part)
+        else:
+            out.append(_cap_text(part))
+    return "".join(out)
+
 def page(path, title, desc, body, current=None):
     doc = f"""<!doctype html>
 <html lang="en-GB">
@@ -424,7 +451,7 @@ def page(path, title, desc, body, current=None):
 </body>
 </html>
 """
-    return doc
+    return cap_terms(doc)
 
 # ---------------------------------------------------------------- offset alerts (data in tools/alerts.json)
 _alerts_file = os.path.join(ROOT, "alerts.json")
@@ -467,13 +494,13 @@ HOME_ALERTS = f"""
 # ---------------------------------------------------------------- pages
 PAGES = {}
 
-PAGES["index.html"] = dict(title="Home", desc="Capital helps overseas defence companies meet UK industrial participation commitments, with an evidence-based platform for finding credible UK industrial partners and more than 20 years of offset experience.", body=f"""
+PAGES["index.html"] = dict(title="Home", desc="Capital helps overseas defence companies meet UK industrial participation commitments, with an evidence-based platform for finding credible UK industrial partners and more than 25 years of offset experience.", body=f"""
 <section class="hero" aria-labelledby="hero-title">
   <canvas id="drawing" aria-hidden="true"></canvas>
   <div class="wrap">
     <div>
       <h1 id="hero-title">Find credible UK industrial partners for your defence programme</h1>
-      <p class="lede">Capital helps overseas defence companies meet UK industrial participation commitments, with an evidence-based search platform and more than 20 years of offset experience.</p>
+      <p class="lede">Capital helps overseas defence companies meet UK industrial participation commitments, with an evidence-based search platform and more than 25 years of offset experience.</p>
       <div class="actions">
         <a class="btn btn-brass" href="request-access.html">Request platform access</a>
         <a class="btn btn-ghost" href="platform.html">How the platform works</a>
@@ -482,11 +509,11 @@ PAGES["index.html"] = dict(title="Home", desc="Capital helps overseas defence co
     </div>
     <aside class="card" aria-label="Example of a platform shortlist">
       <div class="card-top"><b>Shortlist</b><span>Line 14 of 38</span></div>
-      <div class="part"><div class="part-name">Titanium bracket, 5-axis machined</div><div class="part-meta">AS9100 required · 400 units a year · unclassified description</div></div>
+      <div class="part"><div class="part-name">Stabilised EO/IR camera gimbal, two-axis</div><div class="part-meta">Airborne surveillance pod · AS9100 required · 60 units a year · unclassified description</div></div>
       <ol class="cands">
-        <li><span class="mark" aria-hidden="true"></span><div class="c-name">Northgate Precision Ltd <em>SME</em><br><span>Sheffield</span></div><div class="c-status">Can make this now</div><div class="c-why">AS9100D · 5-axis titanium work shown on its own website</div></li>
-        <li><span class="mark" aria-hidden="true"></span><div class="c-name">Avonside Aero Components Ltd<br><span>Bristol</span></div><div class="c-status">Can make this now</div><div class="c-why">AS9100D · existing aerospace structures customer base</div></li>
-        <li><span class="mark support" aria-hidden="true"></span><div class="c-name">Pennine Tool &amp; Machining Ltd <em>SME</em><br><span>Derby</span></div><div class="c-status">Could make this with support</div><div class="c-why">5-axis steel and aluminium · AS9100 not recorded, confirm with the supplier</div></li>
+        <li><span class="mark" aria-hidden="true"></span><div class="c-name">Calder Vale Optronics Ltd <em>SME</em><br><span>Edinburgh</span></div><div class="c-status">Can make this now</div><div class="c-why">AS9100D · stabilised airborne camera gimbals shown on its own website</div></li>
+        <li><span class="mark" aria-hidden="true"></span><div class="c-name">Severnbank Motion Systems Ltd<br><span>Gloucester</span></div><div class="c-status">Can make this now</div><div class="c-why">AS9100D · precision pointing and stabilisation assemblies for aircraft</div></li>
+        <li><span class="mark support" aria-hidden="true"></span><div class="c-name">Fenwick Gear &amp; Motion Ltd <em>SME</em><br><span>Coventry</span></div><div class="c-status">Could make this with support</div><div class="c-why">Precision gearboxes and motor housings · airborne qualification not recorded, confirm with the supplier</div></li>
       </ol>
       <div class="card-foot"><span>Illustrative example</span><a href="platform.html#labels">What each label means</a></div>
     </aside>
@@ -497,7 +524,7 @@ PAGES["index.html"] = dict(title="Home", desc="Capital helps overseas defence co
   <div><span class="kicker" aria-hidden="true"></span><h2 id="challenge-title">The challenge</h2></div>
   <div class="prose">
     <p>The UK expects overseas suppliers to invest in its defence industry. Meeting that expectation means finding UK companies that can genuinely make your parts, develop your technology or support your programme, and finding them early.</p>
-    <p>A web search turns up distributors, sales offices and advertisers alongside real manufacturers. Separating one from the other takes engineering time you may not have.</p>
+    <p>A web search turns up distributors, sales offices and advertisers alongside real manufacturers. Reviewing their capabilities, financial health, compliance and certifications takes a significant investment of time.</p>
     <p><a href="industrial-participation.html">About UK industrial participation</a></p>
   </div>
 </div></section>
@@ -517,7 +544,7 @@ PAGES["index.html"] = dict(title="Home", desc="Capital helps overseas defence co
   <ol class="steps">
     <li><div><b>Upload your parts list</b><p>Plain, unclassified descriptions. No drawings, part numbers or controlled data are needed.</p></div></li>
     <li><div><b>Choose your priorities</b><p>Put ready-now manufacturers first, or give more weight to the UK value a partnership creates.</p></div></li>
-    <li><div><b>Exclude competitors</b><p>Remove rival groups from your results. Anything excluded stays listed, so you can bring it back.</p></div></li>
+    <li><div><b>Exclude competitors</b><p>Remove competitor groups from your results. Anything excluded stays listed, so you can bring it back.</p></div></li>
     <li><div><b>Review the shortlist</b><p>Results for each line are grouped by readiness, each with a reason and links to the company's own published information.</p></div></li>
     <li><div><b>Check the companies you pick</b><p>Financial health, ownership and security information for the firms you shortlist.</p></div></li>
     <li><div><b>Make first contact in your own name</b><p>A sanitised first-stage capability enquiry for each company, with a tracker for replies.</p></div></li>
@@ -526,7 +553,7 @@ PAGES["index.html"] = dict(title="Home", desc="Capital helps overseas defence co
 
 <section class="section stone" aria-labelledby="eng-title"><div class="wrap two">
   <div><span class="kicker" aria-hidden="true"></span><h2 id="eng-title">Built for engineers, not marketing</h2>
-    <p class="sub">Every match comes with a plain-English reason and a link to the company's own published information. Companies that only sell or distribute are kept out of the manufacturer results.</p></div>
+    <p class="sub">Every match comes with a reason that is simple to understand, and a link to the company's own published information. Companies that only sell or distribute are kept out of the manufacturer results.</p></div>
   <ul class="scale" aria-label="What each readiness label means">
     <li><span class="mark" aria-hidden="true"></span><div><b>Can make this now</b><span>Evidence that the company already makes this type of item in the UK.</span></div></li>
     <li><span class="mark support" aria-hidden="true"></span><div><b>Could make this with support</b><span>Related capability. A candidate for technology transfer, new capability or SME development.</span></div></li>
@@ -555,7 +582,7 @@ PAGES["platform.html"] = dict(title="The UK Defence Localisation Platform", desc
   <ol class="steps">
     <li><div><b>Upload your parts list</b><p>Use plain, unclassified descriptions. No drawings, part numbers or controlled data are needed.</p></div></li>
     <li><div><b>Choose your priorities</b><p>Put ready-now manufacturers first, or give more weight to the UK value a partnership creates, such as SME growth, new capability and certification.</p></div></li>
-    <li><div><b>Exclude competitors</b><p>Remove rival groups from your results. Anything excluded stays listed, so you can bring it back.</p></div></li>
+    <li><div><b>Exclude competitors</b><p>Remove competitor groups from your results. Anything excluded stays listed, so you can bring it back.</p></div></li>
     <li><div><b>Review the shortlist</b><p>Results for each line are grouped by readiness, each with a reason and links to the company's own published information.</p></div></li>
     <li><div><b>Check the companies you pick</b><p>See financial health, ownership and security information for the firms you shortlist.</p></div></li>
     <li><div><b>Make first contact in your own name</b><p>Generate a sanitised first-stage capability enquiry for each company, with a tracker for replies.</p></div></li>
@@ -564,7 +591,7 @@ PAGES["platform.html"] = dict(title="The UK Defence Localisation Platform", desc
 
 <section class="section stone" id="labels" aria-labelledby="labels-title"><div class="wrap two">
   <div><span class="kicker" aria-hidden="true"></span><h2 id="labels-title">What you get for each line</h2>
-    <p class="sub">Every candidate carries one of four labels, a plain-English reason, and links to the company's own published information.</p></div>
+    <p class="sub">Every candidate carries one of four labels, a reason that is simple to understand, and links to the company's own published information.</p></div>
   <ul class="scale" aria-label="Readiness labels">
     <li><span class="mark" aria-hidden="true"></span><div><b>Can make this now</b><span>Evidence that the company already makes this type of item in the UK.</span></div></li>
     <li><span class="mark support" aria-hidden="true"></span><div><b>Could make this with support</b><span>Related capability, making the company a candidate for technology transfer, new capability or SME development.</span></div></li>
@@ -593,9 +620,9 @@ PAGES["platform.html"] = dict(title="The UK Defence Localisation Platform", desc
 </div></section>
 {band("Available by subscription", "To arrange a demonstration and discuss subscription options, request access. We reply within two working days.")}""")
 
-PAGES["industrial-participation.html"] = dict(title="UK industrial participation", desc="What the UK's move towards industrial participation (offset) means for overseas defence suppliers, and how Capital helps them create genuine UK value.", body=pagehead(
+PAGES["industrial-participation.html"] = dict(title="UK industrial participation", desc="What UK industrial participation (offset) means for overseas defence suppliers, and how Capital helps them create genuine UK value.", body=pagehead(
     "UK industrial participation (offset)",
-    "The UK Government has said it will introduce a new offsets regime, subject to consultation, so that when it buys defence equipment from abroad, British jobs and benefits are created.",
+    "Under the UK Government's offset regime, when it buys defence equipment from abroad, the overseas supplier must create British jobs and benefits.",
     ["Industrial participation"]) + f"""
 <section class="section" aria-labelledby="means-title"><div class="wrap two">
   <div><span class="kicker" aria-hidden="true"></span><h2 id="means-title">What this means for overseas suppliers</h2></div>
@@ -603,9 +630,9 @@ PAGES["industrial-participation.html"] = dict(title="UK industrial participation
     <ul>
       <li>UK partners are needed early, often before a bid is submitted.</li>
       <li>Commitments are usually met over many years, so partners must be stable and capable.</li>
-      <li>Credit is likely to favour real, lasting value: new UK suppliers, new capability, certifications and skilled jobs, especially in smaller companies.</li>
+      <li>Credit favours real, lasting value: new UK suppliers, new capability, certifications and skilled jobs, especially in smaller companies.</li>
     </ul>
-    <div class="note"><b>Policy detail is still being finalised.</b> Thresholds, percentages and timescales will be set out by the Ministry of Defence. Capital will update this page when they are published.</div>
+    <div class="note"><b>Know the rules that apply to you.</b> Thresholds, percentages and timescales are set by the Ministry of Defence. Capital can explain how they apply to your contract.</div>
   </div>
 </div></section>
 
@@ -621,7 +648,7 @@ PAGES["industrial-participation.html"] = dict(title="UK industrial participation
   <div><span class="kicker" aria-hidden="true"></span><h2 id="help-title">How Capital helps</h2></div>
   <div class="prose">
     <p>The platform finds candidates for both routes and highlights the opportunities, such as a smaller company that could gain a certification or a commercial manufacturer ready to enter defence. Your team then decides where to engage.</p>
-    <p>Capital's founder has worked on offset and industrial participation programmes for more than 20 years, across Europe, the Middle East, Asia, Africa and the Americas. <a href="about.html">About Capital</a></p>
+    <p>Capital's founder has worked on offset and industrial participation programmes for more than 25 years, across Europe, the Middle East, Asia, Africa and the Americas. <a href="about.html">About Capital</a></p>
     <p>Capital also convenes the <a href="uk-icr.html">UK Industrial Co-operation Roundtable</a>, an informal quarterly meeting in London for companies working through UK commitments, and runs a <a href="training.html">practitioner course</a> for people new to offset.</p>
   </div>
 </div></section>
@@ -770,7 +797,7 @@ PAGES["training.html"] = dict(title='Offset practitioner course', desc="Strategi
 <section class="section" aria-labelledby="lead-title"><div class="wrap two">
   <div><span class="kicker" aria-hidden="true"></span><h2 id="lead-title">Course leader</h2></div>
   <div class="prose">
-    <p>The course is led by Stephen Lewis, who founded Capital in 2013. He has more than 20 years' experience in offset, industrial participation and cross-border trade finance, on programmes in nearly 30 countries across Europe, the Middle East, Asia, Africa and the Americas.</p>
+    <p>The course is led by Stephen Lewis, who founded Capital in 2013. He has more than 25 years' experience in offset, industrial participation and cross-border trade finance, on programmes in nearly 30 countries across Europe, the Middle East, Asia, Africa and the Americas.</p>
     <p>The teaching draws on that front-line experience rather than academic theory. <a href="about.html">About Capital</a></p>
   </div>
 </div></section>
@@ -804,7 +831,7 @@ PAGES["uk-icr.html"] = dict(title='UK Industrial Co-operation Roundtable (UK-ICR
 <section class="section" aria-labelledby="why-title"><div class="wrap two">
   <div><span class="kicker" aria-hidden="true"></span><h2 id="why-title">Why a roundtable, and why now</h2></div>
   <div class="prose">
-    <p>The UK Government has consulted industry on a possible offsets regime for defence equipment bought from abroad. Whatever form the final rules take, overseas suppliers, their UK partners and government will all gain from a shared, practical understanding of how commitments are set, met and credited.</p>
+    <p>The UK Government now applies an offset regime to defence equipment bought from abroad. Overseas suppliers, their UK partners and government all gain from a shared, practical understanding of how commitments are set, met and credited.</p>
     <p>Many overseas companies already manage offset obligations in other countries, and many UK companies already supply them. The roundtable gives both a regular place to compare experience, raise practical problems early and understand the thinking behind the rules.</p>
     <p>It is deliberately informal: a day of open discussion, not a conference or a sales event.</p>
   </div>
@@ -836,7 +863,7 @@ PAGES["uk-icr.html"] = dict(title='UK Industrial Co-operation Roundtable (UK-ICR
       <li><b>When</b><span>Quarterly, for one day.</span></li>
       <li><b>Where</b><span>Central London, at the offices of a participating organisation that offers to host.</span></li>
       <li><b>Format</b><span>Informal and discussion-led.</span></li>
-      <li><b>Ground rules</b><span>Policy and general practice only. Live competitions, individual bids and prices are not discussed.</span></li>
+      <li><b>Ground rules</b><span>Policy and general practice only. Live competitions, individual bids and prices are not discussed.</span></li><li><b>Chatham House Rule</b><span>All meetings are held under the Chatham House Rule. You may use what you hear, but you may not reveal who said it or which organisation they represent. This allows everyone to speak freely.</span></li>
       <li><b>Convened by</b><span>Capital, as an independent forum. UK-ICR is not a government body and does not speak for the Ministry of Defence.</span></li>
     </ul>
     <div class="note" style="margin-top:28px;max-width:none"><b>Inaugural meeting: Q4 2026.</b> The first meeting will take place in central London in the final quarter of 2026. The date and venue will be sent to everyone on the mailing list.</div>
@@ -907,14 +934,14 @@ PAGES["offset-alerts.html"] = dict(title="Offset alerts", desc="Weekly alerts on
 
 COUNTRIES = ["Belgium","Brazil","Bulgaria","Canada","Denmark","Egypt","Estonia","Finland","India","Italy","Kuwait","Lithuania","Malaysia","Netherlands","Norway","Oman","Poland","Portugal","Romania","Saudi Arabia","Slovenia","South Africa","South Korea","Spain","Switzerland","Taiwan","Thailand","Turkey","United Arab Emirates"]
 
-PAGES["about.html"] = dict(title="About Capital", desc="Capital was founded in 2013 by Stephen Lewis. More than 20 years of offset and industrial participation experience across Europe, the Middle East, Asia, Africa and the Americas.", body=pagehead(
+PAGES["about.html"] = dict(title="About Capital", desc="Capital was founded in 2013 by Stephen Lewis. More than 25 years of offset and industrial participation experience across Europe, the Middle East, Asia, Africa and the Americas.", body=pagehead(
     "About Capital",
     "Capital was founded in 2013 by Stephen Lewis to help companies create lasting value through offset and industrial participation. It now combines that experience with Capital's UK Defence Localisation Platform.",
     ["About"]) + f"""
 <section class="section" aria-labelledby="founder-title"><div class="wrap two">
   <div><span class="kicker" aria-hidden="true"></span><h2 id="founder-title">Founder</h2></div>
   <div class="prose">
-    <p>Stephen Lewis has more than 20 years' experience in offset, industrial participation and cross-border trade finance, first with a leading international consulting and financing organisation and, since 2013, through Capital.</p>
+    <p>Stephen Lewis has more than 25 years' experience in offset, industrial participation and cross-border trade finance, first with a leading international consulting and financing organisation and, since 2013, through Capital.</p>
     <p>His work has covered structured export finance, technology transfer and training programmes, and advisory work for governments developing their own industrial policies.</p>
     <div class="countries" aria-label="Countries worked in">{"".join(f"<span>{c}</span>" for c in COUNTRIES)}</div>
   </div>
@@ -923,7 +950,7 @@ PAGES["about.html"] = dict(title="About Capital", desc="Capital was founded in 2
 <section class="section stone" aria-labelledby="exp-title"><div class="wrap">
   <span class="kicker" aria-hidden="true"></span><h2 class="h2" id="exp-title">Selected experience</h2>
   <p class="sub">Projects Stephen has led or contributed to.</p>
-  <ul class="facts" style="margin-top:28px">
+  <ul class="exp">
     <li><b>Taiwan</b><span>Linked a client with a UK aerospace company that was outsourcing component manufacture, leading to technology transfer, training, certification and about USD 100m of component exports to the UK over three years.</span></li>
     <li><b>South Korea</b><span>Helped three steel manufacturers export more than USD 200m of commercial steel to European and US defence clients under five offset contracts over six years.</span></li>
     <li><b>India</b><span>Set up technology cooperation with agencies of the Defence Research and Development Organisation, within international sanctions rules, and built partnerships with Indian aerospace and defence companies for a client's bid.</span></li>

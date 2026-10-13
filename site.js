@@ -54,7 +54,7 @@
     g.strokeStyle='rgba('+brass+',0.22)';g.lineWidth=1;g.strokeRect(tbx+0.5,tby+0.5,176,40);
     g.beginPath();g.moveTo(tbx+0.5,tby+20.5);g.lineTo(tbx+176.5,tby+20.5);g.moveTo(tbx+88.5,tby+0.5);g.lineTo(tbx+88.5,tby+40.5);g.stroke();
     g.fillStyle='rgba('+brass+',0.4)';g.font='500 9.5px "IBM Plex Sans", Helvetica, Arial, sans-serif';g.textAlign='left';
-    g.fillText('SHEET 1 OF 1',tbx+8,tby+14);g.fillText('SCALE 1:2',tbx+96,tby+14);g.fillText('TITANIUM BRACKET',tbx+8,tby+34);g.fillText('REV B',tbx+96,tby+34);
+    g.fillText('SHEET 1 OF 1',tbx+8,tby+14);g.fillText('SCALE 1:2',tbx+96,tby+14);g.fillText('GIMBAL ASSY',tbx+8,tby+34);g.fillText('REV B',tbx+96,tby+34);
   }
   var tm;function onresize(){clearTimeout(tm);tm=setTimeout(draw,120);}
   draw();window.addEventListener('resize',onresize);
