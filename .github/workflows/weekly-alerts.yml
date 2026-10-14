@@ -39,7 +39,11 @@ jobs:
         run: |
           if [ -z "$FEED_URL" ]; then echo "The secret ALERTS_FEED_URL is missing."; exit 1; fi
           case "$FEED_URL" in *\?*) SEP="&" ;; *) SEP="?" ;; esac
-          curl -sSfL --retry 3 -o /tmp/feed.json "${FEED_URL}${SEP}download=1"
+          # SharePoint sets a cookie on the first visit and then redirects to the file,
+          # so keep cookies and look like a normal browser.
+          curl -sSfL --retry 3 -c /tmp/cookies.txt -b /tmp/cookies.txt \
+            -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0 Safari/537.36" \
+            -o /tmp/feed.json "${FEED_URL}${SEP}download=1"
           head -c 300 /tmp/feed.json; echo
 
       - name: Add new alerts to tools/alerts.json
