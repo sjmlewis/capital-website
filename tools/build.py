@@ -198,7 +198,7 @@ p{margin:0}
 .countries{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
 .countries span{font-size:13.5px;color:var(--navy);border:1px solid var(--rule);background:var(--paper);padding:5px 10px;border-radius:2px}
 .section.stone .countries span{background:var(--paper)}
-/* Offset alerts: a calm dated list; each headline opens the original source in a new tab */
+/* Offset alerts: a calm dated list of new defence sales (sources are not shown) */
 .vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .sechead{display:flex;justify-content:space-between;align-items:flex-end;gap:16px 32px;flex-wrap:wrap}
 .sechead .more{font-size:15px;font-weight:600;color:var(--navy);text-decoration:none;border-bottom:1.5px solid var(--brass);padding-bottom:2px;white-space:nowrap}
@@ -748,9 +748,8 @@ def alert_list(items):
         rows.append(f"""<li id="{e['id']}">
       <div class="a-meta"><b>{e['country']}{_tag(a)}</b><time datetime="{e['date']}">{when(a['date'])}</time></div>
       <div>
-        <h3 class="a-title"><a href="{e['url']}" target="_blank" rel="noopener">{e['title']}<span class="vh"> (opens the source in a new tab)</span></a></h3>
+        <h3 class="a-title">{e['title']}</h3>
         <p class="a-sum">{e['summary']}</p>
-        <p class="a-src">Source: <a href="{e['url']}" target="_blank" rel="noopener">{e['source']}<span class="arrow" aria-hidden="true">↗</span><span class="vh"> (opens in a new tab)</span></a></p>
       </div>
     </li>""")
     return '<ul class="alerts">' + "\n    ".join(rows) + "</ul>"
@@ -761,9 +760,8 @@ def alert_cards(items):
         e = _esc(a)
         rows.append(f"""<li>
       <div class="a-eyebrow"><b>{e['country']}</b>{_tag(a)}<time datetime="{e['date']}">{when(a['date'])}</time></div>
-      <h3 class="a-title"><a href="{e['url']}" target="_blank" rel="noopener">{e['title']}<span class="vh"> (opens the source in a new tab)</span></a></h3>
+      <h3 class="a-title"><a href="offset-alerts.html#{e['id']}">{e['title']}</a></h3>
       <p class="a-sum">{e['summary']}</p>
-      <p class="a-src">Source: <a href="{e['url']}" target="_blank" rel="noopener">{e['source']}<span class="arrow" aria-hidden="true">↗</span><span class="vh"> (opens in a new tab)</span></a></p>
     </li>""")
     return '<ul class="agrid">' + "\n    ".join(rows) + "</ul>"
 
@@ -799,7 +797,7 @@ HOME_ALERTS = f"""
 <section class="section" aria-labelledby="alerts-title"><div class="wrap">
   <div class="sechead">
     <div><span class="kicker" aria-hidden="true"></span><h2 class="h2" id="alerts-title">Latest offset alerts</h2>
-      <p class="sub">Defence programmes around the world that carry offset or industrial participation requirements, and changes to the rules. Each item links to its original source.</p>
+      <p class="sub">A weekly round-up of new defence sales around the world above the offset thresholds, and changes to the offset rules.</p>
       <p class="updated">Checked weekly. Last updated {ALERTS_UPDATED}.</p></div>
     <a class="more" href="offset-alerts.html">See all offset alerts</a>
   </div>
@@ -1419,9 +1417,9 @@ PAGES["uk-icr.html"] = dict(title='UK Industrial Co-operation Roundtable (UK-ICR
 {band()}""")
 
 ALERT_SUBJECT = "Offset alerts"
-PAGES["offset-alerts.html"] = dict(title="Offset alerts", desc="Weekly alerts on defence programmes around the world that carry offset and industrial participation requirements, each linked to its original source.", body=pagehead(
+PAGES["offset-alerts.html"] = dict(title="Offset alerts", desc="A weekly round-up of new defence sales around the world above the offset thresholds.", body=pagehead(
     "Offset alerts",
-    "Defence programmes around the world that carry, or are likely to carry, offset and industrial participation requirements. Each summary is written by Capital and links to the original source.",
+    "A weekly round-up of new defence sales around the world above the offset thresholds, and changes to the offset rules. Each summary is written by Capital from public reports.",
     ["Offset alerts"]) + f"""
 <section class="section" aria-labelledby="all-title"><div class="wrap">
   <div class="sechead">
@@ -1454,7 +1452,7 @@ PAGES["offset-alerts.html"] = dict(title="Offset alerts", desc="Weekly alerts on
 <section class="section tight" aria-labelledby="about-alerts-title"><div class="wrap two">
   <div><span class="kicker" aria-hidden="true"></span><h2 id="about-alerts-title">About these alerts</h2></div>
   <div class="prose">
-    <p>Alerts are drawn from public sources, mainly government announcements and official notices. Programme details can change, so please check the original source before acting on an alert.</p>
+    <p>Alerts are drawn from public reports, including government announcements, official notices and the defence press. Programme details can change, so please check them before acting on an alert.</p>
     <p>Capital is independent of the governments and companies named. An alert does not mean that Capital is involved in the programme.</p>
   </div>
 </div></section>
