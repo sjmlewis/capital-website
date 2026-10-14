@@ -338,6 +338,62 @@ p{margin:0}
 .qmsg{margin-top:10px;font-size:17px;color:var(--ink-soft)}
 .qresult .actions{margin-top:22px}
 .qresult:focus{outline:none}
+/* Offset wire: a thin strip under the header on the home page. One item at a time, fading to the next; pauses on hover; still with reduced motion */
+.wire{background:var(--stone);border-bottom:1px solid var(--rule)}
+.wire .wrap{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:18px;min-height:46px;padding-block:7px}
+.wire .label{font:600 12px/1.3 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--brass);white-space:nowrap;display:flex;align-items:center;gap:9px}
+.wire .label::before{content:"";width:7px;height:7px;background:var(--brass);transform:rotate(45deg)}
+.wire .item{min-width:0;font-size:15px;line-height:1.4;color:var(--ink);transition:opacity .45s ease}
+.wire .item.out{opacity:0}
+.wire .item a{display:block;text-decoration:none;color:inherit;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.wire .item a:hover .w-title{border-bottom-color:var(--brass)}
+.wire .w-country{font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:12.5px;color:var(--navy)}
+.wire .w-date{color:var(--ink-soft);font-size:13.5px;font-variant-numeric:tabular-nums;margin:0 10px}
+.wire .w-date::before{content:"·";margin-right:10px;color:var(--brass)}
+.wire .w-title{border-bottom:1px solid transparent;transition:border-color .15s}
+.wire .ctl{display:flex;align-items:center;gap:4px;white-space:nowrap}
+.wire .ctl button{font:inherit;font-size:15px;line-height:1;color:var(--navy);background:transparent;border:1px solid var(--rule);border-radius:2px;width:30px;height:30px;cursor:pointer}
+.wire .ctl button:hover{border-color:var(--brass);color:var(--brass)}
+.wire .ctl .count{font-size:12.5px;color:var(--ink-soft);font-variant-numeric:tabular-nums;margin:0 8px}
+.wire .ctl .all{font-size:13.5px;font-weight:600;color:var(--navy);text-decoration:none;border-bottom:1.5px solid var(--brass);margin-left:10px;padding-bottom:1px}
+.wire .ctl .all:hover{color:var(--brass)}
+@media (max-width:700px){
+  .wire .wrap{grid-template-columns:minmax(0,1fr) auto;row-gap:4px}
+  .wire .label{display:none}
+  .wire .item a{white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+  .wire .ctl .all,.wire .ctl .count{display:none}
+}
+/* Home panel: the newest alerts as cards, three across */
+.agrid{list-style:none;margin:clamp(28px,4vw,40px) 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 clamp(24px,3vw,44px)}
+.agrid li{border-top:1px solid var(--rule);padding:20px 0 26px;min-width:0;display:flex;flex-direction:column}
+.agrid .a-eyebrow{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 10px;font-size:12.5px}
+.agrid .a-eyebrow b{font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--brass)}
+.agrid .a-eyebrow time{color:var(--ink-soft);font-size:13.5px;font-variant-numeric:tabular-nums}
+.agrid .a-title{margin-top:10px;font-size:clamp(18px,1.5vw,20px);line-height:1.32}
+.agrid .a-sum{margin-top:8px;font-size:15.5px;line-height:1.55;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.agrid .a-src{margin-top:auto;padding-top:12px;font-size:13px}
+.tag{display:inline-block;font:600 11px/1.5 var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--navy);background:var(--brass-pale);padding:0 7px;border-radius:2px;vertical-align:1px}
+@media (max-width:1100px){.agrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:700px){.agrid{grid-template-columns:1fr}}
+/* Alerts page: items grouped by the week they were added */
+.week{margin-top:clamp(32px,4vw,48px)}
+.week:first-of-type{margin-top:clamp(24px,3vw,32px)}
+.week>h3{font:600 13px/1.4 var(--body);letter-spacing:.09em;text-transform:uppercase;color:var(--brass);padding-bottom:12px;border-bottom:2px solid var(--brass);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.week>h3 span{font-weight:500;letter-spacing:0;text-transform:none;color:var(--ink-soft)}
+.week .alerts{margin-top:0;border-top:0}
+.retain{margin-top:28px;max-width:72ch;font-size:15px;color:var(--ink-soft)}
+
+/* ---------- Course modules (training page) ---------- */
+.modules{list-style:none;margin:clamp(32px,4vw,48px) 0 0;padding:0;border-top:1px solid var(--rule)}
+.modules>li{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:16px clamp(24px,5vw,80px);padding:clamp(26px,3vw,36px) 0;border-bottom:1px solid var(--rule)}
+.modules .num{display:block;font:600 12.5px/1.3 var(--body);letter-spacing:.09em;text-transform:uppercase;color:var(--brass);margin-bottom:12px}
+.modules h3{font-size:clamp(22px,2.1vw,26px);line-height:1.25;color:var(--navy)}
+.modules .focus{margin-top:10px;color:var(--ink-soft);font-size:16px;max-width:44ch}
+.modules ul{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.modules ul li{position:relative;padding-left:22px;font-size:16px;color:var(--ink-soft)}
+.modules ul li::before{content:"";position:absolute;left:2px;top:.62em;width:7px;height:7px;background:var(--brass);transform:rotate(45deg)}
+.modules ul b{font-weight:600;color:var(--navy)}
+@media (max-width:900px){.modules>li{grid-template-columns:1fr}}
 
 /* ---------- Call to action band ---------- */
 .band{background:var(--navy);color:var(--on-navy);border-top:4px solid var(--brass)}
@@ -451,6 +507,29 @@ JS = r"""
     qz.querySelector('.qagain').addEventListener('click',function(){reset();bring(qs[0].querySelector('.qtext'));});
     reset();
   })();
+  // Offset wire: one headline at a time. Fades to the next every 7 seconds; pauses while hovered or focused;
+  // with reduced motion it stays on the newest item and the arrows still work.
+  var wire=document.getElementById('wire');
+  if(wire){
+    var data=[];try{data=JSON.parse(wire.getAttribute('data-items')||'[]');}catch(e){}
+    var slot=wire.querySelector('.item'),cnt=wire.querySelector('.count'),i=0,timer=null,paused=false;
+    var still=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function render(){var d=data[i];if(!d)return;
+      slot.innerHTML='<a href="'+d.href+'"><span class="w-country">'+d.country+'</span><span class="w-date">'+d.date+'</span><span class="w-title">'+d.title+'</span></a>';
+      if(cnt)cnt.textContent=(i+1)+' / '+data.length;}
+    function show(n){i=(n+data.length)%data.length;
+      if(still){render();return;}
+      slot.classList.add('out');setTimeout(function(){render();slot.classList.remove('out');},450);}
+    function start(){if(still||data.length<2)return;stop();timer=setInterval(function(){if(!paused)show(i+1);},7000);}
+    function stop(){if(timer){clearInterval(timer);timer=null;}}
+    if(data.length){render();start();}
+    var prev=wire.querySelector('[data-prev]'),next=wire.querySelector('[data-next]');
+    if(prev)prev.addEventListener('click',function(){show(i-1);start();});
+    if(next)next.addEventListener('click',function(){show(i+1);start();});
+    wire.addEventListener('mouseenter',function(){paused=true;});wire.addEventListener('mouseleave',function(){paused=false;});
+    wire.addEventListener('focusin',function(){paused=true;});wire.addEventListener('focusout',function(){paused=false;});
+    document.addEventListener('visibilitychange',function(){if(document.hidden)stop();else start();});
+  }
 
   // Engineering-drawing texture behind navy heads (generated, deterministic)
   var c=document.getElementById('drawing');if(!c)return;
@@ -623,24 +702,51 @@ def page(path, title, desc, body, current=None):
     return cap_terms(doc)
 
 # ---------------------------------------------------------------- offset alerts (data in tools/alerts.json)
+# alerts.json is the permanent record: items are never deleted there. The site shows the items added in the last
+# three weeks (WINDOW_DAYS before "updated"); if that leaves fewer than MIN_SHOWN, the newest older items make up the number.
 _alerts_file = os.path.join(ROOT, "alerts.json")
 with open(_alerts_file) as f:
     _AL = json.load(f)
-# newest month first; items within a month keep the order they have in the file
-ALERTS = sorted(_AL["items"], key=lambda a: a["date"], reverse=True)
 _upd = datetime.date.fromisoformat(_AL["updated"])
 ALERTS_UPDATED = f"{_upd.day} {_upd.strftime('%B %Y')}"
+WINDOW_DAYS, MIN_SHOWN, MAX_SHOWN, HOME_CARDS, WIRE_ITEMS = 21, 8, 30, 9, 10
 
-def _month(ym):
-    d = datetime.date.fromisoformat(ym + "-01")
-    return d.strftime("%B %Y")
+def _d(ym):
+    """A full date for sorting: 'YYYY-MM-DD' as is, 'YYYY-MM' as the first of that month."""
+    return datetime.date.fromisoformat(ym if len(ym) == 10 else ym + "-01")
+
+def when(ym):
+    """Shown date: '5 October 2026' for a full date, 'October 2026' when only the month is known."""
+    d = _d(ym)
+    return f"{d.day} {d.strftime('%B %Y')}" if len(ym) == 10 else d.strftime("%B %Y")
+
+def when_short(ym):
+    d = _d(ym)
+    return f"{d.day} {d.strftime('%b')}" if len(ym) == 10 else d.strftime("%b %Y")
+
+for _n, _a in enumerate(_AL["items"]):
+    _a.setdefault("added", _AL["updated"])
+    _a["id"] = "a" + _d(_a["added"]).strftime("%Y%m%d") + "-" + str(_n)
+# newest first: by the week added, then by event date; items with the same dates keep the order they have in the file
+_all = sorted(_AL["items"], key=lambda a: (_d(a["added"]), _d(a["date"])), reverse=True)
+_cutoff = _upd - datetime.timedelta(days=WINDOW_DAYS)
+ALERTS = [a for a in _all if _d(a["added"]) >= _cutoff]
+if len(ALERTS) < MIN_SHOWN:
+    ALERTS = _all[:MIN_SHOWN]
+ALERTS = ALERTS[:MAX_SHOWN]
+
+def _esc(a):
+    return {k: html.escape(str(v)) for k, v in a.items()}
+
+def _tag(a):
+    return f' <span class="tag">{html.escape(a["tag"])}</span>' if a.get("tag") else ""
 
 def alert_list(items):
     rows = []
     for a in items:
-        e = {k: html.escape(v) for k, v in a.items()}
-        rows.append(f"""<li>
-      <div class="a-meta"><b>{e['country']}</b><time datetime="{e['date']}">{_month(a['date'])}</time></div>
+        e = _esc(a)
+        rows.append(f"""<li id="{e['id']}">
+      <div class="a-meta"><b>{e['country']}{_tag(a)}</b><time datetime="{e['date']}">{when(a['date'])}</time></div>
       <div>
         <h3 class="a-title"><a href="{e['url']}" target="_blank" rel="noopener">{e['title']}<span class="vh"> (opens the source in a new tab)</span></a></h3>
         <p class="a-sum">{e['summary']}</p>
@@ -649,21 +755,61 @@ def alert_list(items):
     </li>""")
     return '<ul class="alerts">' + "\n    ".join(rows) + "</ul>"
 
+def alert_cards(items):
+    rows = []
+    for a in items:
+        e = _esc(a)
+        rows.append(f"""<li>
+      <div class="a-eyebrow"><b>{e['country']}</b>{_tag(a)}<time datetime="{e['date']}">{when(a['date'])}</time></div>
+      <h3 class="a-title"><a href="{e['url']}" target="_blank" rel="noopener">{e['title']}<span class="vh"> (opens the source in a new tab)</span></a></h3>
+      <p class="a-sum">{e['summary']}</p>
+      <p class="a-src">Source: <a href="{e['url']}" target="_blank" rel="noopener">{e['source']}<span class="arrow" aria-hidden="true">↗</span><span class="vh"> (opens in a new tab)</span></a></p>
+    </li>""")
+    return '<ul class="agrid">' + "\n    ".join(rows) + "</ul>"
+
+def alert_weeks(items):
+    """The alerts page: items grouped under the Monday of the week they were added."""
+    groups, order = {}, []
+    for a in items:
+        d = _d(a["added"]); monday = d - datetime.timedelta(days=d.weekday())
+        if monday not in groups:
+            groups[monday] = []; order.append(monday)
+        groups[monday].append(a)
+    out = []
+    for monday in order:
+        n = len(groups[monday])
+        out.append(f'<div class="week"><h3>Week of {monday.day} {monday.strftime("%B %Y")}<span>{n} alert{"s" if n != 1 else ""}</span></h3>{alert_list(groups[monday])}</div>')
+    return "\n".join(out)
+
+def wire(items):
+    data = [dict(country=a["country"], date=when_short(a["date"]), title=_cap_text(a["title"]), href="offset-alerts.html#" + a["id"]) for a in items]
+    first = data[0]
+    return f"""
+<div class="wire" id="wire" data-items="{html.escape(json.dumps(data), quote=True)}" aria-label="Offset wire: latest alerts">
+  <div class="wrap">
+    <span class="label">Offset wire</span>
+    <div class="item"><a href="{first['href']}"><span class="w-country">{html.escape(first['country'])}</span><span class="w-date">{first['date']}</span><span class="w-title">{html.escape(first['title'])}</span></a></div>
+    <div class="ctl"><button type="button" data-prev aria-label="Previous alert">&#8249;</button><span class="count" aria-hidden="true">1 / {len(data)}</span><button type="button" data-next aria-label="Next alert">&#8250;</button><a class="all" href="offset-alerts.html">All alerts</a></div>
+  </div>
+</div>"""
+
+HOME_WIRE = wire(ALERTS[:WIRE_ITEMS])
+
 HOME_ALERTS = f"""
 <section class="section" aria-labelledby="alerts-title"><div class="wrap">
   <div class="sechead">
     <div><span class="kicker" aria-hidden="true"></span><h2 class="h2" id="alerts-title">Latest offset alerts</h2>
-      <p class="sub">Defence programmes around the world that carry offset or industrial participation requirements. Each item links to its original source.</p>
-      <p class="updated">Updated weekly. Last updated {ALERTS_UPDATED}.</p></div>
+      <p class="sub">Defence programmes around the world that carry offset or industrial participation requirements, and changes to the rules. Each item links to its original source.</p>
+      <p class="updated">Checked weekly. Last updated {ALERTS_UPDATED}.</p></div>
     <a class="more" href="offset-alerts.html">See all offset alerts</a>
   </div>
-  {alert_list(ALERTS[:5])}
+  {alert_cards(ALERTS[:HOME_CARDS])}
 </div></section>"""
 
 # ---------------------------------------------------------------- pages
 PAGES = {}
 
-PAGES["index.html"] = dict(title="Home", desc="Capital helps overseas defence companies meet UK industrial participation commitments, with an evidence-based platform for finding credible UK industrial partners and more than 25 years of offset experience.", body=f"""
+PAGES["index.html"] = dict(title="Home", desc="Capital helps overseas defence companies meet UK industrial participation commitments, with an evidence-based platform for finding credible UK industrial partners and more than 25 years of offset experience.", body=f"""{HOME_WIRE}
 <section class="hero" aria-labelledby="hero-title">
   <canvas id="drawing" aria-hidden="true"></canvas>
   <div class="wrap">
@@ -1280,9 +1426,10 @@ PAGES["offset-alerts.html"] = dict(title="Offset alerts", desc="Weekly alerts on
 <section class="section" aria-labelledby="all-title"><div class="wrap">
   <div class="sechead">
     <div><span class="kicker" aria-hidden="true"></span><h2 class="h2" id="all-title">Recent alerts</h2>
-      <p class="updated">Newest first. Updated weekly. Last updated {ALERTS_UPDATED}.</p></div>
+      <p class="updated">Newest first. Checked weekly. Last updated {ALERTS_UPDATED}.</p></div>
   </div>
-  {alert_list(ALERTS)}
+  {alert_weeks(ALERTS)}
+  <p class="retain">Alerts stay on this page for three weeks. Earlier alerts are kept in Capital's records; please ask if you need one.</p>
 </div></section>
 
 <section class="section stone" aria-labelledby="sub-title"><div class="wrap two">

@@ -84,6 +84,29 @@
     qz.querySelector('.qagain').addEventListener('click',function(){reset();bring(qs[0].querySelector('.qtext'));});
     reset();
   })();
+  // Offset wire: one headline at a time. Fades to the next every 7 seconds; pauses while hovered or focused;
+  // with reduced motion it stays on the newest item and the arrows still work.
+  var wire=document.getElementById('wire');
+  if(wire){
+    var data=[];try{data=JSON.parse(wire.getAttribute('data-items')||'[]');}catch(e){}
+    var slot=wire.querySelector('.item'),cnt=wire.querySelector('.count'),i=0,timer=null,paused=false;
+    var still=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function render(){var d=data[i];if(!d)return;
+      slot.innerHTML='<a href="'+d.href+'"><span class="w-country">'+d.country+'</span><span class="w-date">'+d.date+'</span><span class="w-title">'+d.title+'</span></a>';
+      if(cnt)cnt.textContent=(i+1)+' / '+data.length;}
+    function show(n){i=(n+data.length)%data.length;
+      if(still){render();return;}
+      slot.classList.add('out');setTimeout(function(){render();slot.classList.remove('out');},450);}
+    function start(){if(still||data.length<2)return;stop();timer=setInterval(function(){if(!paused)show(i+1);},7000);}
+    function stop(){if(timer){clearInterval(timer);timer=null;}}
+    if(data.length){render();start();}
+    var prev=wire.querySelector('[data-prev]'),next=wire.querySelector('[data-next]');
+    if(prev)prev.addEventListener('click',function(){show(i-1);start();});
+    if(next)next.addEventListener('click',function(){show(i+1);start();});
+    wire.addEventListener('mouseenter',function(){paused=true;});wire.addEventListener('mouseleave',function(){paused=false;});
+    wire.addEventListener('focusin',function(){paused=true;});wire.addEventListener('focusout',function(){paused=false;});
+    document.addEventListener('visibilitychange',function(){if(document.hidden)stop();else start();});
+  }
 
   // Engineering-drawing texture behind navy heads (generated, deterministic)
   var c=document.getElementById('drawing');if(!c)return;

@@ -317,6 +317,62 @@ p{margin:0}
 .qmsg{margin-top:10px;font-size:17px;color:var(--ink-soft)}
 .qresult .actions{margin-top:22px}
 .qresult:focus{outline:none}
+/* Offset wire: a thin strip under the header on the home page. One item at a time, fading to the next; pauses on hover; still with reduced motion */
+.wire{background:var(--stone);border-bottom:1px solid var(--rule)}
+.wire .wrap{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:18px;min-height:46px;padding-block:7px}
+.wire .label{font:600 12px/1.3 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--brass);white-space:nowrap;display:flex;align-items:center;gap:9px}
+.wire .label::before{content:"";width:7px;height:7px;background:var(--brass);transform:rotate(45deg)}
+.wire .item{min-width:0;font-size:15px;line-height:1.4;color:var(--ink);transition:opacity .45s ease}
+.wire .item.out{opacity:0}
+.wire .item a{display:block;text-decoration:none;color:inherit;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.wire .item a:hover .w-title{border-bottom-color:var(--brass)}
+.wire .w-country{font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:12.5px;color:var(--navy)}
+.wire .w-date{color:var(--ink-soft);font-size:13.5px;font-variant-numeric:tabular-nums;margin:0 10px}
+.wire .w-date::before{content:"·";margin-right:10px;color:var(--brass)}
+.wire .w-title{border-bottom:1px solid transparent;transition:border-color .15s}
+.wire .ctl{display:flex;align-items:center;gap:4px;white-space:nowrap}
+.wire .ctl button{font:inherit;font-size:15px;line-height:1;color:var(--navy);background:transparent;border:1px solid var(--rule);border-radius:2px;width:30px;height:30px;cursor:pointer}
+.wire .ctl button:hover{border-color:var(--brass);color:var(--brass)}
+.wire .ctl .count{font-size:12.5px;color:var(--ink-soft);font-variant-numeric:tabular-nums;margin:0 8px}
+.wire .ctl .all{font-size:13.5px;font-weight:600;color:var(--navy);text-decoration:none;border-bottom:1.5px solid var(--brass);margin-left:10px;padding-bottom:1px}
+.wire .ctl .all:hover{color:var(--brass)}
+@media (max-width:700px){
+  .wire .wrap{grid-template-columns:minmax(0,1fr) auto;row-gap:4px}
+  .wire .label{display:none}
+  .wire .item a{white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+  .wire .ctl .all,.wire .ctl .count{display:none}
+}
+/* Home panel: the newest alerts as cards, three across */
+.agrid{list-style:none;margin:clamp(28px,4vw,40px) 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 clamp(24px,3vw,44px)}
+.agrid li{border-top:1px solid var(--rule);padding:20px 0 26px;min-width:0;display:flex;flex-direction:column}
+.agrid .a-eyebrow{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 10px;font-size:12.5px}
+.agrid .a-eyebrow b{font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--brass)}
+.agrid .a-eyebrow time{color:var(--ink-soft);font-size:13.5px;font-variant-numeric:tabular-nums}
+.agrid .a-title{margin-top:10px;font-size:clamp(18px,1.5vw,20px);line-height:1.32}
+.agrid .a-sum{margin-top:8px;font-size:15.5px;line-height:1.55;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.agrid .a-src{margin-top:auto;padding-top:12px;font-size:13px}
+.tag{display:inline-block;font:600 11px/1.5 var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--navy);background:var(--brass-pale);padding:0 7px;border-radius:2px;vertical-align:1px}
+@media (max-width:1100px){.agrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:700px){.agrid{grid-template-columns:1fr}}
+/* Alerts page: items grouped by the week they were added */
+.week{margin-top:clamp(32px,4vw,48px)}
+.week:first-of-type{margin-top:clamp(24px,3vw,32px)}
+.week>h3{font:600 13px/1.4 var(--body);letter-spacing:.09em;text-transform:uppercase;color:var(--brass);padding-bottom:12px;border-bottom:2px solid var(--brass);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.week>h3 span{font-weight:500;letter-spacing:0;text-transform:none;color:var(--ink-soft)}
+.week .alerts{margin-top:0;border-top:0}
+.retain{margin-top:28px;max-width:72ch;font-size:15px;color:var(--ink-soft)}
+
+/* ---------- Course modules (training page) ---------- */
+.modules{list-style:none;margin:clamp(32px,4vw,48px) 0 0;padding:0;border-top:1px solid var(--rule)}
+.modules>li{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:16px clamp(24px,5vw,80px);padding:clamp(26px,3vw,36px) 0;border-bottom:1px solid var(--rule)}
+.modules .num{display:block;font:600 12.5px/1.3 var(--body);letter-spacing:.09em;text-transform:uppercase;color:var(--brass);margin-bottom:12px}
+.modules h3{font-size:clamp(22px,2.1vw,26px);line-height:1.25;color:var(--navy)}
+.modules .focus{margin-top:10px;color:var(--ink-soft);font-size:16px;max-width:44ch}
+.modules ul{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.modules ul li{position:relative;padding-left:22px;font-size:16px;color:var(--ink-soft)}
+.modules ul li::before{content:"";position:absolute;left:2px;top:.62em;width:7px;height:7px;background:var(--brass);transform:rotate(45deg)}
+.modules ul b{font-weight:600;color:var(--navy)}
+@media (max-width:900px){.modules>li{grid-template-columns:1fr}}
 
 /* ---------- Call to action band ---------- */
 .band{background:var(--navy);color:var(--on-navy);border-top:4px solid var(--brass)}
