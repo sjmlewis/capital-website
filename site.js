@@ -14,6 +14,100 @@
     });
   });
 
+  // Training page: open or close every module at once, and open a module named in the address
+  var ea=document.getElementById('expandall'),mods=document.querySelectorAll('details.mod');
+  if(ea&&mods.length){
+    ea.hidden=false;
+    ea.addEventListener('click',function(){
+      var o=ea.getAttribute('aria-expanded')!=='true';
+      Array.prototype.forEach.call(mods,function(d){d.open=o;});
+      ea.setAttribute('aria-expanded',o?'true':'false');
+      ea.textContent=o?'Close all modules':'Open all modules';
+    });
+  }
+  if(/^#module-\d$/.test(location.hash)){var md=document.querySelector(location.hash);if(md)md.open=true;}
+
+  // Training page: the self-test, one question at a time (in its own scope, so its names cannot clash with other page scripts)
+  (function(){
+    var qz=document.getElementById('quiz');
+    if(!qz)return;
+    var each=Array.prototype.forEach,qs=qz.querySelectorAll('.q'),total=qs.length,cur=0,score=0,
+        list=qz.querySelector('.qlist'),nav=qz.querySelector('.qnav'),next=qz.querySelector('.qnext'),
+        res=qz.querySelector('.qresult'),cnt=qz.querySelector('.qcount'),tally=qz.querySelector('.qtally'),
+        live=qz.querySelector('.qlive');
+    qz.classList.add('js');
+    // Bring the top of the quiz into view below the sticky header, then move focus without a second jump
+    var nb=document.querySelector('.nav');
+    var bring=function(el){
+      var off=(nb?nb.getBoundingClientRect().bottom:0)+16,top=qz.getBoundingClientRect().top;
+      if(top<off||top>window.innerHeight/3)window.scrollBy(0,top-off);
+      try{el.focus({preventScroll:true});}catch(e){el.focus();}
+    };
+    var show=function(i){
+      each.call(qs,function(q,k){q.classList.toggle('current',k===i);});
+      cnt.textContent='Question '+(i+1)+' of '+total;nav.hidden=true;
+    };
+    var reset=function(){
+      cur=0;score=0;tally.textContent='';res.hidden=true;list.hidden=false;
+      each.call(qs,function(q){
+        q.classList.remove('answered');
+        var v=q.querySelector('.verdict');v.textContent=v.getAttribute('data-label');
+        each.call(q.querySelectorAll('.opt'),function(b){b.disabled=false;b.classList.remove('right','wrong');});
+      });
+      show(0);
+    };
+    each.call(qs,function(q){
+      var ans=+q.getAttribute('data-answer'),v=q.querySelector('.verdict'),ex=q.querySelector('.expl');
+      v.setAttribute('data-label',v.textContent);
+      q.addEventListener('click',function(e){
+        var b=e.target.closest?e.target.closest('.opt'):null;
+        if(!b||q.classList.contains('answered'))return;
+        var ok=(+b.getAttribute('data-i'))===ans;
+        q.classList.add('answered');
+        each.call(q.querySelectorAll('.opt'),function(x,k){x.disabled=true;if(k===ans)x.classList.add('right');});
+        if(ok){score++;}else{b.classList.add('wrong');}
+        v.textContent=ok?'Correct.':'Not quite. '+v.getAttribute('data-label');
+        tally.textContent=score+' correct';
+        live.textContent=v.textContent+' '+ex.textContent;
+        next.textContent=cur===total-1?'See your score':'Next question';
+        nav.hidden=false;next.focus();
+      });
+    });
+    next.addEventListener('click',function(){
+      if(cur<total-1){cur++;show(cur);bring(qs[cur].querySelector('.qtext'));return;}
+      list.hidden=true;nav.hidden=true;cnt.textContent='Your result';
+      var band=score===total?'top':(score>=total-2?'mid':'low');
+      res.querySelector('.qbig').textContent='You scored '+score+' out of '+total+'.';
+      each.call(res.querySelectorAll('.qmsg'),function(p){p.hidden=p.getAttribute('data-band')!==band;});
+      res.hidden=false;bring(res);
+    });
+    qz.querySelector('.qagain').addEventListener('click',function(){reset();bring(qs[0].querySelector('.qtext'));});
+    reset();
+  })();
+  // Offset wire: one headline at a time. Fades to the next every 7 seconds; pauses while hovered or focused;
+  // with reduced motion it stays on the newest item and the arrows still work.
+  var wire=document.getElementById('wire');
+  if(wire){
+    var data=[];try{data=JSON.parse(wire.getAttribute('data-items')||'[]');}catch(e){}
+    var slot=wire.querySelector('.item'),cnt=wire.querySelector('.count'),i=0,timer=null,paused=false;
+    var still=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function render(){var d=data[i];if(!d)return;
+      slot.innerHTML='<a href="'+d.href+'"><span class="w-country">'+d.country+'</span><span class="w-date">'+d.date+'</span><span class="w-title">'+d.title+'</span></a>';
+      if(cnt)cnt.textContent=(i+1)+' / '+data.length;}
+    function show(n){i=(n+data.length)%data.length;
+      if(still){render();return;}
+      slot.classList.add('out');setTimeout(function(){render();slot.classList.remove('out');},450);}
+    function start(){if(still||data.length<2)return;stop();timer=setInterval(function(){if(!paused)show(i+1);},7000);}
+    function stop(){if(timer){clearInterval(timer);timer=null;}}
+    if(data.length){render();start();}
+    var prev=wire.querySelector('[data-prev]'),next=wire.querySelector('[data-next]');
+    if(prev)prev.addEventListener('click',function(){show(i-1);start();});
+    if(next)next.addEventListener('click',function(){show(i+1);start();});
+    wire.addEventListener('mouseenter',function(){paused=true;});wire.addEventListener('mouseleave',function(){paused=false;});
+    wire.addEventListener('focusin',function(){paused=true;});wire.addEventListener('focusout',function(){paused=false;});
+    document.addEventListener('visibilitychange',function(){if(document.hidden)stop();else start();});
+  }
+
   // Engineering-drawing texture behind navy heads (generated, deterministic)
   var c=document.getElementById('drawing');if(!c)return;
   var hero=c.parentNode,light=hero.classList.contains('pagehead');
