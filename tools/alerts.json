@@ -3,6 +3,83 @@
   "note": "Public offset alerts shown on the website: a weekly round-up of new defence sales above the offset thresholds. This file is the permanent record: never delete an item. The site shows only items whose 'added' date is within the last three weeks of 'updated' (at least eight items are always shown), so older items fall away from the pages but stay here. 'date' is when the event happened (YYYY-MM-DD, or YYYY-MM if only the month is known); 'added' is the date the item went on the site; 'tag' is optional ('Civil' or 'Rules'). Summaries are Capital's own words: one or two plain factual lines, with a short note on offset only where it is clear (for example, no offset because a purchase is SAFE-funded). Sources are not shown on the site and are not kept in this public file; they are recorded privately in the 'Website alerts: sources (private)' table of the Offset Opportunity Monitor's Programme Register (a Claude Doc). Internal scores, suggested services and verdicts from the Offset Opportunity Monitor never go here.",
   "items": [
     {
+      "date": "2026-10-14",
+      "added": "2026-10-14",
+      "country": "Israel",
+      "title": "Israel signs for 12 AH-64E Apache helicopters worth about US$1bn",
+      "summary": "Israel's Ministry of Defense has signed an agreement with the Pentagon to buy 12 Boeing AH-64E Apache attack helicopters, worth about US$1 billion, with deliveries due early next decade. The government moved NIS 1 billion into the defence budget to pay for the deal."
+    },
+    {
+      "date": "2026-10-14",
+      "added": "2026-10-14",
+      "country": "Bulgaria",
+      "title": "Bulgaria approves a deal with Germany for five more IRIS-T SLM air defence systems",
+      "summary": "Bulgaria's Council of Ministers has approved a draft programme agreement with Germany for five more IRIS-T SLM surface-to-air missile systems from Diehl Defence, funded under the EU's SAFE defence loans. The agreement still needs ratification by the National Assembly."
+    },
+    {
+      "date": "2026-10-14",
+      "added": "2026-10-14",
+      "country": "Greece",
+      "title": "Greece asks the US to sell it Saronic Corsair uncrewed surface vessels",
+      "summary": "Greece has sent the US a Letter of Request to buy Corsair uncrewed surface vessels from Saronic through Foreign Military Sales, after Hellenic Navy trials. The ministry did not give a number; Greek press reports a plan for at least 30 boats."
+    },
+    {
+      "date": "2026-10-13",
+      "added": "2026-10-14",
+      "country": "Poland",
+      "title": "Sweden signs contracts to train Polish submarine crews and lease Poland a submarine",
+      "summary": "Sweden's procurement agency FMV and the Swedish Navy have signed contracts under Poland's Orka programme to train Polish crews and lease HMS Södermanland to Poland until new boats arrive. They build on Poland's agreement for three Saab A26 submarines, the first due in 2031."
+    },
+    {
+      "date": "2026-10-09",
+      "added": "2026-10-14",
+      "country": "Kuwait",
+      "title": "Kuwait buys a £370m British air defence system from MARSS",
+      "summary": "Kuwait is buying an integrated air defence system of jammers, radars and interceptors, built around MARSS's NiDAR command and control centre, in a £370 million deal the UK government says will create 100 UK jobs. Kuwait's offset programme has been suspended since 2015, so no offset applies."
+    },
+    {
+      "date": "2026-10-09",
+      "added": "2026-10-14",
+      "country": "Greece",
+      "title": "Greece agrees about US$4bn of US deals, including 37 more F-16 Block 70 upgrades",
+      "summary": "During the US Secretary of State's visit to Athens, Greece agreed to about US$4 billion of US weapons and equipment: about US$1 billion to upgrade 37 F-16 Block 50 jets to Block 70, US$1.2 billion of air weapons and US$750 million of MH-60 helicopter support."
+    },
+    {
+      "date": "2026-10-07",
+      "added": "2026-10-14",
+      "country": "United Arab Emirates",
+      "title": "US approves a possible US$1.04bn sale of APKWS-II guidance sections to the UAE",
+      "summary": "The US State Department has approved a possible sale to the United Arab Emirates of up to 10,000 APKWS-II laser guidance sections and related equipment, estimated at US$1.041 billion."
+    },
+    {
+      "date": "2026-09-29",
+      "added": "2026-10-14",
+      "country": "Belgium",
+      "title": "Belgium buys 10 NASAMS air defence firing units from Kongsberg for about €918m",
+      "summary": "Kongsberg has signed a contract worth NOK 10 billion (about €918 million) with the Dutch procurement agency, acting for Belgium, for 10 NASAMS firing units. They are part of a Belgian air defence package of about €3.1 billion."
+    },
+    {
+      "date": "2026-09-18",
+      "added": "2026-10-14",
+      "country": "Thailand",
+      "title": "Thailand picks Hanwha Ocean to build its next frigate, with a THB 7.25bn offset package",
+      "summary": "The Royal Thai Navy has selected Hanwha Ocean to build a 4,000-tonne frigate for THB 16.73 billion. The offset package is worth about THB 7.25 billion (43% of the project), with at least 20% of the ship's structure built in Thailand and transfer of designs and combat-system know-how."
+    },
+    {
+      "date": "2026-09-15",
+      "added": "2026-10-14",
+      "country": "South Korea",
+      "title": "South Korea approves a US$2.4bn purchase of 20 more MH-60R Seahawk helicopters",
+      "summary": "South Korea's Defense Acquisition Program Administration has approved buying about 20 more Lockheed Martin MH-60R Seahawk helicopters for KRW 3.24 trillion (about US$2.4 billion), to be acquired through 2032."
+    },
+    {
+      "date": "2026-09-10",
+      "added": "2026-10-14",
+      "country": "Croatia",
+      "title": "Croatia signs €435m contracts for 18 K239 Chunmoo rocket launchers",
+      "summary": "Croatia has signed contracts worth €435.2 million (excluding VAT) with Hanwha Aerospace for 18 K239 Chunmoo multiple rocket launchers with ammunition and training, plus a command system from Poland's WB Electronics. The defence minister said Croatian firms, including Končar, will take part."
+    },
+    {
       "date": "2026-10-05",
       "added": "2026-10-14",
       "country": "Peru",
