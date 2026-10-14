@@ -394,9 +394,10 @@ JS = r"""
   }
   if(/^#module-\d$/.test(location.hash)){var md=document.querySelector(location.hash);if(md)md.open=true;}
 
-  // Training page: the self-test, one question at a time
-  var qz=document.getElementById('quiz');
-  if(qz){
+  // Training page: the self-test, one question at a time (in its own scope, so its names cannot clash with other page scripts)
+  (function(){
+    var qz=document.getElementById('quiz');
+    if(!qz)return;
     var each=Array.prototype.forEach,qs=qz.querySelectorAll('.q'),total=qs.length,cur=0,score=0,
         list=qz.querySelector('.qlist'),nav=qz.querySelector('.qnav'),next=qz.querySelector('.qnext'),
         res=qz.querySelector('.qresult'),cnt=qz.querySelector('.qcount'),tally=qz.querySelector('.qtally'),
@@ -449,7 +450,7 @@ JS = r"""
     });
     qz.querySelector('.qagain').addEventListener('click',function(){reset();bring(qs[0].querySelector('.qtext'));});
     reset();
-  }
+  })();
 
   // Engineering-drawing texture behind navy heads (generated, deterministic)
   var c=document.getElementById('drawing');if(!c)return;
