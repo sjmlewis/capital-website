@@ -1,116 +1,92 @@
 {
   "updated": "2026-10-14",
-  "note": "Public offset alerts shown on the website. This file is the permanent record: never delete an item. The site shows only items whose 'added' date is within the last three weeks of 'updated' (at least eight items are always shown), so older items fall away from the pages but stay here. 'date' is when the event happened (YYYY-MM-DD, or YYYY-MM if only the month is known); 'added' is the date the item went on the site; 'tag' is optional ('Civil' or 'Rules'). Summaries are Capital's own words; every item must link to its original source. Internal scores, suggested services and verdicts from the Offset Opportunity Monitor never go here.",
+  "note": "Public offset alerts shown on the website: a weekly round-up of new defence sales above the offset thresholds. This file is the permanent record: never delete an item. The site shows only items whose 'added' date is within the last three weeks of 'updated' (at least eight items are always shown), so older items fall away from the pages but stay here. 'date' is when the event happened (YYYY-MM-DD, or YYYY-MM if only the month is known); 'added' is the date the item went on the site; 'tag' is optional ('Civil' or 'Rules'). Summaries are Capital's own words: one or two plain factual lines, with a short note on offset only where it is clear (for example, no offset because a purchase is SAFE-funded). Sources are not shown on the site and are not kept in this public file; they are recorded privately in Capital's Claude project (Offset_Alerts_Sources.md). Internal scores, suggested services and verdicts from the Offset Opportunity Monitor never go here.",
   "items": [
     {
       "date": "2026-10-05",
       "added": "2026-10-14",
       "country": "Peru",
       "title": "Peru moves to fund a second batch of 12 F-16 Block 70 fighters",
-      "summary": "Peru's government has asked Congress for extra credit to pay for a second batch of 12 F-16s from Lockheed Martin, taking the fleet to 24. The money must be spent this fiscal year, so a contract is expected before the end of 2026. Peru's industrial compensation rules apply to foreign defence purchases of this size, and Lockheed Martin set out a proposed offset package in August.",
-      "source": "Infodefensa",
-      "url": "https://www.infodefensa.com/texto-diario/mostrar/6038726/peru-inicia-tramite-compra-segundo-lote-12-cazas-f-16-bloque-70"
+      "summary": "Peru's government has asked Congress for extra funding to buy a second batch of 12 F-16 Block 70 fighters from Lockheed Martin, which would take its fleet to 24. In August, Lockheed Martin announced a US$1.8 billion industrial and social collaboration package for Peru's F-16 programme."
     },
     {
       "date": "2026-10-07",
       "added": "2026-10-14",
       "country": "Romania",
       "title": "Romania orders 12 Airbus H225M helicopters under the EU's SAFE defence loans",
-      "summary": "Airbus has announced an order from Romania for 12 H225M helicopters, placed through the French armaments agency and funded by the EU's SAFE loans, with the Romanian maker IAR as its long-term partner. Romania's technological and industrial cooperation rules cover government-to-government purchases, and the Brașov workforce has already questioned how much work will come to Romania.",
-      "source": "Airbus",
-      "url": "https://www.airbus.com/en/newsroom/press-releases/2026-10-romania-orders-12-airbus-h225m-multirole-military-helicopters"
+      "summary": "Airbus has announced an order from Romania for 12 H225M helicopters, placed through France's armaments agency and paid for with the EU's SAFE defence loans, with Romania's IAR as Airbus's long-term partner. SAFE-funded purchases are exempt from Romania's offset rules, so this order carries no Romanian offset."
     },
     {
       "date": "2026-10-04",
       "added": "2026-10-14",
       "country": "Colombia",
       "title": "Colombian Army opens a US$34.5m tender for light transport aircraft",
-      "summary": "The Colombian Army has published a tender, with offers due on 26 October, to replace three retired C-212 transports. The Czech L-410 NG is reported as the front-runner. Colombia's 2025 decree on industrial offsets applies to defence contracts from about US$3 million.",
-      "source": "Infodefensa",
-      "url": "https://www.infodefensa.com/texto-diario/mostrar/6045152/216-colombia-colombia-decanta-avion-checo-l-410-ng-como-nuevo-transporte-ligero-ejercito"
+      "summary": "The Colombian Army has opened a tender worth about US$34.5 million for two light transport aircraft to replace three retired C-212s, with offers due on 26 October. The Czech-built L-410 NG is seen as the leading candidate."
     },
     {
       "date": "2026-10-05",
       "added": "2026-10-14",
       "country": "Austria",
-      "title": "Austria weighs seven fighter types to replace its early Eurofighters",
-      "summary": "The Austrian armed forces are assessing seven candidate aircraft, including Boeing's F-15EX, as a successor to the Tranche 1 Eurofighters. Austria now agrees industrial cooperation case by case on its major purchases, so a fighter buy would be its largest such negotiation yet.",
-      "source": "Militär Aktuell",
-      "url": "https://militaeraktuell.at/bundesheer-schaut-auf-boeing-f-15ex-eagle-ii/"
+      "title": "Seven fighter types in the running to replace Austria's early Eurofighters",
+      "summary": "Seven fighter types, including Boeing's F-15EX, are reported to be in the running to replace the Austrian Air Force's Tranche 1 Eurofighters."
     },
     {
       "date": "2026-10-09",
       "added": "2026-10-14",
       "country": "Malaysia",
       "tag": "Civil",
-      "title": "Malaysia's Budget 2027 funds a RM3.4bn rail overhaul and 42 new trains",
-      "summary": "Budget 2027 gives Prasarana more than RM3.4 billion to rehabilitate its urban rail network and funds 42 new train sets for the ETS and KTM Komuter services. Malaysia's Industrial Collaboration Programme applies to purchases paid with federal funds worth RM50 million or more from foreign contractors, which usually includes rolling stock and signalling.",
-      "source": "Bernama",
-      "url": "https://bernama.com/en/news.php?id=2617722"
+      "title": "Malaysia's Budget 2027 includes 42 new trains and a RM3.4bn rail overhaul",
+      "summary": "Presenting Budget 2027, Prime Minister Anwar Ibrahim said the government will buy 42 new train sets for the ETS and KTM Komuter services, and that Prasarana will invest more than RM3.4 billion to rehabilitate its rail services."
     },
     {
       "date": "2026-10-02",
       "added": "2026-10-14",
       "country": "India",
       "title": "India's Air Force seeks proposals for 60 medium transport aircraft",
-      "summary": "The Indian Air Force has issued a request for proposals for 60 medium transport aircraft, with responses due by December. Embraer with Mahindra and Lockheed Martin with Tata are the expected bidders, and both plan Indian assembly. India's draft 2026 procurement rules would replace offsets with a 30% Indian-content requirement on global purchases.",
-      "source": "ThePrint",
-      "url": "https://theprint.in/defence/eye-on-iaf-medium-transport-aircraft-deal-mahindra-group-embraer-zero-in-on-nagpur-for-c-390-assembly/3060133/"
+      "summary": "The Indian Air Force's request for proposals for 60 medium transport aircraft, to replace its An-32 and Il-76 fleets, has responses due in December and asks for at least 40% Indian content. Embraer with Mahindra (C-390) and Lockheed Martin with Tata (C-130J-30) are the main bidders."
     },
     {
       "date": "2026-10-09",
       "added": "2026-10-14",
       "country": "Denmark",
       "title": "Denmark takes delivery of the first of four new air defence systems",
-      "summary": "Denmark's defence procurement agency has received the first of four ground-based air defence systems bought under a DKK 58.2 billion programme, with support contracts still to be signed. Denmark assesses industrial co-operation case by case on purchases from foreign suppliers worth more than DKK 50 million.",
-      "source": "Nordic Defence Sector",
-      "url": "https://nordicdefencesector.com/en/article/denmark-receives-first-of-four-new-air-defence-systems"
+      "summary": "Denmark's defence procurement agency has received the first of four new ground-based air defence systems, a NASAMS, from a DKK 58.2 billion programme. Contracts for support equipment are still to be signed."
     },
     {
       "date": "2026-09-08",
       "added": "2026-10-14",
       "country": "Greece",
-      "title": "Greece signs for two Italian FREMM frigates with Greek shipyard work included",
-      "summary": "Greece and Italy have signed the arrangement transferring the frigates Carlo Bergamini and Virginio Fasan to the Hellenic Navy in 2028 and 2029. The agreement provides for Greek industry to take part in maintenance and in integrating new systems, in line with Greece's push for 25% domestic participation in new armament programmes.",
-      "source": "Naval News",
-      "url": "https://www.navalnews.com/naval-news/2026/09/greece-italy-ink-deal-two-fremm-frigates/"
+      "title": "Greece signs for two Italian FREMM frigates, with work for Greek industry",
+      "summary": "Greece and Italy have signed the arrangement transferring the frigates Carlo Bergamini and Virginio Fasan to the Hellenic Navy in 2028 and 2029, with Greek industry taking part in their maintenance and in integrating new systems."
     },
     {
       "date": "2026-10-14",
       "added": "2026-10-14",
       "country": "Malaysia",
       "tag": "Rules",
-      "title": "Malaysia's offset cap on CPTPP-covered purchases falls from 60% to 40% on 28 November",
-      "summary": "Under Malaysia's schedule to the CPTPP trade pact, which took effect for Malaysia on 29 November 2022, offset credits on purchases by the covered ministries are capped at 60% of contract value for the first four years, then 40% until the end of the eighth year, 20% until the twelfth, and none after that. The first step down therefore falls on 28 November 2026. Defence purchases are largely outside the pact, so the full Industrial Collaboration Programme still applies to them.",
-      "source": "CPTPP, Malaysia schedule",
-      "url": "https://www.international.gc.ca/trade-commerce/trade-agreements-accords-commerciaux/agr-acc/tpp-ptp/text-texte/15-a6.aspx?lang=eng"
+      "title": "Malaysia's offset cap on CPTPP-covered purchases drops from 60% to 40% on 29 November",
+      "summary": "Under Malaysia's schedule to the CPTPP trade pact, offset credits on purchases by the covered ministries are capped at 60% of contract value until 28 November 2026, then 40% until 2030 and 20% until 2034, with none after that."
     },
     {
       "date": "2026-10-13",
       "added": "2026-10-14",
       "country": "United Kingdom",
       "tag": "Rules",
-      "title": "Still no government response on the UK's planned defence offsets regime",
-      "summary": "The Ministry of Defence's written consultation on a defence offsets regime closed on 23 December 2025. As of 13 October 2026 the consultation page still says the feedback is being analysed, and no outcome has been published. Overseas suppliers bidding into UK programmes should plan for UK workshare and industrial participation commitments while the rules are settled.",
-      "source": "GOV.UK",
-      "url": "https://www.gov.uk/government/consultations/defence-industrial-strategy-dis-offset-written-consultation"
+      "title": "Still no government response on the UK's defence offsets consultation",
+      "summary": "The Ministry of Defence's written consultation on a possible UK defence offsets policy closed on 23 December 2025, and as of 13 October 2026 no outcome has been published."
     },
     {
-      "date": "2026-09",
+      "date": "2026-09-25",
       "country": "Canada",
       "title": "Canada takes next step with Saab on GlobalEye early-warning aircraft",
-      "summary": "Canada is moving ahead with Saab, its preferred supplier, towards a contract for six GlobalEye airborne early warning and control aircraft. Defence purchases of this size normally carry obligations under Canada's Industrial and Technological Benefits (ITB) policy.",
-      "source": "Government of Canada",
-      "url": "https://www.canada.ca/en/defence-investment-agency/news/2026/09/government-of-canada-takes-next-step-to-defend-canadians-by-delivering-mission-critical-capability-to-the-royal-canadian-air-force.html",
+      "summary": "Canada has signed a non-binding term sheet with Saab, its preferred supplier, ahead of negotiations to buy six GlobalEye airborne early warning and control aircraft. The government says it is working with Saab to maximise benefits for Canada through its Industrial and Technological Benefits (ITB) policy.",
       "added": "2026-10-13"
     },
     {
       "date": "2026-09",
       "country": "Norway",
       "title": "US approves possible sale of 21 Black Hawk helicopters to Norway",
-      "summary": "The US has notified a possible sale of 21 UH-60M Black Hawk helicopters to Norway, valued at about US$2.3 billion. Norway's industrial cooperation rules normally apply to foreign defence purchases of this size.",
-      "source": "US Federal Register",
-      "url": "https://www.federalregister.gov/documents/2026/09/22/2026-19324/arms-sales-notification",
+      "summary": "The US has notified a possible sale of 21 UH-60M Black Hawk helicopters to Norway, valued at about US$2.3 billion.",
       "added": "2026-10-13"
     },
     {
@@ -118,17 +94,13 @@
       "country": "Poland",
       "title": "Boeing signs Apache offset agreements with Polish industry",
       "summary": "Boeing has signed offset agreements with the Polish companies WZL-1 and WCBKT covering training and sustainment for Poland's AH-64E Apache fleet.",
-      "source": "Boeing",
-      "url": "https://www.boeing.com/features/2026/08/boeing-ah-64-offset-agreements-with-polish-industry-strengthen-training-sustainment",
       "added": "2026-10-13"
     },
     {
       "date": "2026-08",
       "country": "Saudi Arabia",
       "title": "US approves possible APKWS II laser-guided rocket sale to Saudi Arabia",
-      "summary": "A possible sale of APKWS II laser guidance kits to Saudi Arabia, valued at about US$1.96 billion, has been notified. Saudi Arabia's industrial participation programme, run by GAMI, aims to localise a growing share of defence spending.",
-      "source": "US Federal Register",
-      "url": "https://www.federalregister.gov/documents/2026/08/28/2026-17566/arms-sales-notification",
+      "summary": "A possible sale of APKWS II laser guidance kits to Saudi Arabia, valued at about US$1.96 billion, has been notified to the US Congress. The US notice says the purchaser typically requests offsets.",
       "added": "2026-10-13"
     },
     {
@@ -136,8 +108,6 @@
       "country": "Norway",
       "title": "US approves possible sale of 155mm artillery shells to Norway",
       "summary": "A possible sale of 155mm M795 high-explosive shells to Norway, valued at about US$270 million, has been notified.",
-      "source": "US Federal Register",
-      "url": "https://www.federalregister.gov/documents/2026/08/28/2026-17565/arms-sales-notification",
       "added": "2026-10-13"
     },
     {
@@ -145,8 +115,6 @@
       "country": "Canada",
       "title": "TKMS chosen as preferred bidder for Canada's new submarines",
       "summary": "Canada has selected Germany's TKMS as preferred bidder for up to 12 Type 212CD submarines under the Canadian Patrol Submarine Project. Contract negotiations, including industrial benefits for Canada, now follow.",
-      "source": "Naval News",
-      "url": "https://www.navalnews.com/naval-news/2026/07/canada-selects-tkms-cpsp-submarine-project/",
       "added": "2026-10-13"
     },
     {
@@ -154,26 +122,20 @@
       "country": "Switzerland",
       "title": "Swiss F-35A offset programme expected to exceed its targets",
       "summary": "The Swiss government reports further offset projects placed with Swiss industry under the F-35A purchase, and expects the agreed offset targets to be clearly exceeded.",
-      "source": "Swiss Federal Administration",
-      "url": "https://www.admin.ch/en/newnsb/gZUMF2YH2Hq4MCiG-TSec",
       "added": "2026-10-13"
     },
     {
       "date": "2026-06",
       "country": "Canada",
       "title": "Canada and Australia partner on Arctic over-the-horizon radar",
-      "summary": "Canada has agreed a partnership with Australia to deliver the Arctic Over-the-Horizon Radar, part of Canada's plan to modernise NORAD.",
-      "source": "Department of National Defence, Canada",
-      "url": "https://www.canada.ca/en/department-national-defence/news/2026/06/canadaaustralia-partnership-on-arctic-over-the-horizon-radar.html",
+      "summary": "Canada has agreed a partnership with Australia to deliver the Arctic Over-the-Horizon Radar, part of its plan to modernise NORAD, and has signed an Industrial and Technological Benefits agreement with BAE Systems Australia.",
       "added": "2026-10-13"
     },
     {
-      "date": "2026-03",
+      "date": "2026-09-15",
       "country": "Switzerland",
-      "title": "Swiss Armaments Programme 2026 includes more IRIS-T SLM air defence",
-      "summary": "The Federal Council's Armaments Programme 2026 asks Parliament to fund additional IRIS-T SLM ground-based air defence systems. Swiss offset rules apply to defence purchases from foreign suppliers.",
-      "source": "Swiss Armed Forces (in German)",
-      "url": "https://www.vtg.admin.ch/de/ruestungsprogramm-2026",
+      "title": "Swiss Parliament approves Armaments Programme 2026, with more IRIS-T SLM air defence",
+      "summary": "The Swiss Parliament approved the Armaments Programme 2026 on 15 September, including additional IRIS-T SLM ground-based air defence systems.",
       "added": "2026-10-13"
     }
   ]

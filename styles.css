@@ -177,7 +177,7 @@ p{margin:0}
 .countries{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
 .countries span{font-size:13.5px;color:var(--navy);border:1px solid var(--rule);background:var(--paper);padding:5px 10px;border-radius:2px}
 .section.stone .countries span{background:var(--paper)}
-/* Offset alerts: a calm dated list; each headline opens the original source in a new tab */
+/* Offset alerts: a calm dated list of new defence sales (sources are not shown) */
 .vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .sechead{display:flex;justify-content:space-between;align-items:flex-end;gap:16px 32px;flex-wrap:wrap}
 .sechead .more{font-size:15px;font-weight:600;color:var(--navy);text-decoration:none;border-bottom:1.5px solid var(--brass);padding-bottom:2px;white-space:nowrap}
