@@ -1,0 +1,123 @@
+name: Weekly offset alerts
+
+# Every Monday, after Claude's "Offset Monitor - Monday email and website" task,
+# this downloads the alerts feed file from Stephen's OneDrive, adds any new
+# alerts to tools/alerts.json, rebuilds the pages and publishes them on the
+# draft branch and on main (the public review copy). It never deletes alerts
+# and never changes anything except tools/alerts.json, index.html and
+# offset-alerts.html. The OneDrive link is kept in the secret ALERTS_FEED_URL.
+
+on:
+  schedule:
+    - cron: "37 8 * * 1"    # Mondays 08:37 UTC (09:37 UK summer time, 08:37 winter)
+    - cron: "37 13 * * 1"   # second try at 13:37 UTC in case the Claude task ran late
+  workflow_dispatch:         # adds a "Run workflow" button for a manual run
+
+permissions:
+  contents: write
+
+concurrency:
+  group: weekly-alerts
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+      matrix:
+        branch: [draft, main]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ matrix.branch }}
+
+      - name: Download the alerts feed from OneDrive
+        env:
+          FEED_URL: ${{ secrets.ALERTS_FEED_URL }}
+        run: |
+          if [ -z "$FEED_URL" ]; then echo "The secret ALERTS_FEED_URL is missing."; exit 1; fi
+          case "$FEED_URL" in *\?*) SEP="&" ;; *) SEP="?" ;; esac
+          curl -sSfL --retry 3 -o /tmp/feed.json "${FEED_URL}${SEP}download=1"
+          head -c 300 /tmp/feed.json; echo
+
+      - name: Add new alerts to tools/alerts.json
+        run: |
+          python3 - <<'PY'
+          import json, re, datetime, sys
+          try:
+              feed = json.load(open("/tmp/feed.json", encoding="utf-8"))
+          except Exception as e:
+              sys.exit(f"The feed is not valid JSON (did the OneDrive link return a web page?): {e}")
+          path = "tools/alerts.json"
+          site = json.load(open(path, encoding="utf-8"))
+          DAY = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+          DATE = re.compile(r"^\d{4}-\d{2}(-\d{2})?$")
+          ALLOWED = {"date", "added", "country", "title", "summary", "tag"}
+          LIMITS = {"country": 60, "title": 200, "summary": 800}
+          default_added = feed.get("added") or feed.get("updated") or datetime.date.today().isoformat()
+          if not DAY.match(str(default_added)):
+              sys.exit(f"Bad 'added' date in feed: {default_added!r}")
+          items = feed.get("items")
+          if not isinstance(items, list) or len(items) > 200:
+              sys.exit("The feed has no 'items' list, or far too many items.")
+          key = lambda a: (str(a.get("country", "")).strip().lower(), str(a.get("title", "")).strip().lower())
+          have = {key(a) for a in site["items"]}
+          new, skipped = [], []
+          for a in items:
+              why = None
+              if not isinstance(a, dict):
+                  why = "not an object"
+              elif set(a) - ALLOWED:
+                  why = f"unexpected fields {sorted(set(a) - ALLOWED)} (no sources or links allowed)"
+              elif not all(isinstance(a.get(k), str) and a.get(k).strip() for k in ("date", "country", "title", "summary")):
+                  why = "missing date, country, title or summary"
+              elif not DATE.match(a["date"]):
+                  why = f"bad date {a['date']!r}"
+              elif "added" in a and not (isinstance(a["added"], str) and DAY.match(a["added"])):
+                  why = f"bad added date {a.get('added')!r}"
+              elif "tag" in a and a["tag"] not in ("Civil", "Rules"):
+                  why = f"bad tag {a['tag']!r}"
+              elif any(len(a[k]) > n for k, n in LIMITS.items()):
+                  why = "text too long"
+              elif any(re.search(r"https?://|www\.|<|>", a[k]) for k in ("country", "title", "summary")):
+                  why = "contains a link or HTML"
+              if why:
+                  skipped.append((a.get("title") if isinstance(a, dict) else a, why)); continue
+              if key(a) in have:
+                  continue
+              item = {k: a[k].strip() for k in ("date", "added", "country", "title", "summary", "tag") if k in a}
+              item.setdefault("added", default_added)
+              new.append(item); have.add(key(item))
+          for t, why in skipped:
+              print(f"SKIPPED: {t!r}: {why}")
+          if not new:
+              print("No new alerts in the feed; nothing to do.")
+              sys.exit(0)
+          site["items"] = new + site["items"]
+          latest = max(a["added"] for a in new)
+          if latest > site.get("updated", ""):
+              site["updated"] = latest
+          with open(path, "w", encoding="utf-8") as f:
+              json.dump(site, f, indent=2, ensure_ascii=False); f.write("\n")
+          print(f"Added {len(new)} alert(s):")
+          for a in new: print(f"  {a['added']}  {a['country']}: {a['title']}")
+          PY
+
+      - name: Rebuild the pages
+        run: python3 tools/build.py
+
+      - name: Check only the alert files changed
+        run: |
+          git status --porcelain
+          BAD=$(git status --porcelain | awk '{print $2}' | grep -vxE 'tools/alerts.json|index.html|offset-alerts.html' || true)
+          if [ -n "$BAD" ]; then echo "Stopping: unexpected files changed: $BAD"; exit 1; fi
+
+      - name: Publish
+        run: |
+          if git diff --quiet; then echo "Nothing changed on ${{ matrix.branch }}."; exit 0; fi
+          git config user.name "Capital alerts bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -am "Offset alerts: automatic weekly update ($(python3 -c "import json;print(json.load(open('tools/alerts.json'))['updated'])"))"
+          git push origin HEAD:${{ matrix.branch }}
