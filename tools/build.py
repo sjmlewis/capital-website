@@ -44,6 +44,7 @@ p{margin:0}
 :focus-visible{outline:2px solid var(--brass);outline-offset:3px}
 [id]{scroll-margin-top:96px}
 .nowrap{white-space:nowrap}
+[hidden]{display:none!important}
 .skip{position:absolute;left:-999px;top:8px;background:var(--brass);color:var(--navy);padding:8px 12px;border-radius:2px;z-index:50}
 .skip:focus{left:8px}
 
@@ -174,6 +175,7 @@ p{margin:0}
 .note b{color:var(--navy);font-weight:600}
 .section.stone .note{background:var(--paper)}
 .facts{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
+.prose .facts{padding-left:0;display:block}
 .facts li{display:grid;grid-template-columns:minmax(120px,180px) 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--rule)}
 .facts b{font:600 13px/1.4 var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--brass);padding-top:3px}
 .exp{list-style:none;margin:clamp(28px,4vw,40px) 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px clamp(24px,3vw,44px)}
@@ -233,17 +235,109 @@ p{margin:0}
 .panel .actions .btn{margin-top:0}
 .pagehead .actions{margin-top:30px}
 
-/* ---------- Course modules (training page) ---------- */
-.modules{list-style:none;margin:clamp(32px,4vw,48px) 0 0;padding:0;border-top:1px solid var(--rule)}
-.modules>li{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:16px clamp(24px,5vw,80px);padding:clamp(26px,3vw,36px) 0;border-bottom:1px solid var(--rule)}
-.modules .num{display:block;font:600 12.5px/1.3 var(--body);letter-spacing:.09em;text-transform:uppercase;color:var(--brass);margin-bottom:12px}
-.modules h3{font-size:clamp(22px,2.1vw,26px);line-height:1.25;color:var(--navy)}
-.modules .focus{margin-top:10px;color:var(--ink-soft);font-size:16px;max-width:44ch}
-.modules ul{list-style:none;margin:0;padding:0;display:grid;gap:14px}
-.modules ul li{position:relative;padding-left:22px;font-size:16px;color:var(--ink-soft)}
-.modules ul li::before{content:"";position:absolute;left:2px;top:.62em;width:7px;height:7px;background:var(--brass);transform:rotate(45deg)}
-.modules ul b{font-weight:600;color:var(--navy)}
-@media (max-width:900px){.modules>li{grid-template-columns:1fr}}
+/* ---------- Training page ---------- */
+.figs{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:24px clamp(16px,2.4vw,32px)}
+.figs li{border-top:1px solid var(--rule);padding-top:16px;min-width:0}
+.figs b{display:block;font-family:var(--display);font-weight:400;font-size:clamp(38px,3.6vw,50px);line-height:1;color:var(--navy);font-variant-numeric:lining-nums}
+.figs span{display:block;margin-top:10px;font-size:15.5px;line-height:1.45;color:var(--ink-soft)}
+@media (max-width:1100px){.figs{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:560px){.figs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.steps.four-up{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (min-width:901px) and (max-width:1100px){.steps.four-up{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:900px){.steps.four-up{grid-template-columns:1fr}}
+.dlist{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.dlist li{position:relative;padding-left:22px;font-size:16.5px;line-height:1.55;color:var(--ink)}
+.dlist li::before{content:"";position:absolute;left:2px;top:.62em;width:7px;height:7px;background:var(--brass);transform:rotate(45deg)}
+.col .dlist{margin-top:16px}
+/* the offset life cycle, module by module */
+.path{list-style:none;margin:clamp(32px,4vw,44px) 0 0;padding:0;display:grid;grid-template-columns:repeat(7,minmax(0,1fr))}
+.path li{position:relative;padding:30px 14px 0 0;min-width:0}
+.path li::before{content:"";position:absolute;left:1px;top:3px;width:12px;height:12px;background:var(--brass);transform:rotate(45deg)}
+.path li::after{content:"";position:absolute;left:26px;right:10px;top:9px;height:1px;background:var(--brass-light)}
+.path li:last-child::after{display:none}
+.path .pm{display:block;font:600 12px/1.3 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--brass)}
+.path b{display:block;margin-top:6px;font-family:var(--display);font-weight:400;font-size:19px;line-height:1.25;color:var(--navy)}
+@media (max-width:1000px){
+  .path{grid-template-columns:1fr}
+  .path li{padding:0 0 18px 34px}
+  .path li::before{top:5px}
+  .path li::after{left:7px;right:auto;top:24px;bottom:2px;width:1px;height:auto}
+  .path b{margin-top:2px}
+}
+/* modules: one card each, opened for detail */
+.modhead{display:flex;justify-content:space-between;align-items:baseline;gap:12px 24px;flex-wrap:wrap;margin-top:clamp(36px,4.5vw,52px)}
+.modnote{font-size:15.5px;color:var(--ink-soft)}
+.linkbtn{font:600 15px var(--body);color:var(--navy);background:none;border:0;border-bottom:1.5px solid var(--brass);padding:0 0 2px;cursor:pointer}
+.linkbtn:hover{color:var(--brass)}
+.mods{display:grid;gap:10px;margin-top:16px}
+.mod{background:var(--paper);border:1px solid var(--rule);border-radius:2px}
+.mod[open]{box-shadow:inset 3px 0 0 var(--brass)}
+.mod summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:150px minmax(0,1fr) 22px;gap:4px 24px;align-items:start;padding:22px clamp(18px,2.6vw,30px)}
+.mod summary::-webkit-details-marker{display:none}
+.mod summary:hover .mtitle{color:var(--navy-mid)}
+.mnum{font:600 12.5px/1.3 var(--body);letter-spacing:.09em;text-transform:uppercase;color:var(--brass);padding-top:7px}
+.mhead{min-width:0}
+.mtitle{font-size:clamp(21px,2vw,25px);line-height:1.25;color:var(--navy)}
+.mq{display:block;margin-top:6px;font-size:16.5px;color:var(--ink-soft)}
+.mtog{position:relative;width:22px;height:22px;margin-top:5px}
+.mtog::before,.mtog::after{content:"";position:absolute;left:4px;right:4px;top:10px;height:2px;background:var(--brass);transition:transform .2s}
+.mtog::after{transform:rotate(90deg)}
+.mod[open] .mtog::after{transform:rotate(0deg)}
+.mbody{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:22px clamp(24px,4vw,56px);padding:0 clamp(18px,2.6vw,30px) 26px calc(174px + clamp(18px,2.6vw,30px))}
+.mbody h4{margin:0 0 12px;font:600 12.5px/1.3 var(--body);letter-spacing:.09em;text-transform:uppercase;color:var(--ink-soft)}
+.mfacts{margin:0;display:grid;gap:12px}
+.mfacts div{border-top:1px solid var(--rule);padding-top:10px}
+.mfacts dt{font:600 12.5px/1.3 var(--body);letter-spacing:.09em;text-transform:uppercase;color:var(--brass)}
+.mfacts dd{margin:4px 0 0;font-size:16.5px;line-height:1.5;color:var(--navy)}
+@media (max-width:900px){
+  .mod summary{grid-template-columns:minmax(0,1fr) 22px;row-gap:8px}
+  .mnum{grid-column:1;grid-row:1;padding-top:2px}
+  .mtog{grid-column:2;grid-row:1;margin-top:0}
+  .mhead{grid-column:1 / -1;grid-row:2}
+  .mbody{grid-template-columns:1fr;padding-left:clamp(18px,2.6vw,30px)}
+}
+/* the capstone: a navy feature section */
+.section.navy{background:linear-gradient(118deg,var(--navy-mid) 0%,var(--navy) 50%,var(--navy-deep) 100%);color:var(--on-navy)}
+.section.navy h2{color:#fff}
+.section.navy .sub{color:var(--on-navy-soft)}
+.section.navy .prose{color:var(--on-navy)}
+.section.navy .facts{border-top-color:rgba(255,255,255,.18);margin-top:8px}
+.section.navy .facts li{border-bottom-color:rgba(255,255,255,.18)}
+.section.navy .facts b{color:var(--brass-light)}
+.section.navy .facts span{color:var(--on-navy)}
+/* the two formats */
+.sched{list-style:none;margin:18px 0 0;padding:0;border-top:1px solid var(--rule)}
+.sched li{display:grid;grid-template-columns:minmax(92px,120px) minmax(0,1fr);gap:12px;padding:10px 0;border-bottom:1px solid var(--rule);font-size:16px}
+.sched b{font-weight:600;color:var(--navy)}
+.sched span{color:var(--ink-soft)}
+/* the self-test: one question at a time once the script runs; all questions with answers if it does not */
+.quiz{background:var(--paper);border:1px solid var(--rule);border-top:3px solid var(--brass);border-radius:2px;padding:clamp(20px,3vw,32px);min-width:0}
+.qtop{display:flex;justify-content:space-between;gap:12px;font:600 12.5px/1.3 var(--body);letter-spacing:.09em;text-transform:uppercase;color:var(--brass);margin-bottom:16px}
+.qtally{color:var(--ink-soft)}
+.qlist{list-style:none;margin:0;padding:0}
+.q+.q{margin-top:28px;padding-top:24px;border-top:1px solid var(--rule)}
+.quiz.js .q{display:none}
+.quiz.js .q.current{display:block;margin-top:0;padding-top:0;border-top:0}
+.qtext{font-family:var(--display);font-size:clamp(19px,1.7vw,22px);line-height:1.38;color:var(--navy)}
+.qtext:focus{outline:none}
+.opts{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:10px}
+.opt{display:grid;grid-template-columns:28px minmax(0,1fr);gap:12px;align-items:center;width:100%;text-align:left;font:inherit;font-size:16.5px;line-height:1.45;color:var(--ink);background:var(--paper);border:1.5px solid var(--rule);border-radius:2px;padding:11px 14px;cursor:pointer;transition:border-color .15s,background-color .15s}
+.opt:hover:not(:disabled){border-color:var(--navy)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.opt .ol{display:flex;align-items:center;justify-content:center;width:28px;height:28px;border:1.5px solid var(--rule);border-radius:50%;font:600 13px/1 var(--body);color:var(--navy);background:var(--paper)}
+.opt.right{border-color:#2E6B4F;background:#EEF5F1}
+.opt.right .ol{background:#2E6B4F;border-color:#2E6B4F;color:#fff}
+.opt.wrong{border-color:#A33D2F;background:#FBEFEC}
+.opt.wrong .ol{background:#A33D2F;border-color:#A33D2F;color:#fff}
+.why{margin-top:16px;padding:14px 16px;background:var(--stone);border-left:3px solid var(--brass);font-size:16px;line-height:1.55;color:var(--ink)}
+.why b{color:var(--navy);font-weight:600}
+.quiz.js .why{display:none}
+.quiz.js .q.answered .why{display:block}
+.qnav{margin-top:20px;display:flex;justify-content:flex-end}
+.qbig{font-family:var(--display);font-size:clamp(26px,2.6vw,32px);line-height:1.2;color:var(--navy)}
+.qmsg{margin-top:10px;font-size:17px;color:var(--ink-soft)}
+.qresult .actions{margin-top:22px}
+.qresult:focus{outline:none}
 
 /* ---------- Call to action band ---------- */
 .band{background:var(--navy);color:var(--on-navy);border-top:4px solid var(--brass)}
@@ -286,6 +380,76 @@ JS = r"""
       else{done(false);}
     });
   });
+
+  // Training page: open or close every module at once, and open a module named in the address
+  var ea=document.getElementById('expandall'),mods=document.querySelectorAll('details.mod');
+  if(ea&&mods.length){
+    ea.hidden=false;
+    ea.addEventListener('click',function(){
+      var o=ea.getAttribute('aria-expanded')!=='true';
+      Array.prototype.forEach.call(mods,function(d){d.open=o;});
+      ea.setAttribute('aria-expanded',o?'true':'false');
+      ea.textContent=o?'Close all modules':'Open all modules';
+    });
+  }
+  if(/^#module-\d$/.test(location.hash)){var md=document.querySelector(location.hash);if(md)md.open=true;}
+
+  // Training page: the self-test, one question at a time
+  var qz=document.getElementById('quiz');
+  if(qz){
+    var each=Array.prototype.forEach,qs=qz.querySelectorAll('.q'),total=qs.length,cur=0,score=0,
+        list=qz.querySelector('.qlist'),nav=qz.querySelector('.qnav'),next=qz.querySelector('.qnext'),
+        res=qz.querySelector('.qresult'),cnt=qz.querySelector('.qcount'),tally=qz.querySelector('.qtally'),
+        live=qz.querySelector('.qlive');
+    qz.classList.add('js');
+    // Bring the top of the quiz into view below the sticky header, then move focus without a second jump
+    var nb=document.querySelector('.nav');
+    var bring=function(el){
+      var off=(nb?nb.getBoundingClientRect().bottom:0)+16,top=qz.getBoundingClientRect().top;
+      if(top<off||top>window.innerHeight/3)window.scrollBy(0,top-off);
+      try{el.focus({preventScroll:true});}catch(e){el.focus();}
+    };
+    var show=function(i){
+      each.call(qs,function(q,k){q.classList.toggle('current',k===i);});
+      cnt.textContent='Question '+(i+1)+' of '+total;nav.hidden=true;
+    };
+    var reset=function(){
+      cur=0;score=0;tally.textContent='';res.hidden=true;list.hidden=false;
+      each.call(qs,function(q){
+        q.classList.remove('answered');
+        var v=q.querySelector('.verdict');v.textContent=v.getAttribute('data-label');
+        each.call(q.querySelectorAll('.opt'),function(b){b.disabled=false;b.classList.remove('right','wrong');});
+      });
+      show(0);
+    };
+    each.call(qs,function(q){
+      var ans=+q.getAttribute('data-answer'),v=q.querySelector('.verdict'),ex=q.querySelector('.expl');
+      v.setAttribute('data-label',v.textContent);
+      q.addEventListener('click',function(e){
+        var b=e.target.closest?e.target.closest('.opt'):null;
+        if(!b||q.classList.contains('answered'))return;
+        var ok=(+b.getAttribute('data-i'))===ans;
+        q.classList.add('answered');
+        each.call(q.querySelectorAll('.opt'),function(x,k){x.disabled=true;if(k===ans)x.classList.add('right');});
+        if(ok){score++;}else{b.classList.add('wrong');}
+        v.textContent=ok?'Correct.':'Not quite. '+v.getAttribute('data-label');
+        tally.textContent=score+' correct';
+        live.textContent=v.textContent+' '+ex.textContent;
+        next.textContent=cur===total-1?'See your score':'Next question';
+        nav.hidden=false;next.focus();
+      });
+    });
+    next.addEventListener('click',function(){
+      if(cur<total-1){cur++;show(cur);bring(qs[cur].querySelector('.qtext'));return;}
+      list.hidden=true;nav.hidden=true;cnt.textContent='Your result';
+      var band=score===total?'top':(score>=total-2?'mid':'low');
+      res.querySelector('.qbig').textContent='You scored '+score+' out of '+total+'.';
+      each.call(res.querySelectorAll('.qmsg'),function(p){p.hidden=p.getAttribute('data-band')!==band;});
+      res.hidden=false;bring(res);
+    });
+    qz.querySelector('.qagain').addEventListener('click',function(){reset();bring(qs[0].querySelector('.qtext'));});
+    reset();
+  }
 
   // Engineering-drawing texture behind navy heads (generated, deterministic)
   var c=document.getElementById('drawing');if(!c)return;
@@ -572,7 +736,7 @@ PAGES["index.html"] = dict(title="Home", desc="Capital helps overseas defence co
   <p class="sub">Two ways Capital brings people together around industrial participation, alongside the platform.</p>
   <div class="cols two-up">
     <div class="col"><h3>UK Industrial <span class="nowrap">Co-operation</span> Roundtable</h3><p>An informal quarterly meeting in London for UK and international defence companies with UK industrial participation commitments, with government officials invited to take part. The first meeting takes place in Q4 2026.</p><p><a href="uk-icr.html">About UK-ICR</a></p></div>
-    <div class="col"><h3>Offset practitioner course</h3><p>A practitioner's masterclass for people new to offset and industrial participation, online over six weeks or in-house over three to four days.</p><p><a href="training.html">See the course outline</a></p></div>
+    <div class="col"><h3>Offset practitioner course</h3><p>A practitioner's masterclass for people new to offset and industrial participation: eight modules, a UK elective and a live negotiation simulation, online over nine weeks or in-house over three days.</p><p><a href="training.html">See the course outline</a></p></div>
   </div>
 </div></section>
 {band()}""")
@@ -743,58 +907,269 @@ PAGES["advisory.html"] = dict(title="Advisory services", desc="Direct advisory s
 <section class="section stone" aria-labelledby="also-title"><div class="wrap">
   <span class="kicker" aria-hidden="true"></span><h2 class="h2" id="also-title">Training and the roundtable</h2>
   <div class="cols two-up">
-    <div class="col"><h3>Offset practitioner course</h3><p>A practitioner's masterclass for people new to offset and industrial participation, online over six weeks or in-house over three to four days.</p><p><a href="training.html">See the course outline</a></p></div>
+    <div class="col"><h3>Offset practitioner course</h3><p>A practitioner's masterclass for people new to offset and industrial participation: eight modules, a UK elective and a live negotiation simulation, online over nine weeks or in-house over three days.</p><p><a href="training.html">See the course outline</a></p></div>
     <div class="col"><h3>UK Industrial <span class="nowrap">Co-operation</span> Roundtable</h3><p>An informal quarterly meeting in London for UK and international defence companies with UK industrial participation commitments, with government officials invited to take part. The first meeting takes place in Q4 2026.</p><p><a href="uk-icr.html">About UK-ICR</a></p></div>
   </div>
 </div></section>
 {band("Discuss a project", "Tell us about your programme and target market, and we will come back to you within two working days.", "Contact Capital", "contact.html")}""")
 
-PAGES["training.html"] = dict(title='Offset practitioner course', desc="Strategic Industrial Participation and Offsets: A Practitioner's Masterclass. A six-week online course, or a three to four-day in-house intensive, for people new to offset and industrial participation.", body=pagehead(
-    'Strategic Industrial Participation &amp; Offsets',
+# ---------------------------------------------------------------- practitioner course
+# The public course outline shows structure, topics and formats only. Teaching notes, model answers,
+# the Project Halcyon scenario and the course quiz questions stay in the paid materials.
+COURSE_SUBJECT = "Offset course: register interest"
+
+COURSE_FIGS = [
+    ("8", "core modules, plus a UK elective"),
+    ("6", "public-record case studies"),
+    ("13", "national offset regimes compared"),
+    ("72", "knowledge-check questions"),
+    ("85", "terms in the course glossary"),
+    ("1", "live negotiation to finish"),
+]
+
+COURSE_OUTCOMES = [
+    ("Explain the deal", "What offset, industrial participation and localisation are, why governments use them and how they differ by country."),
+    ("Read a policy", "Pick out the clauses in a national offset policy that drive cost, risk and strategy."),
+    ("Build a strategy", "Shape an offset strategy for a bid, and judge how it changes the chance of winning."),
+    ("Place work locally", "Design direct offset and localisation projects that protect quality and schedule."),
+    ("Transfer technology safely", "Design technology, research, investment and training projects that earn credit, protect core intellectual property and stay within export controls."),
+    ("Do the numbers", "Calculate credit, multipliers, banked credit, penalty exposure and the true cost of an offset programme."),
+    ("Negotiate", "Prepare for and conduct a negotiation with an offset authority."),
+    ("Deliver cleanly", "Run a programme to close-out: governance, evidence, audits, reporting and recovery, within anti-bribery law."),
+]
+
+COURSE_PATH = [
+    ("Module 1", "Before you start"),
+    ("Module 2", "Read the market"),
+    ("Module 3", "Plan and propose"),
+    ("Modules 4 and 5", "Design the projects"),
+    ("Module 6", "Value and cost"),
+    ("Module 7", "Agree the terms"),
+    ("Module 8", "Deliver, prove and close"),
+]
+
+COURSE_MODULES = [
+    dict(num="Module 1", title="Foundations", q="What is offset, and why do governments want it?",
+         topics=["What offset is, and the names countries use for it",
+                 "Direct offset, indirect offset and countertrade",
+                 "Why governments demand offset, and the case against it",
+                 "The players, and what each of them wants"],
+         facts=[("Case study", "The F-16 ‘deal of the century’, 1975"),
+                ("Exercise", "Offset or not? Classifying ten proposed activities")]),
+    dict(num="Module 2", title="The rules of the game", q="What do the rules allow, demand and forbid?",
+         topics=["Trade law and the security exception: the myth of the open market",
+                 "Anatomy of an offset regime: a twelve-point checklist",
+                 "Three families of regime, compared country by country",
+                 "The hard limits: bribery, export control, sanctions and competition law"],
+         facts=[("Case study", "Europe’s U-turn on offsets"),
+                ("Exercise", "Decode a national offset policy")]),
+    dict(num="Module 3", title="Strategy and the bid", q="How do we win with an offset package we can afford?",
+         topics=["Starting early: offset in the capture plan",
+                 "Reading your leverage",
+                 "Building the strategy and the proposal",
+                 "Getting the bid approved: cost, risk and governance"],
+         facts=[("Case study", "Switzerland’s F-35 offset and its regional key"),
+                ("Exercise", "Strategy on a page")]),
+    dict(num="Module 4", title="Direct offsets and localisation", q="How do we place work locally without hurting quality or schedule?",
+         topics=["From burden to asset: localisation that wins bids",
+                 "The forms of direct offset, from build-to-print to licensed production",
+                 "Supply chain reality checks: qualifying a new local supplier",
+                 "Structuring the deal: workshare, quality and risk"],
+         facts=[("Case study", "Poland’s K2 tank localisation"),
+                ("Exercise", "A supplier development plan")]),
+    dict(num="Module 5", title="Technology transfer and indirect offsets", q="How do we earn credit beyond the platform without giving away the crown jewels?",
+         topics=["What governments ask for, and what is commercially viable",
+                 "Protecting intellectual property inside export controls",
+                 "Valuing technology transfer: the cost, market and income approaches",
+                 "Investment, joint ventures, research, training and export support"],
+         facts=[("Case study", "Korea, from F-16 kits to aircraft exports"),
+                ("Exercise", "The technology package: transfer, license or decline")]),
+    dict(num="Module 6", title="The mathematics of offsets", q="What is each project worth, what will it cost, and what if we fall short?",
+         topics=["How credit is valued",
+                 "Multipliers, caps and discount factors",
+                 "Banking, pre-crediting and transfers",
+                 "Penalty exposure and the true cost of offset"],
+         facts=[("Worked example", "A supplier’s credit and cost model"),
+                ("Exercise", "Rebalance the plan, using the course spreadsheet")]),
+    dict(num="Module 7", title="Negotiation across cultures", q="How do we agree terms we can live with?",
+         topics=["The practitioner’s edge: why standard tactics fail",
+                 "The offset agreement, clause by clause",
+                 "Regional approaches: the Gulf, Asia, Europe and North America",
+                 "Redirecting the impossible ask"],
+         facts=[("Case study", "The radar that could not move, drawn from practice"),
+                ("Exercise", "The negotiation plan")]),
+    dict(num="Module 8", title="Delivery, audit and recovery", q="How do we deliver, prove it and recover when things slip?",
+         topics=["Running an offset programme",
+                 "The audit trail: causality, additionality and evidence",
+                 "When delivery falls short",
+                 "Penalties, disputes and close-out",
+                 "Integrity in delivery"],
+         facts=[("Case study", "South Africa’s arms deal offsets"),
+                ("Exercise", "Year 4: recovering a programme under pressure")]),
+    dict(num="Module 9 · Elective", title="The UK lens", q="What could the UK ask for, and how should companies prepare?",
+         topics=["The UK’s past experience of industrial participation",
+                 "What the UK has said since 2025",
+                 "How a UK regime could work: a worked model",
+                 "How foreign suppliers and UK companies should prepare"],
+         facts=[("Case study", "Two designs compared"),
+                ("Format", "One 90-minute session for UK-focused groups")]),
+]
+
+# A short public self-test. These questions are deliberately separate from the course's own knowledge checks.
+COURSE_QUIZ = [
+    dict(q="A sales agent you hired bribes an official to speed up approval of your offset project. Nobody at your company knew. Under the UK Bribery Act, your company:",
+         opts=["Is safe, because nobody at the company knew",
+               "Is liable only if the bribe was paid in the UK",
+               "Can be guilty of failing to prevent bribery, unless it had adequate procedures",
+               "Is liable only if a director approved the payment"],
+         a=2, why="Section 7 makes a company liable when someone performing services for it pays a bribe to win or keep business for it, anywhere in the world. Its only defence is adequate procedures to prevent bribery."),
+    dict(q="A local supplier invoices you £10m for new work. 40% of its value is imported material, and £2m of the order is business you already place with that supplier every year. Under a typical value-added rule, how much is eligible for credit before any multiplier?",
+         opts=["£10m", "£8m", "£6m", "£4.8m"],
+         a=3, why="Many regimes credit only new business, and only the share of value added locally: (£10m − £2m) × 60% = £4.8m."),
+    dict(q="Under Poland’s Offset Act, what penalty applies to an obligation left unperformed?",
+         opts=["100% of the unperformed value", "5% of the shortfall", "10% of the shortfall", "50% of the shortfall"],
+         a=0, why="Poland’s penalty equals the unperformed obligation, and the supplier’s security must be at least the offset value. Many other regimes charge between 5% and 15%."),
+    dict(q="Since 2026, which activity earns the highest multiplier under Canada’s Industrial and Technological Benefits policy?",
+         opts=["Buying Canadian-made components",
+               "Indigenous workforce development",
+               "Investment in Canadian-owned intellectual property",
+               "Direct work with small and medium-sized firms"],
+         a=1, why="Canada raised Indigenous workforce development to ten times its value in 2026, its largest multiplier. Investment in Canadian-owned intellectual property earns five times, and direct work with small firms twice."),
+    dict(q="Switzerland set the offset on its F-35A purchase at 60% of the contract value. Which rule also decides where the work goes?",
+         opts=["At least half must go to small firms",
+               "Civil exports earn double credit",
+               "All of it must be direct work on the aircraft",
+               "It must be shared out across the language regions"],
+         a=3, why="Swiss offsets follow a regional key: 65% to German-speaking, 30% to French-speaking and 5% to Italian-speaking Switzerland."),
+    dict(q="Your offset project would share US-origin technical data for a defence item with a foreign partner. Which approval do you normally need before sharing it?",
+         opts=["A technical assistance agreement approved by the US State Department",
+               "Your partner’s signature on a non-disclosure agreement",
+               "None, once the data is more than ten years old",
+               "An export licence from the buyer’s government"],
+         a=0, why="Under the US International Traffic in Arms Regulations, defence services and technical data need State Department approval, usually through a technical assistance agreement, before they are shared."),
+]
+
+def course_figs_html():
+    return "".join(f'<li><b>{n}</b><span>{html.escape(t)}</span></li>' for n, t in COURSE_FIGS)
+
+def course_outcomes_html():
+    return "".join(f'<li><div><b>{html.escape(b)}</b><p>{html.escape(p)}</p></div></li>' for b, p in COURSE_OUTCOMES)
+
+def course_path_html():
+    return "".join(f'<li><span class="pm">{html.escape(m)}</span><b>{html.escape(s)}</b></li>' for m, s in COURSE_PATH)
+
+def course_modules_html():
+    out = []
+    for i, m in enumerate(COURSE_MODULES, 1):
+        topics = "".join(f"<li>{html.escape(t)}</li>" for t in m["topics"])
+        facts = "".join(f"<div><dt>{html.escape(k)}</dt><dd>{html.escape(v)}</dd></div>" for k, v in m["facts"])
+        is_open = " open" if i == 1 else ""
+        out.append(f"""<details class="mod" id="module-{i}"{is_open}>
+      <summary><span class="mnum">{html.escape(m['num'])}</span><span class="mhead"><h3 class="mtitle">{html.escape(m['title'])}</h3><span class="mq">{html.escape(m['q'])}</span></span><span class="mtog" aria-hidden="true"></span></summary>
+      <div class="mbody"><div><h4>What it covers</h4><ul class="dlist">{topics}</ul></div><div><h4>How it is taught</h4><dl class="mfacts">{facts}</dl></div></div>
+    </details>""")
+    return "\n    ".join(out)
+
+def course_quiz_html():
+    letters = "ABCD"
+    qs = []
+    for q in COURSE_QUIZ:
+        opts = "".join(f'<li><button type="button" class="opt" data-i="{j}"><span class="ol" aria-hidden="true">{letters[j]}</span><span>{html.escape(o)}</span></button></li>'
+                       for j, o in enumerate(q["opts"]))
+        qs.append(f'<li class="q" data-answer="{q["a"]}"><p class="qtext" tabindex="-1">{html.escape(q["q"])}</p>'
+                  f'<ul class="opts">{opts}</ul>'
+                  f'<p class="why"><b class="verdict">Answer: {letters[q["a"]]}.</b> <span class="expl">{html.escape(q["why"])}</span></p></li>')
+    n = len(COURSE_QUIZ)
+    return f"""<div class="quiz" id="quiz">
+      <div class="qtop"><span class="qcount">{n} questions</span><span class="qtally"></span></div>
+      <ol class="qlist">{"".join(qs)}</ol>
+      <p class="vh qlive" aria-live="polite"></p>
+      <div class="qnav" hidden><button type="button" class="btn btn-navy qnext">Next question</button></div>
+      <div class="qresult" hidden tabindex="-1">
+        <p class="qbig"></p>
+        <p class="qmsg" data-band="top" hidden>You clearly know the field. The in-house course can bring the rest of your team up to the same standard.</p>
+        <p class="qmsg" data-band="mid" hidden>A solid base, with a gap or two. The course fills them, and adds the negotiating and delivery judgement that comes from practice.</p>
+        <p class="qmsg" data-band="low" hidden>Many people new to offset score here. The course was written for exactly that starting point.</p>
+        <div class="actions"><a class="btn btn-brass" href="#register">Register your interest</a><button type="button" class="btn btn-outline qagain">Try again</button></div>
+      </div>
+    </div>"""
+
+PAGES["training.html"] = dict(title="Offset practitioner course", desc="Strategic Industrial Participation and Offsets: a practitioner's masterclass for people new to offset and industrial participation. Eight modules, a UK elective and a live negotiation simulation, online over nine weeks or in-house over three days.", body=pagehead(
+    "Strategic Industrial Participation &amp; Offsets",
     "A practitioner's masterclass for people new to offset and industrial participation. It sets academic theory aside and concentrates on the commercial realities: winning bids, protecting margins and delivering what was promised.",
-    ['Training'],
-    '<div class="actions"><a class="btn btn-brass" href="#register">Register your interest</a><a class="btn btn-ghost" href="#modules">See the six modules</a></div><p class="audience">Six weeks online, or three to four days in-house for your team</p>') + f"""
-<section class="section" aria-labelledby="for-title"><div class="wrap two">
+    ["Training"],
+    '<div class="actions"><a class="btn btn-brass" href="#register">Register your interest</a><a class="btn btn-ghost" href="#modules">See the course structure</a></div>'
+    '<p class="audience">Online over nine weeks, or in-house over three days for your team</p>') + f"""
+<section class="section tight" aria-label="The course at a glance"><div class="wrap">
+  <ul class="figs">{course_figs_html()}</ul>
+</div></section>
+
+<section class="section stone" aria-labelledby="for-title"><div class="wrap two">
   <div><span class="kicker" aria-hidden="true"></span><h2 id="for-title">Who the course is for</h2></div>
   <div class="prose">
-    <p>Corporate executives, bid managers and procurement professionals, and in particular people taking on offset or industrial participation responsibilities for the first time.</p>
-    <p>It suits defence and aerospace companies bidding into markets with offset or industrial participation requirements, and suppliers that want to understand the commitments their customers have made.</p>
+    <p>People taking on offset or industrial participation responsibilities for the first time: bid and capture managers, newly appointed offset managers, commercial, contracts and procurement staff, programme managers, finance staff who cost and report offset, and executives who approve bids.</p>
+    <p>It suits defence and aerospace companies bidding into markets with offset requirements, their suppliers, and UK companies and government staff who work with foreign suppliers. No prior knowledge of offset is needed.</p>
     <div class="note"><b>Course aim.</b> To turn offset obligations from a compliance cost into a competitive advantage that wins bids and protects margins.</div>
   </div>
 </div></section>
 
-<section class="section stone" id="modules" aria-labelledby="mod-title"><div class="wrap">
-  <span class="kicker" aria-hidden="true"></span><h2 class="h2" id="mod-title">Six modules</h2>
-  <p class="sub">Each module is built around a case study from real programmes, worked through in a live session.</p>
-  <ol class="modules">
-    <li><div><span class="num">Module 1</span><h3>The commercial reality of global offsets</h3><p class="focus">How offset markets really operate, beyond the legal texts.</p></div><ul><li><b>The myth of the open market.</b> How governments use structural barriers, not only the WTO Government Procurement Agreement, to secure local economic benefit.</li><li><b>Regulated and transactional markets.</b> Working in tightly regulated markets such as the EU, and in transactional markets outside the agreement, such as Saudi Arabia and Malaysia.</li><li><b>The capability override.</b> Recognising when a government&#x27;s urgent need for your capability outweighs its own preference for local industry.</li></ul></li>
-    <li><div><span class="num">Module 2</span><h3>Localisation as a competitive advantage</h3><p class="focus">Direct offsets: turning local content requirements, civil and defence, into a reason to choose you.</p></div><ul><li><b>From burden to asset.</b> How local assembly or a regional headquarters can outweigh a lower price from competitors that have not localised.</li><li><b>Supply chain reality checks.</b> The practicalities of vetting local suppliers and raising them to aerospace and defence standards.</li><li><b>Structuring the deal.</b> Direct offset packages that meet local political goals while you keep control of quality.</li></ul></li>
-    <li><div><span class="num">Module 3</span><h3>Technology transfer and indirect offsets</h3><p class="focus">Meeting socio-economic obligations without giving away your core technology.</p></div><ul><li><b>Defining technology transfer.</b> What governments ask for, compared with what is commercially viable to provide.</li><li><b>Protecting intellectual property.</b> Transfer agreements, training programmes and university partnerships that earn credit while safeguarding core IP.</li><li><b>Foreign direct investment.</b> Joint ventures and equity investment as ways to satisfy industrial participation authorities.</li></ul></li>
-    <li><div><span class="num">Module 4</span><h3>The mathematics of offsets</h3><p class="focus">Valuation and multipliers: the quantitative skills that protect the bottom line.</p></div><ul><li><b>Credit valuation.</b> How national authorities calculate the credit value of a project, compared with the cash actually spent.</li><li><b>Multipliers.</b> Securing higher multipliers, for example £4 of credit for every £1 spent, by aligning projects with a country&#x27;s most urgent economic goals.</li><li><b>Offset banking.</b> Managing surplus credits and applying them to future campaigns to lower the cost of later bids.</li></ul></li>
-    <li><div><span class="num">Module 5</span><h3>Cultural execution and negotiation</h3><p class="focus">The human side of closing an offset agreement in different parts of the world.</p></div><ul><li><b>The practitioner&#x27;s edge.</b> Why standard corporate negotiating tactics fail with sovereign industrial participation authorities.</li><li><b>Regional approaches.</b> How pitching an offset package differs in the Middle East, North America and Southeast Asia.</li><li><b>Redirecting the request.</b> Steering a government agency from an unworkable demand towards a viable alternative, without losing the bid.</li></ul></li>
-    <li><div><span class="num">Module 6</span><h3>Crisis management, audits and penalty avoidance</h3><p class="focus">Managing risk, and what to do when delivery falls short.</p></div><ul><li><b>The audit trail.</b> Internal reporting that proves causality and additionality to sceptical government auditors.</li><li><b>Managing underperformance.</b> Renegotiating milestones and substituting projects when a local partner fails to deliver.</li><li><b>Avoiding penalties.</b> Legitimate commercial and contractual routes to avoid liquidated damages or exclusion from future procurement.</li></ul></li>
-  </ol>
+<section class="section" id="test" aria-labelledby="test-title"><div class="wrap two">
+  <div><span class="kicker" aria-hidden="true"></span><h2 id="test-title">How much do you already know?</h2>
+    <p class="sub">Six questions that experienced offset managers should get right. It takes about two minutes, and nothing you choose is recorded.</p></div>
+  {course_quiz_html()}
 </div></section>
 
-<section class="section" aria-labelledby="formats-title"><div class="wrap">
-  <span class="kicker" aria-hidden="true"></span><h2 class="h2" id="formats-title">Two ways to take the course</h2>
-  <div class="cols two-up">
-    <div class="col"><span class="meta">Six weeks</span><h3>Online cohort</h3><p>One module a week. Each week brings a recorded lecture of 60 to 90 minutes, required reading drawn from actual government offset guidelines, and a live 60-minute online session working through that week's case study.</p></div>
-    <div class="col"><span class="meta">Three or four days</span><h3>In-house intensive</h3><p>Delivered to your team, two modules a day over three days. An optional fourth day is a live negotiation exercise: your team negotiates a mock £500m offset package with a demanding procurement agency, played by the course leader.</p></div>
+<section class="section stone" aria-labelledby="out-title"><div class="wrap">
+  <span class="kicker" aria-hidden="true"></span><h2 class="h2" id="out-title">What participants will be able to do</h2>
+  <ol class="steps four-up">{course_outcomes_html()}</ol>
+</div></section>
+
+<section class="section" id="modules" aria-labelledby="mod-title"><div class="wrap">
+  <span class="kicker" aria-hidden="true"></span><h2 class="h2" id="mod-title">Course structure</h2>
+  <p class="sub">Eight core modules follow the life of an offset obligation, from the first sight of a requirement to the completion letter. Every exercise builds the same fictional bid, so the closing negotiation draws on all of it.</p>
+  <ol class="path" aria-label="The offset life cycle, module by module">{course_path_html()}</ol>
+  <div class="modhead"><p class="modnote">Open a module to see what it covers and how it is taught.</p><button type="button" class="linkbtn" id="expandall" aria-expanded="false" hidden>Open all modules</button></div>
+  <div class="mods">
+    {course_modules_html()}
   </div>
 </div></section>
 
-<section class="section stone" aria-labelledby="out-title"><div class="wrap two">
-  <div><span class="kicker" aria-hidden="true"></span><h2 id="out-title">What participants will be able to do</h2></div>
+<section class="section navy" id="capstone" aria-labelledby="cap-title"><div class="wrap two">
+  <div><span class="kicker" aria-hidden="true"></span><h2 id="cap-title">The capstone: Project Halcyon</h2>
+    <p class="sub">A live negotiation that draws on every module.</p></div>
   <div class="prose">
-    <ul>
-      <li>Read an offset or industrial participation requirement and judge what it will really take to meet it.</li>
-      <li>Choose between direct and indirect offsets, and structure a package that earns credit and protects margin.</li>
-      <li>Transfer technology and know-how without giving away core intellectual property.</li>
-      <li>Value credits, make good use of multipliers and bank surplus credit for future bids.</li>
-      <li>Negotiate with industrial participation authorities in different regions.</li>
-      <li>Keep the records auditors expect, and recover a programme that is falling behind.</li>
+    <p>Every exercise in the course builds towards one fictional procurement: a £500m helicopter programme with a demanding offset authority. In the capstone, teams play the foreign supplier's capture and offset team and negotiate the industrial participation agreement against the clock.</p>
+    <p>Developments during the negotiation test judgement as well as technique. Afterwards, each participant turns the result into a strategy paper for the board.</p>
+    <ul class="facts">
+      <li><b>Teams</b><span>Four or five people, each in a defined role</span></li>
+      <li><b>Time</b><span>2.5 hours online, or up to a full day in-house</span></li>
+      <li><b>Across the table</b><span>The offset authority, played by the course leader</span></li>
+      <li><b>Scored on</b><span>The agreement reached, what the plan costs and covers, and how the team conducts itself</span></li>
     </ul>
+  </div>
+</div></section>
+
+<section class="section" id="formats" aria-labelledby="formats-title"><div class="wrap">
+  <span class="kicker" aria-hidden="true"></span><h2 class="h2" id="formats-title">Two ways to take the course</h2>
+  <div class="cols two-up">
+    <div class="col"><span class="meta">Online · nine weeks</span><h3>Online cohort</h3>
+      <p>Work through each module at your own pace during the week: a recorded lecture of 60 to 90 minutes in short segments, about an hour of reading from official government guidelines, and an online knowledge check. Each week ends with a 60-minute live session.</p>
+      <ul class="sched"><li><b>Weeks 1 to 8</b><span>One module a week</span></li><li><b>Week 9</b><span>The capstone negotiation</span></li><li><b>Week 11</b><span>Strategy paper due</span></li></ul></div>
+    <div class="col"><span class="meta">In-house · three days, plus an optional fourth</span><h3>In-house intensive</h3>
+      <p>Delivered to your team, two or three modules a day, each with a short exercise. The optional fourth day is the full capstone negotiation; without it, a shorter negotiation closes the third day.</p>
+      <ul class="sched"><li><b>Day 1</b><span>Modules 1 to 3</span></li><li><b>Day 2</b><span>Modules 4 to 6</span></li><li><b>Day 3</b><span>Modules 7 and 8, and capstone preparation</span></li><li><b>Day 4</b><span>The capstone negotiation (optional)</span></li></ul></div>
+  </div>
+  <div class="note" style="margin-top:clamp(28px,4vw,40px);max-width:none"><b>UK elective.</b> For UK-focused groups, Module 9 adds one 90-minute session: online after the course, or as a half-day add-on in-house.</div>
+</div></section>
+
+<section class="section stone" aria-labelledby="cert-title"><div class="wrap">
+  <span class="kicker" aria-hidden="true"></span><h2 class="h2" id="cert-title">Assessment, certificate and materials</h2>
+  <div class="cols two-up">
+    <div class="col"><span class="meta">Assessment</span><h3>Three steps to the certificate</h3>
+      <ul class="dlist"><li>A knowledge check after each module: eight questions, with a pass mark of six.</li><li>A full role in the capstone negotiation.</li><li>A strategy paper of up to 2,500 words, marked against set criteria: pass at 60%, distinction at 75%.</li></ul>
+      <p>In-house groups can take a certificate of attendance instead, without the paper.</p></div>
+    <div class="col"><span class="meta">Included</span><h3>What participants receive</h3>
+      <ul class="dlist"><li>A participant workbook with every exercise and the full Project Halcyon scenario</li><li>The course spreadsheet: a credit, milestone and cost model</li><li>A glossary of 85 terms</li><li>A reading pack of official guidelines and expert summaries for 15 countries</li><li>A certificate on completion</li></ul></div>
   </div>
 </div></section>
 
@@ -802,7 +1177,7 @@ PAGES["training.html"] = dict(title='Offset practitioner course', desc="Strategi
   <div><span class="kicker" aria-hidden="true"></span><h2 id="lead-title">Course leader</h2></div>
   <div class="prose">
     <p>The course is led by Stephen Lewis, who founded Capital in 2013. He has more than 25 years' experience in offset, industrial participation and cross-border trade finance, on programmes in nearly 30 countries across Europe, the Middle East, Asia, Africa and the Americas.</p>
-    <p>The teaching draws on that front-line experience rather than academic theory. <a href="about.html">About Capital</a></p>
+    <p>The teaching draws on that front-line experience rather than academic theory. Every module includes examples from his own programmes, from technology transfer in Taiwan to steel exports credited under offset contracts in South Korea. <a href="about.html">About Capital</a></p>
   </div>
 </div></section>
 
@@ -820,12 +1195,13 @@ PAGES["training.html"] = dict(title='Offset practitioner course', desc="Strategi
     <div class="big">{EMAIL_WBR}</div>
     <div class="copyrow"><button class="copybtn" type="button" data-copy="{EMAIL}">Copy email address</button></div>
     <p style="margin-top:20px"><strong>Subject line</strong>, so your enquiry is picked up straight away:</p>
-    <div class="copyrow" style="margin-top:8px"><code>Offset course: register interest</code><button class="copybtn" type="button" data-copy="Offset course: register interest">Copy subject</button></div>
+    <div class="copyrow" style="margin-top:8px"><code>{COURSE_SUBJECT}</code><button class="copybtn" type="button" data-copy="{COURSE_SUBJECT}">Copy subject</button></div>
     <div class="actions"><a class="btn btn-brass" href="mailto:{EMAIL}?subject=Offset%20course%3A%20register%20interest">Open in your email app</a></div>
     <p>Prefer to talk first? {PHONE}, UK office hours.</p>
   </div>
 </div></section>
 {band('Working on a UK commitment?', 'Meet others doing the same at the UK Industrial Co-operation Roundtable, an informal quarterly meeting in London. The first takes place in Q4 2026.', 'About the roundtable', 'uk-icr.html')}""")
+
 
 PAGES["uk-icr.html"] = dict(title='UK Industrial Co-operation Roundtable (UK-ICR)', desc='UK-ICR is an informal, quarterly one-day roundtable in London for UK and international defence companies with UK industrial participation (offset) commitments, with government officials invited to take part.', body=pagehead(
     'UK Industrial <span class="nowrap">Co-operation</span> Roundtable',
