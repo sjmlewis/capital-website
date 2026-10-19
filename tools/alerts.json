@@ -1,7 +1,72 @@
 {
-  "updated": "2026-10-14",
+  "updated": "2026-10-19",
   "note": "Public offset alerts shown on the website: a weekly round-up of new defence sales above the offset thresholds. This file is the permanent record: never delete an item. The site shows only items whose 'added' date is within the last three weeks of 'updated' (at least eight items are always shown), so older items fall away from the pages but stay here. 'date' is when the event happened (YYYY-MM-DD, or YYYY-MM if only the month is known); 'added' is the date the item went on the site; 'tag' is optional ('Civil' or 'Rules'). Summaries are Capital's own words: one or two plain factual lines, with a short note on offset only where it is clear (for example, no offset because a purchase is SAFE-funded). Sources are not shown on the site and are not kept in this public file; they are recorded privately in the 'Website alerts: sources (private)' table of the Offset Opportunity Monitor's Programme Register (a Claude Doc). Internal scores, suggested services and verdicts from the Offset Opportunity Monitor never go here.",
   "items": [
+    {
+      "date": "2026-10-16",
+      "added": "2026-10-19",
+      "country": "Norway",
+      "title": "KNDS and RITEK open a factory in Norway to build 37 Leopard 2A8 tanks",
+      "summary": "KNDS and its Norwegian partner RITEK have opened a tank factory at Levanger, which will build 37 of the Norwegian Army's 54 Leopard 2A8NO tanks, with production due to start this autumn. KNDS builds the other 17."
+    },
+    {
+      "date": "2026-10-15",
+      "added": "2026-10-19",
+      "country": "Malaysia",
+      "title": "Malaysia approves medium- and short-range air defence purchases under the 13th Malaysia Plan",
+      "summary": "Malaysia's defence minister has confirmed approval of a medium-range air defence system (two batteries) for the Air Force and a short-range system for the Army. No system has been chosen; acceptance letters are expected around 2027, and an indicative figure of about US$450–500 million has been reported for the medium-range system."
+    },
+    {
+      "date": "2026-10-15",
+      "added": "2026-10-19",
+      "country": "India",
+      "title": "India signs Rs 4,106 crore of contracts for a military satellite and Varunastra torpedoes",
+      "summary": "India's Ministry of Defence has signed contracts with New Space India Limited for the GSAT-7C communications satellite for the Air Force (Rs 2,563 crore) and with Bharat Dynamics for Varunastra torpedoes for the Navy (Rs 1,543 crore). Both suppliers are Indian, so India's defence offset rules do not apply."
+    },
+    {
+      "date": "2026-10-14",
+      "added": "2026-10-19",
+      "country": "Thailand",
+      "title": "Thailand moves ahead with the second phase of its Gripen E/F fighter purchase",
+      "summary": "The Royal Thai Air Force chief has confirmed plans for the second phase of Thailand's Gripen E/F purchase, part of 12 aircraft planned over three phases, with funding expected in the 2027 budget. Saab's offer includes a long-term offset package with technology transfer and industrial cooperation."
+    },
+    {
+      "date": "2026-10-13",
+      "added": "2026-10-19",
+      "country": "Saudi Arabia",
+      "title": "Riyadh awards Siemens and Alstom about SAR 5.5bn for 94 new metro trains",
+      "summary": "The Royal Commission for Riyadh City has signed contracts with Siemens and Alstom worth about SAR 5.5 billion (about US$1.47 billion) for 94 new Riyadh Metro trains with systems, maintenance and training. Deliveries are due to begin in 2028.",
+      "tag": "Civil"
+    },
+    {
+      "date": "2026-10-12",
+      "added": "2026-10-19",
+      "country": "Colombia",
+      "title": "Colombia reviews the offset package in its Gripen fighter contract",
+      "summary": "Colombia's government is reviewing the offset projects tied to its contract for 17 Saab Gripen E/F fighters, worth about €3.1 billion, without halting the purchase. It is considering turning projects in solar power, water and health into technology transfer and new capabilities for its air force."
+    },
+    {
+      "date": "2026-10-02",
+      "added": "2026-10-19",
+      "country": "United Kingdom",
+      "title": "UK minister says an industry consultation on offset policy details will start shortly",
+      "summary": "Defence minister Luke Pollard has said a consultation with industry to refine the details of the UK's new offset policy will start shortly. No date or threshold has been given.",
+      "tag": "Rules"
+    },
+    {
+      "date": "2026-08-28",
+      "added": "2026-10-19",
+      "country": "Austria",
+      "title": "Austria plans a €2.5bn medium-range air defence purchase, aiming to sign by the end of 2026",
+      "summary": "Austria plans to buy a medium-range air defence system, two batteries with training and logistics, for about €2.5 billion, and hopes to sign by the end of 2026. No system has been chosen and about six suppliers remain possible; officials have stressed industrial cooperation."
+    },
+    {
+      "date": "2026-08-20",
+      "added": "2026-10-19",
+      "country": "Austria",
+      "title": "Austrian Armed Forces open a tender for long-range anti-tank guided missiles",
+      "summary": "The Austrian Armed Forces have tendered for long-range anti-tank guided missiles, with €36.2 million in the 2026 budget and €5.4 million in 2027. Applications closed on 2 October, and at least three applicants are to go through to the second phase."
+    },
     {
       "date": "2026-10-14",
       "added": "2026-10-14",
