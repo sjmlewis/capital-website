@@ -1,7 +1,72 @@
 {
-  "updated": "2026-10-19",
+  "updated": "2026-10-26",
   "note": "Public offset alerts shown on the website: a weekly round-up of new defence sales above the offset thresholds. This file is the permanent record: never delete an item. The site shows only items whose 'added' date is within the last three weeks of 'updated' (at least eight items are always shown), so older items fall away from the pages but stay here. 'date' is when the event happened (YYYY-MM-DD, or YYYY-MM if only the month is known); 'added' is the date the item went on the site; 'tag' is optional ('Civil' or 'Rules'). Summaries are Capital's own words: one or two plain factual lines, with a short note on offset only where it is clear (for example, no offset because a purchase is SAFE-funded). Sources are not shown on the site and are not kept in this public file; they are recorded privately in Capital's Claude project (Offset_Alerts_Sources.md). Internal scores, suggested services and verdicts from the Offset Opportunity Monitor never go here.",
   "items": [
+    {
+      "date": "2026-10-22",
+      "added": "2026-10-26",
+      "country": "Poland",
+      "title": "Kongsberg wins about NOK 700m to supply weapon stations for Poland's K2 tanks",
+      "summary": "Kongsberg has signed a contract worth about NOK 700 million with Hyundai Rotem to supply Protector RS4 remote weapon stations for the K2 tanks, recovery vehicles and engineering vehicles ordered by Poland, with a support package. The first systems are due to ship in spring 2027."
+    },
+    {
+      "date": "2026-10-21",
+      "added": "2026-10-26",
+      "country": "Morocco",
+      "title": "Morocco in advanced talks to buy the David's Sling air defence system",
+      "summary": "Morocco's defence ministry is reported to be at a very advanced stage of negotiations with Rafael and Raytheon for the David's Sling system, including Stunner interceptors, radars, launchers, training and maintenance. No contract value has been published; Rabat is reported to be seeking industrial returns."
+    },
+    {
+      "date": "2026-10-21",
+      "added": "2026-10-26",
+      "country": "Netherlands",
+      "title": "US approves a possible US$294m sale of aircraft self-protection systems to the Netherlands",
+      "summary": "The US State Department has approved a possible sale to the Netherlands of 16 CIRCM infrared countermeasure systems and 38 radar warning receivers, with support, estimated at US$294 million. Northrop Grumman is the principal contractor."
+    },
+    {
+      "date": "2026-10-20",
+      "added": "2026-10-26",
+      "country": "Norway",
+      "title": "Norway sets out its plan to buy up to 20 standardised vessels with the UK and Lithuania",
+      "summary": "Norway's Defence Materiel Agency has told industry how it will buy up to 20 standardised vessels: up to 14 naval vessels for Norway, the UK and Lithuania, and up to 6 Coast Guard vessels, under two parallel contracts that one bidder cannot both win. Prequalification comes next, with award of the large-vessel contract targeted for 2027 and first delivery in 2030."
+    },
+    {
+      "date": "2026-10-20",
+      "added": "2026-10-26",
+      "country": "Denmark",
+      "title": "Denmark orders more Naval Strike Missiles from Kongsberg for NOK 400m",
+      "summary": "Denmark has ordered a further batch of Kongsberg's Naval Strike Missiles, worth NOK 400 million (about US$42 million), in a government-to-government deal through Norway's Defence Materiel Agency. The number of missiles has not been disclosed."
+    },
+    {
+      "date": "2026-10-20",
+      "added": "2026-10-26",
+      "country": "Romania",
+      "title": "Romania signs a €920m contract for four naval ships funded by EU SAFE loans",
+      "summary": "Romania's government has signed a €920 million contract for two 96-metre offshore patrol vessels and two diving support vessels, to be built at the Mangalia shipyard bought by a Rheinmetall and MSC consortium, with the programme due to finish by 2030. Because it is funded through the EU's SAFE loans, the purchase is exempt from Romania's offset rules."
+    },
+    {
+      "date": "2026-10-20",
+      "added": "2026-10-26",
+      "country": "Greece",
+      "title": "Greek bill would set a minimum 25% national participation in armament programmes",
+      "summary": "A Greek defence bill due to go to cabinet and then parliament would set a minimum 25% share for Greek industry in armament programmes. The text has not yet been published, so what will count towards the share is not yet known.",
+      "tag": "Rules"
+    },
+    {
+      "date": "2026-10-13",
+      "added": "2026-10-26",
+      "country": "Australia",
+      "title": "Australia seeks industry offers for a medium-range ground-based air defence system",
+      "summary": "Australia's Department of Defence has issued an industry solicitation for Land 6504, a medium-range ground-based air defence system for the Army, with vendor selection due by the end of 2027. Australia has no offset policy; its Australian Industry Capability rules apply instead."
+    },
+    {
+      "date": "2026-09-04",
+      "added": "2026-10-26",
+      "country": "Saudi Arabia",
+      "title": "Saudi Arabia's new Government Procurement Law takes effect on 2 January 2027",
+      "summary": "Saudi Arabia's new Government Procurement Law, published on 4 September 2026, takes effect on 2 January 2027. It gives the Local Content and Government Procurement Authority a role in planning and bid evaluation, with local content preference rules still to be issued.",
+      "tag": "Rules"
+    },
     {
       "date": "2026-10-16",
       "added": "2026-10-19",
