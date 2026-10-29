@@ -170,6 +170,8 @@ p{margin:0}
 .panel p{margin-top:10px;color:var(--ink-soft);font-size:15.5px}
 .panel .big{font-family:var(--display);font-size:clamp(18px,1.6vw,21px);color:var(--navy);margin-top:16px;word-break:break-word;user-select:all}
 .panel .btn{margin-top:18px}
+label.pick{display:block;font:600 15px/1.4 var(--body);color:var(--navy);margin-top:18px}
+select.pick{display:block;width:100%;margin-top:8px;font:500 16px/1.4 var(--body);color:var(--ink);background:#fff;border:1px solid var(--rule);border-radius:2px;padding:11px 12px;min-height:46px}
 .copyrow{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:16px}
 .copyrow code{font:500 15px/1.4 var(--body);background:var(--stone);border:1px solid var(--rule);padding:8px 12px;border-radius:2px;user-select:all;word-break:break-all}
 .copybtn{font:600 13px var(--body);background:var(--navy);color:#fff;border:0;border-radius:2px;padding:9px 12px;cursor:pointer}

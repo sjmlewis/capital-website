@@ -14,6 +14,19 @@
     });
   });
 
+  // Roundtable page: the drop-down sets the subject of the register-interest email
+  var who=document.getElementById('icr-who'),send=document.getElementById('icr-send');
+  if(who&&send){
+    var to=send.getAttribute('href').split('?')[0],subj=document.getElementById('icr-subject'),sc=document.getElementById('icr-subject-copy');
+    var upd=function(){
+      var s='UK-ICR register interest'+(who.value?' - '+who.value:'');
+      send.setAttribute('href',to+'?subject='+encodeURIComponent(s)+'&body='+encodeURIComponent('Name:\r\nJob title:\r\nOrganisation:\r\n'));
+      if(subj)subj.textContent=s;
+      if(sc)sc.setAttribute('data-copy',s);
+    };
+    who.addEventListener('change',upd);upd();
+  }
+
   // Training page: open or close every module at once, and open a module named in the address
   var ea=document.getElementById('expandall'),mods=document.querySelectorAll('details.mod');
   if(ea&&mods.length){
