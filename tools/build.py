@@ -602,7 +602,7 @@ def nav(current):
         cur = ' aria-current="page"' if href == current else ""
         items.append(f'<li><a href="{href}"{cur}>{label}</a></li>')
     cur = ' aria-current="page"' if current == "request-access.html" else ""
-    items.append(f'<li class="cta"><a href="request-access.html"{cur}>Request access</a></li>')
+    items.append(f'<li class="cta"><a href="request-access.html"{cur}>Register interest</a></li>')
     return ('<a class="skip" href="#main">Skip to content</a>\n<header class="nav"><div class="wrap">' + brand() +
             '<button class="navtoggle" id="navtoggle" type="button" aria-expanded="false" aria-controls="menu">Menu</button>'
             '<ul class="menu" id="menu">' + "".join(items) + '</ul></div></header>')
@@ -614,7 +614,7 @@ FOOTER = f"""
       {brand()}
       <p class="contact">Based in London, United Kingdom. Meetings by appointment.<br><span>{EMAIL}</span><span>{PHONE}</span></p>
     </div>
-    <div><h4>Platform</h4><ul><li><a href="platform.html">How it works</a></li><li><a href="security.html">Security and privacy</a></li><li><a href="request-access.html">Request access</a></li></ul></div>
+    <div><h4>Platform</h4><ul><li><a href="platform.html">How it works</a></li><li><a href="security.html">Security and privacy</a></li><li><a href="request-access.html">Register interest</a></li></ul></div>
     <div><h4>Services</h4><ul><li><a href="advisory.html">Advisory</a></li><li><a href="training.html">Offset practitioner course</a></li><li><a href="uk-icr.html">UK-ICR Roundtable</a></li><li><a href="offset-alerts.html">Offset alerts</a></li><li><a href="industrial-participation.html">Industrial participation</a></li><li><a href="uk-companies.html">For UK companies</a></li></ul></div>
     <div><h4>Company</h4><ul><li><a href="about.html">About Capital</a></li><li><a href="compliance.html">Compliance and ethics</a></li><li><a href="contact.html">Contact</a></li></ul></div>
   </div>
@@ -625,8 +625,8 @@ FOOTER = f"""
 </footer>"""
 
 def band(title="Preparing a UK bid or an industrial participation plan?",
-         text="Request a demonstration of the platform, or contact us to discuss an advisory project. We reply within two working days.",
-         label="Request platform access", href="request-access.html"):
+         text="The platform opens to clients soon. Register your interest for a demonstration, or contact us to discuss an advisory project. We reply within two working days.",
+         label="Register your interest", href="request-access.html"):
     return f"""
 <section class="band" aria-labelledby="cta-title"><div class="wrap">
   <div><h2 id="cta-title">{title}</h2><p>{text}</p></div>
@@ -644,7 +644,7 @@ def pagehead(title, lede, crumb=None, extra=""):
 </div></section>"""
 
 def head(title, desc, path, extra_css=""):
-    full = "Capital Industrial Participation" if path == "index.html" else f"{title} · Capital Industrial Participation"
+    full = "UK Offset and Industrial Participation · Capital" if path == "index.html" else f"{title} · Capital Industrial Participation"
     return f"""<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{html.escape(full)}</title>
@@ -807,15 +807,15 @@ HOME_ALERTS = f"""
 # ---------------------------------------------------------------- pages
 PAGES = {}
 
-PAGES["index.html"] = dict(title="Home", desc="Capital helps overseas defence companies meet UK industrial participation commitments, with an evidence-based platform for finding credible UK industrial partners and more than 25 years of offset experience.", body=f"""{HOME_WIRE}
+PAGES["index.html"] = dict(title="Home", desc="Capital helps overseas defence companies meet UK offset and industrial participation commitments, with more than 25 years of offset experience and an evidence-based platform for finding credible UK industrial partners, opening soon.", body=f"""{HOME_WIRE}
 <section class="hero" aria-labelledby="hero-title">
   <canvas id="drawing" aria-hidden="true"></canvas>
   <div class="wrap">
     <div>
       <h1 id="hero-title">Find credible UK industrial partners for your defence programme</h1>
-      <p class="lede">Capital helps overseas defence companies meet UK industrial participation commitments, with an evidence-based search platform and more than 25 years of offset experience.</p>
+      <p class="lede">Capital helps overseas defence companies meet UK offset and industrial participation commitments, with an evidence-based search platform and more than 25 years of offset experience. The platform opens to clients soon.</p>
       <div class="actions">
-        <a class="btn btn-brass" href="request-access.html">Request platform access</a>
+        <a class="btn btn-brass" href="request-access.html">Register your interest</a>
         <a class="btn btn-ghost" href="platform.html">How the platform works</a>
       </div>
       <p class="audience">For overseas primes and their UK subsidiaries preparing bids and participation plans</p>
@@ -888,7 +888,7 @@ PAGES["index.html"] = dict(title="Home", desc="Capital helps overseas defence co
 
 PAGES["platform.html"] = dict(title="The UK Defence Localisation Platform", desc="A secure, self-service platform that turns a bill of materials into a shortlist of credible UK industrial partners, with the evidence behind every match.", body=pagehead(
     "The UK Defence Localisation Platform",
-    "A secure, self-service tool that turns your bill of materials into a shortlist of credible UK industrial partners: companies that can make your parts now, and companies that could make them with your support.",
+    "A secure, self-service tool that turns your bill of materials into a shortlist of credible UK industrial partners: companies that can make your parts now, and companies that could make them with your support. It opens to clients soon.",
     ["Platform"]) + f"""
 <section class="section" aria-labelledby="how-title"><div class="wrap">
   <span class="kicker" aria-hidden="true"></span><h2 class="h2" id="how-title">How it works</h2>
@@ -931,9 +931,9 @@ PAGES["platform.html"] = dict(title="The UK Defence Localisation Platform", desc
     <div class="note"><b>Who it is for.</b> Overseas defence and aerospace companies, and their UK subsidiaries, preparing bids, industrial participation plans or UK supply-chain development.</div>
   </div>
 </div></section>
-{band("Available by subscription", "To arrange a demonstration and discuss subscription options, request access. We reply within two working days.")}""")
+{band("Opening to clients soon", "The platform will be available by subscription. Register your interest and we will arrange a demonstration when it opens. We reply within two working days.")}""")
 
-PAGES["industrial-participation.html"] = dict(title="UK industrial participation", desc="What UK industrial participation (offset) means for overseas defence suppliers, and how Capital helps them create genuine UK value.", body=pagehead(
+PAGES["industrial-participation.html"] = dict(title="UK offset and industrial participation", desc="What UK industrial participation (offset) means for overseas defence suppliers, and how Capital helps them create genuine UK value.", body=pagehead(
     "UK industrial participation (offset)",
     "Under the UK Government's offset regime, when it buys defence equipment from abroad, the overseas supplier must create British jobs and benefits.",
     ["Industrial participation"]) + f"""
@@ -1540,13 +1540,13 @@ PAGES["compliance.html"] = dict(title="Compliance and ethics", desc="Capital's a
 {band()}""")
 
 SUBJECT = "Platform access request"
-PAGES["request-access.html"] = dict(title="Request platform access", desc="Request a demonstration of Capital's UK Defence Localisation Platform and discuss subscription options.", body=pagehead(
-    "Request platform access",
-    "Tell us about your organisation and we will arrange a short demonstration and discuss subscription options.",
-    ["Request access"]) + f"""
+PAGES["request-access.html"] = dict(title="Register your interest", desc="Capital's UK Defence Localisation Platform opens to clients soon. Register your interest for a demonstration and subscription options.", body=pagehead(
+    "Register your interest",
+    "The platform opens to clients soon. Tell us about your organisation and we will arrange a short demonstration when it opens, and discuss subscription options.",
+    ["Register interest"]) + f"""
 <section class="section" aria-labelledby="req-title"><div class="wrap two">
   <div>
-    <span class="kicker" aria-hidden="true"></span><h2 id="req-title">How to request access</h2>
+    <span class="kicker" aria-hidden="true"></span><h2 id="req-title">How to register your interest</h2>
     <div class="prose" style="margin-top:18px">
       <p>Send a short email with:</p>
       <ul>
@@ -1572,7 +1572,7 @@ PAGES["request-access.html"] = dict(title="Request platform access", desc="Reque
 
 PAGES["contact.html"] = dict(title="Contact", desc="Contact Capital Industrial Participation by email or telephone. Based in London, United Kingdom.", body=pagehead(
     "Contact",
-    "For platform enquiries, please use Request access. For everything else, get in touch below.",
+    "For the platform, please use Register interest. For everything else, get in touch below.",
     ["Contact"]) + f"""
 <section class="section" aria-labelledby="gt-title"><div class="wrap two">
   <div>
