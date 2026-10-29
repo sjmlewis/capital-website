@@ -19,7 +19,7 @@
   if(who&&send){
     var to=send.getAttribute('href').split('?')[0],subj=document.getElementById('icr-subject'),sc=document.getElementById('icr-subject-copy');
     var upd=function(){
-      var s='UK-ICR register interest'+(who.value?' - '+who.value:'');
+      var s='Roundtable: register interest'+(who.value?' ('+who.value+')':'');
       send.setAttribute('href',to+'?subject='+encodeURIComponent(s)+'&body='+encodeURIComponent('Name:\r\nJob title:\r\nOrganisation:\r\n'));
       if(subj)subj.textContent=s;
       if(sc)sc.setAttribute('data-copy',s);

@@ -444,7 +444,7 @@ JS = r"""
   if(who&&send){
     var to=send.getAttribute('href').split('?')[0],subj=document.getElementById('icr-subject'),sc=document.getElementById('icr-subject-copy');
     var upd=function(){
-      var s='UK-ICR register interest'+(who.value?' - '+who.value:'');
+      var s='Roundtable: register interest'+(who.value?' ('+who.value+')':'');
       send.setAttribute('href',to+'?subject='+encodeURIComponent(s)+'&body='+encodeURIComponent('Name:\r\nJob title:\r\nOrganisation:\r\n'));
       if(subj)subj.textContent=s;
       if(sc)sc.setAttribute('data-copy',s);
@@ -600,7 +600,7 @@ NAV = [
     ("industrial-participation.html", "Industrial participation"),
     ("advisory.html", "Advisory"),
     ("training.html", "Training"),
-    ("uk-icr.html", "Roundtable"),
+    ("roundtable.html", "Roundtable"),
     ("offset-alerts.html", "Offset alerts"),
     ("about.html", "About"),
     ("contact.html", "Contact"),
@@ -630,7 +630,7 @@ FOOTER = f"""
       <p class="contact">Based in London, United Kingdom. Meetings by appointment.<br><span>{EMAIL}</span><span>{PHONE}</span></p>
     </div>
     <div><h4>Platform</h4><ul><li><a href="platform.html">How it works</a></li><li><a href="security.html">Security and privacy</a></li><li><a href="request-access.html">Register interest</a></li></ul></div>
-    <div><h4>Services</h4><ul><li><a href="advisory.html">Advisory</a></li><li><a href="training.html">Offset practitioner course</a></li><li><a href="uk-icr.html">UK-ICR Roundtable</a></li><li><a href="offset-alerts.html">Offset alerts</a></li><li><a href="industrial-participation.html">Industrial participation</a></li><li><a href="uk-companies.html">For UK companies</a></li></ul></div>
+    <div><h4>Services</h4><ul><li><a href="advisory.html">Advisory</a></li><li><a href="training.html">Offset practitioner course</a></li><li><a href="roundtable.html">Industrial Participation Roundtable</a></li><li><a href="offset-alerts.html">Offset alerts</a></li><li><a href="industrial-participation.html">Industrial participation</a></li><li><a href="uk-companies.html">For UK companies</a></li></ul></div>
     <div><h4>Company</h4><ul><li><a href="about.html">About Capital</a></li><li><a href="compliance.html">Compliance and ethics</a></li><li><a href="contact.html">Contact</a></li></ul></div>
   </div>
   <div class="legal"><div class="wrap">
@@ -895,7 +895,7 @@ PAGES["index.html"] = dict(title="Home", desc="Capital helps overseas defence co
   <span class="kicker" aria-hidden="true"></span><h2 class="h2" id="more-title">The roundtable and training</h2>
   <p class="sub">Two ways Capital brings people together around industrial participation, alongside the platform.</p>
   <div class="cols two-up">
-    <div class="col"><h3>UK Industrial <span class="nowrap">Co-operation</span> Roundtable</h3><p>An informal quarterly gathering in London for people with an interest in UK offset: Ministry of Defence officials, UK companies and overseas suppliers. Organised and hosted by Capital. The first meeting takes place in Q4 2026.</p><p><a href="uk-icr.html">About UK-ICR</a></p></div>
+    <div class="col"><h3>UK Industrial Participation Roundtable</h3><p>An informal quarterly gathering in London for people with an interest in UK offset: Ministry of Defence officials, UK companies and overseas suppliers. Organised and hosted by Capital. The first meeting takes place in Q4 2026.</p><p><a href="roundtable.html">About the Roundtable</a></p></div>
     <div class="col"><h3>Offset practitioner course</h3><p>A practitioner's masterclass for people new to offset and industrial participation: eight modules, a UK elective and a live negotiation simulation, online over nine weeks or in-house over three days.</p><p><a href="training.html">See the course outline</a></p></div>
   </div>
 </div></section>
@@ -977,7 +977,7 @@ PAGES["industrial-participation.html"] = dict(title="UK offset and industrial pa
   <div class="prose">
     <p>The platform finds candidates for both routes and highlights the opportunities, such as a smaller company that could gain a certification or a commercial manufacturer ready to enter defence. Your team then decides where to engage.</p>
     <p>Capital's founder has worked on offset and industrial participation programmes for more than 25 years, across Europe, the Middle East, Asia, Africa and the Americas. <a href="about.html">About Capital</a></p>
-    <p>Capital also organises and hosts the <a href="uk-icr.html">UK Industrial Co-operation Roundtable</a>, an informal quarterly gathering in London for Ministry of Defence officials, UK companies and overseas suppliers, and runs a <a href="training.html">practitioner course</a> for people new to offset.</p>
+    <p>Capital also organises and hosts the <a href="roundtable.html">UK Industrial Participation Roundtable</a>, an informal quarterly gathering in London for Ministry of Defence officials, UK companies and overseas suppliers, and runs a <a href="training.html">practitioner course</a> for people new to offset.</p>
   </div>
 </div></section>
 {band()}""")
@@ -1068,7 +1068,7 @@ PAGES["advisory.html"] = dict(title="Advisory services", desc="Direct advisory s
   <span class="kicker" aria-hidden="true"></span><h2 class="h2" id="also-title">Training and the roundtable</h2>
   <div class="cols two-up">
     <div class="col"><h3>Offset practitioner course</h3><p>A practitioner's masterclass for people new to offset and industrial participation: eight modules, a UK elective and a live negotiation simulation, online over nine weeks or in-house over three days.</p><p><a href="training.html">See the course outline</a></p></div>
-    <div class="col"><h3>UK Industrial <span class="nowrap">Co-operation</span> Roundtable</h3><p>An informal quarterly gathering in London for people with an interest in UK offset: Ministry of Defence officials, UK companies and overseas suppliers. Organised and hosted by Capital. The first meeting takes place in Q4 2026.</p><p><a href="uk-icr.html">About UK-ICR</a></p></div>
+    <div class="col"><h3>UK Industrial Participation Roundtable</h3><p>An informal quarterly gathering in London for people with an interest in UK offset: Ministry of Defence officials, UK companies and overseas suppliers. Organised and hosted by Capital. The first meeting takes place in Q4 2026.</p><p><a href="roundtable.html">About the Roundtable</a></p></div>
   </div>
 </div></section>
 {band("Discuss a project", "Tell us about your programme and target market, and we will come back to you within two working days.", "Contact Capital", "contact.html")}""")
@@ -1360,12 +1360,12 @@ PAGES["training.html"] = dict(title="Offset practitioner course", desc="Strategi
     <p>Prefer to talk first? {PHONE}, UK office hours.</p>
   </div>
 </div></section>
-{band('Working on a UK commitment?', 'Meet others doing the same at the UK Industrial Co-operation Roundtable, an informal quarterly meeting in London. The first takes place in Q4 2026.', 'About the roundtable', 'uk-icr.html')}""")
+{band('Working on a UK commitment?', 'Meet others doing the same at the UK Industrial Participation Roundtable, an informal quarterly gathering in London. The first takes place in Q4 2026.', 'About the Roundtable', 'roundtable.html')}""")
 
 
-PAGES["uk-icr.html"] = dict(title='UK Industrial Co-operation Roundtable (UK-ICR)', desc='UK-ICR is an informal quarterly gathering in London for people with an interest in UK offset and industrial participation: Ministry of Defence officials, UK companies and overseas suppliers. Organised and hosted by Capital.', body=pagehead(
-    'UK Industrial <span class="nowrap">Co-operation</span> Roundtable',
-    'UK-ICR is an informal gathering, held each quarter in London, for people with an interest in UK offset (industrial participation): officials from the Ministry of Defence and other government departments, UK companies and overseas suppliers. Capital organises and hosts each meeting, bringing industry and government together on how offset works in practice.',
+PAGES["roundtable.html"] = dict(title='UK Industrial Participation Roundtable', desc='The UK Industrial Participation Roundtable is an informal quarterly gathering in London for people with an interest in UK industrial participation and offset: Ministry of Defence officials, UK companies and overseas suppliers. Organised and hosted by Capital.', body=pagehead(
+    'UK Industrial Participation Roundtable',
+    'The UK Industrial Participation Roundtable is an informal gathering, held each quarter in London, for people with an interest in UK industrial participation (offset): officials from the Ministry of Defence and other government departments, UK companies and overseas suppliers. Capital organises and hosts each meeting, bringing industry and government together on how it works in practice.',
     ['Roundtable'],
     '<div class="actions"><a class="btn btn-brass" href="#join">Register your interest</a><a class="btn btn-ghost" href="#host">Offer a venue</a></div><p class="audience">Inaugural meeting: Q4 2026, central London</p>') + f"""
 <section class="section" aria-labelledby="why-title"><div class="wrap two">
@@ -1405,7 +1405,7 @@ PAGES["uk-icr.html"] = dict(title='UK Industrial Co-operation Roundtable (UK-ICR
       <li><b>Where</b><span>Central London, at a venue arranged by Capital.</span></li>
       <li><b>Format</b><span>Informal and discussion-led.</span></li>
       <li><b>Ground rules</b><span>Policy and general practice only. Live competitions, individual bids and prices are not discussed.</span></li><li><b>Chatham House Rule</b><span>All meetings are held under the Chatham House Rule. You may use what you hear, but you may not reveal who said it or which organisation they represent. This allows everyone to speak freely.</span></li>
-      <li><b>Host</b><span>Capital organises and hosts each meeting. UK-ICR is independent: it is not a government body and does not speak for the Ministry of Defence.</span></li>
+      <li><b>Host</b><span>Capital organises and hosts each meeting. The Roundtable is independent: it is not a government body and does not speak for the Ministry of Defence.</span></li>
     </ul>
     <div class="note" style="margin-top:28px;max-width:none"><b>Inaugural meeting: Q4 2026.</b> The first meeting will take place in central London in the final quarter of 2026. The date and venue will be sent to everyone who registers interest.</div>
   </div>
@@ -1418,7 +1418,7 @@ PAGES["uk-icr.html"] = dict(title='UK Industrial Co-operation Roundtable (UK-ICR
       <p>To receive invitations and meeting dates, choose the description that fits you and press <strong>Register interest</strong>. An email to Capital opens with the subject filled in. Add your name, job title and organisation, then send it.</p>
       <p>If no email opens, copy the address and the subject, and send it from your usual email account.</p>
       <p id="host"><strong>Offering a venue.</strong> Capital organises and hosts each meeting. If your organisation could lend a meeting room in central London for the day, please let us know.</p>
-      <p>Your details are used only to send UK-ICR invitations and updates, and are not shared with anyone else. You can ask to be removed at any time.</p>
+      <p>Your details are used only to send Roundtable invitations and updates, and are not shared with anyone else. You can ask to be removed at any time.</p>
     </div>
   </div>
   <div class="panel">
@@ -1431,11 +1431,11 @@ PAGES["uk-icr.html"] = dict(title='UK Industrial Co-operation Roundtable (UK-ICR
       <option value="Overseas supplier">Overseas supplier</option>
       <option value="Other">Other organisation</option>
     </select>
-    <div class="actions" style="margin-top:22px"><a class="btn btn-brass" id="icr-send" href="mailto:{EMAIL}?subject=UK-ICR%20register%20interest">Register interest</a><a class="btn btn-outline" href="mailto:{EMAIL}?subject=UK-ICR%20venue%20offer">Offer a venue</a></div>
+    <div class="actions" style="margin-top:22px"><a class="btn btn-brass" id="icr-send" href="mailto:{EMAIL}?subject=Roundtable%3A%20register%20interest">Register interest</a><a class="btn btn-outline" href="mailto:{EMAIL}?subject=Roundtable%3A%20venue%20offer">Offer a venue</a></div>
     <p style="margin-top:24px">Or email Capital directly:</p>
     <div class="big">{EMAIL_WBR}</div>
     <div class="copyrow"><button class="copybtn" type="button" data-copy="{EMAIL}">Copy email address</button></div>
-    <div class="copyrow" style="margin-top:8px"><code id="icr-subject">UK-ICR register interest</code><button class="copybtn" id="icr-subject-copy" type="button" data-copy="UK-ICR register interest">Copy subject</button></div>
+    <div class="copyrow" style="margin-top:8px"><code id="icr-subject">Roundtable: register interest</code><button class="copybtn" id="icr-subject-copy" type="button" data-copy="Roundtable: register interest">Copy subject</button></div>
   </div>
 </div></section>
 {band()}""")
@@ -1627,6 +1627,25 @@ with open(os.path.join(SITE, "site.js"), "w") as f: f.write(JS.strip() + "\n")
 for p, d in PAGES.items():
     doc = page(p, d["title"], d["desc"], d["body"])
     with open(os.path.join(SITE, p), "w") as f: f.write(doc)
+
+# The roundtable's old address (uk-icr.html) sends visitors to its new page
+with open(os.path.join(SITE, "uk-icr.html"), "w") as f:
+    f.write(f"""<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UK Industrial Participation Roundtable · Capital Industrial Participation</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="{DOMAIN}/roundtable.html">
+<script>location.replace('roundtable.html'+location.hash);</script>
+<meta http-equiv="refresh" content="0; url=roundtable.html">
+</head>
+<body>
+<p>This page has moved: <a href="roundtable.html">UK Industrial Participation Roundtable</a>.</p>
+</body>
+</html>
+""")
 
 # sitemap + robots
 urls = [p for p in PAGES if p != "404.html"]
