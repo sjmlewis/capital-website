@@ -948,7 +948,7 @@ PAGES["platform.html"] = dict(title="The UK Defence Localisation Platform", desc
 </div></section>
 {band("Opening to clients soon", "The platform will be available by subscription. Register your interest and we will arrange a demonstration when it opens. We reply within two working days.")}""")
 
-PAGES["uk-offset-policy.html"] = dict(title="UK Offset Policy", desc="A plain-English summary of the Ministry of Defence's UK Offset Policy, published on 30 October 2026: who it applies to, the GBP 50 million threshold, the 100% obligation, multipliers, credits and milestones.".replace("GBP ", "£"), body=pagehead(
+PAGES["uk-offset-policy.html"] = dict(title="UK Offset Policy", desc="A plain-English summary of the Ministry of Defence's UK Offset Policy (UK offset and industrial participation), published on 30 October 2026: who it applies to, the GBP 50 million threshold, the 100% obligation, multipliers, credits and milestones.".replace("GBP ", "£"), body=pagehead(
     "The UK Offset Policy",
     "On 30 October 2026 the Ministry of Defence published the UK Offset Policy. An overseas supplier that wins a large UK defence contract will commit to deliver UK value equal to the contract, through projects agreed with a new Offset Authority. These are the main points.",
     ["UK Offset Policy"],
@@ -984,8 +984,8 @@ PAGES["uk-offset-policy.html"] = dict(title="UK Offset Policy", desc="A plain-En
 </div></section>
 {band()}""")
 
-PAGES["industrial-participation.html"] = dict(title="UK offset", desc="What the UK Offset Policy means for overseas defence suppliers, and how Capital helps them create genuine UK value.", body=pagehead(
-    "UK offset",
+PAGES["industrial-participation.html"] = dict(title="UK offset and industrial participation", desc="UK offset and industrial participation: what the UK Offset Policy means for overseas defence suppliers and UK companies, and how Capital helps them create genuine UK value.", body=pagehead(
+    "UK offset and industrial participation",
     "Under the UK Offset Policy, an overseas supplier that wins a large Ministry of Defence contract commits to deliver UK value equal to the contract, over up to ten years.",
     ["UK offset"]) + f"""
 <section class="section" aria-labelledby="means-title"><div class="wrap two">
