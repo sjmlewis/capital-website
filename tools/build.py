@@ -19,7 +19,7 @@ FAVICON = ("data:image/svg+xml," + "%3Csvg xmlns='http://www.w3.org/2000/svg' vi
            "%3Crect x='10' y='10' width='12' height='12' transform='rotate(45 16 16)' fill='%23A4834B'/%3E%3C/svg%3E")
 
 CSS = r"""
-/* Capital Industrial Participation — site styles.
+/* Capital Offset Services — site styles.
    Layout: left-aligned editorial grid (max 1280px). Navy page heads carrying a generated engineering-drawing
    texture; alternating white / stone sections; navy call-to-action band; deep-navy footer. One committed light look. */
 :root{
@@ -597,7 +597,7 @@ JS = r"""
 # ---------------------------------------------------------------- navigation
 NAV = [
     ("platform.html", "Platform"),
-    ("industrial-participation.html", "Industrial participation"),
+    ("uk-offset-policy.html", "UK Offset Policy"),
     ("advisory.html", "Advisory"),
     ("training.html", "Training"),
     ("roundtable.html", "UK-NOC"),
@@ -607,9 +607,9 @@ NAV = [
 ]
 
 def brand(cls=""):
-    return (f'<a class="brand{cls}" href="index.html" aria-label="Capital Industrial Participation, home">'
+    return (f'<a class="brand{cls}" href="index.html" aria-label="Capital Offset Services, home">'
             '<span class="mark" aria-hidden="true"></span><span class="word">Capital</span>'
-            '<span class="desc">Industrial Participation</span></a>')
+            '<span class="desc">Offset Services</span></a>')
 
 def nav(current):
     items = []
@@ -630,11 +630,11 @@ FOOTER = f"""
       <p class="contact">Based in London, United Kingdom. Meetings by appointment.<br><span>{EMAIL}</span><span>{PHONE}</span></p>
     </div>
     <div><h4>Platform</h4><ul><li><a href="platform.html">How it works</a></li><li><a href="security.html">Security and privacy</a></li><li><a href="request-access.html">Register interest</a></li></ul></div>
-    <div><h4>Services</h4><ul><li><a href="advisory.html">Advisory</a></li><li><a href="training.html">Offset practitioner course</a></li><li><a href="roundtable.html">UK National Offset Council</a></li><li><a href="offset-alerts.html">Offset alerts</a></li><li><a href="industrial-participation.html">Industrial participation</a></li><li><a href="uk-companies.html">For UK companies</a></li></ul></div>
+    <div><h4>Services</h4><ul><li><a href="advisory.html">Advisory</a></li><li><a href="training.html">Offset practitioner course</a></li><li><a href="roundtable.html">UK National Offset Council</a></li><li><a href="offset-alerts.html">Offset alerts</a></li><li><a href="uk-offset-policy.html">UK Offset Policy</a></li><li><a href="industrial-participation.html">UK offset</a></li><li><a href="uk-companies.html">For UK companies</a></li></ul></div>
     <div><h4>Company</h4><ul><li><a href="about.html">About Capital</a></li><li><a href="compliance.html">Compliance and ethics</a></li><li><a href="contact.html">Contact</a></li></ul></div>
   </div>
   <div class="legal"><div class="wrap">
-    <span>Capital Offset Services Limited, trading as Capital Industrial Participation. Registered in England and Wales, company number 08803140.</span>
+    <span>Capital Offset Services Limited. Registered in England and Wales, company number 08803140.</span>
     <span>© {YEAR} Capital Offset Services Limited</span>
   </div></div>
 </footer>"""
@@ -659,14 +659,14 @@ def pagehead(title, lede, crumb=None, extra=""):
 </div></section>"""
 
 def head(title, desc, path, extra_css=""):
-    full = "UK Offset and Industrial Participation · Capital" if path == "index.html" else f"{title} · Capital Industrial Participation"
+    full = "UK Offset and Industrial Participation · Capital Offset Services" if path == "index.html" else f"{title} · Capital Offset Services"
     return f"""<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{html.escape(full)}</title>
 <meta name="description" content="{html.escape(desc)}">
 <link rel="canonical" href="{DOMAIN}/{'' if path=='index.html' else path}">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Capital Industrial Participation">
+<meta property="og:site_name" content="Capital Offset Services">
 <meta property="og:title" content="{html.escape(full)}">
 <meta property="og:description" content="{html.escape(desc)}">
 <meta property="og:url" content="{DOMAIN}/{'' if path=='index.html' else path}">
@@ -948,19 +948,55 @@ PAGES["platform.html"] = dict(title="The UK Defence Localisation Platform", desc
 </div></section>
 {band("Opening to clients soon", "The platform will be available by subscription. Register your interest and we will arrange a demonstration when it opens. We reply within two working days.")}""")
 
-PAGES["industrial-participation.html"] = dict(title="UK offset and industrial participation", desc="What UK industrial participation (offset) means for overseas defence suppliers, and how Capital helps them create genuine UK value.", body=pagehead(
-    "UK industrial participation (offset)",
-    "Under the UK Government's offset regime, when it buys defence equipment from abroad, the overseas supplier must create British jobs and benefits.",
-    ["Industrial participation"]) + f"""
+PAGES["uk-offset-policy.html"] = dict(title="UK Offset Policy", desc="A plain-English summary of the Ministry of Defence's UK Offset Policy, published on 30 October 2026: who it applies to, the GBP 50 million threshold, the 100% obligation, multipliers, credits and milestones.".replace("GBP ", "£"), body=pagehead(
+    "The UK Offset Policy",
+    "On 30 October 2026 the Ministry of Defence published the UK Offset Policy. An overseas supplier that wins a large UK defence contract will commit to deliver UK value equal to the contract, through projects agreed with a new Offset Authority. These are the main points.",
+    ["UK Offset Policy"],
+    '<div class="actions"><a class="btn btn-brass" href="https://www.gov.uk/government/publications/uk-offset-policy/uk-offset-policy">Read the policy on GOV.UK</a><a class="btn btn-ghost" href="contact.html">Talk to Capital</a></div>') + f"""
+<section class="section" aria-labelledby="key-title"><div class="wrap two">
+  <div><span class="kicker" aria-hidden="true"></span><h2 id="key-title">The main points</h2></div>
+  <div>
+    <ul class="facts">
+      <li><b>When</b><span>Published on 30 October 2026. The Ministry of Defence expects to apply offset to procurements from 2027, once its Offset Authority is in place.</span></li>
+      <li><b>Who</b><span>Overseas suppliers of defence and security equipment, services and support. It may also apply to a UK-registered supplier where a significant part of the work comes from abroad.</span></li>
+      <li><b>Threshold</b><span>Contracts worth £50 million or more. Related contracts may be added together over up to five years.</span></li>
+      <li><b>Obligation</b><span>Normally 100% of the contract value, set out in a separate Offset Agreement signed before the main contract. The projects are agreed afterwards.</span></li>
+      <li><b>Timescale</b><span>Up to ten years, with milestones of 30% by Year 3, 50% by Year 5 and 100% by Year 10.</span></li>
+      <li><b>What counts</b><span>Direct and indirect offset, including contracts with UK companies, technology and know-how transfer, research and development with UK industry and universities, investment, maintenance and support capability, skills and exports.</span></li>
+      <li><b>Approval</b><span>Every project needs the Offset Authority's written approval before it starts, and must be additional to normal business.</span></li>
+      <li><b>Value</b><span>Credit is based on the UK value added, not simply the value of the contracts placed.</span></li>
+      <li><b>Multipliers</b><span>Extra credit for priority locations, activities and sectors, such as regional growth, technology transfer, skills, smaller companies and sovereign capability. Details are to be published.</span></li>
+      <li><b>Credits</b><span>Awarded after delivery and checking. Suppliers report each year by 31 March. Credits can be banked, normally for five years.</span></li>
+      <li><b>Remedies</b><span>A last resort. Compensation for a missed milestone is normally at least 10% of the shortfall.</span></li>
+      <li><b>Transparency</b><span>A public list of the companies with offset agreements and the value they still have to deliver.</span></li>
+    </ul>
+    <div class="note" style="margin-top:28px;max-width:none"><b>A summary, not legal advice.</b> The policy on <a href="https://www.gov.uk/government/publications/uk-offset-policy/uk-offset-policy">GOV.UK</a> is the authority. Further guidance, including the multipliers and the Offset Authority's procedures, is due to be published.</div>
+  </div>
+</div></section>
+
+<section class="section stone" aria-labelledby="mean-title"><div class="wrap">
+  <span class="kicker" aria-hidden="true"></span><h2 class="h2" id="mean-title">What it means</h2>
+  <div class="cols two-up">
+    <div class="col"><h3>For overseas suppliers</h3><p>Plan early. You will need UK partners that can make your parts now, and partners that could with your support, with evidence of where and how they work in the UK. The <a href="platform.html">platform</a> finds both, and Capital's <a href="advisory.html">advisory</a> team can help with offset strategy, project proposals and credit claims.</p></div>
+    <div class="col"><h3>For UK companies</h3><p>The policy opens supply chains to UK primes, mid-tier companies, SMEs, universities and research organisations. Overseas suppliers will be looking for capable UK partners. <a href="uk-companies.html">How UK companies are included</a>.</p></div>
+  </div>
+  <p class="sub">Discuss the policy with others working on it at the <a href="roundtable.html">UK National Offset Council (UK-NOC)</a>.</p>
+</div></section>
+{band()}""")
+
+PAGES["industrial-participation.html"] = dict(title="UK offset", desc="What the UK Offset Policy means for overseas defence suppliers, and how Capital helps them create genuine UK value.", body=pagehead(
+    "UK offset",
+    "Under the UK Offset Policy, an overseas supplier that wins a large Ministry of Defence contract commits to deliver UK value equal to the contract, over up to ten years.",
+    ["UK offset"]) + f"""
 <section class="section" aria-labelledby="means-title"><div class="wrap two">
   <div><span class="kicker" aria-hidden="true"></span><h2 id="means-title">What this means for overseas suppliers</h2></div>
   <div class="prose">
     <ul>
       <li>UK partners are needed early, often before a bid is submitted.</li>
       <li>Commitments are usually met over many years, so partners must be stable and capable.</li>
-      <li>Credit favours real, lasting value: new UK suppliers, new capability, certifications and skilled jobs, especially in smaller companies.</li>
+      <li>Credit favours real, lasting UK value: new UK suppliers, new capability, certifications and skilled jobs. Multipliers are planned for priority sectors, regions and smaller companies.</li>
     </ul>
-    <div class="note"><b>Know the rules that apply to you.</b> Thresholds, percentages and timescales are set by the Ministry of Defence. Capital can explain how they apply to your contract.</div>
+    <div class="note"><b>Know the rules that apply to you.</b> Read <a href="uk-offset-policy.html">the UK Offset Policy in brief</a>. Capital can explain how it applies to your contract.</div>
   </div>
 </div></section>
 
@@ -1371,7 +1407,7 @@ PAGES["roundtable.html"] = dict(title='UK National Offset Council (UK-NOC)', des
 <section class="section" aria-labelledby="why-title"><div class="wrap two">
   <div><span class="kicker" aria-hidden="true"></span><h2 id="why-title">Why UK-NOC, and why now</h2></div>
   <div class="prose">
-    <p>The UK Government now applies an offset regime to defence equipment bought from abroad. Overseas suppliers, their UK partners and government all gain from a shared, practical understanding of how commitments are set, met and credited.</p>
+    <p>The Ministry of Defence published the <a href="uk-offset-policy.html">UK Offset Policy</a> in October 2026, applying offset to large defence purchases from abroad. Overseas suppliers, their UK partners and government all gain from a shared, practical understanding of how commitments are set, met and credited.</p>
     <p>Many overseas companies already manage offset obligations in other countries, and many UK companies already supply them. UK-NOC gives both a regular place to compare experience, raise practical problems early and understand the thinking behind the rules.</p>
     <p>It is deliberately informal: a day of open discussion, not a conference or a sales event.</p>
   </div>
@@ -1594,7 +1630,7 @@ PAGES["request-access.html"] = dict(title="Register your interest", desc="Capita
 </div></section>
 {band("Want to see what the platform does first?", "The platform page explains the six steps from a parts list to first contact, and what each readiness label means.", "How the platform works", "platform.html")}""")
 
-PAGES["contact.html"] = dict(title="Contact", desc="Contact Capital Industrial Participation by email or telephone. Based in London, United Kingdom.", body=pagehead(
+PAGES["contact.html"] = dict(title="Contact", desc="Contact Capital Offset Services by email or telephone. Based in London, United Kingdom.", body=pagehead(
     "Contact",
     "For the platform, please use Register interest. For everything else, get in touch below.",
     ["Contact"]) + f"""
@@ -1607,11 +1643,11 @@ PAGES["contact.html"] = dict(title="Contact", desc="Contact Capital Industrial P
     </div>
   </div>
   <div class="panel">
-    <h3>Capital Industrial Participation</h3>
+    <h3>Capital Offset Services</h3>
     <div class="big">{EMAIL_WBR}</div>
     <div class="copyrow"><button class="copybtn" type="button" data-copy="{EMAIL}">Copy email address</button></div>
     <p style="margin-top:18px"><strong>Telephone</strong><br>{PHONE}</p>
-    <p style="margin-top:14px"><strong>Company details</strong><br>Capital Offset Services Limited, trading as Capital Industrial Participation.<br>Registered in England and Wales, company number 08803140.</p>
+    <p style="margin-top:14px"><strong>Company details</strong><br>Capital Offset Services Limited.<br>Registered in England and Wales, company number 08803140.</p>
   </div>
 </div></section>
 {band()}""")
@@ -1635,7 +1671,7 @@ with open(os.path.join(SITE, "uk-icr.html"), "w") as f:
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>UK National Offset Council (UK-NOC) · Capital Industrial Participation</title>
+<title>UK National Offset Council (UK-NOC) · Capital Offset Services</title>
 <meta name="robots" content="noindex">
 <link rel="canonical" href="{DOMAIN}/roundtable.html">
 <script>location.replace('roundtable.html'+location.hash);</script>
