@@ -600,7 +600,7 @@ NAV = [
     ("uk-offset-policy.html", "UK Offset Policy"),
     ("advisory.html", "Advisory"),
     ("training.html", "Training"),
-    ("roundtable.html", "UK-NOC"),
+    ("uk-noc.html", "UK-NOC"),
     ("offset-alerts.html", "Offset alerts"),
     ("about.html", "About"),
     ("contact.html", "Contact"),
@@ -630,7 +630,7 @@ FOOTER = f"""
       <p class="contact">Based in London, United Kingdom. Meetings by appointment.<br><span>{EMAIL}</span><span>{PHONE}</span></p>
     </div>
     <div><h4>Platform</h4><ul><li><a href="platform.html">How it works</a></li><li><a href="security.html">Security and privacy</a></li><li><a href="request-access.html">Register interest</a></li></ul></div>
-    <div><h4>Services</h4><ul><li><a href="advisory.html">Advisory</a></li><li><a href="training.html">Offset practitioner course</a></li><li><a href="roundtable.html">UK National Offset Council</a></li><li><a href="offset-alerts.html">Offset alerts</a></li><li><a href="uk-offset-policy.html">UK Offset Policy</a></li><li><a href="industrial-participation.html">UK offset</a></li><li><a href="uk-companies.html">For UK companies</a></li></ul></div>
+    <div><h4>Services</h4><ul><li><a href="advisory.html">Advisory</a></li><li><a href="training.html">Offset practitioner course</a></li><li><a href="uk-noc.html">UK National Offset Council</a></li><li><a href="offset-alerts.html">Offset alerts</a></li><li><a href="uk-offset-policy.html">UK Offset Policy</a></li><li><a href="industrial-participation.html">UK offset</a></li><li><a href="uk-companies.html">For UK companies</a></li></ul></div>
     <div><h4>Company</h4><ul><li><a href="about.html">About Capital</a></li><li><a href="compliance.html">Compliance and ethics</a></li><li><a href="contact.html">Contact</a></li></ul></div>
   </div>
   <div class="legal"><div class="wrap">
@@ -895,7 +895,7 @@ PAGES["index.html"] = dict(title="Home", desc="Capital helps overseas defence co
   <span class="kicker" aria-hidden="true"></span><h2 class="h2" id="more-title">The Council and training</h2>
   <p class="sub">Two ways Capital brings people together around industrial participation, alongside the platform.</p>
   <div class="cols two-up">
-    <div class="col"><h3>UK National Offset Council (UK-NOC)</h3><p>An informal quarterly gathering in London for people with an interest in UK offset: Ministry of Defence officials, UK companies and overseas suppliers. Organised and hosted by Capital. The first meeting takes place in Q4 2026.</p><p><a href="roundtable.html">About UK-NOC</a></p></div>
+    <div class="col"><h3>UK National Offset Council (UK-NOC)</h3><p>An informal quarterly gathering in London for people with an interest in UK offset: Ministry of Defence officials, UK companies and overseas suppliers. Organised and hosted by Capital. The first meeting takes place in Q4 2026.</p><p><a href="uk-noc.html">About UK-NOC</a></p></div>
     <div class="col"><h3>Offset practitioner course</h3><p>A practitioner's masterclass for people new to offset and industrial participation: eight modules, a UK elective and a live negotiation simulation, online over nine weeks or in-house over three days.</p><p><a href="training.html">See the course outline</a></p></div>
   </div>
 </div></section>
@@ -980,7 +980,7 @@ PAGES["uk-offset-policy.html"] = dict(title="UK Offset Policy", desc="A plain-En
     <div class="col"><h3>For overseas suppliers</h3><p>Plan early. You will need UK partners that can make your parts now, and partners that could with your support, with evidence of where and how they work in the UK. The <a href="platform.html">platform</a> finds both, and Capital's <a href="advisory.html">advisory</a> team can help with offset strategy, project proposals and credit claims.</p></div>
     <div class="col"><h3>For UK companies</h3><p>The policy opens supply chains to UK primes, mid-tier companies, SMEs, universities and research organisations. Overseas suppliers will be looking for capable UK partners. <a href="uk-companies.html">How UK companies are included</a>.</p></div>
   </div>
-  <p class="sub">Discuss the policy with others working on it at the <a href="roundtable.html">UK National Offset Council (UK-NOC)</a>.</p>
+  <p class="sub">Discuss the policy with others working on it at the <a href="uk-noc.html">UK National Offset Council (UK-NOC)</a>.</p>
 </div></section>
 {band()}""")
 
@@ -1013,7 +1013,7 @@ PAGES["industrial-participation.html"] = dict(title="UK offset", desc="What the 
   <div class="prose">
     <p>The platform finds candidates for both routes and highlights the opportunities, such as a smaller company that could gain a certification or a commercial manufacturer ready to enter defence. Your team then decides where to engage.</p>
     <p>Capital's founder has worked on offset and industrial participation programmes for more than 25 years, across Europe, the Middle East, Asia, Africa and the Americas. <a href="about.html">About Capital</a></p>
-    <p>Capital also organises and hosts the <a href="roundtable.html">UK National Offset Council (UK-NOC)</a>, an informal quarterly gathering in London for Ministry of Defence officials, UK companies and overseas suppliers, and runs a <a href="training.html">practitioner course</a> for people new to offset.</p>
+    <p>Capital also organises and hosts the <a href="uk-noc.html">UK National Offset Council (UK-NOC)</a>, an informal quarterly gathering in London for Ministry of Defence officials, UK companies and overseas suppliers, and runs a <a href="training.html">practitioner course</a> for people new to offset.</p>
   </div>
 </div></section>
 {band()}""")
@@ -1104,7 +1104,7 @@ PAGES["advisory.html"] = dict(title="Advisory services", desc="Direct advisory s
   <span class="kicker" aria-hidden="true"></span><h2 class="h2" id="also-title">Training and the Council</h2>
   <div class="cols two-up">
     <div class="col"><h3>Offset practitioner course</h3><p>A practitioner's masterclass for people new to offset and industrial participation: eight modules, a UK elective and a live negotiation simulation, online over nine weeks or in-house over three days.</p><p><a href="training.html">See the course outline</a></p></div>
-    <div class="col"><h3>UK National Offset Council (UK-NOC)</h3><p>An informal quarterly gathering in London for people with an interest in UK offset: Ministry of Defence officials, UK companies and overseas suppliers. Organised and hosted by Capital. The first meeting takes place in Q4 2026.</p><p><a href="roundtable.html">About UK-NOC</a></p></div>
+    <div class="col"><h3>UK National Offset Council (UK-NOC)</h3><p>An informal quarterly gathering in London for people with an interest in UK offset: Ministry of Defence officials, UK companies and overseas suppliers. Organised and hosted by Capital. The first meeting takes place in Q4 2026.</p><p><a href="uk-noc.html">About UK-NOC</a></p></div>
   </div>
 </div></section>
 {band("Discuss a project", "Tell us about your programme and target market, and we will come back to you within two working days.", "Contact Capital", "contact.html")}""")
@@ -1396,10 +1396,10 @@ PAGES["training.html"] = dict(title="Offset practitioner course", desc="Strategi
     <p>Prefer to talk first? {PHONE}, UK office hours.</p>
   </div>
 </div></section>
-{band('Working on a UK commitment?', 'Meet others doing the same at the UK National Offset Council (UK-NOC), an informal quarterly gathering in London. The first takes place in Q4 2026.', 'About UK-NOC', 'roundtable.html')}""")
+{band('Working on a UK commitment?', 'Meet others doing the same at the UK National Offset Council (UK-NOC), an informal quarterly gathering in London. The first takes place in Q4 2026.', 'About UK-NOC', 'uk-noc.html')}""")
 
 
-PAGES["roundtable.html"] = dict(title='UK National Offset Council (UK-NOC)', desc='The UK National Offset Council (UK-NOC) is an informal quarterly gathering in London for people with an interest in UK offset and the UK Offset Policy: Ministry of Defence officials, UK companies and overseas suppliers. Organised and hosted by Capital.', body=pagehead(
+PAGES["uk-noc.html"] = dict(title='UK National Offset Council (UK-NOC)', desc='The UK National Offset Council (UK-NOC) is an informal quarterly gathering in London for people with an interest in UK offset and the UK Offset Policy: Ministry of Defence officials, UK companies and overseas suppliers. Organised and hosted by Capital.', body=pagehead(
     'UK National Offset Council',
     'The UK National Offset Council (UK-NOC) is an informal gathering, held each quarter in London, for people with an interest in UK offset and the UK Offset Policy: officials from the Ministry of Defence and other government departments, UK companies and overseas suppliers. Capital organises and hosts each meeting, bringing industry and government together on how it works in practice.',
     ['UK-NOC'],
@@ -1664,21 +1664,22 @@ for p, d in PAGES.items():
     doc = page(p, d["title"], d["desc"], d["body"])
     with open(os.path.join(SITE, p), "w") as f: f.write(doc)
 
-# The roundtable's old address (uk-icr.html) sends visitors to its new page
-with open(os.path.join(SITE, "uk-icr.html"), "w") as f:
-    f.write(f"""<!doctype html>
+# Old addresses (uk-icr.html, uk-noc.html) send visitors to the UK-NOC page
+for old in ("uk-icr.html", "roundtable.html"):
+    with open(os.path.join(SITE, old), "w") as f:
+        f.write(f"""<!doctype html>
 <html lang="en-GB">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>UK National Offset Council (UK-NOC) · Capital Offset Services</title>
 <meta name="robots" content="noindex">
-<link rel="canonical" href="{DOMAIN}/roundtable.html">
-<script>location.replace('roundtable.html'+location.hash);</script>
-<meta http-equiv="refresh" content="0; url=roundtable.html">
+<link rel="canonical" href="{DOMAIN}/uk-noc.html">
+<script>location.replace('uk-noc.html'+location.hash);</script>
+<meta http-equiv="refresh" content="0; url=uk-noc.html">
 </head>
 <body>
-<p>This page has moved: <a href="roundtable.html">UK National Offset Council (UK-NOC)</a>.</p>
+<p>This page has moved: <a href="uk-noc.html">UK National Offset Council (UK-NOC)</a>.</p>
 </body>
 </html>
 """)
