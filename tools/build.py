@@ -640,7 +640,7 @@ FOOTER = f"""
   </div></div>
 </footer>"""
 
-def band(title="Preparing a UK bid or an industrial participation plan?",
+def band(title="Preparing a UK bid or an offset plan?",
          text="The platform opens to clients soon. Register your interest for a demonstration, or contact us to discuss an advisory project. We reply within two working days.",
          label="Register your interest", href="request-access.html"):
     return f"""
@@ -833,12 +833,12 @@ PAGES["index.html"] = dict(title="Home", desc="Capital helps overseas defence co
   <div class="wrap">
     <div>
       <h1 id="hero-title">Find credible UK industrial partners for your defence programme</h1>
-      <p class="lede">Capital helps overseas defence companies meet UK offset and industrial participation commitments, with an evidence-based search platform and more than 25 years of offset experience. The platform opens to clients soon.</p>
+      <p class="lede">Capital helps overseas defence companies meet UK offset commitments, with an evidence-based search platform and more than 25 years of offset experience. The platform opens to clients soon.</p>
       <div class="actions">
         <a class="btn btn-brass" href="request-access.html">Register your interest</a>
         <a class="btn btn-ghost" href="platform.html">How the platform works</a>
       </div>
-      <p class="audience">For overseas primes and their UK subsidiaries preparing bids and participation plans</p>
+      <p class="audience">For overseas primes and their UK subsidiaries preparing bids and offset plans</p>
     </div>
     <aside class="card" aria-label="Example of a platform shortlist">
       <div class="card-top"><b>Shortlist</b><span>Line 14 of 38</span></div>
@@ -858,7 +858,7 @@ PAGES["index.html"] = dict(title="Home", desc="Capital helps overseas defence co
   <div class="prose">
     <p>The UK expects overseas suppliers to invest in its defence industry. Meeting that expectation means finding UK companies that can genuinely make your parts, develop your technology or support your programme, and finding them early.</p>
     <p>A web search turns up distributors, sales offices and advertisers alongside real manufacturers. Reviewing their capabilities, financial health, compliance and certifications takes a significant investment of time.</p>
-    <p><a href="industrial-participation.html">About UK industrial participation</a></p>
+    <p><a href="industrial-participation.html">About UK offset</a></p>
   </div>
 </div></section>
 
@@ -898,7 +898,7 @@ PAGES["index.html"] = dict(title="Home", desc="Capital helps overseas defence co
 
 <section class="section stone" aria-labelledby="more-title"><div class="wrap">
   <span class="kicker" aria-hidden="true"></span><h2 class="h2" id="more-title">The Council and training</h2>
-  <p class="sub">Two ways Capital brings people together around industrial participation, alongside the platform.</p>
+  <p class="sub">Two ways Capital brings people together around offset, alongside the platform.</p>
   <div class="cols two-up">
     <div class="col"><h3>UK National Offset Council (UK-NOC)</h3><p>An informal quarterly gathering in London for people with an interest in UK offset: Ministry of Defence officials, UK companies and overseas suppliers. Organised and hosted by Capital. The first meeting takes place in Q4 2026.</p><p><a href="uk-noc.html">About UK-NOC</a></p></div>
     <div class="col"><h3>Offset practitioner course</h3><p>A practitioner's masterclass for people new to offset and industrial participation: eight modules, a UK elective and a live negotiation simulation, online over nine weeks or in-house over three days.</p><p><a href="training.html">See the course outline</a></p></div>
@@ -948,7 +948,7 @@ PAGES["platform.html"] = dict(title="The UK Defence Localisation Platform", desc
   <div class="prose">
     <p><strong>It is</strong> a well-evidenced shortlist of credible UK candidates for each part, with reasons, ready for your engineers to review and contact.</p>
     <p><strong>It is not</strong> a guarantee of capability, a supplier approval or a substitute for your own qualification process. Final qualification always requires direct contact with the company.</p>
-    <div class="note"><b>Who it is for.</b> Overseas defence and aerospace companies, and their UK subsidiaries, preparing bids, industrial participation plans or UK supply-chain development.</div>
+    <div class="note"><b>Who it is for.</b> Overseas defence and aerospace companies, and their UK subsidiaries, preparing bids, offset plans or UK supply-chain development.</div>
   </div>
 </div></section>
 {band("Opening to clients soon", "The platform will be available by subscription. Register your interest and we will arrange a demonstration when it opens. We reply within two working days.")}""")
@@ -990,7 +990,7 @@ PAGES["uk-offset-policy.html"] = dict(title="UK Offset Policy", desc="A plain-En
 {band()}""")
 
 PAGES["industrial-participation.html"] = dict(title="UK offset and industrial participation", desc="UK offset and industrial participation: what the UK Offset Policy means for overseas defence suppliers and UK companies, and how Capital helps them create genuine UK value.", body=pagehead(
-    "UK offset and industrial participation",
+    "UK offset",
     "Under the UK Offset Policy, an overseas supplier that wins a large Ministry of Defence contract commits to deliver UK value equal to the contract, over up to ten years.",
     ["UK offset"]) + f"""
 <section class="section" aria-labelledby="means-title"><div class="wrap two">
@@ -1422,7 +1422,7 @@ PAGES["uk-noc.html"] = dict(title='UK National Offset Council (UK-NOC)', desc='T
   <span class="kicker" aria-hidden="true"></span><h2 class="h2" id="who-title">Who it is for</h2>
   <p class="sub">Anyone with a working interest in UK offset is welcome.</p>
   <div class="cols">
-    <div class="col"><h3>The Ministry of Defence and government</h3><p>Officials responsible for UK industrial participation policy and defence procurement, invited to set out policy and hear industry's experience.</p></div>
+    <div class="col"><h3>The Ministry of Defence and government</h3><p>Officials responsible for UK offset policy and defence procurement, invited to set out policy and hear industry's experience.</p></div>
     <div class="col"><h3>UK companies</h3><p>UK companies of every size, from primes to SMEs, that partner with overseas suppliers or want to.</p></div>
     <div class="col"><h3>Overseas suppliers</h3><p>Overseas defence companies with UK offset commitments, or expecting them on future UK contracts, and their UK subsidiaries.</p></div>
   </div>
@@ -1617,7 +1617,7 @@ PAGES["request-access.html"] = dict(title="Register your interest", desc="Capita
       <ul>
         <li>your name and job title;</li>
         <li>your organisation and country;</li>
-        <li>what you hope to achieve, for example preparing a UK bid or an industrial participation plan.</li>
+        <li>what you hope to achieve, for example preparing a UK bid or an offset plan.</li>
       </ul>
       <p>Please do not include any programme, technical or classified information.</p>
       <p>We aim to reply within two working days. Your details are used only to respond to your request.</p>
