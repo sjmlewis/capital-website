@@ -416,6 +416,7 @@ select.pick{display:block;width:100%;margin-top:8px;font:500 16px/1.4 var(--body
 .foot a:hover{color:#fff}
 .foot .contact{margin-top:18px;max-width:38ch;line-height:1.7}
 .foot .contact span{display:block;color:#fff;user-select:all}
+.foot .contact a.li{display:inline-block;margin-top:6px;color:var(--brass-light)}
 .legal{border-top:1px solid rgba(255,255,255,.12)}
 .legal .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px;padding-block:18px;font-size:13px}
 @media (max-width:900px){.foot .wrap{grid-template-columns:1fr 1fr}.foot .wrap>:first-child{grid-column:1/-1}}
@@ -627,7 +628,7 @@ FOOTER = f"""
   <div class="wrap">
     <div>
       {brand()}
-      <p class="contact">Based in London, United Kingdom. Meetings by appointment.<br><span>{EMAIL}</span><span>{PHONE}</span></p>
+      <p class="contact">Based in London, United Kingdom. Meetings by appointment.<br><span>{EMAIL}</span><span>{PHONE}</span><a class="li" href="https://www.linkedin.com/in/stephen-lewis-b9716413" rel="noopener">Stephen Lewis on LinkedIn</a></p>
     </div>
     <div><h4>Platform</h4><ul><li><a href="platform.html">How it works</a></li><li><a href="security.html">Security and privacy</a></li><li><a href="request-access.html">Register interest</a></li></ul></div>
     <div><h4>Services</h4><ul><li><a href="advisory.html">Advisory</a></li><li><a href="training.html">Offset practitioner course</a></li><li><a href="uk-noc.html">UK National Offset Council</a></li><li><a href="offset-alerts.html">Offset alerts</a></li><li><a href="uk-offset-policy.html">UK Offset Policy</a></li><li><a href="industrial-participation.html">UK offset</a></li><li><a href="uk-companies.html">For UK companies</a></li></ul></div>
@@ -1651,6 +1652,7 @@ PAGES["contact.html"] = dict(title="Contact", desc="Contact Capital Offset Servi
     <div class="big">{EMAIL_WBR}</div>
     <div class="copyrow"><button class="copybtn" type="button" data-copy="{EMAIL}">Copy email address</button></div>
     <p style="margin-top:18px"><strong>Telephone</strong><br>{PHONE}</p>
+    <p style="margin-top:14px"><strong>LinkedIn</strong><br><a href="https://www.linkedin.com/in/stephen-lewis-b9716413" rel="noopener">Stephen Lewis</a></p>
     <p style="margin-top:14px"><strong>Company details</strong><br>Capital Offset Services Limited.<br>Registered in England and Wales, company number 08803140.</p>
   </div>
 </div></section>

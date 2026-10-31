@@ -395,6 +395,7 @@ select.pick{display:block;width:100%;margin-top:8px;font:500 16px/1.4 var(--body
 .foot a:hover{color:#fff}
 .foot .contact{margin-top:18px;max-width:38ch;line-height:1.7}
 .foot .contact span{display:block;color:#fff;user-select:all}
+.foot .contact a.li{display:inline-block;margin-top:6px;color:var(--brass-light)}
 .legal{border-top:1px solid rgba(255,255,255,.12)}
 .legal .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px;padding-block:18px;font-size:13px}
 @media (max-width:900px){.foot .wrap{grid-template-columns:1fr 1fr}.foot .wrap>:first-child{grid-column:1/-1}}
