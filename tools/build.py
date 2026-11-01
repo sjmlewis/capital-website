@@ -1564,6 +1564,7 @@ PAGES["about.html"] = dict(title="About Capital", desc="Capital was founded in 2
   <div class="prose">
     <p>Offset and industrial participation carry commercial and political risk. Capital works on an open, documented basis and complies with the anti-corruption and export-control laws that apply to its work.</p>
     <p><a href="compliance.html">Compliance and ethics</a></p>
+    <div class="note" style="margin-top:28px;max-width:none"><b>Delivered through Constructive Edge.</b> Capital Offset Services is an equal partner in <a href="https://www.constructive-edge.com">Constructive Edge</a>, a global offset and industrial participation advisory group headquartered in Guelph, Ontario, near Toronto, Canada, with partners also based in the United States, Belgium, Australia and the UK. Constructive Edge supports industry programme and offset commitments worth billions of dollars for major aerospace and defence primes, and Capital's offset and industrial participation advisory work is delivered through it.</div>
   </div>
 </div></section>
 {band()}""")
