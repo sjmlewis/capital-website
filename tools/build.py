@@ -14,9 +14,12 @@ EMAIL = "stephen.lewis@capitaloffsetservices.com"
 PHONE = "+44 (0)7776 226656"
 EMAIL_WBR = EMAIL.replace("@", "@<wbr>")  # lets the long address break after @ on small phones
 
-FAVICON = ("data:image/svg+xml," + "%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E"
-           "%3Crect width='32' height='32' rx='4' fill='%230B1F3A'/%3E"
-           "%3Crect x='10' y='10' width='12' height='12' transform='rotate(45 16 16)' fill='%23A4834B'/%3E%3C/svg%3E")
+# The site icon (navy square, brass diamond) is kept as real files at the site's root - favicon.ico, favicon-192.png and
+# apple-touch-icon.png - because Google Search needs an icon file it can fetch (an icon written inside the page is not used).
+# Keep these file names: Google asks for a stable icon address.
+ICON_LINKS = (f'<link rel="icon" href="{DOMAIN}/favicon.ico" sizes="48x48">\n'
+              f'<link rel="icon" href="{DOMAIN}/favicon-192.png" type="image/png" sizes="192x192">\n'
+              f'<link rel="apple-touch-icon" href="{DOMAIN}/apple-touch-icon.png">')
 
 CSS = r"""
 /* Capital Offset Services — site styles.
@@ -676,7 +679,7 @@ def head(title, desc, path, extra_css=""):
 <meta property="og:image:height" content="627">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0B1F3A">
-<link rel="icon" href="{FAVICON}">
+{ICON_LINKS}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
