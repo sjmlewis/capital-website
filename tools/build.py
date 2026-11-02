@@ -972,7 +972,7 @@ PAGES["uk-offset-policy.html"] = dict(title="UK Offset Policy", desc="A plain-En
       <li><b>Timescale</b><span>Up to ten years, with milestones of 30% by Year 3, 50% by Year 5 and 100% by Year 10.</span></li>
       <li><b>What counts</b><span>Direct and indirect offset, including contracts with UK companies, technology and know-how transfer, research and development with UK industry and universities, investment, maintenance and support capability, skills and exports.</span></li>
       <li><b>Approval</b><span>Every project needs the Offset Authority's written approval before it starts, and must be additional to normal business.</span></li>
-      <li><b>Value</b><span>Credit is based on the UK value added, not simply the value of the contracts placed.</span></li>
+      <li><b>Value</b><span>Credit is based on the UK value added, not simply the value of the contracts placed. <a href="uk-offset-green-book.html">How the Green Book shapes value</a>.</span></li>
       <li><b>Multipliers</b><span>Extra credit for priority locations, activities and sectors, such as regional growth, technology transfer, skills, smaller companies and sovereign capability. Details are to be published.</span></li>
       <li><b>Credits</b><span>Awarded after delivery and checking. Suppliers report each year by 31 March. Credits can be banked, normally for five years.</span></li>
       <li><b>Remedies</b><span>A last resort. Compensation for a missed milestone is normally at least 10% of the shortfall.</span></li>
@@ -989,6 +989,64 @@ PAGES["uk-offset-policy.html"] = dict(title="UK Offset Policy", desc="A plain-En
     <div class="col"><h3>For UK companies</h3><p>The policy opens supply chains to UK primes, mid-tier companies, SMEs, universities and research organisations. Overseas suppliers will be looking for capable UK partners. <a href="uk-companies.html">How UK companies are included</a>.</p></div>
   </div>
   <p class="sub">Discuss the policy with others working on it at the <a href="uk-noc.html">UK National Offset Council (UK-NOC)</a>.</p>
+</div></section>
+{band()}""")
+
+# The Green Book explainer (2 Nov 2026): general principles only - no multiplier proposal and no example figures,
+# because the Offset Authority has not yet published its valuation guidance. Update it when the guidance is out.
+PAGES["uk-offset-green-book.html"] = dict(title="UK offset and the Green Book", current="uk-offset-policy.html", desc="How the UK Offset Policy's link to HM Treasury's Green Book shapes the value of offset projects, in plain English: what the Green Book is, why it matters for offset, and its principles in everyday offset terms.", body=pagehead(
+    "UK offset and the Green Book",
+    "The UK Offset Policy says the new Offset Authority will value offset projects in a way that is consistent with HM Treasury's Green Book. Its valuation guidance is still to come. Until then, this page explains what the Green Book is and puts its principles into the terms offset managers already use.",
+    [("uk-offset-policy.html", "UK Offset Policy"), "The Green Book"],
+    '<div class="actions"><a class="btn btn-brass" href="https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government/the-green-book-2026">Read the Green Book on GOV.UK</a><a class="btn btn-ghost" href="uk-offset-policy.html">The UK Offset Policy in brief</a></div>') + f"""
+<section class="section" aria-labelledby="what-title"><div class="wrap two">
+  <div><span class="kicker" aria-hidden="true"></span><h2 id="what-title">What the Green Book is</h2></div>
+  <div class="prose">
+    <p>The Green Book is HM Treasury's guidance on appraisal: how the UK government weighs the costs, benefits and risks of different ways of meeting its objectives. Government departments must follow it when they plan significant spending. The current edition was published in February 2026.</p>
+    <p>It asks one question of every proposal: how much better off is the UK as a whole, compared with what would have happened anyway?</p>
+  </div>
+</div></section>
+
+<section class="section stone" aria-labelledby="why-title"><div class="wrap two">
+  <div><span class="kicker" aria-hidden="true"></span><h2 id="why-title">Why it matters for offset</h2></div>
+  <div class="prose">
+    <p>Section 3.11.1 of the policy says the Offset Authority will use “a transparent value framework that is consistent with the HMT Green Book principles” to set the credit for each approved project. Credit is based on UK value added: the value “genuinely generated in the UK”.</p>
+    <p>So the face value of a contract, an investment or a licence is the starting point, not the credit. Multipliers then add extra credit for priority places, activities and sectors. Their values are still to be published.</p>
+  </div>
+</div></section>
+
+<section class="section" aria-labelledby="terms-title"><div class="wrap two">
+  <div><span class="kicker" aria-hidden="true"></span><h2 id="terms-title">The Green Book in offset terms</h2><p class="sub">Each line pairs a familiar offset term with the Green Book idea behind it.</p></div>
+  <div>
+    <ul class="facts">
+      <li><b>Additionality</b><span><i>Green Book: additionality.</i> Credit only for value that would not exist without the offset obligation.</span></li>
+      <li><b>Incrementality</b><span><i>Green Book: deadweight.</i> Business that would have happened anyway, such as existing contracts and routine re-orders, earns nothing.</span></li>
+      <li><b>Baseline</b><span><i>Green Book: business as usual.</i> The starting position that new business is measured against.</span></li>
+      <li><b>Causality</b><span><i>Green Book: outcomes that happen as a result of the intervention.</i> The supplier must show that its obligation caused the work.</span></li>
+      <li><b>UK content</b><span><i>Green Book: leakage.</i> Only value made in the UK counts; imported content is deducted.</span></li>
+      <li><b>No re-badging</b><span><i>Green Book: displacement and substitution.</i> Moving work between UK firms, or relabelling existing work, adds nothing.</span></li>
+      <li><b>Sustainability</b><span><i>Green Book: durability and discounting.</i> Capability that lasts for years counts for more than one-off work.</span></li>
+      <li><b>Credit on delivery</b><span><i>Green Book: optimism bias.</i> Credit is for what is delivered and checked, not what is promised.</span></li>
+      <li><b>Activity, not payments</b><span><i>Green Book: transfers.</i> A payment on its own is not value; credit follows the UK activity it pays for.</span></li>
+      <li><b>Capability building</b><span><i>Green Book: supply-side benefits.</i> Credit follows lasting gains in skills, technology and productivity, not turnover.</span></li>
+      <li><b>Regional and SME multipliers</b><span><i>Green Book: place-based and distributional analysis.</i> Benefits in less productive regions and in smaller firms carry extra weight.</span></li>
+      <li><b>Strategic fit</b><span><i>Green Book: the strategic case.</i> Projects should serve the published priority areas.</span></li>
+      <li><b>Verification</b><span><i>Green Book: monitoring and evaluation.</i> Evidence of delivery is checked before credit is granted.</span></li>
+    </ul>
+  </div>
+</div></section>
+
+<section class="section stone" aria-labelledby="practice-title"><div class="wrap two">
+  <div><span class="kicker" aria-hidden="true"></span><h2 id="practice-title">What this means in practice</h2></div>
+  <div class="prose">
+    <ul>
+      <li>Real UK makers with high UK content count for more than distributors and importers.</li>
+      <li>New capability, such as technology transfer, research and skills, counts for more than more of the same.</li>
+      <li>New work for established UK companies on what they already make still counts as UK value, even where it attracts no multiplier.</li>
+      <li>Plan the evidence from day one: the starting position, the UK content, new jobs and who fills them, approvals and exports.</li>
+    </ul>
+    <div class="note"><b>Our reading, not the Offset Authority's.</b> This page is Capital's reading of the published policy and the Green Book, written on 2 November 2026. The Offset Authority will publish its own valuation guidance, and we will update this page when it does. The <a href="https://www.gov.uk/government/publications/uk-offset-policy/uk-offset-policy">policy</a> and the <a href="https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government/the-green-book-2026">Green Book</a> on GOV.UK are the authority.</div>
+  </div>
 </div></section>
 {band()}""")
 
@@ -1671,7 +1729,7 @@ os.makedirs(SITE, exist_ok=True); os.makedirs(ART, exist_ok=True)
 with open(os.path.join(SITE, "styles.css"), "w") as f: f.write(CSS.strip() + "\n")
 with open(os.path.join(SITE, "site.js"), "w") as f: f.write(JS.strip() + "\n")
 for p, d in PAGES.items():
-    doc = page(p, d["title"], d["desc"], d["body"])
+    doc = page(p, d["title"], d["desc"], d["body"], d.get("current"))
     with open(os.path.join(SITE, p), "w") as f: f.write(doc)
 
 # Old addresses (uk-icr.html, uk-noc.html) send visitors to the UK-NOC page
