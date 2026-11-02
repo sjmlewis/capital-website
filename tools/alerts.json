@@ -1,7 +1,64 @@
 {
-  "updated": "2026-10-26",
+  "updated": "2026-11-02",
   "note": "Public offset alerts shown on the website: a weekly round-up of new defence sales above the offset thresholds. This file is the permanent record: never delete an item. The site shows only items whose 'added' date is within the last three weeks of 'updated' (at least eight items are always shown), so older items fall away from the pages but stay here. 'date' is when the event happened (YYYY-MM-DD, or YYYY-MM if only the month is known); 'added' is the date the item went on the site; 'tag' is optional ('Civil' or 'Rules'). Summaries are Capital's own words: one or two plain factual lines, with a short note on offset only where it is clear (for example, no offset because a purchase is SAFE-funded). Sources are not shown on the site and are not kept in this public file; they are recorded privately in Capital's Claude project (Offset_Alerts_Sources.md). Internal scores, suggested services and verdicts from the Offset Opportunity Monitor never go here.",
   "items": [
+    {
+      "date": "2026-11-01",
+      "added": "2026-11-02",
+      "country": "India",
+      "title": "India reported close to a deal for six converted Boeing 767 tankers from IAI",
+      "summary": "India is reported to be nearing an agreement with Israel Aerospace Industries, working with Hindustan Aeronautics, for six converted Boeing 767 tanker aircraft for the Indian Air Force, with a reference value of US$900 million to US$1.1 billion. Approval by the Cabinet Committee on Security is the next step before signature."
+    },
+    {
+      "date": "2026-10-30",
+      "added": "2026-11-02",
+      "country": "United Kingdom",
+      "title": "UK publishes its offset policy: £50m default threshold, applied from April 2027",
+      "summary": "The UK Government has published its offset policy. From April 2027, overseas defence suppliers winning selected contracts worth £50 million or more will normally be expected to reinvest up to the full contract value in the UK, agreed and monitored by a new Offset Authority.",
+      "tag": "Rules"
+    },
+    {
+      "date": "2026-10-30",
+      "added": "2026-11-02",
+      "country": "India",
+      "title": "India approves eight next-generation corvettes for its Navy, worth over Rs400bn",
+      "summary": "India's Cabinet Committee on Security is reported to have approved eight next-generation corvettes for the Indian Navy, worth more than Rs400 billion (about US$4.2 billion), to be built by Garden Reach Shipbuilders & Engineers and Goa Shipyard. As the ships are built by Indian shipyards, India's offset rules do not apply."
+    },
+    {
+      "date": "2026-10-28",
+      "added": "2026-11-02",
+      "country": "Switzerland",
+      "title": "Switzerland shortlists Barak MX and SAMP/T NG for a longer-range air defence system",
+      "summary": "Switzerland's Federal Council has decided to buy an additional longer-range ground-based air defence system alongside Patriot, with Israel's Barak MX and France's SAMP/T NG still in the running. The Patriot purchase continues as planned."
+    },
+    {
+      "date": "2026-10-28",
+      "added": "2026-11-02",
+      "country": "Poland",
+      "title": "Poland chosen to host Europe's PAC-3 missile servicing centre, worth about PLN 1bn",
+      "summary": "Poland has been chosen to host a European servicing centre for the PAC-3 missiles used in Patriot air defence systems, the only one outside the US, at a cost of about PLN 1 billion (about €227 million). Negotiations with Lockheed Martin continue."
+    },
+    {
+      "date": "2026-10-26",
+      "added": "2026-11-02",
+      "country": "India",
+      "title": "India gives first approval to buy 24 VVIP helicopters, estimated at about Rs10,000 crore",
+      "summary": "India's Defence Acquisition Council gave initial approval on 26 October for 24 Special Utility helicopters for VVIP transport, part of about Rs2.12 lakh crore of approvals that day. The estimated value is about Rs10,000 crore; no supplier has been chosen."
+    },
+    {
+      "date": "2026-10-26",
+      "added": "2026-11-02",
+      "country": "Bulgaria",
+      "title": "US Army awards US$48m for chemical reconnaissance sensors on Bulgaria's Strykers",
+      "summary": "The US Army has awarded Teledyne FLIR Defense US$48 million to supply nuclear, biological and chemical reconnaissance sensor suites for 10 of the Stryker vehicles Bulgaria is buying, under a Foreign Military Sales arrangement."
+    },
+    {
+      "date": "2026-10-21",
+      "added": "2026-11-02",
+      "country": "Denmark",
+      "title": "Naval Group signs three Danish partners for its bid for Denmark's new frigates",
+      "summary": "Naval Group has signed memoranda of understanding with Copenhagen Global, Saab Danmark and SH Defence to support its FDI frigate offer for Denmark's future frigate programme, covering drones, communications and mission modules. Denmark has not yet chosen a supplier."
+    },
     {
       "date": "2026-10-22",
       "added": "2026-10-26",
