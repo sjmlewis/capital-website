@@ -870,7 +870,7 @@ PAGES["index.html"] = dict(title="Home", desc="Capital helps overseas defence co
   <div class="cols">
     <div class="col"><h3>The UK Defence Localisation Platform</h3><p>Upload a parts list and receive a reasoned shortlist of UK manufacturers, SMEs, universities and research centres for each line, with the evidence behind every match.</p><p><a href="platform.html">How the platform works</a></p></div>
     <div class="col"><h3>Your data stays yours</h3><p>The platform is designed so that your parts lists and shortlists are visible only to your organisation, not to Capital. You contact UK companies directly, in your own name.</p><p><a href="security.html">Security and privacy</a></p></div>
-    <div class="col"><h3>Experience you can call on</h3><p>Separately from the platform, Capital offers advisory support drawn from offset and industrial participation programmes in nearly 30 countries.</p><p><a href="advisory.html">Advisory services</a></p></div>
+    <div class="col"><h3>Experience you can call on</h3><p>Separately from the platform, Capital's advisory support, drawn from offset and industrial participation programmes in nearly 30 countries, is delivered through Constructive Edge.</p><p><a href="advisory.html">Advisory services</a></p></div>
   </div>
 </div></section>
 
@@ -985,7 +985,7 @@ PAGES["uk-offset-policy.html"] = dict(title="UK Offset Policy", desc="A plain-En
 <section class="section stone" aria-labelledby="mean-title"><div class="wrap">
   <span class="kicker" aria-hidden="true"></span><h2 class="h2" id="mean-title">What it means</h2>
   <div class="cols two-up">
-    <div class="col"><h3>For overseas suppliers</h3><p>Plan early. You will need UK partners that can make your parts now, and partners that could with your support, with evidence of where and how they work in the UK. The <a href="platform.html">platform</a> finds both, and Capital's <a href="advisory.html">advisory</a> team can help with offset strategy, project proposals and credit claims.</p></div>
+    <div class="col"><h3>For overseas suppliers</h3><p>Plan early. You will need UK partners that can make your parts now, and partners that could with your support, with evidence of where and how they work in the UK. The <a href="platform.html">platform</a> finds both, and <a href="advisory.html">advisory</a> support on offset strategy, project proposals and credit claims is available through Constructive Edge.</p></div>
     <div class="col"><h3>For UK companies</h3><p>The policy opens supply chains to UK primes, mid-tier companies, SMEs, universities and research organisations. Overseas suppliers will be looking for capable UK partners. <a href="uk-companies.html">How UK companies are included</a>.</p></div>
   </div>
   <p class="sub">Discuss the policy with others working on it at the <a href="uk-noc.html">UK National Offset Council (UK-NOC)</a>.</p>
@@ -1062,7 +1062,7 @@ PAGES["industrial-participation.html"] = dict(title="UK offset and industrial pa
       <li>Commitments are usually met over many years, so partners must be stable and capable.</li>
       <li>Credit favours real, lasting UK value: new UK suppliers, new capability, certifications and skilled jobs. Multipliers are planned for priority sectors, regions and smaller companies.</li>
     </ul>
-    <div class="note"><b>Know the rules that apply to you.</b> Read <a href="uk-offset-policy.html">the UK Offset Policy in brief</a>. Capital can explain how it applies to your contract.</div>
+    <div class="note"><b>Know the rules that apply to you.</b> Read <a href="uk-offset-policy.html">the UK Offset Policy in brief</a>. Constructive Edge, in which Capital is an equal partner, can explain how it applies to your contract.</div>
   </div>
 </div></section>
 
@@ -1132,15 +1132,15 @@ PAGES["security.html"] = dict(title="Security and privacy", desc="How Capital's 
 <section class="section stone" aria-labelledby="sep-title"><div class="wrap two">
   <div><span class="kicker" aria-hidden="true"></span><h2 id="sep-title">Separate services</h2></div>
   <div class="prose">
-    <p>Capital's <a href="advisory.html">advisory services</a> are contracted separately from the platform. Platform data is not used for advisory work.</p>
+    <p>Capital's <a href="advisory.html">advisory services</a> are delivered through Constructive Edge and contracted separately from the platform. Platform data is not used for advisory work.</p>
     <p>Questions about security or data handling: <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>
   </div>
 </div></section>
 {band()}""")
 
-PAGES["advisory.html"] = dict(title="Advisory services", desc="Direct advisory support on offset and industrial participation for companies and governments, contracted separately from Capital's UK Defence Localisation Platform.", body=pagehead(
+PAGES["advisory.html"] = dict(title="Advisory services", desc="Offset and industrial participation advisory support for companies and governments, delivered through Constructive Edge and contracted separately from Capital's UK Defence Localisation Platform.", body=pagehead(
     "Advisory services",
-    "Alongside the platform, Capital offers direct advisory support to companies and governments working on offset and industrial participation. Advisory work is contracted separately from any platform subscription.",
+    "Capital's offset and industrial participation advisory work for companies and governments is delivered through Constructive Edge, in which Capital is an equal partner. It is contracted separately from any platform subscription.",
     ["Advisory"]) + f"""
 <section class="section" aria-labelledby="serv-title"><div class="wrap">
   <span class="kicker" aria-hidden="true"></span><h2 class="h2" id="serv-title">Services</h2>
@@ -1150,19 +1150,20 @@ PAGES["advisory.html"] = dict(title="Advisory services", desc="Direct advisory s
     <div class="col"><h3>Structured export finance</h3><p>Payment structures and financing arrangements that support capital equipment exports under offset commitments.</p></div>
     <div class="col"><h3>Government advisory</h3><p>Helping governments design industrial and procurement policies that attract foreign technology and investment.</p></div>
   </div>
+  <div class="note" style="margin-top:28px;max-width:none"><b>Delivered through Constructive Edge.</b> Capital Offset Services is an equal partner in <a href="https://www.constructive-edge.com">Constructive Edge</a>, a global offset and industrial participation advisory group headquartered in Guelph, Ontario, near Toronto, Canada, with partners also based in the United States, Belgium, Australia and the UK. Constructive Edge supports industry programme and offset commitments worth billions of dollars for major aerospace and defence primes, and Capital's offset and industrial participation advisory work is delivered through it.</div>
 </div></section>
 
 <section class="section stone" aria-labelledby="sect-title"><div class="wrap two">
   <div><span class="kicker" aria-hidden="true"></span><h2 id="sect-title">Sectors</h2></div>
   <div class="prose">
-    <p>Capital works mainly with companies in aerospace, defence, security and space. Any company with technology or capability of interest to a government customer can benefit from the same approach.</p>
+    <p>Advisory clients are mainly companies in aerospace, defence, security and space. Any company with technology or capability of interest to a government customer can benefit from the same approach.</p>
   </div>
 </div></section>
 
 <section class="section" aria-labelledby="work-title"><div class="wrap two">
   <div><span class="kicker" aria-hidden="true"></span><h2 id="work-title">How we work</h2></div>
   <div class="prose">
-    <p>Engagements usually begin with a short discussion of your goals and target market, followed by a written proposal. Work is carried out under a services agreement, with fees agreed case by case.</p>
+    <p>Engagements usually begin with a short discussion of your goals and target market, followed by a written proposal. Work is carried out under a services agreement with Constructive Edge, with fees agreed case by case.</p>
   </div>
 </div></section>
 
@@ -1582,7 +1583,7 @@ PAGES["offset-alerts.html"] = dict(title="Offset alerts", desc="A weekly round-u
     <p>Capital is independent of the governments and companies named. An alert does not mean that Capital is involved in the programme.</p>
   </div>
 </div></section>
-{band("Bidding into one of these programmes?", "Capital supports offset strategy, proposal writing and the delivery of offset obligations. We reply within two working days.", "Discuss a project", "contact.html")}""")
+{band("Bidding into one of these programmes?", "Offset strategy, proposal writing and the delivery of offset obligations are provided through Constructive Edge, in which Capital is an equal partner. We reply within two working days.", "Discuss a project", "contact.html")}""")
 
 COUNTRIES = ["Belgium","Brazil","Bulgaria","Canada","Denmark","Egypt","Estonia","Finland","India","Italy","Kuwait","Lithuania","Malaysia","Netherlands","Norway","Oman","Poland","Portugal","Romania","Saudi Arabia","Slovenia","South Africa","South Korea","Spain","Switzerland","Taiwan","Thailand","Turkey","United Arab Emirates"]
 
