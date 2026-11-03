@@ -868,7 +868,7 @@ PAGES["index.html"] = dict(title="Home", desc="Capital helps overseas defence co
 <section class="section stone" aria-labelledby="offers-title"><div class="wrap">
   <span class="kicker" aria-hidden="true"></span><h2 class="h2" id="offers-title">What Capital offers</h2>
   <div class="cols">
-    <div class="col"><h3>The UK Defence Localisation Platform</h3><p>Upload a parts list and receive a reasoned shortlist of UK manufacturers, SMEs, universities and research centres for each line, with the evidence behind every match.</p><p><a href="platform.html">How the platform works</a></p></div>
+    <div class="col"><h3>The UK Defence Partner Database</h3><p>Upload a parts list and receive a reasoned shortlist of UK manufacturers, SMEs, universities and research centres for each line, with the evidence behind every match.</p><p><a href="platform.html">How it works</a></p></div>
     <div class="col"><h3>Your data stays yours</h3><p>The platform is designed so that your parts lists and shortlists are visible only to your organisation, not to Capital. You contact UK companies directly, in your own name.</p><p><a href="security.html">Security and privacy</a></p></div>
     <div class="col"><h3>Experience you can call on</h3><p>Separately from the platform, Capital's advisory support, drawn from offset and industrial participation programmes in nearly 30 countries, is delivered through Constructive Edge.</p><p><a href="advisory.html">Advisory services</a></p></div>
   </div>
@@ -909,9 +909,9 @@ PAGES["index.html"] = dict(title="Home", desc="Capital helps overseas defence co
 </div></section>
 {band()}""")
 
-PAGES["platform.html"] = dict(title="The UK Defence Localisation Platform", desc="A secure, self-service platform that turns a bill of materials into a shortlist of credible UK industrial partners, with the evidence behind every match.", body=pagehead(
-    "The UK Defence Localisation Platform",
-    "A secure, self-service tool that turns your bill of materials into a shortlist of credible UK industrial partners: companies that can make your parts now, and companies that could make them with your support. It opens to clients soon.",
+PAGES["platform.html"] = dict(title="The UK Defence Partner Database", desc="The UK Defence Partner Database: a secure, self-service tool that turns a bill of materials into a shortlist of credible UK industrial partners, with the evidence behind every match.", body=pagehead(
+    "The UK Defence Partner Database",
+    "A secure, self-service tool that turns your bill of materials into a shortlist of credible UK industrial partners: companies that can make your parts now, and companies that could make them with your support. It opens to clients soon. It is an independent service, not part of the UK government.",
     ["Platform"]) + f"""
 <section class="section" aria-labelledby="how-title"><div class="wrap">
   <span class="kicker" aria-hidden="true"></span><h2 class="h2" id="how-title">How it works</h2>
@@ -985,10 +985,24 @@ PAGES["uk-offset-policy.html"] = dict(title="UK Offset Policy", desc="A plain-En
 <section class="section stone" aria-labelledby="mean-title"><div class="wrap">
   <span class="kicker" aria-hidden="true"></span><h2 class="h2" id="mean-title">What it means</h2>
   <div class="cols two-up">
-    <div class="col"><h3>For overseas suppliers</h3><p>Plan early. You will need UK partners that can make your parts now, and partners that could with your support, with evidence of where and how they work in the UK. The <a href="platform.html">platform</a> finds both, and <a href="advisory.html">advisory</a> support on offset strategy, project proposals and credit claims is available through Constructive Edge.</p></div>
+    <div class="col"><h3>For overseas suppliers</h3><p>Plan early. You will need UK partners that can make your parts now, and partners that could with your support, with evidence of where and how they work in the UK. The <a href="platform.html">UK Defence Partner Database</a> finds both, and <a href="advisory.html">advisory</a> support on offset strategy, project proposals and credit claims is available through Constructive Edge.</p></div>
     <div class="col"><h3>For UK companies</h3><p>The policy opens supply chains to UK primes, mid-tier companies, SMEs, universities and research organisations. Overseas suppliers will be looking for capable UK partners. <a href="uk-companies.html">How UK companies are included</a>.</p></div>
   </div>
   <p class="sub">Discuss the policy with others working on it at the <a href="uk-noc.html">UK National Offset Council (UK-NOC)</a>.</p>
+</div></section>
+
+<section class="section navy" aria-labelledby="numbers-title"><div class="wrap two">
+  <div><span class="kicker" aria-hidden="true"></span><h2 id="numbers-title">UK defence in numbers</h2><p class="sub">From the Ministry of Defence's UK Defence Footprint 2026.</p></div>
+  <div>
+    <ul class="facts">
+      <li><b>Spending</b><span>£34.1 billion spent by the Ministry of Defence with UK industry in 2025 to 2026, up 3%: £490 for each person in the UK.</span></li>
+      <li><b>SMEs</b><span>£1.3 billion spent directly with small and medium-sized enterprises. Over 2,000 new contracts were placed, more than 500 of them directly with SMEs.</span></li>
+      <li><b>Jobs</b><span>274,000 jobs in UK industry supported by Ministry of Defence spending in 2024 to 2025, up 10%. The Defence Investment Plan is expected to create nearly 60,000 new jobs by 2029 to 2030, compared with 2023 to 2024.</span></li>
+      <li><b>The next four years</b><span>£298 billion of planned defence spending.</span></li>
+      <li><b>Regions</b><span>Five Defence Growth Deals, backed by £250 million, in Plymouth, South Yorkshire, Scotland, Wales and Northern Ireland.</span></li>
+    </ul>
+    <p class="sub" style="margin-top:20px">Source: Ministry of Defence, <a href="https://www.gov.uk/government/publications/uk-defence-footprint-2026-rearm-the-country-reindustrialise-our-communities">UK Defence Footprint 2026</a>. Contains public sector information licensed under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">Open Government Licence v3.0</a>.</p>
+  </div>
 </div></section>
 {band()}""")
 
@@ -1084,7 +1098,7 @@ PAGES["industrial-participation.html"] = dict(title="UK offset and industrial pa
 </div></section>
 {band()}""")
 
-PAGES["uk-companies.html"] = dict(title="For UK companies", desc="How UK manufacturers, SMEs and research centres are included on Capital's UK Defence Localisation Platform, how they may be contacted, and how to correct or remove a listing.", body=pagehead(
+PAGES["uk-companies.html"] = dict(title="For UK companies", desc="How UK manufacturers, SMEs and research centres are included on Capital's UK Defence Partner Database, how they may be contacted, and how to correct or remove a listing.", body=pagehead(
     "For UK manufacturers, SMEs and research centres",
     "Overseas defence companies need UK partners. The platform helps them find you based on what you actually make.",
     ["UK companies"]) + f"""
@@ -1112,7 +1126,7 @@ PAGES["uk-companies.html"] = dict(title="For UK companies", desc="How UK manufac
 </div></section>
 {band("Are you a UK maker with capability to offer?", "Tell us about your company and we will make sure your listing is accurate.", "Email Capital", "contact.html")}""")
 
-PAGES["security.html"] = dict(title="Security and privacy", desc="How Capital's UK Defence Localisation Platform keeps programme information private to the client organisation.", body=pagehead(
+PAGES["security.html"] = dict(title="Security and privacy", desc="How Capital's UK Defence Partner Database keeps programme information private to the client organisation.", body=pagehead(
     "Your programme information stays with you",
     "Defence companies cannot share their parts lists lightly. The platform is designed so that your information is visible only to your organisation.",
     [("platform.html", "Platform"), "Security and privacy"]) + f"""
@@ -1138,7 +1152,7 @@ PAGES["security.html"] = dict(title="Security and privacy", desc="How Capital's 
 </div></section>
 {band()}""")
 
-PAGES["advisory.html"] = dict(title="Advisory services", desc="Offset and industrial participation advisory support for companies and governments, delivered through Constructive Edge and contracted separately from Capital's UK Defence Localisation Platform.", body=pagehead(
+PAGES["advisory.html"] = dict(title="Advisory services", desc="Offset and industrial participation advisory support for companies and governments, delivered through Constructive Edge and contracted separately from Capital's UK Defence Partner Database.", body=pagehead(
     "Advisory services",
     "Capital's offset and industrial participation advisory work for companies and governments is delivered through Constructive Edge, in which Capital is an equal partner. It is contracted separately from any platform subscription.",
     ["Advisory"]) + f"""
@@ -1589,7 +1603,7 @@ COUNTRIES = ["Belgium","Brazil","Bulgaria","Canada","Denmark","Egypt","Estonia",
 
 PAGES["about.html"] = dict(title="About Capital", desc="Capital was founded in 2013 by Stephen Lewis. More than 25 years of offset and industrial participation experience across Europe, the Middle East, Asia, Africa and the Americas.", body=pagehead(
     "About Capital",
-    "Capital was founded in 2013 by Stephen Lewis to help companies create lasting value through offset and industrial participation. It now combines that experience with Capital's UK Defence Localisation Platform.",
+    "Capital was founded in 2013 by Stephen Lewis to help companies create lasting value through offset and industrial participation. It now combines that experience with Capital's UK Defence Partner Database.",
     ["About"]) + f"""
 <section class="section" aria-labelledby="founder-title"><div class="wrap two">
   <div><span class="kicker" aria-hidden="true"></span><h2 id="founder-title">Founder</h2></div>
@@ -1668,7 +1682,7 @@ PAGES["compliance.html"] = dict(title="Compliance and ethics", desc="Capital's a
 {band()}""")
 
 SUBJECT = "Platform access request"
-PAGES["request-access.html"] = dict(title="Register your interest", desc="Capital's UK Defence Localisation Platform opens to clients soon. Register your interest for a demonstration and subscription options.", body=pagehead(
+PAGES["request-access.html"] = dict(title="Register your interest", desc="Capital's UK Defence Partner Database opens to clients soon. Register your interest for a demonstration and subscription options.", body=pagehead(
     "Register your interest",
     "The platform opens to clients soon. Tell us about your organisation and we will arrange a short demonstration when it opens, and discuss subscription options.",
     ["Register interest"]) + f"""
