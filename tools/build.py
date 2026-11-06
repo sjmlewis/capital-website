@@ -130,6 +130,11 @@ p{margin:0}
 .c-checks .gap{background:transparent;border-style:dashed;border-color:var(--ink-soft);color:var(--ink-soft)}
 .card-foot{padding:11px 18px;background:var(--stone);border-top:1px solid var(--rule);font-size:12px;color:var(--ink-soft);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .card-foot a{color:var(--navy);text-decoration:none;font-weight:500;border-bottom:1px solid var(--brass)}
+.card .facts{margin:0;padding:4px 18px}
+.card .facts div{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:14px;padding:14px 0;border-bottom:1px solid var(--rule);align-items:baseline}
+.card .facts div:last-child{border-bottom:0}
+.card .facts dt{font-weight:600;color:var(--navy);font-size:16px}
+.card .facts dd{margin:0;color:var(--ink-soft);line-height:1.5}
 @media (prefers-reduced-motion:no-preference){
   .cands li{opacity:0;transform:translateY(6px);animation:rise .5s ease forwards}
   .cands li:nth-child(1){animation-delay:.35s}.cands li:nth-child(2){animation-delay:.6s}.cands li:nth-child(3){animation-delay:.85s}
@@ -600,14 +605,12 @@ JS = r"""
 
 # ---------------------------------------------------------------- navigation
 NAV = [
-    ("platform.html", "Platform"),
     ("uk-offset-policy.html", "UK Offset Policy"),
     ("advisory.html", "Advisory"),
     ("training.html", "Training"),
     ("uk-noc.html", "UK-NOC"),
     ("offset-alerts.html", "Offset alerts"),
     ("about.html", "About"),
-    ("contact.html", "Contact"),
 ]
 
 def brand(cls=""):
@@ -620,8 +623,8 @@ def nav(current):
     for href, label in NAV:
         cur = ' aria-current="page"' if href == current else ""
         items.append(f'<li><a href="{href}"{cur}>{label}</a></li>')
-    cur = ' aria-current="page"' if current == "request-access.html" else ""
-    items.append(f'<li class="cta"><a href="request-access.html"{cur}>Register interest</a></li>')
+    cur = ' aria-current="page"' if current == "contact.html" else ""
+    items.append(f'<li class="cta"><a href="contact.html"{cur}>Contact</a></li>')
     return ('<a class="skip" href="#main">Skip to content</a>\n<header class="nav"><div class="wrap">' + brand() +
             '<button class="navtoggle" id="navtoggle" type="button" aria-expanded="false" aria-controls="menu">Menu</button>'
             '<ul class="menu" id="menu">' + "".join(items) + '</ul></div></header>')
@@ -633,8 +636,8 @@ FOOTER = f"""
       {brand()}
       <p class="contact">Based in London, United Kingdom. Meetings by appointment.<br><span>{EMAIL}</span><span>{PHONE}</span><a class="li" href="https://www.linkedin.com/in/stephen-lewis-b9716413" rel="noopener">Stephen Lewis on LinkedIn</a></p>
     </div>
-    <div><h4>Platform</h4><ul><li><a href="platform.html">How it works</a></li><li><a href="security.html">Security and privacy</a></li><li><a href="request-access.html">Register interest</a></li></ul></div>
-    <div><h4>Services</h4><ul><li><a href="advisory.html">Advisory</a></li><li><a href="training.html">Offset practitioner course</a></li><li><a href="uk-noc.html">UK National Offset Council</a></li><li><a href="offset-alerts.html">Offset alerts</a></li><li><a href="uk-offset-policy.html">UK Offset Policy</a></li><li><a href="industrial-participation.html">UK offset</a></li><li><a href="uk-companies.html">For UK companies</a></li></ul></div>
+    <div><h4>UK offset</h4><ul><li><a href="uk-offset-policy.html">UK Offset Policy</a></li><li><a href="industrial-participation.html">UK offset and industrial participation</a></li><li><a href="offset-alerts.html">Offset alerts</a></li></ul></div>
+    <div><h4>Services</h4><ul><li><a href="advisory.html">Advisory</a></li><li><a href="training.html">Offset practitioner course</a></li><li><a href="uk-noc.html">UK National Offset Council</a></li></ul></div>
     <div><h4>Company</h4><ul><li><a href="about.html">About Capital</a></li><li><a href="compliance.html">Compliance and ethics</a></li><li><a href="contact.html">Contact</a></li></ul></div>
   </div>
   <div class="legal"><div class="wrap">
@@ -644,8 +647,8 @@ FOOTER = f"""
 </footer>"""
 
 def band(title="Preparing a UK bid or an offset plan?",
-         text="The platform opens to clients soon. Register your interest for a demonstration, or contact us to discuss an advisory project. We reply within two working days.",
-         label="Register your interest", href="request-access.html"):
+         text="Get in touch to discuss UK offset, an advisory project, UK-NOC or the practitioner course. We reply within two working days.",
+         label="Contact us", href="contact.html"):
     return f"""
 <section class="band" aria-labelledby="cta-title"><div class="wrap">
   <div><h2 id="cta-title">{title}</h2><p>{text}</p></div>
@@ -830,28 +833,28 @@ HOME_ALERTS = f"""
 # ---------------------------------------------------------------- pages
 PAGES = {}
 
-PAGES["index.html"] = dict(title="Home", desc="Capital helps overseas defence companies meet UK offset and industrial participation commitments, with more than 25 years of offset experience and an evidence-based platform for finding credible UK industrial partners, opening soon.", body=f"""{HOME_WIRE}
+PAGES["index.html"] = dict(title="Home", desc="Capital helps overseas defence companies meet UK offset and industrial participation commitments, with more than 25 years of offset experience.", body=f"""{HOME_WIRE}
 <section class="hero" aria-labelledby="hero-title">
   <canvas id="drawing" aria-hidden="true"></canvas>
   <div class="wrap">
     <div>
-      <h1 id="hero-title">Find credible UK industrial partners for your defence programme</h1>
-      <p class="lede">Capital helps overseas defence companies meet UK offset commitments, with an evidence-based search platform and more than 25 years of offset experience. The platform opens to clients soon.</p>
+      <h1 id="hero-title">Prepare for the UK Offset Policy</h1>
+      <p class="lede">Capital helps overseas defence companies meet UK offset commitments, with more than 25 years of offset and industrial participation experience.</p>
       <div class="actions">
-        <a class="btn btn-brass" href="request-access.html">Register your interest</a>
-        <a class="btn btn-ghost" href="platform.html">How the platform works</a>
+        <a class="btn btn-brass" href="uk-offset-policy.html">Read the policy summary</a>
+        <a class="btn btn-ghost" href="advisory.html">Advisory services</a>
       </div>
       <p class="audience">For overseas primes and their UK subsidiaries preparing bids and offset plans</p>
     </div>
-    <aside class="card" aria-label="Example of a platform shortlist">
-      <div class="card-top"><b>Shortlist</b><span>Line 14 of 38</span></div>
-      <div class="part"><div class="part-name">Stabilised EO/IR camera gimbal, two-axis</div><div class="part-meta">Airborne surveillance pod · AS9100 required · 60 units a year · unclassified description</div></div>
-      <ol class="cands">
-        <li><span class="mark" aria-hidden="true"></span><div class="c-name">Calder Vale Optronics Ltd <em>SME</em><br><span>Edinburgh</span></div><div class="c-status">Can make this now</div><div class="c-why">Stabilised airborne camera gimbals shown on its own website</div><div class="c-checks"><span class="ok">AS9100D</span><span class="ok">Cyber Essentials Plus</span><span class="ok">Finances: strong</span><span class="ok">UK-owned</span><span class="info">3 MOD contracts since 2023</span></div></li>
-        <li><span class="mark" aria-hidden="true"></span><div class="c-name">Severnbank Motion Systems Ltd<br><span>Gloucester</span></div><div class="c-status">Can make this now</div><div class="c-why">Precision pointing and stabilisation assemblies for aircraft</div><div class="c-checks"><span class="ok">AS9100D</span><span class="ok">Cyber Essentials Plus</span><span class="ok">Finances: strong</span><span class="info">Owned by a US group</span><span class="info">Tier 2 to UK primes</span></div></li>
-        <li><span class="mark support" aria-hidden="true"></span><div class="c-name">Fenwick Gear &amp; Motion Ltd <em>SME</em><br><span>Coventry</span></div><div class="c-status">Could make this with support</div><div class="c-why">Precision gearboxes and motor housings for industrial robots</div><div class="c-checks"><span class="ok">ISO 9001</span><span class="gap">AS9100 not recorded</span><span class="ok">Finances: adequate</span><span class="ok">UK-owned</span><span class="info">Growth candidate for defence</span></div></li>
-      </ol>
-      <div class="card-foot"><span>Illustrative example</span><a href="platform.html#labels">What each label means</a></div>
+    <aside class="card" aria-label="The UK Offset Policy at a glance">
+      <div class="card-top"><b>UK Offset Policy at a glance</b><span>Published 30 Oct 2026</span></div>
+      <dl class="facts">
+        <div><dt>£50m or more</dt><dd>Ministry of Defence purchases the policy applies to</dd></div>
+        <div><dt>100%</dt><dd>The usual offset obligation, as a share of the contract value</dd></div>
+        <div><dt>10 years</dt><dd>To deliver it, with 30% due by year 3 and 50% by year 5</dd></div>
+        <div><dt>Approval first</dt><dd>Every project needs the Offset Authority's written approval before it starts, to earn credit</dd></div>
+      </dl>
+      <div class="card-foot"><span>A summary, not legal advice</span><a href="uk-offset-policy.html">Read the full summary</a></div>
     </aside>
   </div>
 </section>
@@ -860,101 +863,30 @@ PAGES["index.html"] = dict(title="Home", desc="Capital helps overseas defence co
   <div><span class="kicker" aria-hidden="true"></span><h2 id="challenge-title">The challenge</h2></div>
   <div class="prose">
     <p>The UK expects overseas suppliers to invest in its defence industry. Meeting that expectation means finding UK companies that can genuinely make your parts, develop your technology or support your programme, and finding them early.</p>
-    <p>A web search turns up distributors, sales offices and advertisers alongside real manufacturers. Reviewing their capabilities, financial health, compliance and certifications takes a significant investment of time.</p>
+    <p>The UK Offset Policy, published on 30 October 2026, sets the rules: Ministry of Defence purchases of £50 million or more, an obligation normally equal to the contract value, and written approval for every project before it starts.</p>
     <p><a href="industrial-participation.html">About UK offset</a></p>
   </div>
 </div></section>
 
 <section class="section stone" aria-labelledby="offers-title"><div class="wrap">
   <span class="kicker" aria-hidden="true"></span><h2 class="h2" id="offers-title">What Capital offers</h2>
-  <div class="cols">
-    <div class="col"><h3>The UK Defence Partner Database</h3><p>Upload a parts list and receive a reasoned shortlist of UK manufacturers, SMEs, universities and research centres for each line, with the evidence behind every match.</p><p><a href="platform.html">How it works</a></p></div>
-    <div class="col"><h3>Your data stays yours</h3><p>The platform is designed so that your parts lists and shortlists are visible only to your organisation, not to Capital. You contact UK companies directly, in your own name.</p><p><a href="security.html">Security and privacy</a></p></div>
-    <div class="col"><h3>Experience you can call on</h3><p>Separately from the platform, Capital's advisory support, drawn from offset and industrial participation programmes in nearly 30 countries, is delivered through Constructive Edge.</p><p><a href="advisory.html">Advisory services</a></p></div>
+  <div class="cols two-up">
+    <div class="col"><h3>Clear guidance on the UK Offset Policy</h3><p>Plain-English summaries of the Ministry of Defence's UK Offset Policy and its link to HM Treasury's Green Book, and what they mean for overseas suppliers and UK companies.</p><p><a href="uk-offset-policy.html">UK Offset Policy</a></p></div>
+    <div class="col"><h3>Experience you can call on</h3><p>Capital's advisory support, drawn from offset and industrial participation programmes in nearly 30 countries, is delivered through Constructive Edge.</p><p><a href="advisory.html">Advisory services</a></p></div>
   </div>
 </div></section>
 
-<section class="section" aria-labelledby="how-title"><div class="wrap">
-  <span class="kicker" aria-hidden="true"></span><h2 class="h2" id="how-title">How the platform works</h2>
-  <p class="sub">Six steps from a parts list to first contact. Your engineers stay in control at every one of them.</p>
-  <ol class="steps">
-    <li><div><b>Upload your parts list</b><p>Plain, unclassified descriptions. No drawings, part numbers or controlled data are needed.</p></div></li>
-    <li><div><b>Choose your priorities</b><p>Put ready-now manufacturers first, or give more weight to the UK value a partnership creates.</p></div></li>
-    <li><div><b>Exclude competitors</b><p>Remove competitor groups from your results. Anything excluded stays listed, so you can bring it back.</p></div></li>
-    <li><div><b>Review the shortlist</b><p>Results for each line are grouped by readiness, each with a reason and links to the company's own published information.</p></div></li>
-    <li><div><b>Check the companies you pick</b><p>Financial health, ownership and security information for the firms you shortlist.</p></div></li>
-    <li><div><b>Make first contact in your own name</b><p>A sanitised first-stage capability enquiry for each company, with a tracker for replies.</p></div></li>
-  </ol>
-</div></section>
-
-<section class="section stone" aria-labelledby="eng-title"><div class="wrap two">
-  <div><span class="kicker" aria-hidden="true"></span><h2 id="eng-title">Built for engineers, not marketing</h2>
-    <p class="sub">Every match comes with a reason that is simple to understand, and a link to the company's own published information. Companies that only sell or distribute are kept out of the manufacturer results.</p></div>
-  <ul class="scale" aria-label="What each readiness label means">
-    <li><span class="mark" aria-hidden="true"></span><div><b>Can make this now</b><span>Evidence that the company already makes this type of item in the UK.</span></div></li>
-    <li><span class="mark support" aria-hidden="true"></span><div><b>Could make this with support</b><span>Related capability. A candidate for technology transfer, new capability or SME development.</span></div></li>
-    <li><span class="mark partial" aria-hidden="true"></span><div><b>Partial</b><span>The company covers part of the requirement.</span></div></li>
-    <li><span class="mark none" aria-hidden="true"></span><div><b>No confirmed UK maker found</b><span>Stated plainly, with any support options still shown. The platform gives you a well-evidenced starting point; your engineers confirm capability directly with each company.</span></div></li>
-  </ul>
-</div></section>
 {HOME_ALERTS}
 
 <section class="section stone" aria-labelledby="more-title"><div class="wrap">
   <span class="kicker" aria-hidden="true"></span><h2 class="h2" id="more-title">The Council and training</h2>
-  <p class="sub">Two ways Capital brings people together around offset, alongside the platform.</p>
+  <p class="sub">Two ways Capital brings people together around offset.</p>
   <div class="cols two-up">
     <div class="col"><h3>UK National Offset Council (UK-NOC)</h3><p>An informal quarterly gathering in London for people with an interest in UK offset: Ministry of Defence officials, UK companies and overseas suppliers. Organised and hosted by Capital. The first meeting takes place in Q4 2026.</p><p><a href="uk-noc.html">About UK-NOC</a></p></div>
     <div class="col"><h3>Offset practitioner course</h3><p>A practitioner's masterclass for people new to offset and industrial participation: eight modules, a UK elective and a live negotiation simulation, online over nine weeks or in-house over three days.</p><p><a href="training.html">See the course outline</a></p></div>
   </div>
 </div></section>
 {band()}""")
-
-PAGES["platform.html"] = dict(title="The UK Defence Partner Database", desc="The UK Defence Partner Database: a secure, self-service tool that turns a bill of materials into a shortlist of credible UK industrial partners, with the evidence behind every match.", body=pagehead(
-    "The UK Defence Partner Database",
-    "A secure, self-service tool that turns your bill of materials into a shortlist of credible UK industrial partners: companies that can make your parts now, and companies that could make them with your support. It opens to clients soon. It is an independent service, not part of the UK government.",
-    ["Platform"]) + f"""
-<section class="section" aria-labelledby="how-title"><div class="wrap">
-  <span class="kicker" aria-hidden="true"></span><h2 class="h2" id="how-title">How it works</h2>
-  <ol class="steps">
-    <li><div><b>Upload your parts list</b><p>Use plain, unclassified descriptions. No drawings, part numbers or controlled data are needed.</p></div></li>
-    <li><div><b>Choose your priorities</b><p>Put ready-now manufacturers first, or give more weight to the UK value a partnership creates, such as SME growth, new capability and certification.</p></div></li>
-    <li><div><b>Exclude competitors</b><p>Remove competitor groups from your results. Anything excluded stays listed, so you can bring it back.</p></div></li>
-    <li><div><b>Review the shortlist</b><p>Results for each line are grouped by readiness, each with a reason and links to the company's own published information.</p></div></li>
-    <li><div><b>Check the companies you pick</b><p>See financial health, ownership and security information for the firms you shortlist.</p></div></li>
-    <li><div><b>Make first contact in your own name</b><p>Generate a sanitised first-stage capability enquiry for each company, with a tracker for replies.</p></div></li>
-  </ol>
-</div></section>
-
-<section class="section stone" id="labels" aria-labelledby="labels-title"><div class="wrap two">
-  <div><span class="kicker" aria-hidden="true"></span><h2 id="labels-title">What you get for each line</h2>
-    <p class="sub">Every candidate carries one of four labels, a reason that is simple to understand, and links to the company's own published information.</p></div>
-  <ul class="scale" aria-label="Readiness labels">
-    <li><span class="mark" aria-hidden="true"></span><div><b>Can make this now</b><span>Evidence that the company already makes this type of item in the UK.</span></div></li>
-    <li><span class="mark support" aria-hidden="true"></span><div><b>Could make this with support</b><span>Related capability, making the company a candidate for technology transfer, new capability or SME development.</span></div></li>
-    <li><span class="mark partial" aria-hidden="true"></span><div><b>Partial</b><span>The company covers part of the requirement.</span></div></li>
-    <li><span class="mark none" aria-hidden="true"></span><div><b>No confirmed UK maker found</b><span>Stated plainly, with any support options still shown.</span></div></li>
-  </ul>
-</div></section>
-
-<section class="section" aria-labelledby="info-title"><div class="wrap two">
-  <div><span class="kicker" aria-hidden="true"></span><h2 id="info-title">Company information</h2></div>
-  <div class="prose">
-    <p>For each organisation, the platform draws together, where available: capabilities and products, facilities, certifications, size, financial health, ownership, location, contacts, public funding and research activity, and past public contract awards.</p>
-    <p>Anything not on record is marked <strong>“not recorded, confirm with the supplier”</strong>. It is never treated as a fail. Verdicts come only from adverse evidence.</p>
-    <p>Smaller companies are marked <span class="sme">SME</span> throughout, because they are where most new UK capability is created.</p>
-    <p>UK companies can read <a href="uk-companies.html">how they are included, and how to correct or remove a listing</a>.</p>
-  </div>
-</div></section>
-
-<section class="section stone" aria-labelledby="isnot-title"><div class="wrap two">
-  <div><span class="kicker" aria-hidden="true"></span><h2 id="isnot-title">What the platform is, and is not</h2></div>
-  <div class="prose">
-    <p><strong>It is</strong> a well-evidenced shortlist of credible UK candidates for each part, with reasons, ready for your engineers to review and contact.</p>
-    <p><strong>It is not</strong> a guarantee of capability, a supplier approval or a substitute for your own qualification process. Final qualification always requires direct contact with the company.</p>
-    <div class="note"><b>Who it is for.</b> Overseas defence and aerospace companies, and their UK subsidiaries, preparing bids, offset plans or UK supply-chain development.</div>
-  </div>
-</div></section>
-{band("Opening to clients soon", "The platform will be available by subscription. Register your interest and we will arrange a demonstration when it opens. We reply within two working days.")}""")
 
 PAGES["uk-offset-policy.html"] = dict(title="UK Offset Policy", desc="A plain-English summary of the Ministry of Defence's UK Offset Policy (UK offset and industrial participation), published on 30 October 2026: who it applies to, the GBP 50 million threshold, the 100% obligation, multipliers, credits and milestones.".replace("GBP ", "£"), body=pagehead(
     "The UK Offset Policy",
@@ -985,8 +917,8 @@ PAGES["uk-offset-policy.html"] = dict(title="UK Offset Policy", desc="A plain-En
 <section class="section stone" aria-labelledby="mean-title"><div class="wrap">
   <span class="kicker" aria-hidden="true"></span><h2 class="h2" id="mean-title">What it means</h2>
   <div class="cols two-up">
-    <div class="col"><h3>For overseas suppliers</h3><p>Plan early. You will need UK partners that can make your parts now, and partners that could with your support, with evidence of where and how they work in the UK. The <a href="platform.html">UK Defence Partner Database</a> finds both, and <a href="advisory.html">advisory</a> support on offset strategy, project proposals and credit claims is available through Constructive Edge.</p></div>
-    <div class="col"><h3>For UK companies</h3><p>The policy opens supply chains to UK primes, mid-tier companies, SMEs, universities and research organisations. Overseas suppliers will be looking for capable UK partners. <a href="uk-companies.html">How UK companies are included</a>.</p></div>
+    <div class="col"><h3>For overseas suppliers</h3><p>Plan early. You will need UK partners that can make your parts now, and partners that could with your support, with evidence of where and how they work in the UK. <a href="advisory.html">Advisory</a> support on offset strategy, project proposals and credit claims is available through Constructive Edge.</p></div>
+    <div class="col"><h3>For UK companies</h3><p>The policy opens supply chains to UK primes, mid-tier companies, SMEs, universities and research organisations. Overseas suppliers will be looking for capable UK partners.</p></div>
   </div>
   <p class="sub">Discuss the policy with others working on it at the <a href="uk-noc.html">UK National Offset Council (UK-NOC)</a>.</p>
 </div></section>
@@ -1091,70 +1023,16 @@ PAGES["industrial-participation.html"] = dict(title="UK offset and industrial pa
 <section class="section" aria-labelledby="help-title"><div class="wrap two">
   <div><span class="kicker" aria-hidden="true"></span><h2 id="help-title">How Capital helps</h2></div>
   <div class="prose">
-    <p>The platform finds candidates for both routes and highlights the opportunities, such as a smaller company that could gain a certification or a commercial manufacturer ready to enter defence. Your team then decides where to engage.</p>
+    <p><a href="advisory.html">Advisory support</a> on both routes, from offset strategy to project proposals and credit claims, is delivered through Constructive Edge.</p>
     <p>Capital's founder has worked on offset and industrial participation programmes for more than 25 years, across Europe, the Middle East, Asia, Africa and the Americas. <a href="about.html">About Capital</a></p>
     <p>Capital also organises and hosts the <a href="uk-noc.html">UK National Offset Council (UK-NOC)</a>, an informal quarterly gathering in London for Ministry of Defence officials, UK companies and overseas suppliers, and runs a <a href="training.html">practitioner course</a> for people new to offset.</p>
   </div>
 </div></section>
 {band()}""")
 
-PAGES["uk-companies.html"] = dict(title="For UK companies", desc="How UK manufacturers, SMEs and research centres are included on Capital's UK Defence Partner Database, how they may be contacted, and how to correct or remove a listing.", body=pagehead(
-    "For UK manufacturers, SMEs and research centres",
-    "Overseas defence companies need UK partners. The platform helps them find you based on what you actually make.",
-    ["UK companies"]) + f"""
-<section class="section" aria-labelledby="inc-title"><div class="wrap two">
-  <div><span class="kicker" aria-hidden="true"></span><h2 id="inc-title">How companies are included</h2></div>
-  <div class="prose">
-    <p>The platform draws on publicly available information about UK organisations, including company websites and public company records. There is no charge to be included.</p>
-    <p>It includes companies that design or make things in the UK, and research centres with relevant capability. Distributors and sales-only offices are not shown as manufacturers.</p>
-  </div>
-</div></section>
-
-<section class="section stone" aria-labelledby="con-title"><div class="wrap two">
-  <div><span class="kicker" aria-hidden="true"></span><h2 id="con-title">How you may be contacted</h2></div>
-  <div class="prose">
-    <p>If an overseas company shortlists you, it may send you a first-stage capability enquiry in its own name. These enquiries contain no controlled technical data and are not an invitation to tender. You are free to reply or decline.</p>
-    <p>Capital does not act as a go-between and does not see these enquiries or your replies.</p>
-  </div>
-</div></section>
-
-<section class="section" aria-labelledby="acc-title"><div class="wrap two">
-  <div><span class="kicker" aria-hidden="true"></span><h2 id="acc-title">Keeping your information accurate</h2></div>
-  <div class="prose">
-    <p>To correct your company's details, or to ask for your company to be removed, email <a href="mailto:{EMAIL}">{EMAIL}</a>. A self-service profile update is planned.</p>
-  </div>
-</div></section>
-{band("Are you a UK maker with capability to offer?", "Tell us about your company and we will make sure your listing is accurate.", "Email Capital", "contact.html")}""")
-
-PAGES["security.html"] = dict(title="Security and privacy", desc="How Capital's UK Defence Partner Database keeps programme information private to the client organisation.", body=pagehead(
-    "Your programme information stays with you",
-    "Defence companies cannot share their parts lists lightly. The platform is designed so that your information is visible only to your organisation.",
-    [("platform.html", "Platform"), "Security and privacy"]) + f"""
-<section class="section" aria-labelledby="princ-title"><div class="wrap two">
-  <div><span class="kicker" aria-hidden="true"></span><h2 id="princ-title">Our principles</h2></div>
-  <div class="prose">
-    <ul>
-      <li><strong>Private by design.</strong> Uploaded parts lists, saved projects, shortlists, enquiries, trackers and supplier replies are designed to be visible only to your organisation's account, not to Capital.</li>
-      <li><strong>No go-between.</strong> You contact UK companies directly, in your own name. Capital is never placed between you and your suppliers.</li>
-      <li><strong>Unclassified information only.</strong> The platform needs plain descriptions. Please do not upload classified or export-controlled information, drawings or part numbers.</li>
-      <li><strong>Sanitised enquiries.</strong> First-contact enquiries leave out part numbers, programme names and customer names, and you approve every line before anything is produced.</li>
-      <li><strong>Nothing sent for you.</strong> The platform never sends emails on your behalf.</li>
-    </ul>
-  </div>
-</div></section>
-
-<section class="section stone" aria-labelledby="sep-title"><div class="wrap two">
-  <div><span class="kicker" aria-hidden="true"></span><h2 id="sep-title">Separate services</h2></div>
-  <div class="prose">
-    <p>Capital's <a href="advisory.html">advisory services</a> are delivered through Constructive Edge and contracted separately from the platform. Platform data is not used for advisory work.</p>
-    <p>Questions about security or data handling: <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>
-  </div>
-</div></section>
-{band()}""")
-
-PAGES["advisory.html"] = dict(title="Advisory services", desc="Offset and industrial participation advisory support for companies and governments, delivered through Constructive Edge and contracted separately from Capital's UK Defence Partner Database.", body=pagehead(
+PAGES["advisory.html"] = dict(title="Advisory services", desc="Offset and industrial participation advisory support for companies and governments, delivered through Constructive Edge.", body=pagehead(
     "Advisory services",
-    "Capital's offset and industrial participation advisory work for companies and governments is delivered through Constructive Edge, in which Capital is an equal partner. It is contracted separately from any platform subscription.",
+    "Capital's offset and industrial participation advisory work for companies and governments is delivered through Constructive Edge, in which Capital is an equal partner.",
     ["Advisory"]) + f"""
 <section class="section" aria-labelledby="serv-title"><div class="wrap">
   <span class="kicker" aria-hidden="true"></span><h2 class="h2" id="serv-title">Services</h2>
@@ -1603,7 +1481,7 @@ COUNTRIES = ["Belgium","Brazil","Bulgaria","Canada","Denmark","Egypt","Estonia",
 
 PAGES["about.html"] = dict(title="About Capital", desc="Capital was founded in 2013 by Stephen Lewis. More than 25 years of offset and industrial participation experience across Europe, the Middle East, Asia, Africa and the Americas.", body=pagehead(
     "About Capital",
-    "Capital was founded in 2013 by Stephen Lewis to help companies create lasting value through offset and industrial participation. It now combines that experience with Capital's UK Defence Partner Database.",
+    "Capital was founded in 2013 by Stephen Lewis to help companies create lasting value through offset and industrial participation.",
     ["About"]) + f"""
 <section class="section" aria-labelledby="founder-title"><div class="wrap two">
   <div><span class="kicker" aria-hidden="true"></span><h2 id="founder-title">Founder</h2></div>
@@ -1672,49 +1550,11 @@ PAGES["compliance.html"] = dict(title="Compliance and ethics", desc="Capital's a
   </div>
 </div></section>
 
-<section class="section" aria-labelledby="ec-title"><div class="wrap two">
-  <div><span class="kicker" aria-hidden="true"></span><h2 id="ec-title">Export control and the platform</h2></div>
-  <div class="prose">
-    <p>Platform users must upload only unclassified, non-controlled descriptions. They remain responsible for the content of their own enquiries and for their own export-control compliance.</p>
-    <p>Detailed technical exchanges belong at a later stage, after a non-disclosure agreement and any required export authorisation.</p>
-  </div>
-</div></section>
 {band()}""")
-
-SUBJECT = "Platform access request"
-PAGES["request-access.html"] = dict(title="Register your interest", desc="Capital's UK Defence Partner Database opens to clients soon. Register your interest for a demonstration and subscription options.", body=pagehead(
-    "Register your interest",
-    "The platform opens to clients soon. Tell us about your organisation and we will arrange a short demonstration when it opens, and discuss subscription options.",
-    ["Register interest"]) + f"""
-<section class="section" aria-labelledby="req-title"><div class="wrap two">
-  <div>
-    <span class="kicker" aria-hidden="true"></span><h2 id="req-title">How to register your interest</h2>
-    <div class="prose" style="margin-top:18px">
-      <p>Send a short email with:</p>
-      <ul>
-        <li>your name and job title;</li>
-        <li>your organisation and country;</li>
-        <li>what you hope to achieve, for example preparing a UK bid or an offset plan.</li>
-      </ul>
-      <p>Please do not include any programme, technical or classified information.</p>
-      <p>We aim to reply within two working days. Your details are used only to respond to your request.</p>
-    </div>
-  </div>
-  <div class="panel">
-    <h3>Email Capital</h3>
-    <div class="big">{EMAIL_WBR}</div>
-    <div class="copyrow"><button class="copybtn" type="button" data-copy="{EMAIL}">Copy email address</button></div>
-    <p style="margin-top:20px"><strong>Subject line</strong>, so your request is picked up straight away:</p>
-    <div class="copyrow" style="margin-top:8px"><code>{SUBJECT}</code><button class="copybtn" type="button" data-copy="{SUBJECT}">Copy subject</button></div>
-    <a class="btn btn-brass" href="mailto:{EMAIL}?subject={SUBJECT.replace(' ', '%20')}">Open in your email app</a>
-    <p>Prefer to talk first? {PHONE}, UK office hours.</p>
-  </div>
-</div></section>
-{band("Want to see what the platform does first?", "The platform page explains the six steps from a parts list to first contact, and what each readiness label means.", "How the platform works", "platform.html")}""")
 
 PAGES["contact.html"] = dict(title="Contact", desc="Contact Capital Offset Services by email or telephone. Based in London, United Kingdom.", body=pagehead(
     "Contact",
-    "For the platform, please use Register interest. For everything else, get in touch below.",
+    "Email or call to discuss UK offset, advisory work, UK-NOC or the practitioner course.",
     ["Contact"]) + f"""
 <section class="section" aria-labelledby="gt-title"><div class="wrap two">
   <div>
@@ -1737,7 +1577,7 @@ PAGES["contact.html"] = dict(title="Contact", desc="Contact Capital Offset Servi
 
 PAGES["404.html"] = dict(title="Page not found", desc="That page could not be found.", body=pagehead(
     "Page not found", "The page you asked for is not here. It may have moved when the site was rebuilt.", None) + """
-<section class="section"><div class="wrap"><div class="actions" style="margin-top:0"><a class="btn btn-navy" href="index.html">Go to the home page</a><a class="btn btn-outline" href="platform.html">How the platform works</a></div></div></section>""")
+<section class="section"><div class="wrap"><div class="actions" style="margin-top:0"><a class="btn btn-navy" href="index.html">Go to the home page</a><a class="btn btn-outline" href="uk-offset-policy.html">UK Offset Policy</a></div></div></section>""")
 
 # ---------------------------------------------------------------- write out
 os.makedirs(SITE, exist_ok=True); os.makedirs(ART, exist_ok=True)
@@ -1763,6 +1603,30 @@ for old in ("uk-icr.html", "roundtable.html"):
 </head>
 <body>
 <p>This page has moved: <a href="uk-noc.html">UK National Offset Council (UK-NOC)</a>.</p>
+</body>
+</html>
+""")
+
+# Pages withdrawn on 6 Nov 2026 (the UK Defence Partner Database is not open yet) forward visitors
+for old, target, label in (("platform.html", "index.html", "Capital Offset Services home page"),
+                           ("security.html", "index.html", "Capital Offset Services home page"),
+                           ("uk-companies.html", "index.html", "Capital Offset Services home page"),
+                           ("request-access.html", "contact.html", "Contact Capital Offset Services")):
+    canon = f"{DOMAIN}/" + ("" if target == "index.html" else target)
+    with open(os.path.join(SITE, old), "w") as f:
+        f.write(f"""<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Capital Offset Services</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="{canon}">
+<script>location.replace('{target}');</script>
+<meta http-equiv="refresh" content="0; url={target}">
+</head>
+<body>
+<p>This page is no longer available: <a href="{target}">{label}</a>.</p>
 </body>
 </html>
 """)
