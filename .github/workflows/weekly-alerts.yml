@@ -9,8 +9,10 @@ name: Weekly offset alerts
 
 on:
   schedule:
-    - cron: "37 8 * * 1"    # Mondays 08:37 UTC (09:37 UK summer time, 08:37 winter)
-    - cron: "37 13 * * 1"   # second try at 13:37 UTC in case the Claude task ran late
+    # Every hour, every day. GitHub sometimes skips a scheduled run (it skipped both
+    # Monday runs on 9 November 2026), so checking hourly means a missed run is
+    # caught an hour later. A run with nothing new in the feed changes nothing.
+    - cron: "17 * * * *"
   workflow_dispatch:         # adds a "Run workflow" button for a manual run
 
 permissions:
