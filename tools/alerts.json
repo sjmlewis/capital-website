@@ -1,7 +1,80 @@
 {
-  "updated": "2026-11-02",
+  "updated": "2026-11-09",
   "note": "Public offset alerts shown on the website: a weekly round-up of new defence sales above the offset thresholds. This file is the permanent record: never delete an item. The site shows only items whose 'added' date is within the last three weeks of 'updated' (at least eight items are always shown), so older items fall away from the pages but stay here. 'date' is when the event happened (YYYY-MM-DD, or YYYY-MM if only the month is known); 'added' is the date the item went on the site; 'tag' is optional ('Civil' or 'Rules'). Summaries are Capital's own words: one or two plain factual lines, with a short note on offset only where it is clear (for example, no offset because a purchase is SAFE-funded). Sources are not shown on the site and are not kept in this public file; they are recorded privately in Capital's Claude project (Offset_Alerts_Sources.md). Internal scores, suggested services and verdicts from the Offset Opportunity Monitor never go here.",
   "items": [
+    {
+      "date": "2026-11-06",
+      "added": "2026-11-09",
+      "country": "South Korea",
+      "title": "South Korea selects the Sikorsky S-92A+ for its new VIP command helicopters",
+      "summary": "South Korea's Defense Acquisition Program Promotion Committee chose the Sikorsky S-92A+ on 6 November for its next command helicopter programme, with a total cost of about KRW 873 billion. Four helicopters will replace older Air Force aircraft by 2031, and the plan includes modification and maintenance technology and parts exports for Korean small firms."
+    },
+    {
+      "date": "2026-11-06",
+      "added": "2026-11-09",
+      "country": "Mexico",
+      "title": "US approves a possible US$1.075bn sale of 11 UH-60M Black Hawk helicopters to Mexico",
+      "summary": "The US State Department has approved a possible sale to Mexico of 11 Sikorsky UH-60M Black Hawk helicopters with spare engines, navigation systems, radios, training and support, estimated at US$1.075 billion."
+    },
+    {
+      "date": "2026-11-06",
+      "added": "2026-11-09",
+      "country": "Sweden",
+      "title": "Saab wins about SEK 2bn from Naval Group to equip Sweden's four new FDI frigates",
+      "summary": "Naval Group has ordered weapon control systems and sensors worth about SEK 2 billion from Saab for the four FDI frigates it is building for the Royal Swedish Navy under a contract of about €4.3 billion signed on 31 August. Sweden does not have offset rules."
+    },
+    {
+      "date": "2026-11-06",
+      "added": "2026-11-09",
+      "country": "Denmark",
+      "title": "Denmark and Lithuania join Finland-led joint purchase of Blocker naval mines",
+      "summary": "Denmark and Lithuania have confirmed they are buying Forcit Defence's Blocker naval mines through the five-nation Naval Mines Cooperation, under a framework contract Finland signed in June for the group. Finland has described the contract as worth hundreds of millions of euros; no figure per country has been published."
+    },
+    {
+      "date": "2026-11-05",
+      "added": "2026-11-09",
+      "country": "Philippines",
+      "title": "India reported in final talks to sell the Philippines more BrahMos missile systems",
+      "summary": "India is reported to be in final-stage talks to expand its BrahMos supersonic cruise missile sale to the Philippines, covering about five more systems and nearly 60 missiles, which Indian sources value at US$700–800 million. No deal has yet been announced."
+    },
+    {
+      "date": "2026-11-05",
+      "added": "2026-11-09",
+      "country": "Malaysia",
+      "title": "Penang Mutiara Line LRT: RM2.69bn second civil contract awarded",
+      "summary": "Malaysia Rapid Transit Corporation has awarded the RM2.69 billion second civil main contract for the Penang Mutiara Line light rail to a joint venture of China Communications Construction Company, TRC Construction and Ufuk Semarak. It covers about 5.5 km of line, including a 3.05 km sea-crossing bridge to Butterworth.",
+      "tag": "Civil"
+    },
+    {
+      "date": "2026-11-04",
+      "added": "2026-11-09",
+      "country": "United Kingdom",
+      "title": "UK offset details expected at the Defence Investment Summit on 1 December",
+      "summary": "Details of how obligations under the UK's new offset policy will be assessed, measured and enforced are expected at the Defence Investment Summit on 1 December. The policy is due to apply from April 2027 to contracts of £50 million or more, with each case considered individually.",
+      "tag": "Rules"
+    },
+    {
+      "date": "2026-11-02",
+      "added": "2026-11-09",
+      "country": "Peru",
+      "title": "Peru awards Leonardo €40.4m to support its four C-27J Spartan aircraft",
+      "summary": "Peru's armed forces procurement agency, ACFFAA, has awarded Leonardo a €40.4 million integrated support contract, as sole supplier, for the Peruvian Air Force's four C-27J Spartan transport aircraft. Details of any offset on this award have not been published."
+    },
+    {
+      "date": "2026-10-27",
+      "added": "2026-11-09",
+      "country": "Peru",
+      "title": "Peru seeks to speed up a purchase of 12 search and rescue helicopters, worth up to US$240m",
+      "summary": "Peru's government is trying to speed up the purchase of 12 search and rescue helicopters, six before the end of 2026 and six in 2027, at an estimated cost of up to US$240 million. Funding has not yet been allocated; the Leonardo AW139M and Airbus H145M are seen as leading candidates."
+    },
+    {
+      "date": "2026-10",
+      "added": "2026-11-09",
+      "country": "South Africa",
+      "title": "Wabtec agrees a US$390m support deal for Transnet's D43 and D44 locomotives",
+      "summary": "Wabtec has agreed a multi-year contract worth US$390 million with state-owned Transnet Engineering for components, engineering advice and condition-monitoring software for its Class D43 and D44 freight locomotives, with localisation and training included.",
+      "tag": "Civil"
+    },
     {
       "date": "2026-11-01",
       "added": "2026-11-02",
