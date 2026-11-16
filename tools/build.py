@@ -606,17 +606,16 @@ JS = r"""
 # ---------------------------------------------------------------- navigation
 NAV = [
     ("uk-offset-policy.html", "UK Offset Policy"),
-    ("advisory.html", "Advisory"),
+    ("offset-alerts.html", "Defence sales alerts"),
     ("training.html", "Training"),
     ("uk-noc.html", "UK-NOC"),
-    ("offset-alerts.html", "Offset alerts"),
     ("about.html", "About"),
 ]
 
 def brand(cls=""):
-    return (f'<a class="brand{cls}" href="index.html" aria-label="Capital Offset Services, home">'
+    return (f'<a class="brand{cls}" href="index.html" aria-label="Capital Services, home">'
             '<span class="mark" aria-hidden="true"></span><span class="word">Capital</span>'
-            '<span class="desc">Offset Services</span></a>')
+            '<span class="desc">Services</span></a>')
 
 def nav(current):
     items = []
@@ -636,18 +635,18 @@ FOOTER = f"""
       {brand()}
       <p class="contact">Based in London, United Kingdom. Meetings by appointment.<br><span>{EMAIL}</span><span>{PHONE}</span><a class="li" href="https://www.linkedin.com/in/stephen-lewis-b9716413" rel="noopener">Stephen Lewis on LinkedIn</a></p>
     </div>
-    <div><h4>UK offset</h4><ul><li><a href="uk-offset-policy.html">UK Offset Policy</a></li><li><a href="industrial-participation.html">UK offset and industrial participation</a></li><li><a href="offset-alerts.html">Offset alerts</a></li></ul></div>
-    <div><h4>Services</h4><ul><li><a href="advisory.html">Advisory</a></li><li><a href="training.html">Offset practitioner course</a></li><li><a href="uk-noc.html">UK National Offset Council</a></li></ul></div>
-    <div><h4>Company</h4><ul><li><a href="about.html">About Capital</a></li><li><a href="compliance.html">Compliance and ethics</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><h4>Guidance and alerts</h4><ul><li><a href="uk-offset-policy.html">UK Offset Policy</a></li><li><a href="industrial-participation.html">About UK offset</a></li><li><a href="offset-alerts.html">Defence sales alerts</a></li></ul></div>
+    <div><h4>Course and Council</h4><ul><li><a href="training.html">Industrial participation course</a></li><li><a href="uk-noc.html">UK National Offset Council</a></li></ul></div>
+    <div><h4>Company</h4><ul><li><a href="about.html">About Capital Services</a></li><li><a href="advisory.html">Offset advisory (Constructive Edge)</a></li><li><a href="compliance.html">Compliance and ethics</a></li><li><a href="contact.html">Contact</a></li></ul></div>
   </div>
   <div class="legal"><div class="wrap">
-    <span>Capital Offset Services Limited. Registered in England and Wales, company number 08803140.</span>
+    <span>Capital Services is a trading name of Capital Offset Services Limited, registered in England and Wales, company number 08803140.</span>
     <span>© {YEAR} Capital Offset Services Limited</span>
   </div></div>
 </footer>"""
 
-def band(title="Preparing a UK bid or an offset plan?",
-         text="Get in touch to discuss UK offset, an advisory project, UK-NOC or the practitioner course. We reply within two working days.",
+def band(title="Questions about the guidance, alerts or course?",
+         text="Get in touch about the UK Offset Policy, the defence sales alerts, the industrial participation course or UK-NOC. We reply within two working days.",
          label="Contact us", href="contact.html"):
     return f"""
 <section class="band" aria-labelledby="cta-title"><div class="wrap">
@@ -666,14 +665,14 @@ def pagehead(title, lede, crumb=None, extra=""):
 </div></section>"""
 
 def head(title, desc, path, extra_css=""):
-    full = "UK Offset and Industrial Participation · Capital Offset Services" if path == "index.html" else f"{title} · Capital Offset Services"
+    full = "UK Offset Policy guidance, defence sales alerts and training · Capital Services" if path == "index.html" else f"{title} · Capital Services"
     return f"""<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{html.escape(full)}</title>
 <meta name="description" content="{html.escape(desc)}">
 <link rel="canonical" href="{DOMAIN}/{'' if path=='index.html' else path}">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Capital Offset Services">
+<meta property="og:site_name" content="Capital Services">
 <meta property="og:title" content="{html.escape(full)}">
 <meta property="og:description" content="{html.escape(desc)}">
 <meta property="og:url" content="{DOMAIN}/{'' if path=='index.html' else path}">
@@ -809,9 +808,9 @@ def wire(items):
     data = [dict(country=a["country"], date=when_short(a["date"]), title=_cap_text(a["title"]), href="offset-alerts.html#" + a["id"]) for a in items]
     first = data[0]
     return f"""
-<div class="wire" id="wire" data-items="{html.escape(json.dumps(data), quote=True)}" aria-label="Offset wire: latest alerts">
+<div class="wire" id="wire" data-items="{html.escape(json.dumps(data), quote=True)}" aria-label="Sales wire: latest defence sales alerts">
   <div class="wrap">
-    <span class="label">Offset wire</span>
+    <span class="label">Sales wire</span>
     <div class="item"><a href="{first['href']}"><span class="w-country">{html.escape(first['country'])}</span><span class="w-date">{first['date']}</span><span class="w-title">{html.escape(first['title'])}</span></a></div>
     <div class="ctl"><button type="button" data-prev aria-label="Previous alert">&#8249;</button><span class="count" aria-hidden="true">1 / {len(data)}</span><button type="button" data-next aria-label="Next alert">&#8250;</button><a class="all" href="offset-alerts.html">All alerts</a></div>
   </div>
@@ -822,10 +821,10 @@ HOME_WIRE = wire(ALERTS[:WIRE_ITEMS])
 HOME_ALERTS = f"""
 <section class="section" aria-labelledby="alerts-title"><div class="wrap">
   <div class="sechead">
-    <div><span class="kicker" aria-hidden="true"></span><h2 class="h2" id="alerts-title">Latest offset alerts</h2>
-      <p class="sub">A weekly round-up of new defence sales around the world above the offset thresholds, and changes to the offset rules.</p>
+    <div><span class="kicker" aria-hidden="true"></span><h2 class="h2" id="alerts-title">Latest defence sales alerts</h2>
+      <p class="sub">A weekly round-up of new defence sales around the world above the thresholds at which countries require industrial participation, and changes to those rules.</p>
       <p class="updated">Checked weekly. Last updated {ALERTS_UPDATED}.</p></div>
-    <a class="more" href="offset-alerts.html">See all offset alerts</a>
+    <a class="more" href="offset-alerts.html">See all defence sales alerts</a>
   </div>
   {alert_cards(ALERTS[:HOME_CARDS])}
 </div></section>"""
@@ -833,18 +832,18 @@ HOME_ALERTS = f"""
 # ---------------------------------------------------------------- pages
 PAGES = {}
 
-PAGES["index.html"] = dict(title="Home", desc="Capital helps overseas defence companies meet UK offset and industrial participation commitments, with more than 25 years of offset experience.", body=f"""{HOME_WIRE}
+PAGES["index.html"] = dict(title="Home", desc="Plain-English guidance on the UK Offset Policy, weekly defence sales alerts and an industrial participation course, from Capital Services in London.", body=f"""{HOME_WIRE}
 <section class="hero" aria-labelledby="hero-title">
   <canvas id="drawing" aria-hidden="true"></canvas>
   <div class="wrap">
     <div>
       <h1 id="hero-title">Prepare for the UK Offset Policy</h1>
-      <p class="lede">Capital helps overseas defence companies meet UK offset commitments, with more than 25 years of offset and industrial participation experience.</p>
+      <p class="lede">Capital Services publishes plain-English guidance on the UK Offset Policy, weekly defence sales alerts and an industrial participation course, drawing on more than 25 years of experience in nearly 30 countries.</p>
       <div class="actions">
         <a class="btn btn-brass" href="uk-offset-policy.html">Read the policy summary</a>
-        <a class="btn btn-ghost" href="advisory.html">Advisory services</a>
+        <a class="btn btn-ghost" href="offset-alerts.html">Defence sales alerts</a>
       </div>
-      <p class="audience">For overseas primes and their UK subsidiaries preparing bids and offset plans</p>
+      <p class="audience">For overseas defence suppliers, their UK subsidiaries and UK companies</p>
     </div>
     <aside class="card" aria-label="The UK Offset Policy at a glance">
       <div class="card-top"><b>UK Offset Policy at a glance</b><span>Published 30 Oct 2026</span></div>
@@ -869,21 +868,21 @@ PAGES["index.html"] = dict(title="Home", desc="Capital helps overseas defence co
 </div></section>
 
 <section class="section stone" aria-labelledby="offers-title"><div class="wrap">
-  <span class="kicker" aria-hidden="true"></span><h2 class="h2" id="offers-title">What Capital offers</h2>
+  <span class="kicker" aria-hidden="true"></span><h2 class="h2" id="offers-title">What Capital Services provides</h2>
   <div class="cols two-up">
     <div class="col"><h3>Clear guidance on the UK Offset Policy</h3><p>Plain-English summaries of the Ministry of Defence's UK Offset Policy and its link to HM Treasury's Green Book, and what they mean for overseas suppliers and UK companies.</p><p><a href="uk-offset-policy.html">UK Offset Policy</a></p></div>
-    <div class="col"><h3>Experience you can call on</h3><p>Capital's advisory support, drawn from offset and industrial participation programmes in nearly 30 countries, is delivered through Constructive Edge.</p><p><a href="advisory.html">Advisory services</a></p></div>
+    <div class="col"><h3>Defence sales alerts</h3><p>A weekly round-up of new defence sales around the world, and the changes to the rules that come with them, written from public reports.</p><p><a href="offset-alerts.html">See the latest alerts</a></p></div>
   </div>
 </div></section>
 
 {HOME_ALERTS}
 
 <section class="section stone" aria-labelledby="more-title"><div class="wrap">
-  <span class="kicker" aria-hidden="true"></span><h2 class="h2" id="more-title">The Council and training</h2>
-  <p class="sub">Two ways Capital brings people together around offset.</p>
+  <span class="kicker" aria-hidden="true"></span><h2 class="h2" id="more-title">The Council and the course</h2>
+  <p class="sub">Two ways Capital brings people together around industrial participation.</p>
   <div class="cols two-up">
     <div class="col"><h3>UK National Offset Council (UK-NOC)</h3><p>An informal quarterly gathering in London for people with an interest in UK offset: Ministry of Defence officials, UK companies and overseas suppliers. Organised and hosted by Capital. The first meeting takes place in Q4 2026.</p><p><a href="uk-noc.html">About UK-NOC</a></p></div>
-    <div class="col"><h3>Offset practitioner course</h3><p>A practitioner's masterclass for people new to offset and industrial participation: eight modules, a UK elective and a live negotiation simulation, online over nine weeks or in-house over three days.</p><p><a href="training.html">See the course outline</a></p></div>
+    <div class="col"><h3>Industrial participation course</h3><p>A practitioner's masterclass for people new to industrial participation and offset: eight modules, a UK elective and a live negotiation simulation, online over nine weeks or in-house over three days.</p><p><a href="training.html">See the course outline</a></p></div>
   </div>
 </div></section>
 {band()}""")
@@ -892,7 +891,7 @@ PAGES["uk-offset-policy.html"] = dict(title="UK Offset Policy", desc="A plain-En
     "The UK Offset Policy",
     "On 30 October 2026 the Ministry of Defence published the UK Offset Policy. An overseas supplier that wins a large UK defence contract will commit to deliver UK value equal to the contract, through projects agreed with a new Offset Authority. These are the main points.",
     ["UK Offset Policy"],
-    '<div class="actions"><a class="btn btn-brass" href="https://www.gov.uk/government/publications/uk-offset-policy/uk-offset-policy">Read the policy on GOV.UK</a><a class="btn btn-ghost" href="contact.html">Talk to Capital</a></div>') + f"""
+    '<div class="actions"><a class="btn btn-brass" href="https://www.gov.uk/government/publications/uk-offset-policy/uk-offset-policy">Read the policy on GOV.UK</a><a class="btn btn-ghost" href="offset-alerts.html">Defence sales alerts</a></div>') + f"""
 <section class="section" aria-labelledby="key-title"><div class="wrap two">
   <div><span class="kicker" aria-hidden="true"></span><h2 id="key-title">The main points</h2></div>
   <div>
@@ -917,7 +916,7 @@ PAGES["uk-offset-policy.html"] = dict(title="UK Offset Policy", desc="A plain-En
 <section class="section stone" aria-labelledby="mean-title"><div class="wrap">
   <span class="kicker" aria-hidden="true"></span><h2 class="h2" id="mean-title">What it means</h2>
   <div class="cols two-up">
-    <div class="col"><h3>For overseas suppliers</h3><p>Plan early. You will need UK partners that can make your parts now, and partners that could with your support, with evidence of where and how they work in the UK. <a href="advisory.html">Advisory</a> support on offset strategy, project proposals and credit claims is available through Constructive Edge.</p></div>
+    <div class="col"><h3>For overseas suppliers</h3><p>Plan early. You will need UK partners that can make your parts now, and partners that could with your support, with evidence of where and how they work in the UK. Offset advisory support is available through <a href="advisory.html">Constructive Edge</a>.</p></div>
     <div class="col"><h3>For UK companies</h3><p>The policy opens supply chains to UK primes, mid-tier companies, SMEs, universities and research organisations. Overseas suppliers will be looking for capable UK partners.</p></div>
   </div>
   <p class="sub">Discuss the policy with others working on it at the <a href="uk-noc.html">UK National Offset Council (UK-NOC)</a>.</p>
@@ -996,7 +995,7 @@ PAGES["uk-offset-green-book.html"] = dict(title="UK offset and the Green Book", 
 </div></section>
 {band()}""")
 
-PAGES["industrial-participation.html"] = dict(title="UK offset and industrial participation", desc="UK offset and industrial participation: what the UK Offset Policy means for overseas defence suppliers and UK companies, and how Capital helps them create genuine UK value.", body=pagehead(
+PAGES["industrial-participation.html"] = dict(title="UK offset and industrial participation", desc="UK offset and industrial participation: what the UK Offset Policy means for overseas defence suppliers and UK companies.", body=pagehead(
     "UK offset",
     "Under the UK Offset Policy, an overseas supplier that wins a large Ministry of Defence contract commits to deliver UK value equal to the contract, over up to ten years.",
     ["UK offset"]) + f"""
@@ -1021,57 +1020,34 @@ PAGES["industrial-participation.html"] = dict(title="UK offset and industrial pa
 </div></section>
 
 <section class="section" aria-labelledby="help-title"><div class="wrap two">
-  <div><span class="kicker" aria-hidden="true"></span><h2 id="help-title">How Capital helps</h2></div>
+  <div><span class="kicker" aria-hidden="true"></span><h2 id="help-title">What Capital provides</h2></div>
   <div class="prose">
-    <p><a href="advisory.html">Advisory support</a> on both routes, from offset strategy to project proposals and credit claims, is delivered through Constructive Edge.</p>
+    <p>Capital publishes <a href="uk-offset-policy.html">plain-English guidance on the UK Offset Policy</a> and a weekly round-up of <a href="offset-alerts.html">defence sales alerts</a>, and runs an <a href="training.html">industrial participation course</a> for people new to the subject.</p>
     <p>Capital's founder has worked on offset and industrial participation programmes for more than 25 years, across Europe, the Middle East, Asia, Africa and the Americas. <a href="about.html">About Capital</a></p>
-    <p>Capital also organises and hosts the <a href="uk-noc.html">UK National Offset Council (UK-NOC)</a>, an informal quarterly gathering in London for Ministry of Defence officials, UK companies and overseas suppliers, and runs a <a href="training.html">practitioner course</a> for people new to offset.</p>
+    <p>Capital also organises and hosts the <a href="uk-noc.html">UK National Offset Council (UK-NOC)</a>, an informal quarterly gathering in London for Ministry of Defence officials, UK companies and overseas suppliers.</p>
+    <p>Offset advisory is delivered through <a href="advisory.html">Constructive Edge</a>, in which Capital is an equal partner.</p>
   </div>
 </div></section>
 {band()}""")
 
-PAGES["advisory.html"] = dict(title="Advisory services", desc="Offset and industrial participation advisory support for companies and governments, delivered through Constructive Edge.", body=pagehead(
-    "Advisory services",
-    "Capital's offset and industrial participation advisory work for companies and governments is delivered through Constructive Edge, in which Capital is an equal partner.",
-    ["Advisory"]) + f"""
-<section class="section" aria-labelledby="serv-title"><div class="wrap">
-  <span class="kicker" aria-hidden="true"></span><h2 class="h2" id="serv-title">Services</h2>
-  <div class="cols four-up">
-    <div class="col"><h3>Industrial participation strategy</h3><p>Understanding the obligation, choosing the right mix of activities and shaping a credible plan.</p></div>
-    <div class="col"><h3>Partner development</h3><p>Structuring technology transfer, training and co-production arrangements with in-country partners.</p></div>
-    <div class="col"><h3>Structured export finance</h3><p>Payment structures and financing arrangements that support capital equipment exports under offset commitments.</p></div>
-    <div class="col"><h3>Government advisory</h3><p>Helping governments design industrial and procurement policies that attract foreign technology and investment.</p></div>
-  </div>
-  <div class="note" style="margin-top:28px;max-width:none"><b>Delivered through Constructive Edge.</b> Capital Offset Services is an equal partner in <a href="https://www.constructive-edge.com">Constructive Edge</a>, a global offset and industrial participation advisory group headquartered in Guelph, Ontario, near Toronto, Canada, with partners also based in the United States, Belgium, Australia and the UK. Constructive Edge supports industry programme and offset commitments worth billions of dollars for major aerospace and defence primes, and Capital's offset and industrial participation advisory work is delivered through it.</div>
-</div></section>
-
-<section class="section stone" aria-labelledby="sect-title"><div class="wrap two">
-  <div><span class="kicker" aria-hidden="true"></span><h2 id="sect-title">Sectors</h2></div>
+PAGES["advisory.html"] = dict(title="Offset advisory", current="about.html", desc="Offset and industrial participation advisory work is delivered through Constructive Edge, a global advisory group in which Capital is an equal partner.", body=pagehead(
+    "Offset advisory",
+    "Offset and industrial participation advisory work is delivered through Constructive Edge, a global advisory group in which Capital is an equal partner. Capital Services itself publishes guidance, alerts and training.",
+    [("about.html", "About"), "Offset advisory"]) + f"""
+<section class="section" aria-labelledby="ce-title"><div class="wrap two">
+  <div><span class="kicker" aria-hidden="true"></span><h2 id="ce-title">Constructive Edge</h2></div>
   <div class="prose">
-    <p>Advisory clients are mainly companies in aerospace, defence, security and space. Any company with technology or capability of interest to a government customer can benefit from the same approach.</p>
+    <p>Constructive Edge is a global offset and industrial participation advisory group headquartered in Guelph, Ontario, near Toronto, Canada, with partners also based in the United States, Belgium, Australia and the UK. It supports industry programme and offset commitments worth billions of dollars for major aerospace and defence primes.</p>
+    <p>For advice on an offset obligation, a bid or a programme, please contact Constructive Edge at <a href="https://www.constructive-edge.com">constructive-edge.com</a>.</p>
+    <div class="note" style="margin-top:28px;max-width:none"><b>What Capital Services provides.</b> Plain-English <a href="uk-offset-policy.html">guidance on the UK Offset Policy</a>, <a href="offset-alerts.html">defence sales alerts</a>, an <a href="training.html">industrial participation course</a> and the <a href="uk-noc.html">UK National Offset Council</a>.</div>
   </div>
 </div></section>
-
-<section class="section" aria-labelledby="work-title"><div class="wrap two">
-  <div><span class="kicker" aria-hidden="true"></span><h2 id="work-title">How we work</h2></div>
-  <div class="prose">
-    <p>Engagements usually begin with a short discussion of your goals and target market, followed by a written proposal. Work is carried out under a services agreement with Constructive Edge, with fees agreed case by case.</p>
-  </div>
-</div></section>
-
-<section class="section stone" aria-labelledby="also-title"><div class="wrap">
-  <span class="kicker" aria-hidden="true"></span><h2 class="h2" id="also-title">Training and the Council</h2>
-  <div class="cols two-up">
-    <div class="col"><h3>Offset practitioner course</h3><p>A practitioner's masterclass for people new to offset and industrial participation: eight modules, a UK elective and a live negotiation simulation, online over nine weeks or in-house over three days.</p><p><a href="training.html">See the course outline</a></p></div>
-    <div class="col"><h3>UK National Offset Council (UK-NOC)</h3><p>An informal quarterly gathering in London for people with an interest in UK offset: Ministry of Defence officials, UK companies and overseas suppliers. Organised and hosted by Capital. The first meeting takes place in Q4 2026.</p><p><a href="uk-noc.html">About UK-NOC</a></p></div>
-  </div>
-</div></section>
-{band("Discuss a project", "Tell us about your programme and target market, and we will come back to you within two working days.", "Contact Capital", "contact.html")}""")
+{band()}""")
 
 # ---------------------------------------------------------------- practitioner course
 # The public course outline shows structure, topics and formats only. Teaching notes, model answers,
 # the Project Halcyon scenario and the course quiz questions stay in the paid materials.
-COURSE_SUBJECT = "Offset course: register interest"
+COURSE_SUBJECT = "Industrial participation course: register interest"
 
 COURSE_FIGS = [
     ("8", "core modules, plus a UK elective"),
@@ -1249,10 +1225,10 @@ def course_quiz_html():
       </div>
     </div>"""
 
-PAGES["training.html"] = dict(title="Offset practitioner course", desc="Strategic Industrial Participation and Offsets: a practitioner's masterclass for people new to offset and industrial participation. Eight modules, a UK elective and a live negotiation simulation, online over nine weeks or in-house over three days.", body=pagehead(
-    "Strategic Industrial Participation &amp; Offsets",
-    "A practitioner's masterclass for people new to offset and industrial participation. It sets academic theory aside and concentrates on the commercial realities: winning bids, protecting margins and delivering what was promised.",
-    ["Training"],
+PAGES["training.html"] = dict(title="Industrial participation course", desc="Strategic Industrial Participation and Offsets: a practitioner's masterclass for people new to industrial participation and offset. Eight modules, a UK elective and a live negotiation simulation, online over nine weeks or in-house over three days.", body=pagehead(
+    "Industrial participation course",
+    "Strategic Industrial Participation and Offsets: a practitioner's masterclass for people new to industrial participation and offset. It sets academic theory aside and concentrates on the commercial realities: winning bids, protecting margins and delivering what was promised.",
+    ["Course"],
     '<div class="actions"><a class="btn btn-brass" href="#register">Register your interest</a><a class="btn btn-ghost" href="#modules">See the course structure</a></div>'
     '<p class="audience">Online over nine weeks, or in-house over three days for your team</p>') + f"""
 <section class="section tight" aria-label="The course at a glance"><div class="wrap">
@@ -1351,7 +1327,7 @@ PAGES["training.html"] = dict(title="Offset practitioner course", desc="Strategi
     <div class="copyrow"><button class="copybtn" type="button" data-copy="{EMAIL}">Copy email address</button></div>
     <p style="margin-top:20px"><strong>Subject line</strong>, so your enquiry is picked up straight away:</p>
     <div class="copyrow" style="margin-top:8px"><code>{COURSE_SUBJECT}</code><button class="copybtn" type="button" data-copy="{COURSE_SUBJECT}">Copy subject</button></div>
-    <div class="actions"><a class="btn btn-brass" href="mailto:{EMAIL}?subject=Offset%20course%3A%20register%20interest">Open in your email app</a></div>
+    <div class="actions"><a class="btn btn-brass" href="mailto:{EMAIL}?subject=Industrial%20participation%20course%3A%20register%20interest">Open in your email app</a></div>
     <p>Prefer to talk first? {PHONE}, UK office hours.</p>
   </div>
 </div></section>
@@ -1435,11 +1411,11 @@ PAGES["uk-noc.html"] = dict(title='UK National Offset Council (UK-NOC)', desc='T
 </div></section>
 {band()}""")
 
-ALERT_SUBJECT = "Offset alerts"
-PAGES["offset-alerts.html"] = dict(title="Offset alerts", desc="A weekly round-up of new defence sales around the world above the offset thresholds.", body=pagehead(
-    "Offset alerts",
-    "A weekly round-up of new defence sales around the world above the offset thresholds, and changes to the offset rules. Each summary is written by Capital from public reports.",
-    ["Offset alerts"]) + f"""
+ALERT_SUBJECT = "Defence sales alerts"
+PAGES["offset-alerts.html"] = dict(title="Defence sales alerts", desc="A weekly round-up of new defence sales around the world above the thresholds at which countries require industrial participation.", body=pagehead(
+    "Defence sales alerts",
+    "A weekly round-up of new defence sales around the world above the thresholds at which countries require industrial participation, and changes to those rules. Each summary is written by Capital from public reports.",
+    ["Defence sales alerts"]) + f"""
 <section class="section" aria-labelledby="all-title"><div class="wrap">
   <div class="sechead">
     <div><span class="kicker" aria-hidden="true"></span><h2 class="h2" id="all-title">Recent alerts</h2>
@@ -1475,13 +1451,13 @@ PAGES["offset-alerts.html"] = dict(title="Offset alerts", desc="A weekly round-u
     <p>Capital is independent of the governments and companies named. An alert does not mean that Capital is involved in the programme.</p>
   </div>
 </div></section>
-{band("Bidding into one of these programmes?", "Offset strategy, proposal writing and the delivery of offset obligations are provided through Constructive Edge, in which Capital is an equal partner. We reply within two working days.", "Discuss a project", "contact.html")}""")
+{band("Bidding into one of these programmes?", "Offset advisory is delivered through Constructive Edge, in which Capital is an equal partner.", "About Constructive Edge", "advisory.html")}""")
 
 COUNTRIES = ["Belgium","Brazil","Bulgaria","Canada","Denmark","Egypt","Estonia","Finland","India","Italy","Kuwait","Lithuania","Malaysia","Netherlands","Norway","Oman","Poland","Portugal","Romania","Saudi Arabia","Slovenia","South Africa","South Korea","Spain","Switzerland","Taiwan","Thailand","Turkey","United Arab Emirates"]
 
-PAGES["about.html"] = dict(title="About Capital", desc="Capital was founded in 2013 by Stephen Lewis. More than 25 years of offset and industrial participation experience across Europe, the Middle East, Asia, Africa and the Americas.", body=pagehead(
-    "About Capital",
-    "Capital was founded in 2013 by Stephen Lewis to help companies create lasting value through offset and industrial participation.",
+PAGES["about.html"] = dict(title="About Capital", desc="Capital Services was founded in 2013 by Stephen Lewis. More than 25 years of offset and industrial participation experience across Europe, the Middle East, Asia, Africa and the Americas.", body=pagehead(
+    "About Capital Services",
+    "Capital Services was founded in 2013 by Stephen Lewis. It publishes guidance, alerts and training on industrial participation and offset for the defence industry.",
     ["About"]) + f"""
 <section class="section" aria-labelledby="founder-title"><div class="wrap two">
   <div><span class="kicker" aria-hidden="true"></span><h2 id="founder-title">Founder</h2></div>
@@ -1515,7 +1491,7 @@ PAGES["about.html"] = dict(title="About Capital", desc="Capital was founded in 2
   <div class="prose">
     <p>Offset and industrial participation carry commercial and political risk. Capital works on an open, documented basis and complies with the anti-corruption and export-control laws that apply to its work.</p>
     <p><a href="compliance.html">Compliance and ethics</a></p>
-    <div class="note" style="margin-top:28px;max-width:none"><b>Delivered through Constructive Edge.</b> Capital Offset Services is an equal partner in <a href="https://www.constructive-edge.com">Constructive Edge</a>, a global offset and industrial participation advisory group headquartered in Guelph, Ontario, near Toronto, Canada, with partners also based in the United States, Belgium, Australia and the UK. Constructive Edge supports industry programme and offset commitments worth billions of dollars for major aerospace and defence primes, and Capital's offset and industrial participation advisory work is delivered through it.</div>
+    <div class="note" style="margin-top:28px;max-width:none"><b>Delivered through Constructive Edge.</b> Capital Offset Services Limited, which trades as Capital Services, is an equal partner in <a href="https://www.constructive-edge.com">Constructive Edge</a>, a global offset and industrial participation advisory group headquartered in Guelph, Ontario, near Toronto, Canada, with partners also based in the United States, Belgium, Australia and the UK. Constructive Edge supports industry programme and offset commitments worth billions of dollars for major aerospace and defence primes, and Capital's offset and industrial participation advisory work is delivered through it.</div>
   </div>
 </div></section>
 {band()}""")
@@ -1552,9 +1528,9 @@ PAGES["compliance.html"] = dict(title="Compliance and ethics", desc="Capital's a
 
 {band()}""")
 
-PAGES["contact.html"] = dict(title="Contact", desc="Contact Capital Offset Services by email or telephone. Based in London, United Kingdom.", body=pagehead(
+PAGES["contact.html"] = dict(title="Contact", desc="Contact Capital Services by email or telephone. Based in London, United Kingdom.", body=pagehead(
     "Contact",
-    "Email or call to discuss UK offset, advisory work, UK-NOC or the practitioner course.",
+    "Email or call about the UK Offset Policy guidance, the defence sales alerts, the industrial participation course or UK-NOC.",
     ["Contact"]) + f"""
 <section class="section" aria-labelledby="gt-title"><div class="wrap two">
   <div>
@@ -1565,12 +1541,12 @@ PAGES["contact.html"] = dict(title="Contact", desc="Contact Capital Offset Servi
     </div>
   </div>
   <div class="panel">
-    <h3>Capital Offset Services</h3>
+    <h3>Capital Services</h3>
     <div class="big">{EMAIL_WBR}</div>
     <div class="copyrow"><button class="copybtn" type="button" data-copy="{EMAIL}">Copy email address</button></div>
     <p style="margin-top:18px"><strong>Telephone</strong><br>{PHONE}</p>
     <p style="margin-top:14px"><strong>LinkedIn</strong><br><a href="https://www.linkedin.com/in/stephen-lewis-b9716413" rel="noopener">Stephen Lewis</a></p>
-    <p style="margin-top:14px"><strong>Company details</strong><br>Capital Offset Services Limited.<br>Registered in England and Wales, company number 08803140.</p>
+    <p style="margin-top:14px"><strong>Company details</strong><br>Capital Services is a trading name of Capital Offset Services Limited.<br>Registered in England and Wales, company number 08803140.</p>
   </div>
 </div></section>
 {band()}""")
@@ -1595,7 +1571,7 @@ for old in ("uk-icr.html", "roundtable.html"):
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>UK National Offset Council (UK-NOC) · Capital Offset Services</title>
+<title>UK National Offset Council (UK-NOC) · Capital Services</title>
 <meta name="robots" content="noindex">
 <link rel="canonical" href="{DOMAIN}/uk-noc.html">
 <script>location.replace('uk-noc.html'+location.hash);</script>
@@ -1608,10 +1584,10 @@ for old in ("uk-icr.html", "roundtable.html"):
 """)
 
 # Pages withdrawn on 6 Nov 2026 (the UK Defence Partner Database is not open yet) forward visitors
-for old, target, label in (("platform.html", "index.html", "Capital Offset Services home page"),
-                           ("security.html", "index.html", "Capital Offset Services home page"),
-                           ("uk-companies.html", "index.html", "Capital Offset Services home page"),
-                           ("request-access.html", "contact.html", "Contact Capital Offset Services")):
+for old, target, label in (("platform.html", "index.html", "Capital Services home page"),
+                           ("security.html", "index.html", "Capital Services home page"),
+                           ("uk-companies.html", "index.html", "Capital Services home page"),
+                           ("request-access.html", "contact.html", "Contact Capital Services")):
     canon = f"{DOMAIN}/" + ("" if target == "index.html" else target)
     with open(os.path.join(SITE, old), "w") as f:
         f.write(f"""<!doctype html>
@@ -1619,7 +1595,7 @@ for old, target, label in (("platform.html", "index.html", "Capital Offset Servi
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Capital Offset Services</title>
+<title>Capital Services</title>
 <meta name="robots" content="noindex">
 <link rel="canonical" href="{canon}">
 <script>location.replace('{target}');</script>
