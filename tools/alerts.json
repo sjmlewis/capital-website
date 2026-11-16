@@ -1,7 +1,78 @@
 {
-  "updated": "2026-11-09",
+  "updated": "2026-11-16",
   "note": "Public offset alerts shown on the website: a weekly round-up of new defence sales above the offset thresholds. This file is the permanent record: never delete an item. The site shows only items whose 'added' date is within the last three weeks of 'updated' (at least eight items are always shown), so older items fall away from the pages but stay here. 'date' is when the event happened (YYYY-MM-DD, or YYYY-MM if only the month is known); 'added' is the date the item went on the site; 'tag' is optional ('Civil' or 'Rules'). Summaries are Capital's own words: one or two plain factual lines, with a short note on offset only where it is clear (for example, no offset because a purchase is SAFE-funded). Sources are not shown on the site and are not kept in this public file; they are recorded privately in the 'Website alerts: sources (private)' table of the Offset Opportunity Monitor's Programme Register (a Claude Doc). Internal scores, suggested services and verdicts from the Offset Opportunity Monitor never go here.",
   "items": [
+    {
+      "date": "2026-11-13",
+      "added": "2026-11-16",
+      "country": "Poland",
+      "title": "Pentagon backs Poland's request to buy Tomahawk cruise missiles and ground launchers",
+      "summary": "Poland's defence minister said on 13 November that the Pentagon has given a favourable recommendation to Poland's request for Tomahawk cruise missiles and ground-based launchers; US congressional approval is still needed. No value has been published."
+    },
+    {
+      "date": "2026-11-12",
+      "added": "2026-11-16",
+      "country": "Malaysia",
+      "title": "Malaysia picks Roketsan's ATMACA to replace NSM on its Littoral Combat Ships",
+      "summary": "Malaysia's defence minister named the Turkish ATMACA anti-ship missile on 12 November as the preferred replacement for the Naval Strike Missile on the Navy's Littoral Combat Ships, with talks with Türkiye to follow. No quantity or value has been published."
+    },
+    {
+      "date": "2026-11-12",
+      "added": "2026-11-16",
+      "country": "United Kingdom",
+      "title": "UK to buy three offshore support vessels through Norway's standardised vessel programme",
+      "summary": "The UK and Norway agreed in Oslo on 12 November that the Royal Navy will buy three offshore support vessels for uncrewed mine-hunting, with an option for three more, through Norway's P1118 programme; the UK has set aside an extra £90 million and the first ship is due in 2031. As a government-to-government purchase it is normally exempt from separate offset negotiations under the UK's offset policy."
+    },
+    {
+      "date": "2026-11-11",
+      "added": "2026-11-16",
+      "country": "Bulgaria",
+      "title": "Bulgaria approves joint purchase with Italy of up to 1,040 military transport vehicles",
+      "summary": "Bulgaria's Cabinet approved on 11 November a joint purchase with Italy of up to 1,040 military transport vehicles for up to €410 million, with the first stage of up to 700 vehicles (up to €290 million, 2027 to 2030) funded through the EU's SAFE loans. Part of the equipment is to be assembled in Bulgaria with Bulgarian industry."
+    },
+    {
+      "date": "2026-11-11",
+      "added": "2026-11-16",
+      "country": "Denmark",
+      "title": "Denmark orders SEK 350m of CV90 live training equipment from Saab",
+      "summary": "Denmark's Defence Acquisition and Logistics Organisation has ordered further live training equipment for its CV90 vehicles from Saab, including a laser duel system and drone and indirect-fire training, worth SEK 350 million (about US$35 million). Deliveries run from 2026 to 2028."
+    },
+    {
+      "date": "2026-11-09",
+      "added": "2026-11-16",
+      "country": "Belgium",
+      "title": "Belgium orders 20 Rheinmetall Skyranger 30 air defence systems",
+      "summary": "Belgium has ordered 20 Skyranger 30 air defence systems from Rheinmetall, with logistics, as part of its Blue Dome air defence programme, in a contract in the mid-hundreds of millions of euros. Deliveries are due to start in late 2028."
+    },
+    {
+      "date": "2026-11-06",
+      "added": "2026-11-16",
+      "country": "Peru",
+      "title": "Peru's Interior Ministry awards Katmerciler US$24.4m for 44 police water-cannon trucks",
+      "summary": "Peru's Ministry of the Interior has awarded Turkey's Katmerciler a US$24.4 million contract for 44 water-cannon trucks for the National Police, with training and up to 60 months of preventive maintenance."
+    },
+    {
+      "date": "2026-11-05",
+      "added": "2026-11-16",
+      "country": "Brazil",
+      "title": "Brazilian Army chooses MBDA's EMADS medium-range air defence, worth up to R$3.4bn",
+      "summary": "The Brazilian Army has chosen MBDA's EMADS system with CAMM-ER missiles for three medium-range air defence batteries, with six launcher vehicles and four radar vehicles, at a reported cost of up to R$3.4 billion. The purchase still depends on commercial and government-to-government negotiations."
+    },
+    {
+      "date": "2026-11-04",
+      "added": "2026-11-16",
+      "country": "Lithuania",
+      "title": "Lithuania to write named local suppliers into its infantry fighting vehicle contract",
+      "summary": "Lithuania's government approved a draft resolution on 4 November under which domestic industry participation in its tracked infantry fighting vehicle purchase, about 90 to 100 vehicles, would be a requirement of the supply contract itself, naming Lithuanian suppliers and their work, instead of a separate industrial cooperation agreement.",
+      "tag": "Rules"
+    },
+    {
+      "date": "2026-11-02",
+      "added": "2026-11-16",
+      "country": "Greece",
+      "title": "Greece signs for three Embraer KC-390 transport aircraft through Portugal",
+      "summary": "Greece signed in Athens on 2 November for three Embraer KC-390 Millennium aircraft, with options for three more, in a government-to-government deal through Portugal, reported at about €590 million for the first three. The first aircraft is due in 2027."
+    },
     {
       "date": "2026-11-06",
       "added": "2026-11-09",
