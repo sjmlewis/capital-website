@@ -1,7 +1,65 @@
 {
-  "updated": "2026-11-16",
+  "updated": "2026-11-23",
   "note": "Public offset alerts shown on the website: a weekly round-up of new defence sales above the offset thresholds. This file is the permanent record: never delete an item. The site shows only items whose 'added' date is within the last three weeks of 'updated' (at least eight items are always shown), so older items fall away from the pages but stay here. 'date' is when the event happened (YYYY-MM-DD, or YYYY-MM if only the month is known); 'added' is the date the item went on the site; 'tag' is optional ('Civil' or 'Rules'). Summaries are Capital's own words: one or two plain factual lines, with a short note on offset only where it is clear (for example, no offset because a purchase is SAFE-funded). Sources are not shown on the site and are not kept in this public file; they are recorded privately in Capital's Claude project (Offset_Alerts_Sources.md). Internal scores, suggested services and verdicts from the Offset Opportunity Monitor never go here.",
   "items": [
+    {
+      "date": "2026-11-20",
+      "added": "2026-11-23",
+      "country": "Netherlands",
+      "title": "Netherlands takes first step to join the Finland-led CAVS programme for Patria 6x6 vehicles",
+      "summary": "The Netherlands has signed a Technical Arrangement in Rotterdam as the first step towards becoming the eighth participant in the Common Armoured Vehicle System programme for Patria 6x6 armoured vehicles. No Dutch quantity or value has been published."
+    },
+    {
+      "date": "2026-11-20",
+      "added": "2026-11-23",
+      "country": "Netherlands",
+      "title": "Dutch defence industry plan gives more weight to where products and components come from",
+      "summary": "The Netherlands' new defence industry plan says the Ministry of Defence will give more weight to the origin of products and suppliers in procurement decisions from 2027, and from early 2028 its guidelines will take account of where raw materials and components come from. The plan does not change the Dutch industrial participation rules.",
+      "tag": "Rules"
+    },
+    {
+      "date": "2026-11-19",
+      "added": "2026-11-23",
+      "country": "Bulgaria",
+      "title": "Bulgaria's Parliament approves a €696m purchase of 57 CAESAR howitzers from France",
+      "summary": "Bulgaria's Parliament voted on 19 November to approve a deal worth about €696 million for 57 CAESAR 155mm self-propelled howitzers from France, with additional components, funded through the EU's SAFE loans and the defence budget. Delivery is planned to finish by the end of 2030."
+    },
+    {
+      "date": "2026-11-19",
+      "added": "2026-11-23",
+      "country": "Switzerland",
+      "title": "Switzerland picks Thales Suisse for deployable Ground Master 200 air surveillance radars",
+      "summary": "armasuisse has chosen Thales Suisse SA to supply deployable medium-range Ground Master 200 radars for the Swiss Air Force, replacing the TAFLIR system, after inviting bids from four European manufacturers. armasuisse cites greater Swiss industry involvement and technology transfer for radar maintenance; no value has been published."
+    },
+    {
+      "date": "2026-11-18",
+      "added": "2026-11-23",
+      "country": "India",
+      "title": "India signs Rs 1,976 crore contract with IAI to upgrade the Navy's Barak missile system",
+      "summary": "India's Ministry of Defence signed a Rs 1,976.40 crore contract with Israel Aerospace Industries on 18 November to upgrade the hardware and software of the Barak point defence missile system on Indian Navy ships. The value is just below India's Rs 2,000 crore offset threshold, so no offset applies."
+    },
+    {
+      "date": "2026-11-18",
+      "added": "2026-11-23",
+      "country": "Morocco",
+      "title": "Morocco launches a defence industry roadmap aiming to meet 40% of its needs locally by 2035",
+      "summary": "King Mohammed VI chaired a session in Rabat on 18 November launching the Morocco Offer, a national roadmap for the defence and security industry that aims to meet about 40% of the country's military and security needs locally by 2035.",
+      "tag": "Rules"
+    },
+    {
+      "date": "2026-11-17",
+      "added": "2026-11-23",
+      "country": "Malaysia",
+      "title": "Malaysia and France sign defence agreements, including 105mm artillery and a Scorpene upgrade",
+      "summary": "During President Macron's visit to Kuala Lumpur on 17 November, Malaysia and France signed seven letters of intent and three memoranda of understanding, including a proposed purchase of a KNDS 105mm light artillery system and work on the Navy's Scorpene submarine mid-life upgrade. Malaysia's defence minister said the Rafale is among the options for its future combat aircraft; no values were published."
+    },
+    {
+      "date": "2026-11-05",
+      "added": "2026-11-23",
+      "country": "Denmark",
+      "title": "Denmark directly awards Saab a framework for laser duel training systems worth up to SEK 4.75bn",
+      "summary": "Denmark's Defence Acquisition and Logistics Organisation has directly awarded Saab a framework agreement for more BT46 instrumented laser duel simulation units and their servicing, estimated at SEK 3.75 billion and worth up to SEK 4.75 billion. It runs from November 2026 to January 2037, with a five-year extension option."
+    },
     {
       "date": "2026-11-13",
       "added": "2026-11-16",
