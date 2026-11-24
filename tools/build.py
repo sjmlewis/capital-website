@@ -1483,7 +1483,7 @@ for p, d in PAGES.items():
     with open(os.path.join(SITE, p), "w") as f: f.write(doc)
 
 # The Council's old addresses on this site forward visitors to its own website
-NOC_SITE = "http://nationaloffsetcouncil.uk/"  # change to https:// once GitHub has issued the certificate for nationaloffsetcouncil.uk
+NOC_SITE = "https://nationaloffsetcouncil.uk/"
 for old in ("uk-noc.html", "uk-icr.html", "roundtable.html"):
     with open(os.path.join(SITE, old), "w") as f:
         f.write(f"""<!doctype html>
