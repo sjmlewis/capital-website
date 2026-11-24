@@ -448,18 +448,6 @@ JS = r"""
     });
   });
 
-  // UK-NOC page: the drop-down sets the subject of the register-interest email
-  var who=document.getElementById('icr-who'),send=document.getElementById('icr-send');
-  if(who&&send){
-    var to=send.getAttribute('href').split('?')[0],subj=document.getElementById('icr-subject'),sc=document.getElementById('icr-subject-copy');
-    var upd=function(){
-      var s='UK-NOC: register interest'+(who.value?' ('+who.value+')':'');
-      send.setAttribute('href',to+'?subject='+encodeURIComponent(s)+'&body='+encodeURIComponent('Name:\r\nJob title:\r\nOrganisation:\r\n'));
-      if(subj)subj.textContent=s;
-      if(sc)sc.setAttribute('data-copy',s);
-    };
-    who.addEventListener('change',upd);upd();
-  }
 
   // Training page: open or close every module at once, and open a module named in the address
   var ea=document.getElementById('expandall'),mods=document.querySelectorAll('details.mod');
@@ -608,7 +596,6 @@ NAV = [
     ("uk-offset-policy.html", "UK Offset Policy"),
     ("offset-alerts.html", "Defence sales alerts"),
     ("training.html", "Training"),
-    ("uk-noc.html", "UK-NOC"),
     ("about.html", "About"),
 ]
 
@@ -636,7 +623,7 @@ FOOTER = f"""
       <p class="contact">Based in London, United Kingdom. Meetings by appointment.<br><span>{EMAIL}</span><span>{PHONE}</span><a class="li" href="https://www.linkedin.com/in/stephen-lewis-b9716413" rel="noopener">Stephen Lewis on LinkedIn</a></p>
     </div>
     <div><h4>Guidance and alerts</h4><ul><li><a href="uk-offset-policy.html">UK Offset Policy</a></li><li><a href="industrial-participation.html">About UK offset</a></li><li><a href="offset-alerts.html">Defence sales alerts</a></li></ul></div>
-    <div><h4>Course and Council</h4><ul><li><a href="training.html">Industrial participation course</a></li><li><a href="uk-noc.html">UK National Offset Council</a></li></ul></div>
+    <div><h4>Course</h4><ul><li><a href="training.html">Industrial participation course</a></li></ul></div>
     <div><h4>Company</h4><ul><li><a href="about.html">About Capital Services</a></li><li><a href="advisory.html">Offset advisory (Constructive Edge)</a></li><li><a href="compliance.html">Compliance and ethics</a></li><li><a href="contact.html">Contact</a></li></ul></div>
   </div>
   <div class="legal"><div class="wrap">
@@ -888,12 +875,11 @@ PAGES["index.html"] = dict(title="Home", desc="Capital Services builds partnersh
 
 {HOME_ALERTS}
 
-<section class="section stone" aria-labelledby="more-title"><div class="wrap">
-  <span class="kicker" aria-hidden="true"></span><h2 class="h2" id="more-title">The Council and the course</h2>
-  <p class="sub">Two ways Capital brings people together around industrial participation.</p>
-  <div class="cols two-up">
-    <div class="col"><h3>UK National Offset Council (UK-NOC)</h3><p>An informal quarterly gathering in London for people with an interest in UK offset: Ministry of Defence officials, UK companies and overseas suppliers. Organised and hosted by Capital. The first meeting takes place in Q4 2026.</p><p><a href="uk-noc.html">About UK-NOC</a></p></div>
-    <div class="col"><h3>Industrial participation course</h3><p>A practitioner's masterclass for people new to industrial participation and offset: eight modules, a UK elective and a live negotiation simulation, online over nine weeks or in-house over three days.</p><p><a href="training.html">See the course outline</a></p></div>
+<section class="section stone" aria-labelledby="more-title"><div class="wrap two">
+  <div><span class="kicker" aria-hidden="true"></span><h2 id="more-title">Industrial participation course</h2></div>
+  <div class="prose">
+    <p>A practitioner's masterclass for people new to industrial participation and offset: eight modules, a UK elective and a live negotiation simulation, online over nine weeks or in-house over three days.</p>
+    <p><a href="training.html">See the course outline</a></p>
   </div>
 </div></section>
 {band()}""")
@@ -907,17 +893,17 @@ PAGES["uk-offset-policy.html"] = dict(title="UK Offset Policy", desc="A plain-En
   <div><span class="kicker" aria-hidden="true"></span><h2 id="key-title">The main points</h2></div>
   <div>
     <ul class="facts">
-      <li><b>When</b><span>Published on 30 October 2026. The Ministry of Defence expects to apply offset to procurements from 2027, once its Offset Authority is in place.</span></li>
+      <li><b>When</b><span>Published on 30 October 2026. The Ministry of Defence will publish more detail before it applies offset to defence and security procurements in 2027.</span></li>
       <li><b>Who</b><span>Overseas suppliers of defence and security equipment, services and support. It may also apply to a UK-registered supplier where a significant part of the work comes from abroad.</span></li>
       <li><b>Threshold</b><span>Contracts worth £50 million or more. Related contracts may be added together over up to five years.</span></li>
       <li><b>Obligation</b><span>Normally 100% of the contract value, set out in a separate Offset Agreement signed before the main contract. The projects are agreed afterwards.</span></li>
       <li><b>Timescale</b><span>Up to ten years, with milestones of 30% by Year 3, 50% by Year 5 and 100% by Year 10.</span></li>
       <li><b>What counts</b><span>Direct and indirect offset, including contracts with UK companies, technology and know-how transfer, research and development with UK industry and universities, investment, maintenance and support capability, skills and exports.</span></li>
       <li><b>Approval</b><span>Every project needs the Offset Authority's written approval before it starts, and must be additional to normal business.</span></li>
-      <li><b>Value</b><span>Credit is based on the UK value added, not simply the value of the contracts placed. <a href="uk-offset-green-book.html">How the Green Book shapes value</a>.</span></li>
+      <li><b>Value</b><span>The Offset Authority values projects with a transparent framework consistent with HM Treasury's Green Book principles. <a href="uk-offset-green-book.html">How the Green Book shapes value</a>.</span></li>
       <li><b>Multipliers</b><span>Extra credit for priority locations, activities and sectors, such as regional growth, technology transfer, skills, smaller companies and sovereign capability. Details are to be published.</span></li>
       <li><b>Credits</b><span>Awarded after delivery and checking. Suppliers report each year by 31 March. Credits can be banked, normally for five years.</span></li>
-      <li><b>Remedies</b><span>A last resort. Compensation for a missed milestone is normally at least 10% of the shortfall.</span></li>
+      <li><b>Remedies</b><span>Compensation for a missed milestone is normally at least 10% of the value not delivered at that milestone. Penalties are a last resort, for suppliers that do not engage with the policy.</span></li>
       <li><b>Transparency</b><span>A public list of the companies with offset agreements and the value they still have to deliver.</span></li>
     </ul>
     <div class="note" style="margin-top:28px;max-width:none"><b>A summary, not legal advice.</b> The policy on <a href="https://www.gov.uk/government/publications/uk-offset-policy/uk-offset-policy">GOV.UK</a> is the authority. Further guidance, including the multipliers and the Offset Authority's procedures, is due to be published.</div>
@@ -930,7 +916,6 @@ PAGES["uk-offset-policy.html"] = dict(title="UK Offset Policy", desc="A plain-En
     <div class="col"><h3>For overseas suppliers</h3><p>Plan early. You will need UK partners that can make your parts now, and partners that could with your support, with evidence of where and how they work in the UK. Offset advisory work is available through <a href="advisory.html">Constructive Edge</a>.</p></div>
     <div class="col"><h3>For UK companies</h3><p>The policy opens supply chains to UK primes, mid-tier companies, SMEs, universities and research organisations. Overseas suppliers will be looking for capable UK partners.</p></div>
   </div>
-  <p class="sub">Discuss the policy with others working on it at the <a href="uk-noc.html">UK National Offset Council (UK-NOC)</a>.</p>
 </div></section>
 
 <section class="section navy" aria-labelledby="numbers-title"><div class="wrap two">
@@ -966,7 +951,7 @@ PAGES["uk-offset-green-book.html"] = dict(title="UK offset and the Green Book", 
 <section class="section stone" aria-labelledby="why-title"><div class="wrap two">
   <div><span class="kicker" aria-hidden="true"></span><h2 id="why-title">Why it matters for offset</h2></div>
   <div class="prose">
-    <p>Section 3.11.1 of the policy says the Offset Authority will use “a transparent value framework that is consistent with the HMT Green Book principles” to set the credit for each approved project. Credit is based on UK value added: the value “genuinely generated in the UK”.</p>
+    <p>Section 3.11.1 of the policy says the Offset Authority will use a transparent value framework consistent with the Green Book's principles. The policy defines UK value added as value genuinely generated in the UK that can be evidenced.</p>
     <p>So the face value of a contract, an investment or a licence is the starting point, not the credit. Multipliers then add extra credit for priority places, activities and sectors. Their values are still to be published.</p>
   </div>
 </div></section>
@@ -1035,7 +1020,6 @@ PAGES["industrial-participation.html"] = dict(title="UK offset and industrial pa
   <div class="prose">
     <p>Capital helps overseas suppliers and UK companies build partnerships, work with the Ministry of Defence's procurement process, shape bids and contracts, and arrange finance. This site also offers a free <a href="uk-offset-policy.html">plain-English summary of the UK Offset Policy</a> and a weekly <a href="offset-alerts.html">defence sales round-up</a>.</p>
     <p>Capital's founder has worked on offset and industrial participation programmes for more than 25 years, across Europe, the Middle East, Asia, Africa and the Americas. <a href="about.html">About Capital</a></p>
-    <p>Capital also organises and hosts the <a href="uk-noc.html">UK National Offset Council (UK-NOC)</a>, an informal quarterly gathering in London for Ministry of Defence officials, UK companies and overseas suppliers.</p>
     <p>Offset advisory work is delivered through <a href="advisory.html">Constructive Edge</a>, in which Capital is an equal partner.</p>
   </div>
 </div></section>
@@ -1342,86 +1326,10 @@ PAGES["training.html"] = dict(title="Industrial participation course", desc="Str
     <p>Prefer to talk first? {PHONE}, UK office hours.</p>
   </div>
 </div></section>
-{band('Working on a UK commitment?', 'Meet others doing the same at the UK National Offset Council (UK-NOC), an informal quarterly gathering in London. The first takes place in Q4 2026.', 'About UK-NOC', 'uk-noc.html')}""")
-
-
-PAGES["uk-noc.html"] = dict(title='UK National Offset Council (UK-NOC)', desc='The UK National Offset Council (UK-NOC) is an informal quarterly gathering in London for people with an interest in UK offset and the UK Offset Policy: Ministry of Defence officials, UK companies and overseas suppliers. Organised and hosted by Capital.', body=pagehead(
-    'UK National Offset Council',
-    'The UK National Offset Council (UK-NOC) is an informal gathering, held each quarter in London, for people with an interest in UK offset and the UK Offset Policy: officials from the Ministry of Defence and other government departments, UK companies and overseas suppliers. Capital organises and hosts each meeting, bringing industry and government together on how it works in practice.',
-    ['UK-NOC'],
-    '<div class="actions"><a class="btn btn-brass" href="#join">Register your interest</a><a class="btn btn-ghost" href="#host">Offer a venue</a></div><p class="audience">Inaugural meeting: Q4 2026, central London</p>') + f"""
-<section class="section" aria-labelledby="why-title"><div class="wrap two">
-  <div><span class="kicker" aria-hidden="true"></span><h2 id="why-title">Why UK-NOC, and why now</h2></div>
-  <div class="prose">
-    <p>The Ministry of Defence published the <a href="uk-offset-policy.html">UK Offset Policy</a> in October 2026, applying offset to large defence purchases from abroad. Overseas suppliers, their UK partners and government all gain from a shared, practical understanding of how commitments are set, met and credited.</p>
-    <p>Many overseas companies already manage offset obligations in other countries, and many UK companies already supply them. UK-NOC gives both a regular place to compare experience, raise practical problems early and understand the thinking behind the rules.</p>
-    <p>It is deliberately informal: a day of open discussion, not a conference or a sales event.</p>
-  </div>
-</div></section>
-
-<section class="section stone" aria-labelledby="who-title"><div class="wrap">
-  <span class="kicker" aria-hidden="true"></span><h2 class="h2" id="who-title">Who it is for</h2>
-  <p class="sub">Anyone with a working interest in UK offset is welcome.</p>
-  <div class="cols">
-    <div class="col"><h3>The Ministry of Defence and government</h3><p>Officials responsible for UK offset policy and defence procurement, invited to set out policy and hear industry's experience.</p></div>
-    <div class="col"><h3>UK companies</h3><p>UK companies of every size, from primes to SMEs, that partner with overseas suppliers or want to.</p></div>
-    <div class="col"><h3>Overseas suppliers</h3><p>Overseas defence companies with UK offset commitments, or expecting them on future UK contracts, and their UK subsidiaries.</p></div>
-  </div>
-</div></section>
-
-<section class="section" aria-labelledby="topics-title"><div class="wrap">
-  <span class="kicker" aria-hidden="true"></span><h2 class="h2" id="topics-title">What the Council discusses</h2>
-  <p class="sub">Three themes run through every meeting.</p>
-  <div class="cols">
-    <div class="col"><h3>Macroeconomic rules</h3><p>How commitments are set and valued, what counts towards them, how they are reported, and the economic goals behind them.</p></div>
-    <div class="col"><h3>National security requirements</h3><p>Sovereign capability, security of supply, ownership, protection of intellectual property and export control.</p></div>
-    <div class="col"><h3>Supply contract obligations</h3><p>How commitments are written into contracts, flow down to UK suppliers, and are delivered and evidenced over the life of a programme.</p></div>
-  </div>
-</div></section>
-
-<section class="section stone" aria-labelledby="format-title"><div class="wrap two">
-  <div><span class="kicker" aria-hidden="true"></span><h2 id="format-title">How it works</h2></div>
-  <div>
-    <ul class="facts">
-      <li><b>When</b><span>Quarterly, for one day.</span></li>
-      <li><b>Where</b><span>Central London, at a venue arranged by Capital.</span></li>
-      <li><b>Format</b><span>Informal and discussion-led.</span></li>
-      <li><b>Ground rules</b><span>Policy and general practice only. Live competitions, individual bids and prices are not discussed.</span></li><li><b>Chatham House Rule</b><span>All meetings are held under the Chatham House Rule. You may use what you hear, but you may not reveal who said it or which organisation they represent. This allows everyone to speak freely.</span></li>
-      <li><b>Host</b><span>Capital organises and hosts each meeting. UK-NOC is independent: it is not a government body and does not speak for the Ministry of Defence.</span></li>
-    </ul>
-    <div class="note" style="margin-top:28px;max-width:none"><b>Inaugural meeting: Q4 2026.</b> The first meeting will take place in central London in the final quarter of 2026. The date and venue will be sent to everyone who registers interest.</div>
-  </div>
-</div></section>
-
-<section class="section" id="join" aria-labelledby="join-title"><div class="wrap two">
-  <div>
-    <span class="kicker" aria-hidden="true"></span><h2 id="join-title">Register your interest</h2>
-    <div class="prose" style="margin-top:18px">
-      <p>To receive invitations and meeting dates, choose the description that fits you and press <strong>Register interest</strong>. An email to Capital opens with the subject filled in. Add your name, job title and organisation, then send it.</p>
-      <p>If no email opens, copy the address and the subject, and send it from your usual email account.</p>
-      <p id="host"><strong>Offering a venue.</strong> Capital organises and hosts each meeting. If your organisation could lend a meeting room in central London for the day, please let us know.</p>
-      <p>Your details are used only to send UK-NOC invitations and updates, and are not shared with anyone else. You can ask to be removed at any time.</p>
-    </div>
-  </div>
-  <div class="panel">
-    <h3>Register interest</h3>
-    <label class="pick" for="icr-who">Which describes you best?</label>
-    <select class="pick" id="icr-who">
-      <option value="">Please choose</option>
-      <option value="MOD or government">Ministry of Defence or other government department</option>
-      <option value="UK company">UK company</option>
-      <option value="Overseas supplier">Overseas supplier</option>
-      <option value="Other">Other organisation</option>
-    </select>
-    <div class="actions" style="margin-top:22px"><a class="btn btn-brass" id="icr-send" href="mailto:{EMAIL}?subject=UK-NOC%3A%20register%20interest">Register interest</a><a class="btn btn-outline" href="mailto:{EMAIL}?subject=UK-NOC%3A%20venue%20offer">Offer a venue</a></div>
-    <p style="margin-top:24px">Or email Capital directly:</p>
-    <div class="big">{EMAIL_WBR}</div>
-    <div class="copyrow"><button class="copybtn" type="button" data-copy="{EMAIL}">Copy email address</button></div>
-    <div class="copyrow" style="margin-top:8px"><code id="icr-subject">UK-NOC: register interest</code><button class="copybtn" id="icr-subject-copy" type="button" data-copy="UK-NOC: register interest">Copy subject</button></div>
-  </div>
-</div></section>
 {band()}""")
 
+
+# The UK National Offset Council moved to its own website on 24 Nov 2026 (https://nationaloffsetcouncil.uk).
 ALERT_SUBJECT = "Defence sales alerts"
 PAGES["offset-alerts.html"] = dict(title="Defence sales alerts", desc="A weekly round-up of new defence sales around the world above the thresholds at which countries require industrial participation.", body=pagehead(
     "Defence sales alerts",
@@ -1541,7 +1449,7 @@ PAGES["compliance.html"] = dict(title="Compliance and ethics", desc="Capital's a
 
 PAGES["contact.html"] = dict(title="Contact", desc="Contact Capital Services by email or telephone. Based in London, United Kingdom.", body=pagehead(
     "Contact",
-    "Email or call about a UK partnership, a Ministry of Defence procurement, a bid or contract, finance, the course or UK-NOC.",
+    "Email or call about a UK partnership, a Ministry of Defence procurement, a bid or contract, finance or the course.",
     ["Contact"]) + f"""
 <section class="section" aria-labelledby="gt-title"><div class="wrap two">
   <div>
@@ -1574,22 +1482,22 @@ for p, d in PAGES.items():
     doc = page(p, d["title"], d["desc"], d["body"], d.get("current"))
     with open(os.path.join(SITE, p), "w") as f: f.write(doc)
 
-# Old addresses (uk-icr.html, uk-noc.html) send visitors to the UK-NOC page
-for old in ("uk-icr.html", "roundtable.html"):
+# The Council's old addresses on this site forward visitors to its own website
+NOC_SITE = "http://nationaloffsetcouncil.uk/"  # change to https:// once GitHub has issued the certificate for nationaloffsetcouncil.uk
+for old in ("uk-noc.html", "uk-icr.html", "roundtable.html"):
     with open(os.path.join(SITE, old), "w") as f:
         f.write(f"""<!doctype html>
 <html lang="en-GB">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>UK National Offset Council (UK-NOC) · Capital Services</title>
-<meta name="robots" content="noindex">
-<link rel="canonical" href="{DOMAIN}/uk-noc.html">
-<script>location.replace('uk-noc.html'+location.hash);</script>
-<meta http-equiv="refresh" content="0; url=uk-noc.html">
+<title>UK National Offset Council</title>
+<link rel="canonical" href="{NOC_SITE}">
+<script>location.replace('{NOC_SITE}');</script>
+<meta http-equiv="refresh" content="0; url={NOC_SITE}">
 </head>
 <body>
-<p>This page has moved: <a href="uk-noc.html">UK National Offset Council (UK-NOC)</a>.</p>
+<p>The UK National Offset Council has its own website: <a href="{NOC_SITE}">nationaloffsetcouncil.uk</a>.</p>
 </body>
 </html>
 """)
