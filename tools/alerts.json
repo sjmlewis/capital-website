@@ -3,6 +3,55 @@
   "note": "Public offset alerts shown on the website: a weekly round-up of new defence sales above the offset thresholds. This file is the permanent record: never delete an item. The site shows only items whose 'added' date is within the last three weeks of 'updated' (at least eight items are always shown), so older items fall away from the pages but stay here. 'date' is when the event happened (YYYY-MM-DD, or YYYY-MM if only the month is known); 'added' is the date the item went on the site; 'tag' is optional ('Civil' or 'Rules'). Summaries are Capital's own words: one or two plain factual lines, with a short note on offset only where it is clear (for example, no offset because a purchase is SAFE-funded). Sources are not shown on the site and are not kept in this public file; they are recorded privately in Capital's Claude project (Offset_Alerts_Sources.md). Internal scores, suggested services and verdicts from the Offset Opportunity Monitor never go here.",
   "items": [
     {
+      "date": "2026-11-26",
+      "added": "2026-11-26",
+      "country": "Finland",
+      "title": "Finland approves €1.955bn purchase of 160 CV90 infantry fighting vehicles from BAE Systems Hägglunds",
+      "summary": "Finland's defence ministry has approved buying 160 CV90 infantry fighting vehicles from BAE Systems Hägglunds, with Patria as Finnish partner and an option for 100 more, at a base price of €1.955 billion excluding VAT, partly funded by EU SAFE loans. It is part of the Swedish-led joint CV90 purchase and takes effect when all five countries sign; the industrial participation plan covers more than 30% of the value."
+    },
+    {
+      "date": "2026-11-25",
+      "added": "2026-11-26",
+      "country": "Denmark",
+      "title": "Denmark awards Galvion combat helmet frameworks worth an estimated DKK 1.88bn",
+      "summary": "Denmark's defence procurement agency has awarded Galvion two framework agreements for Batlskin combat helmet systems over five years, with service and spare parts over 17 years. The estimated value is DKK 1.88 billion, with a maximum of DKK 2.5 billion."
+    },
+    {
+      "date": "2026-11-18",
+      "added": "2026-11-26",
+      "country": "Taiwan",
+      "title": "Taiwan awaits US approval of a record US$14bn arms package, including Patriot missiles",
+      "summary": "Taiwan is waiting for President Trump to approve a US arms sale reported at US$14 billion, which includes Patriot missiles, an automated command and control system and a 360-degree air defence radar. It could be approved as one package or in smaller parts."
+    },
+    {
+      "date": "2026-11-17",
+      "added": "2026-11-26",
+      "country": "Sweden",
+      "title": "Sweden and Norway sign a joint framework for night vision equipment with Brolis and Steiner-Optik",
+      "summary": "Sweden's FMV and Norway's defence materiel agency signed a joint framework agreement in Vilnius on 17 November with Lithuania's Brolis Semiconductors and Steiner-Optik for night vision equipment. Sweden's first order, for laser pointers, thermal and short-wave infrared sights among other items, is worth about SEK 150 million."
+    },
+    {
+      "date": "2026-10-09",
+      "added": "2026-11-26",
+      "country": "Peru",
+      "title": "Peru awards De Havilland US$17.3m to support the Air Force's Twin Otter aircraft",
+      "summary": "Peru's armed forces procurement agency, ACFFAA, awarded De Havilland Aircraft of Canada a US$17.26 million performance-based logistics support contract for the Peruvian Air Force's DHC-6-400 Twin Otter aircraft on 9 October, and in November extended the deadline for the company to formalise it."
+    },
+    {
+      "date": "2026-11-23",
+      "added": "2026-11-26",
+      "country": "Netherlands",
+      "title": "Netherlands signs up to join Poland's joint purchase of Piorun portable air defence missiles",
+      "summary": "An addendum signed on 23 November lets the Netherlands join the joint purchase of MESKO's Piorun portable air defence missiles led by Poland's Armament Agency, alongside Poland, Lithuania, Latvia and Norway, with the Dutch share to be paid through the EU's SAFE loans. No Dutch quantity or value has been published."
+    },
+    {
+      "date": "2026-11-12",
+      "added": "2026-11-26",
+      "country": "Belgium",
+      "title": "Belgium to buy 14 Thales Ground Master 200 radars for its Blue Dome air defence",
+      "summary": "Belgium plans to buy 14 Thales Ground Master 200 Multi-Mission Compact radars for its Blue Dome air defence programme, working with Kongsberg's fire distribution centre and AMRAAM missiles as in the Netherlands. First systems are due from 2027; no value has been published."
+    },
+    {
       "date": "2026-11-24",
       "added": "2026-11-26",
       "country": "United Kingdom",
