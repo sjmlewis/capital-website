@@ -1,7 +1,42 @@
 {
-  "updated": "2026-11-23",
+  "updated": "2026-11-26",
   "note": "Public offset alerts shown on the website: a weekly round-up of new defence sales above the offset thresholds. This file is the permanent record: never delete an item. The site shows only items whose 'added' date is within the last three weeks of 'updated' (at least eight items are always shown), so older items fall away from the pages but stay here. 'date' is when the event happened (YYYY-MM-DD, or YYYY-MM if only the month is known); 'added' is the date the item went on the site; 'tag' is optional ('Civil' or 'Rules'). Summaries are Capital's own words: one or two plain factual lines, with a short note on offset only where it is clear (for example, no offset because a purchase is SAFE-funded). Sources are not shown on the site and are not kept in this public file; they are recorded privately in Capital's Claude project (Offset_Alerts_Sources.md). Internal scores, suggested services and verdicts from the Offset Opportunity Monitor never go here.",
   "items": [
+    {
+      "date": "2026-11-24",
+      "added": "2026-11-26",
+      "country": "United Kingdom",
+      "title": "UK awards HII £142m for REMUS 620 mine-hunting drones for the Royal Navy",
+      "summary": "The UK's National Armaments Director Group has awarded US shipbuilder HII a £142 million (about US$186 million) contract for REMUS 620 uncrewed underwater vehicles, Sea Launcher launch and recovery systems and support services for the Royal Navy's Mine-Hunting Capability programme. HII says support work previously done overseas will move to the UK. The contract was placed before the UK's offset policy takes effect in April 2027."
+    },
+    {
+      "date": "2026-11-24",
+      "added": "2026-11-26",
+      "country": "Poland",
+      "title": "Poland and the UK sign an agreement to co-develop the CAMM-MR air defence missile",
+      "summary": "Poland and the UK signed an intergovernmental agreement in Gdynia on 24 November setting out how they will co-operate on developing the medium-range CAMM-MR missile, planned as a key part of Poland's layered air and missile defence. It is to lead to a contract for PGZ and MBDA UK to produce the missile's detailed design."
+    },
+    {
+      "date": "2026-11-23",
+      "added": "2026-11-26",
+      "country": "Bulgaria",
+      "title": "Leonardo to upgrade the avionics of Bulgaria's three C-27J Spartan transport aircraft",
+      "summary": "Leonardo announced on 23 November that it will upgrade the avionics of the Bulgarian Air Force's three C-27J Spartan aircraft, with a redesigned crew interface, new navigation and surveillance equipment and upgraded communications. No value or timetable has been disclosed."
+    },
+    {
+      "date": "2026-11-20",
+      "added": "2026-11-26",
+      "country": "Thailand",
+      "title": "Thailand seeks to buy HIMARS rocket launchers from the US, worth up to US$123m",
+      "summary": "The White House says Thailand intends to commit up to US$123 million (about THB 4.2 billion) to buy Lockheed Martin's HIMARS rocket artillery system. Thailand's Ministry of Defence confirmed on 20 November that a proposal has been made to the US government and that the purchase is at an early stage."
+    },
+    {
+      "date": "2026-11-19",
+      "added": "2026-11-26",
+      "country": "Netherlands",
+      "title": "Netherlands and Germany order Knifefish jammers, with a Dutch industrial participation deal",
+      "summary": "The Dutch procurement agency COMMIT, signing for both countries, ordered series production of Hensoldt Netherlands' Knifefish radio-jamming systems at the NEDS fair in Rotterdam on 19 November, for fitting to Piranha 5 armoured vehicles. Hensoldt also signed an industrial participation agreement with the Dutch Ministry of Economic Affairs to bring Dutch companies and research institutions into the programme. No value has been published."
+    },
     {
       "date": "2026-11-20",
       "added": "2026-11-23",
